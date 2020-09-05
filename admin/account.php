@@ -2,7 +2,7 @@
 require_once 'views/header.php';
 require_once 'views/layoutoption.php';
 require_once 'views/sidebar.php';
-require_once 'models/Admin.php';
+require_once '../../models/admin.php';
 ?>
 <div class="col-lg-6  mt-5 offset-4">
     <h2 class="text-center">Admin Account</h2>

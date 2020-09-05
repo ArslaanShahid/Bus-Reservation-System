@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 03, 2020 at 01:41 PM
+-- Generation Time: Sep 05, 2020 at 07:55 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -53,6 +53,28 @@ INSERT INTO `admins` (`admin_id`, `user_name`, `password`, `email`, `image`, `si
 (16, 'furqanbutt', '16f1816066f231bbe39be9495ece0b3719e166d6', 'fuki@yahoo.com', NULL, '2020-05-05', 0),
 (18, 'ansar', '16f1816066f231bbe39be9495ece0b3719e166d6', 'ansar@yahoo.com', NULL, '2020-05-05', 0),
 (19, 'awais', '38f078a81a2b033d197497af5b77f95b50bfcfb8', 'awaismuzaffar@gmail.com', NULL, '2020-08-29', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `buses`
+--
+
+CREATE TABLE `buses` (
+  `id` int(11) NOT NULL,
+  `bus_no` varchar(150) NOT NULL,
+  `air_conditioner` tinyint(4) NOT NULL,
+  `seats` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `buses`
+--
+
+INSERT INTO `buses` (`id`, `bus_no`, `air_conditioner`, `seats`) VALUES
+(3, 'GAM7782', 1, 7),
+(4, 'GAM8891', 1, 90),
+(7, 'LAH7812', 1, 14);
 
 -- --------------------------------------------------------
 
@@ -20992,6 +21014,30 @@ INSERT INTO `countries` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `days`
+--
+
+CREATE TABLE `days` (
+  `id` int(11) NOT NULL,
+  `day` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `days`
+--
+
+INSERT INTO `days` (`id`, `day`) VALUES
+(1, 'monday'),
+(2, 'tuesday'),
+(3, 'wednesday'),
+(4, 'thursday'),
+(5, 'friday'),
+(6, 'saturday'),
+(7, 'sunday');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `employees`
 --
 
@@ -21013,7 +21059,40 @@ CREATE TABLE `employees` (
 INSERT INTO `employees` (`id`, `name`, `mobile_no`, `address`, `type`, `date_of_birth`, `gender`, `reg_date`) VALUES
 (1, 'Ryuk', '+92-323-7553458', 'gujranwala', 'staff', NULL, 'male', '2020-05-12'),
 (2, 'Arslan shahid', '+92-323-7553458', 'Kashmir Road', 'driver', NULL, 'male', '2020-05-12'),
-(3, 'Farhan rajput', '+92-323-7553458', 'Total Pump (BackSide)', 'driver', NULL, 'male', '2020-07-16');
+(3, 'Farhan rajput', '+92-323-7553458', 'Total Pump (BackSide)', 'driver', NULL, 'male', '2020-07-16'),
+(4, 'Arslan shahid', '+92-323-7553458', 'Kashmir Road', 'driver', NULL, 'male', '2020-09-05');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `routes`
+--
+
+CREATE TABLE `routes` (
+  `id` int(11) NOT NULL,
+  `departure` int(11) NOT NULL,
+  `arrival` int(11) NOT NULL,
+  `fare` int(11) NOT NULL,
+  `duration` varchar(20) NOT NULL,
+  `departure_time` varchar(200) NOT NULL,
+  `distance` int(11) NOT NULL,
+  `day` int(11) NOT NULL,
+  `bus_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `routes`
+--
+
+INSERT INTO `routes` (`id`, `departure`, `arrival`, `fare`, `duration`, `departure_time`, `distance`, `day`, `bus_id`) VALUES
+(1, 14157, 14075, 3000, '1:30', '10:30 am', 300, 1, 1),
+(2, 14157, 14075, 3000, '1:30', '10:30 am', 300, 2, 1),
+(3, 14157, 14075, 3000, '1:30', '10:30 am', 300, 3, 3),
+(4, 14157, 14075, 3000, '1:30', '10:30 am', 300, 4, 2),
+(5, 14072, 14073, 300, '1:30', '10:30 am', 300, 6, 3),
+(6, 14277, 14383, 1200, '1:30', '03:30 am', 300, 1, 7),
+(7, 14277, 14383, 1200, '1:30', '03:30 am', 300, 2, 7),
+(8, 14277, 14383, 1200, '1:30', '03:30 am', 300, 3, 7);
 
 -- --------------------------------------------------------
 
@@ -23770,6 +23849,13 @@ ALTER TABLE `admins`
   ADD UNIQUE KEY `user_name` (`user_name`);
 
 --
+-- Indexes for table `buses`
+--
+ALTER TABLE `buses`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `bus_no` (`bus_no`);
+
+--
 -- Indexes for table `cities`
 --
 ALTER TABLE `cities`
@@ -23782,9 +23868,21 @@ ALTER TABLE `countries`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `days`
+--
+ALTER TABLE `days`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `employees`
 --
 ALTER TABLE `employees`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `routes`
+--
+ALTER TABLE `routes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -23816,6 +23914,12 @@ ALTER TABLE `admins`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
+-- AUTO_INCREMENT for table `buses`
+--
+ALTER TABLE `buses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `cities`
 --
 ALTER TABLE `cities`
@@ -23828,10 +23932,22 @@ ALTER TABLE `countries`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
 
 --
+-- AUTO_INCREMENT for table `days`
+--
+ALTER TABLE `days`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `routes`
+--
+ALTER TABLE `routes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `states`

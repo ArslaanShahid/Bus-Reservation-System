@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../models/Admin.php';
+require_once '../../models/Admin.php';
 $obj_admin = new Admin();
 $errors = [];
 try {
