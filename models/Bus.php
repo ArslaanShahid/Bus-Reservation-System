@@ -96,6 +96,10 @@ class bus{
     if($result->num_rows==0){
         throw new Exception ("Buses Not Found");
     }
+    // if($result->air_conditioner==0){
+    //     $msg="non-AC";
+    //     echo($msg);
+    // }
     while ($data = $result->fetch_object()){
         $buses[] = $data;
     }

@@ -34,7 +34,7 @@ if (isset($_SESSION['obj_admin'])) {
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
-                <div class="navbar-brand"><a href="index.php">Admin Panel</a></div>
+                <div class="navbar-brand"><a href="index.php"><img src="assets/images/admin_logo.png"width="70px"></a> &nbsp;&nbsp;&nbsp;&nbsp;</div>
                 <div class="header__pane ml-auto">
                     <div>
                         <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">

@@ -198,4 +198,16 @@ class Route
         }
         return $days;
     }
+    public static function viewRoute(){
+        $obj_db=self::obj_db();
+        $query= " select * from routes";
+        $result = $obj_db->query($query);
+        if($obj_db->errno){
+            throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
+        }
+        while ($data = $result->fetch_object()){
+            $routes[] = $data;
+        }
+        return $routes;
+    }
 }
