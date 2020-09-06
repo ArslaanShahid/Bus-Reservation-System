@@ -61,18 +61,10 @@ if (isset($_SESSION['obj_user'])) {
 
 </head>
 
-<body class="body-class bc blog">
-    <div id="fb-root"></div>
-    <script>
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = 'connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=205856110142667&autoLogAppEvents=1';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
+<!-- <body class="body-class index-1"> -->
+
+    <body class="body-class bc blog">
+
 
     <!--Start Body Wrap-->
     <div id="body-wrap">
@@ -114,8 +106,8 @@ if (isset($_SESSION['obj_user'])) {
                                 <a class="nav-link dropdown-toggle
                                                          " href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Booking </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                    <a class="dropdown-item" href="https://booking.pak-lines.com/user/ticket-cancel">Ticket Cancel</a>
-                                    <a class="dropdown-item" href="https://booking.pak-lines.com/ticket-print">Print Download</a>
+                                    <a class="dropdown-item" href="#">Ticket Cancel</a>
+                                    <a class="dropdown-item" href="#">Print Download</a>
                                 </div>
                             </li>
 
@@ -152,3 +144,5 @@ if (isset($_SESSION['obj_user'])) {
                 </div>
             </nav>
         </div>
+    </div>
+</body>

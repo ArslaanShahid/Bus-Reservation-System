@@ -48,7 +48,7 @@ $info = Route::routeInfo($_GET['id']);
 
                 <p>Dep Time: <?php echo(strtoupper($info->departure_time)); ?> <span class="text-success">(07 Sep 2020)</span></p>
                 <div class="margin-bottom-5"></div>
-                <strong>Total Seat: 6</strong>
+                <strong>Total Seat:<?php echo($info->seats)?> </strong>
                 <div class="margin-bottom-5"></div>
                 <strong>Ticket Price : <?php echo($info->fare); ?> PKR</strong>
             </div>
@@ -127,7 +127,7 @@ $info = Route::routeInfo($_GET['id']);
                         <label><strong>Choose Boarding Point <span class="text-danger">*</span></strong></label>
                         <select name="boarding" id="stoppage" class="form-control form-control-lg boarding_point">
                             <option value="">Boarding Point</option>
-                            <option value="Paklines Daewoo Bus Terminal">Paklines Daewoo Bus Terminal</option>
+                            <option value="Smart Bus">Smart Bus Terminal</option>
                         </select>
                     </div>
 
@@ -169,7 +169,7 @@ $info = Route::routeInfo($_GET['id']);
                         <input type="hidden" name="trip_id_no" value="17643">
                         <input type="hidden" name="id_no" value="1598854370">
                         <input type="hidden" name="fleet_type_id" value="1">
-                        <input type="hidden" name="total_seat">
+                        <input type="hidden" name="total_seat" value="<?php echo($info->seats) ?>">
                         <input type="hidden" name="seat_number">
                         <input type="hidden" name="price" value="<?php echo($info->fare) ?>">
                         <input type="hidden" name="total_fare">

@@ -4,8 +4,6 @@ require_once('views/header.php');
 $obj_user->profile();
 ?>
 
-<body class="body-class index-1">
-    <div id="body-wrap">
 
         <section id="choose-us">
             <div class="container">
@@ -143,8 +141,7 @@ $obj_user->profile();
                 </div>
             </div>
         </section>
-    </div>
-</body>
+    
 
 
 <?php

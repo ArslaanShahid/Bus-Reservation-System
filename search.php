@@ -22,7 +22,7 @@ $routes = Route::search($_GET['from'], $_GET['to'], $_GET['date']);
                         <div class="breadcrumbinfo">
                             <article>
                                 <h2>Search Ticket</h2>
-                                <a href="index.html">Home</a> <span>/</span>
+                                <a href="index.php">Home</a> <span>/</span>
                                 <a class="active" href="#">Search</a>
                             </article>
                         </div>

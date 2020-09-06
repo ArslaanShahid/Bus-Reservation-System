@@ -6,7 +6,7 @@ require_once 'views/sidebar.php';
 ?>
 
 
-<div class="col-lg-6  mt-5 offset-4">
+<div class="col-lg-12  mt-5">
     <h2 class="text-center">Employees Records</h2>
 
     <br>

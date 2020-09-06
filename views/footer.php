@@ -160,7 +160,7 @@
 
             $.ajax({
                 type: "post",
-                url: "https://booking.pak-lines.com/checked-seat",
+                url: "#",
                 //contentType: false,
                 //processData: false,
                 data: {
@@ -186,7 +186,7 @@
                         toastr.error("Only 5 Seats can be Booked. <br> Please select 5 seats");
                     }
                     if (data.pnr) {
-                        window.location.href = "https://booking.pak-lines.com/seat-book/details" + '/' + data.pnr;
+                        window.location.href = "#" + '/' + data.pnr;
                     }
                 },
 
