@@ -96,74 +96,24 @@ $info = Route::routeInfo($_GET['id']);
 
                 <div class="all-seats">
                     <div class='row'>
-                        <div class='col-2'>
-                            <div class='seat occupied ChooseSeat ' data-item=''>
-                                <div class='seat-body'>
-                                    5
-                                    <span class='seat-handle-left'></span>
-                                    <span class='seat-handle-right'></span>
-                                    <span class='seat-bottom'></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-2'>&nbsp;</div>
-                        <div class='col-2'>
-                            <div class='seat occupied ChooseSeat ' data-item=''>
-                                <div class='seat-body'>
-                                    6
-                                    <span class='seat-handle-left'></span>
-                                    <span class='seat-handle-right'></span>
-                                    <span class='seat-bottom'></span>
-                                </div>
-                            </div>
-                        </div>
+                        <?php
+                        $i = 0;
+                            while($i != $info->seats)
+                            {
+                                $i++;
+                                echo("<div class='col-2'>");
+                                echo("<div class='seat occupied ChooseSeat ' data-item=''>");
+                                echo("<div class='seat-body'>");
+                                echo($i);
+                                echo("<span class='seat-handle-left'></span>");
+                                echo("<span class='seat-handle-right'></span>");
+                                echo("<span class='seat-bottom'></span>");
+                                echo("</div></div></div>");
+                                echo("<div class='col-2'>&nbsp;</div>");
+                            }
+                        ?>
                     </div>
-                    <div class='row'>
-                        <div class='col-2'>
-                            <div class='seat occupied ChooseSeat ' data-item=''>
-                                <div class='seat-body'>
-                                    9
-                                    <span class='seat-handle-left'></span>
-                                    <span class='seat-handle-right'></span>
-                                    <span class='seat-bottom'></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-2'>&nbsp;</div>
-                        <div class='col-2'>
-                            <div class='seat occupied ChooseSeat ' data-item=''>
-                                <div class='seat-body'>
-                                    10
-                                    <span class='seat-handle-left'></span>
-                                    <span class='seat-handle-right'></span>
-                                    <span class='seat-bottom'></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='row'>
-                        <div class='col-2'>
-                            <div class='seat occupied ChooseSeat ' data-item=''>
-                                <div class='seat-body'>
-                                    13
-                                    <span class='seat-handle-left'></span>
-                                    <span class='seat-handle-right'></span>
-                                    <span class='seat-bottom'></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-2'>&nbsp;</div>
-                        <div class='col-2'>
-                            <div class='seat occupied ChooseSeat ' data-item=''>
-                                <div class='seat-body'>
-                                    14
-                                    <span class='seat-handle-left'></span>
-                                    <span class='seat-handle-right'></span>
-                                    <span class='seat-bottom'></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
@@ -221,7 +171,7 @@ $info = Route::routeInfo($_GET['id']);
                         <input type="hidden" name="fleet_type_id" value="1">
                         <input type="hidden" name="total_seat">
                         <input type="hidden" name="seat_number">
-                        <input type="hidden" name="price" value="270.00">
+                        <input type="hidden" name="price" value="<?php echo($info->fare) ?>">
                         <input type="hidden" name="total_fare">
                         <input type="hidden" name="booking_date" value="2020-09-07 08:20:00">
 
