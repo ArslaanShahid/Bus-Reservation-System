@@ -1,13 +1,8 @@
 <?php
 require_once '../models/Admin.php';
 require_once 'views/header.php';
-require_once 'views/layoutoption.php';
 require_once 'views/sidebar.php';
 ?>
-
-
-<div class="app-main__outer">
-    <div class="app-main__inner">
         <div class="app-page-title">
             <div class="page-title-wrapper">
                 <div class="page-title-heading">
@@ -20,14 +15,13 @@ require_once 'views/sidebar.php';
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="main-card col-md-6 mb-2 card offset-3 ">
             <div class="card-body">
                 <h5 class="card-title">Add Admin Account</h6>
                     <h5 class="text-danger">
-
+    
                     </h5>
                     <form method="POST" action="process/process_addadmin.php">
                         <div class="form-row">

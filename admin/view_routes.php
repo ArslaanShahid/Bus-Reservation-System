@@ -1,21 +1,18 @@
 <?php
 require_once '../models/Route.php';
 require_once 'views/header.php';
-require_once 'views/layoutoption.php';
 require_once 'views/sidebar.php';
 ?>
 
 
-<div class="col-lg-6  mt-5 offset-4">
-    <h2 class="text-center">View Route</h2>
-
+<div class="col-lg-12  mt-5">
+    <h2 class="text-center">All Routes</h2>
     <br>
     <br>
-
     <div class="main-card mb-3 card">
         <div class="card-body">
             <h5 class="card-title"> </h5>
-    
+
             <table class="table table-striped table-bordered" id="account" style="width:100%">
                 <thead>
                     <tr>
@@ -31,31 +28,31 @@ require_once 'views/sidebar.php';
                     </tr>
                 </thead>
                 <tbody>
-                <?php 
 
-$i =1;
-$routes = Route::viewRoute();
-foreach($routes as $route){
-  echo("<tr>");
-  echo("<td>". $i ."</td>");
-  echo("<td>". $route->departure . "</td>");
-  echo("<td>". $route->arrival . "</td>");
-  echo("<td>". $route->fare . "</td>");
-  echo("<td>". $route->duration . "</td>");  
-  echo("<td>". $route->departure_time . "</td>");
-  echo("<td>". $route->distance. "</td>");
-  echo("<td>". $route->day. "</td>");
-  echo("<td>". $route->bus_id. "</td>"); 
-  echo("</tr>");
-  $i++;
-}
-// ?>
+                    <?php
+                    $i = 1;
+                    $routes = Route::viewRoute();
+                    foreach ($routes as $route) {
+                        echo ("<tr>");
+                        echo ("<td>" . $i . "</td>");
+                        echo ("<td>" . $route->departure . "</td>");
+                        echo ("<td>" . $route->arrival . "</td>");
+                        echo ("<td>" . $route->fare . "</td>");
+                        echo ("<td>" . $route->duration . "</td>");
+                        echo ("<td>" . $route->departure_time . "</td>");
+                        echo ("<td>" . $route->distance . "</td>");
+                        echo ("<td>" . ucfirst($route->day) . "</td>");
+                        echo ("<td>" . $route->bus . "</td>");
+                        echo ("</tr>");
+                        $i++;
+                    }
+                    // 
+                    ?>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-    
 
 <?php
 require_once 'views/footer.php';

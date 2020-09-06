@@ -1,12 +1,11 @@
 <?php
 require_once '../models/Bus.php';
 require_once 'views/header.php';
-require_once 'views/layoutoption.php';
 require_once 'views/sidebar.php';
 ?>
 
 
-<div class="col-lg-6  mt-5 offset-4">
+<div class="col-lg-12  mt-5">
     <h2 class="text-center">Bus Records</h2>
 
     <br>

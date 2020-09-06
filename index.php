@@ -1,11 +1,8 @@
 <?php
 require_once('views/header.php');
+require_once 'models/Location.php';
+$cities = Location::allCities();
 ?>
-<body class="body-class index-1">
-
-<div id="body-wrap">
-  
-
     <!-- =========== nav end =========== -->
     <div id="banner">
         <div class="overly"></div>
@@ -15,7 +12,8 @@ require_once('views/header.php');
                     <div class="banner_info">
                         <article>
                             <h4>Let&#039;s Go Together</h4>
-                            <h2>Smart Bus Reservation System</h2></h2>
+                            <h2>Smart Bus Reservation System</h2>
+                            </h2>
                             <p></p>
                         </article>
 
@@ -29,16 +27,30 @@ require_once('views/header.php');
 
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show normal active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                <form action="#" method="get">
+                                <form action="process/process_search.php?" method="GET">
                                     <div class="form-row">
                                         <div class="col-lg-3">
-                                            <input type="text" name="start_point" value="" class="form-control form-control-lg" id="fromAutoComplete" placeholder="From">
+                                            <select class="form-control" name="departure" id="departure" required>
+                                                <option disabled selected value="">Select Departure City</option>
+                                                <?php
+                                                foreach ($cities as $city) {
+                                                    echo ("<option value='" . $city->id . "'>" . $city->name . "</option>");
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                         <div class="col-lg-3">
-                                            <input type="text" name="end_point" value="" id="toAutoComplete" class="form-control form-control-lg" placeholder="To">
+                                            <select class="form-control" name="arrival" id="arrival" required>
+                                                <option disabled selected value="">Select Arrival City</option>
+                                                <?php
+                                                foreach ($cities as $city) {
+                                                    echo ("<option value='" . $city->id . "'>" . $city->name . "</option>");
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                         <div class="col-lg-3">
-                                            <input type="text" name="date" id="datetimepicker2" value="" class="form-control form-control-lg" placeholder="Date">
+                                            <input type="date" name="date" id="datetimepicker2" class="form-control" placeholder="Date" required>
                                         </div>
 
                                         <div class="col-lg-3">
@@ -54,6 +66,7 @@ require_once('views/header.php');
             </div>
         </div>
     </div>
+    
     <!-- =========== banner end =========== -->
 
     <!-- =========== Whay Choose Us Start ============ -->
@@ -61,14 +74,14 @@ require_once('views/header.php');
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-7 col-md-10 text-center">
-                    
-                <?php
-                if(isset($_SESSION['obj_user'])){
-                    echo ("<h1 class='text-success'>
+
+                    <?php
+                    if (isset($_SESSION['obj_user'])) {
+                        echo ("<h1 class='text-success'>
                     Welcome Back!");
-                echo ($obj_user->user_name);
-                }
-                
+                        echo ($obj_user->user_name);
+                    }
+
                     ?>
                     </h1>
                     <hr>
@@ -231,10 +244,6 @@ require_once('views/header.php');
             </div>
         </div>
     </section>
-</div>
-    <!---=========================== End Enquiry  =============================--->
-
-
 
 
     <?php

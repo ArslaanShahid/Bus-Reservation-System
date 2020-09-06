@@ -160,24 +160,22 @@ class Route
     {
         $obj_db = self::obj_db();
 
-        if($this->departure == $this->arrival)
-        {
+        if ($this->departure == $this->arrival) {
             throw new Exception("Departure and Arrival Cities Cant be Same");
         }
 
         $result = $this->days;
-        foreach($result as $day)
-        {
+        foreach ($result as $day) {
             $query = " INSERT into routes"
-            . " (`id` , `departure`,`arrival`,`fare`,`duration` , `distance` , `departure_time` , `day` , `bus_id`)"
-            . " values"
-            . " (NULL , '$this->departure', '$this->arrival' , '$this->fare', '$this->duration', '$this->distance', '$this->departure_time', '$day', '$this->bus_id')";
-            
-        $obj_db->query($query);
+                . " (`id` , `departure`,`arrival`,`fare`,`duration` , `distance` , `departure_time` , `day` , `bus_id`)"
+                . " values"
+                . " (NULL , '$this->departure', '$this->arrival' , '$this->fare', '$this->duration', '$this->distance', '$this->departure_time', '$day', '$this->bus_id')";
 
-        if ($obj_db->errno) {
-            throw new Exception("Query Insert Error" . $obj_db->errno . $obj_db->error);
-        }
+            $obj_db->query($query);
+
+            if ($obj_db->errno) {
+                throw new Exception("Query Insert Error" . $obj_db->errno . $obj_db->error);
+            }
         }
     }
 
@@ -198,16 +196,91 @@ class Route
         }
         return $days;
     }
-    public static function viewRoute(){
-        $obj_db=self::obj_db();
-        $query= " select * from routes";
+    public static function viewRoute()
+    {
+        $obj_db = self::obj_db();
+        $query = " select r.fare, r.duration, r.departure_time, r.distance, d.day as day, b.bus_no as bus, cd.name as departure, ca.name as arrival from routes r "
+            . "JOIN cities cd ON (cd.id = r.departure) "
+            . "JOIN cities ca ON  (ca.id = r.arrival) "
+            . "JOIN days d ON (r.day = d.id) "
+            . "JOIN buses b ON (r.bus_id = b.id)";
         $result = $obj_db->query($query);
-        if($obj_db->errno){
+        if ($obj_db->errno) {
             throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
         }
-        while ($data = $result->fetch_object()){
+        // print_r($result);
+        // die;
+        while ($data = $result->fetch_object()) {
             $routes[] = $data;
         }
+        // echo('<pre>');
+        // print_r($routes);
+        // echo('</pre>');
+        // die;
         return $routes;
+    }
+
+    public static function search($from, $to, $date)
+    {
+        $obj_db = self::obj_db();
+        $res = strtotime($date);
+        $day = strtolower(date('l', $res));
+
+        $query = " SELECT r.id, r.fare, r.duration, r.departure_time, r.distance, d.day as day, b.bus_no as bus, b.seats, b.air_conditioner, cd.name as departure, cd.id as departure_id, ca.name as arrival, ca.id as arrival_id from routes r "
+            . "JOIN cities cd ON (cd.id = r.departure) "
+            . "JOIN cities ca ON  (ca.id = r.arrival) "
+            . "JOIN days d ON (r.day = d.id) "
+            . "JOIN buses b ON (r.bus_id = b.id) "
+            . "WHERE r.departure ='$from' AND r.arrival ='$to' AND d.day = '$day'";
+
+        $result = $obj_db->query($query);
+        if ($obj_db->errno) {
+            throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
+        }
+        // print_r($result);
+        // die;
+        while ($data = $result->fetch_object()) {
+            $routes[] = $data;
+        }
+
+        // echo ('<pre>');
+        // print_r($routes);
+        // echo ('</pre>');
+        // die;
+        $data = [
+            'routes' => $routes,
+            'date' => $date,
+        ];
+        return $data;
+    }
+
+    public static function routeInfo($id)
+    {
+        $obj_db = self::obj_db();
+
+        $query = " SELECT r.id, r.fare, r.duration, r.departure_time, r.distance, d.day as day, b.bus_no as bus, b.seats, b.air_conditioner, cd.name as departure, cd.id as departure_id, ca.name as arrival, ca.id as arrival_id from routes r "
+            . "JOIN cities cd ON (cd.id = r.departure) "
+            . "JOIN cities ca ON  (ca.id = r.arrival) "
+            . "JOIN days d ON (r.day = d.id) "
+            . "JOIN buses b ON (r.bus_id = b.id) "
+            . "WHERE r.id ='$id'";
+
+        $result = $obj_db->query($query);
+
+        if ($obj_db->errno) {
+            throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
+        }
+        // print_r($result->fetch_row());
+        // die;
+        
+        // while ($data = $result->fetch_object()) {
+        //     $routes[] = $data;
+        // }
+
+        // echo ('<pre>');
+        // print_r($result->fetch_object());
+        // echo ('</pre>');
+        // die;
+        return $result->fetch_object();
     }
 }

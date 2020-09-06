@@ -1,0 +1,526 @@
+/*ticket*/
+.well {
+    margin-bottom: 0;
+    background-color: #f1f5f8;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    margin-top: 15px;
+}
+.ticket-inner {
+    float:left;
+    width:100%;
+    border: 1px solid #e3e3e3;
+    height: auto;
+    padding: 10px;
+}
+
+.seat {
+    margin: 5px 0;
+    color:#fff;
+}
+.seat-body {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #344753;
+    display: inline-block;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    margin-right: 10px;
+    cursor: pointer;
+    line-height: 35px;
+    text-align: center;
+}
+.seat-handle-left {
+    width: 5px;
+    height: 20px;
+    right: -4px;
+    bottom: -1px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-left: none !important;
+    position: absolute;
+    border: 1px solid #344753;
+}
+.seat-handle-right {
+    width: 5px;
+    bottom: -1px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-right: none !important;
+    height: 20px;
+    left: -4px;
+    position: absolute;
+    border: 1px solid #344753;
+}
+.seat-bottom {
+    width: 35px;
+    right: 0px;
+    bottom: -4px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-top: none !important;
+    position: absolute;
+    border: 1px solid #344753;
+    height: 3px;
+}
+
+
+.seat-visibility{
+    visibility: hidden;
+}
+
+.seat.occupied .seat-body{
+    background-color: #fff;
+    border-color:  #344753;
+    color:  #344753;
+}
+/*selected*/
+.seat.selected .seat-body{
+    background-color: #bb5f33;
+    border-color:  #bb5f33;
+    color:#fff;
+}
+.seat.selected .seat-body span{
+    border-color:  we#bb5f33;
+}
+/*ladies*/
+.seat.ladies .seat-body {
+    background-color: #98c157;
+    border-color: #31672b;
+}
+.seat.ladies .seat-body span{
+    border-color:  #31672b;
+}
+
+
+.seat:not(.ladies) .seat-body:hover{
+    /*background-color: #5F69bc;*/
+    border-color:  #5b69bc;
+}
+.seat .seat-body:hover span{
+    border-color:  #5b69bc;
+}
+
+
+
+/*seat details*/
+.seat-details{
+}
+.seat-details-content{
+    margin: 20px 0;
+}
+
+
+
+
+/*Price details*/
+.price-details-headding{
+    text-align: left;
+}
+.price-details-headding h4{
+    margin: 0 0 5px;
+    font-size: 16px;
+    font-weight: 600;
+
+}
+
+.price-details {
+    padding: 15px;
+    border: 1px solid #e3e3e3;
+    margin-top: 20px;
+    text-align: left;
+    font-size: 13px;
+}
+.price-details th {
+    text-align: right;
+    color: #000;
+}
+.price-details tr:last-child th:first-child{
+    text-align: left;
+}
+.table-striped > tbody > tr:nth-of-type(2n+1) {
+    background-color: #fff;
+}
+.table-striped > tbody > tr:nth-of-type(2n+2) {
+    background-color: #f9f9f9;
+}
+.price-details p {
+    margin: 0 0 15px;
+    font-size: 14px;
+}
+
+.price-details .btn {
+    color: #fff;
+    background-color: #5b69bc;
+    border-color: #5b69bc;
+    padding: 8px 12px;
+}
+
+.alert-info {
+    margin: 20px 0 0;
+}
+.all-seats {
+    position: relative;
+}
+
+div.last-seat-32:last-of-type {
+    position: absolute;
+    left: 250px;
+    bottom: 1px;
+}
+
+div.last-seat-21:last-of-type {
+    position: absolute;
+    left: 175px;
+    bottom: 1px;
+}
+div.last-seat-12:last-of-type {
+    position: absolute;
+    left: 90px;
+    bottom: 23px;
+}
+
+div.last-seat-11:last-of-type {
+    position: absolute;
+    left: 95px;
+    bottom: 23px;
+}
+
+.funkyradio{
+    margin: 0px 0px -20px;
+}
+.funkyradio label {
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #D1D3D4;
+    font-weight: normal;
+}
+
+.funkyradio input[type="radio"]:empty,
+.funkyradio input[type="checkbox"]:empty {
+    display: none;
+}
+
+.funkyradio input[type="radio"]:empty ~ label,
+.funkyradio input[type="checkbox"]:empty ~ label {
+    position: relative;
+    line-height: 2.5em;
+    text-indent: 3.25em;
+    margin-top: 2em;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.funkyradio input[type="radio"]:empty ~ label:before,
+.funkyradio input[type="checkbox"]:empty ~ label:before {
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    content: '';
+    width: 2.5em;
+    background: #D1D3D4;
+    border-radius: 3px 0 0 3px;
+}
+
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label,
+.funkyradio input[type="checkbox"]:hover:not(:checked) ~ label {
+    color: #25c431;
+}
+
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label:before,
+.funkyradio input[type="checkbox"]:hover:not(:checked) ~ label:before {
+    content: '\2714';
+    text-indent: .9em;
+    color: #C2C2C2;
+}
+
+.funkyradio input[type="radio"]:checked ~ label,
+.funkyradio input[type="checkbox"]:checked ~ label {
+    color: #777;
+}
+
+.funkyradio input[type="radio"]:checked ~ label:before,
+.funkyradio input[type="checkbox"]:checked ~ label:before {
+    content: '\2714';
+    text-indent: .9em;
+    color: #333;
+    background-color: #ccc;
+}
+
+.funkyradio input[type="radio"]:focus ~ label:before,
+.funkyradio input[type="checkbox"]:focus ~ label:before {
+    box-shadow: 0 0 0 3px #439924;
+}
+
+.funkyradio-default input[type="radio"]:checked ~ label:before,
+.funkyradio-default input[type="checkbox"]:checked ~ label:before {
+    color: #333;
+    background-color: #ccc;
+}
+
+.funkyradio-primary input[type="radio"]:checked ~ label:before,
+.funkyradio-primary input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #337ab7;
+}
+
+.funkyradio-success input[type="radio"]:checked ~ label:before,
+.funkyradio-success input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #5cb85c;
+}
+
+.funkyradio-danger input[type="radio"]:checked ~ label:before,
+.funkyradio-danger input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #d9534f;
+}
+
+.funkyradio-warning input[type="radio"]:checked ~ label:before,
+.funkyradio-warning input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #f0ad4e;
+}
+
+.funkyradio-info input[type="radio"]:checked ~ label:before,
+.funkyradio-info input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #5bc0de;
+}
+
+
+
+
+/* Medium Layout: 1200px. */
+
+@media only screen and (min-width: 1442px) and (max-width: 1600px) {
+
+}
+
+@media only screen and (min-width: 1602px) and (max-width: 1680px) {
+
+}
+
+@media only screen and (min-width: 1367px) and (max-width: 1440px) {
+
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1366px) {
+
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    div.last-seat-32:last-of-type {
+        position: absolute;
+        left: 215px;
+        bottom: 1px;
+    }
+
+    div.last-seat-21:last-of-type {
+        position: absolute;
+        left: 155px;
+        bottom: 1px;
+    }
+    div.last-seat-11:last-of-type {
+        position: absolute;
+        left: 80px;
+        bottom: 23px;
+    }
+}
+/* Tablet Layout: 768px.*/
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    div.last-seat-32:last-of-type {
+        position: absolute;
+        left: 165px;
+        bottom: 1px;
+    }
+    div.last-seat-21:last-of-type {
+        position: absolute;
+        left: 115px;
+        bottom: 1px;
+    }
+
+    div.last-seat-12:last-of-type {
+        position: absolute;
+        left: 65px;
+        bottom: 23px;
+    }
+
+    div.last-seat-11:last-of-type {
+        position: absolute;
+        left: 65px;
+        bottom: 23px;
+    }
+}
+/* Tablet Layout wide: 768px.*/
+@media only screen and (max-width: 767px) {
+
+    div.last-seat-32:last-of-type {
+        position: absolute;
+        left: 240px;
+        bottom: 1px;
+    }
+
+    div.last-seat-32:last-of-type {
+        position: absolute;
+        left: 285px;
+        bottom: 1px;
+    }
+    div.last-seat-21:last-of-type {
+        position: absolute;
+        left: 195px;
+        bottom: 1px;
+    }
+    div.last-seat-12:last-of-type {
+        position: absolute;
+        left: 52px;
+        bottom: 23px;
+    }
+
+}
+/* medium tablet layout 599px */
+@media only screen and (max-width: 599px) {
+    div.last-seat-32:last-of-type {
+        position: absolute;
+        left: 250px;
+        bottom: 1px;
+    }
+    div.last-seat-21:last-of-type {
+        position: absolute;
+        left: 170px;
+        bottom: 1px;
+    }
+    div.last-seat-12:last-of-type {
+        position: absolute;
+        left: 85px;
+        bottom: 23px;
+    }
+}
+
+/* mobile tablet layout 480px */
+@media only screen and (max-width: 480px) {
+    div.last-seat-32:last-of-type {
+        position: absolute;
+        left: 245px;
+        bottom: 1px;
+    }
+
+    div.last-seat-12:last-of-type {
+        position: absolute;
+        left: 85px;
+        bottom: 23px;
+    }
+}
+
+/* mobile tablet layout 414px */
+@media only screen and (max-width: 414px) {
+
+    div.last-seat-32:last-of-type {
+        position: absolute;
+        left: 220px;
+        bottom: 1px;
+    }
+
+    div.last-seat-21:last-of-type {
+        position: absolute;
+        left: 150px;
+        bottom: 1px;
+    }
+
+    div.last-seat-12:last-of-type {
+        position: absolute;
+        left: 85px;
+        bottom: 23px;
+    }
+    div.last-seat-11:last-of-type {
+        position: absolute;
+        left: 85px;
+        bottom: 23px;
+    }
+}
+
+/* mobile tablet layout 375px */
+@media only screen and (max-width: 384px) {
+
+    div.last-seat-32:last-of-type {
+        position: absolute;
+        left: 210px;
+        bottom: 1px;
+    }
+
+    div.last-seat-21:last-of-type {
+        position: absolute;
+        left: 140px;
+        bottom: 1px;
+    }
+    div.last-seat-12:last-of-type {
+        position: absolute;
+        left: 85px;
+        bottom: 24px;
+    }
+    div.last-seat-11:last-of-type {
+        position: absolute;
+        left: 80px;
+        bottom: 23px;
+    }
+}
+
+/* mobile tablet layout 360px */
+@media only screen and (max-width: 360px) {
+    div.last-seat-32:last-of-type {
+        position: absolute;
+        left: 195px;
+        bottom: 1px;
+    }
+    div.last-seat-21:last-of-type {
+        position: absolute;
+        left: 135px;
+        bottom: 1px;
+    }
+
+    div.last-seat-12:last-of-type {
+        position: absolute;
+        left: 70px;
+        bottom: 24px;
+    }
+
+    div.last-seat-11:last-of-type {
+        position: absolute;
+        left: 70px;
+        bottom: 24px;
+    }
+
+}
+
+/* mobile tablet layout 320px */
+@media only screen and (max-width: 320px) {
+    div.last-seat-32:last-of-type {
+        position: absolute;
+        left: 175px;
+        bottom: 1px;
+    }
+    div.last-seat-21:last-of-type {
+        position: absolute;
+        left: 125px;
+        bottom: 1px;
+    }
+
+    div.last-seat-12:last-of-type {
+        position: absolute;
+        left: 70px;
+        bottom: 23px;
+    }
+    div.last-seat-11:last-of-type {
+        position: absolute;
+        left: 70px;
+        bottom: 23px;
+    }
+}
+
