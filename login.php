@@ -4,6 +4,8 @@ require_once('models/user.php');
 require_once('views/header.php');
 
 ?>
+    <body class="body-class bc blog">
+
 <section id="breadcrumb">
     <div class="overly"></div>
     <div class="container">

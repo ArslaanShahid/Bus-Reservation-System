@@ -5,7 +5,10 @@ require_once 'models/Route.php';
 
 $info = Route::routeInfo($_GET['id']);
 
+
 ?>
+    <body class="body-class bc blog">
+
 <section id="breadcrumb">
     <div class="overly"></div>
     <div class="container">
@@ -46,7 +49,7 @@ $info = Route::routeInfo($_GET['id']);
                     </strong></p>
                 <div class="margin-bottom-10"></div>
 
-                <p>Dep Time: <?php echo(strtoupper($info->departure_time)); ?> <span class="text-success">(07 Sep 2020)</span></p>
+                <p>Dep Time: <?php echo(strtoupper($info->departure_time)); ?> <span class="text-success">()</span></p>
                 <div class="margin-bottom-5"></div>
                 <strong>Total Seat:<?php echo($info->seats)?> </strong>
                 <div class="margin-bottom-5"></div>

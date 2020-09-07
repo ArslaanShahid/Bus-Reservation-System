@@ -61,9 +61,7 @@ if (isset($_SESSION['obj_user'])) {
 
 </head>
 
-<!-- <body class="body-class index-1"> -->
 
-    <body class="body-class bc blog">
 
 
     <!--Start Body Wrap-->
@@ -74,7 +72,9 @@ if (isset($_SESSION['obj_user'])) {
                     <a class="navbar-brand" href="#">
                         <img src="/assets/images/logo/logo.png" alt="..">
                     </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
@@ -104,7 +104,8 @@ if (isset($_SESSION['obj_user'])) {
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle
-                                                         " href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Booking </a>
+                                                         " href="#" id="navbarDropdown2" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Booking </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                                     <a class="dropdown-item" href="#">Ticket Cancel</a>
                                     <a class="dropdown-item" href="#">Print Download</a>
@@ -113,15 +114,18 @@ if (isset($_SESSION['obj_user'])) {
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle
-                            " href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language </a>
+                            " href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">Language </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                    <a class="dropdown-item" href="https://booking.pak-lines.com/change-lang/en">English</a>
+                                    <a class="dropdown-item"
+                                        href="https://booking.pak-lines.com/change-lang/en">English</a>
                                 </div>
                             </li>
                         </ul>
 
 
-                        <a class="mamunur_rashid_top_book_btn" href="https://booking.pak-lines.com/search">Buy Ticket</a>
+                        <a class="mamunur_rashid_top_book_btn" href="search.php">Buy
+                            Ticket</a>
 
 
                         <?php

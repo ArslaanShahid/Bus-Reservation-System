@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../models/Admin.php';
+require_once '../../models/Admin.php';
 
 if($_SERVER['REQUEST_METHOD'] == 'GET'  && isset($_GET['id'])){
     try{

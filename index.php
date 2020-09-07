@@ -3,6 +3,7 @@ require_once('views/header.php');
 require_once('models/Location.php');
 $cities = Location::allCities();
 ?>
+<body class="body-class index-1">
 
 <!-- =========== nav end =========== -->
 <div id="banner">
@@ -246,7 +247,7 @@ $cities = Location::allCities();
     </div>
 </section>
 
-
+</body>
 <?php
 
 include('views/footer.php');
