@@ -73,7 +73,7 @@ $routes = Route::search($_GET['from'], $_GET['to'], $_GET['date']);
                                         echo('<td>Non AC</td>');
                                     }
                                     echo('<td>'.$route->fare.' <b>PKR</b></td>');
-                                    echo('<td><a href="book_ticket.php?id='.$route->id.'" target="_blank" class="btn btn-primary">Book Ticket</a></td>');
+                                    echo('<td><a href="book_ticket.php?id='.$route->id.'&date='.$_GET['date'].'" target="_blank" class="btn btn-primary">Book Ticket</a></td>');
                                     echo('</tr>');
                                 }
                                 ?>

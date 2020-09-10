@@ -94,11 +94,11 @@
                             View Bus
                         </a>
                     </li>
-                    <li class="app-sidebar__heading">Manage Schedule</li>
+                    <li class="app-sidebar__heading">Manage Complaints</li>
                     <li>
-                        <a href="dashboard-boxes.html">
-                            <i class="metismenu-icon fa fa-calendar-plus"></i>
-                            Update Schedule
+                        <a href="view_user_queries.php">
+                            <i class="metismenu-icon fa fa-envelope"></i>
+                            User Complaint
                         </a>
                     </li>
                 </ul>

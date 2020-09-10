@@ -164,6 +164,17 @@ class Route
             throw new Exception("Departure and Arrival Cities Cant be Same");
         }
 
+        $query = "SELECT * from routes "
+                ."WHERE bus_id = '$this->bus_id' AND departure='$this->departure' AND arrival = '$this->arrival' AND departure_time='$this->departure_time'";
+        $result = $obj_db->query($query);
+
+        if ($obj_db->errno) {
+            throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
+        }
+        if (!$result->num_rows == 0) {
+            throw new Exception("Same Route of Timing (" .$this->departure_time. ") already Exist Under this Bus.");
+        }
+
         $result = $this->days;
         foreach ($result as $day) {
             $query = " INSERT into routes"
@@ -224,6 +235,8 @@ class Route
     {
         $obj_db = self::obj_db();
         $res = strtotime($date);
+        // print_r($res);
+        // die;
         $day = strtolower(date('l', $res));
 
         $query = " SELECT r.id, r.fare, r.duration, r.departure_time, r.distance, d.day as day, b.bus_no as bus, b.seats, b.air_conditioner, cd.name as departure, cd.id as departure_id, ca.name as arrival, ca.id as arrival_id from routes r "

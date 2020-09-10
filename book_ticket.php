@@ -167,16 +167,16 @@ $info = Route::routeInfo($_GET['id']);
                             </tbody>
                         </table>
 
-                        <input type="hidden" name="trip_route_id" value="17">
+                        <input type="hidden" name="trip_route_id" value="<?php echo($_GET['id']); ?>">
                         <input type="hidden" name="fleet_registration_id" value="1">
                         <input type="hidden" name="trip_id_no" value="17643">
-                        <input type="hidden" name="id_no" value="1598854370">
+                        <input type="hidden" name="id_no" value="<?php ?>">
                         <input type="hidden" name="fleet_type_id" value="1">
                         <input type="hidden" name="total_seat" value="<?php echo($info->seats) ?>">
                         <input type="hidden" name="seat_number">
                         <input type="hidden" name="price" value="<?php echo($info->fare) ?>">
                         <input type="hidden" name="total_fare">
-                        <input type="hidden" name="booking_date" value="2020-09-07 08:20:00">
+                        <input type="hidden" name="booking_date" value="<?php echo($_GET['date']); ?>">
 
                     </div>
                     <button id="submit-btn" class="btn btn-block">Continue</button>

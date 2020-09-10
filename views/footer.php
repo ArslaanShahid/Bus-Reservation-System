@@ -27,6 +27,7 @@
 
 <!--jQuery JS-->
 <script src="assets/front/js/jquery.2.1.2.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!--Bootstrap JS-->
 <script src="assets/front/js/bootstrap.min.js"></script>
 <!--Counter JS-->
@@ -51,7 +52,6 @@
 <script src="admin/assets/scripts/toastr.min.js"></script>
 <script src="assets/front/js/custom.js"></script>
 <script src="assets/front/js/jquery.seat-charts.min.js"></script>
-
 
 <script>
     $(document).ready(function(e) {
@@ -82,6 +82,13 @@
     $(document).ready(function() {
 
         $('.boarding_point').select2();
+        $("#searchDate").datepicker({
+            minDate: 0,
+            maxDate: "+1M",
+            dateFormat: "yy-mm-dd"
+        });
+        $("#searchDate").datepicker("setDate", new Date());
+        // $("#searchDate").datepicker({ minDate: -20, maxDate: "+1M +10D" });
 
 
         /*
@@ -127,7 +134,7 @@
 
             $("div[data-item=selected]").each(function(i, x) {
                 countSeats = i + 1;
-                seatSerial += $(this).text().trim() + ", ";
+                seatSerial += $(this).text().trim() + ",";
             });
 
             total_fare.val(countSeats * price);
@@ -160,16 +167,11 @@
 
             $.ajax({
                 type: "post",
-                url: "#",
+                url: "process/process_booking.php",
                 //contentType: false,
                 //processData: false,
                 data: {
-                    boarding: boarding,
-                    trip_route_id: trip_route_id,
-                    fleet_registration_id: fleet_registration_id,
-                    trip_assign_id_no: trip_assign_id_no,
-                    id_no: id_no,
-                    fleet_type_id: fleet_type_id,
+                    route_id: trip_route_id,
                     total_seat: total_seat,
                     seat_number: seat_number,
                     price: price,

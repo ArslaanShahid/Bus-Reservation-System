@@ -58,6 +58,7 @@ if (isset($_SESSION['obj_user'])) {
     <link href="admin/assets/css/toastr.min.css">
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="assets/front/css/seat-custom.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 </head>
 
@@ -85,20 +86,20 @@ if (isset($_SESSION['obj_user'])) {
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link " href="about-us.html">About </a>
+                                <a class="nav-link " href="#">About </a>
                             </li>
 
 
                             <li class="nav-item">
-                                <a class="nav-link " href="blog.html">Blog</a>
+                                <a class="nav-link " href="#">Blog</a>
                             </li>
 
 
                             <li class="nav-item">
-                                <a class="nav-link " href="faqs.html">Faq</a>
+                                <a class="nav-link " href="#">Faq</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="contact-us.html">Contact</a>
+                                <a class="nav-link " href="contact.php">Contact</a>
                             </li>
 
 

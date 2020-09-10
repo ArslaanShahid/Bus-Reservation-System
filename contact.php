@@ -1,10 +1,9 @@
 <?php
-include ('header.php');
-
+require_once ('views/header.php');
 ?>
-
-<body class="body-class bc blog">
     <!--Start Body Wrap-->
+    <body class="body-class bc blog">
+
     <div id="body-wrap">
 
 
@@ -29,107 +28,94 @@ include ('header.php');
         <!--================================
         contact us  part start
     =====================================-->
-        <section id="contact-main">
-            <div class="container">
+    <section id="contact-main">
+
+<div class="contact-form-area-padding">
+    <div class="container">
+        <div class="row contact-form-area">
+            <div class="col-lg-6">
+                <div class="img">
+
+                </div>
+            </div>
+            <div class="col-lg-6 contact-form">
                 <div class="row">
                     <div class="col-12">
-                        <div class="google_map_wrapper">
-                            <div id="map" data-latitude="23.7500276" data-longitude="90.3869237"></div>
-                        </div>
-                        <div class="contact-address">
-                            <div class="con-num">
-                                <div>
-                                    <div class="media">
-                                        <i class="fa fa-map-marker mr-3"></i>
-                                        <div class="media-body">
-                                            <h5>Address</h5>
-                                            <p>Gujranwala,<br>
-                                                Kangni Wala<br>
-                                                Punjab Pakistan</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="media">
-                                        <i class="fa fa-mobile mr-3"></i>
-                                        <div class="media-body">
-                                            <h5>Phone</h5>
-                                            <a class="d-block" href="javascript:void(0)">
-                                                03337777642, 03338184999, 03353111106
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="contact-block-form">
+                            <h4>Enquiry</h4>
+                            <p class="text-danger">
+                                <?php
 
-                                <div>
-                                    <div class="media mlc">
-                                        <i class="fa fa-envelope mr-3"></i>
-                                        <div class="media-body">
-                                            <h5>Email</h5>
-                                            <a class="d-block" href="javascript:void(0)">
-                                                info@paklines.pk
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="f-social-links">
-                            </div>
+                                if (isset($_SESSION['msg'])) {
+                                    echo ($_SESSION['msg']);
+                                    unset($_SESSION['msg']);
+                                }
+                                if (isset($_SESSION['errors'])) {
+                                    $errors = $_SESSION['errors'];
+                                    unset($_SESSION['errors']);
+                                }
+
+
+                                ?>
+
+                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="contact-form-area-padding">
-                <div class="container">
-                    <div class="row contact-form-area">
-                        <div class="col-lg-6">
-                            <div class="img">
+                <form id="c-form" action="process/process_user_queries.php" method="post">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" placeholder="Enter Your Name" name="name">
+                            <span class="text-danger"><?php
+                                    if (isset($errors['name'])) {
+                                        echo ($errors['name']);
+                                    }
 
-                            </div>
+                                    ?></span>
                         </div>
-                        <div class="col-lg-6 contact-form">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="contact-block-form">
-                                        <h4>Contact Us</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <form id="c-form" action="https://booking.pak-lines.com/contact-us" method="post">
-                                <input type="hidden" name="_token" value="uIxowd2AD7sC7dTNNgQdWhzKaJlfYlg4Naj7Jj7K">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <input type="text" class="form-control" placeholder="Enter Name" name="name" value="" required>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input type="email" class="form-control" placeholder="Enter Mail" name="email" value="" required>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <input type="text" class="form-control" placeholder="Subject" name="subject" value="" required>
-                                    </div>
-                                    <div class="col-12">
-                                        <textarea class="form-control" rows="3" id="comment" placeholder="Comment" name="message" required> </textarea>
-                                    </div>
-                                    <div class="col-12">
-                                        <button type="submit" class="btn btn-contact">Submit</button>
-                                    </div>
-                                </div>
-                            </form>
+                        <div class="col-md-12">
+                            <input type="email" class="form-control" placeholder="Enter Your Mail" name="email" >
+                            <span class="text-danger"><?php
+                                    if (isset($errors['email'])) {
+                                        echo ($errors['email']);
+                                    }
+
+                                    ?></span>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" placeholder="Phone Number" name="mobile">
+                            <span class="text-danger"><?php
+                                    if (isset($errors['mobile'])) {
+                                        echo ($errors['mobile']);
+                                    }
+
+                                    ?></span>
+                        </div>
+                        <div class="col-12">
+                            <textarea class="form-control" rows="3"  placeholder="Enquiry" name="msg"></textarea>
+                            <span class="text-danger"><?php
+                                    if (isset($errors['msg'])) {
+                                        echo ($errors['msg']);
+                                    }
+
+                                    ?></span>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-contact">Submit</button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
-
-        </section>
+        </div>
+    </div>
+</div>
+</section>
         <!--================================
         contact us part end
     =====================================-->
 
     </div>
+    </body>
 <?php
-include ('footer.php');
-
+require_once ('views/footer.php');
 ?>
-
-
-</body>
