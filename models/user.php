@@ -279,12 +279,12 @@ class User
     public function profile()
     {
         $obj_db = self::obj_db();
-        $query = " select * from users u "
+        $query = " SELECT * from users u "
             . " JOIN user_profiles up on up.user_id = u.id "
-            . " where u.id = $this->user_id ";
+            . " where u.id = $this->user_id " ;
         $result = $obj_db->query($query);
-        if ($obj_db->errno) {
-            throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
+        if ($obj_db->errno){
+        throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
         }
         $user_data = $result->fetch_object();
         // echo("<pre>");
@@ -331,5 +331,37 @@ class User
         }
         unset($old_password);
         unset($new_password);
+    }
+    public static function registered_user(){
+        $obj_db=self::obj_db();
+        $query= " select * from users ";
+        $result = $obj_db->query($query);
+        if($obj_db->errno){
+            throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
+        }
+        while ($data = $result->fetch_object()){
+            $users[] = $data;
+        }
+        return $users;
+    }
+    public static function deactivateAccount($id){
+        $obj_db = self::obj_db();
+        $query = "update users set status = 0"
+                ." where id = $id";
+        $result = $obj_db->query($query);
+        return $result;
+        if($obj_db->errno){
+            throw new Exception("Update Error = $obj_db->errno - $obj_db->error");
+        }
+    }
+    public static function activateAccount($id){
+        $obj_db= self::obj_db();
+        $query= "update users set status = 1"
+                ." where id = $id" ;
+        $result =$obj_db->query($query);
+        return $result;
+        if($obj_db->errno){
+            throw new Exception("Update Error = $obj_db->errno -$obj_db->error");
+        }
     }
 }

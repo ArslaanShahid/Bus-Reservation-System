@@ -51,6 +51,17 @@
                     <li>
 
                     </li>
+                    <li class="app-sidebar__heading">Manage Users Account</li>
+                    <li>
+                        <a href="view_registered_users.php">
+                            <i class="metismenu-icon fa fa-users "></i>
+                            Registered Account
+                        </a>
+                    </li>
+
+                    <li>
+
+                    </li>
                     <li class="app-sidebar__heading">Manage Employees</li>
                     <li>
                         <a href="employee.php">

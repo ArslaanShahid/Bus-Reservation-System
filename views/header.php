@@ -65,71 +65,68 @@ if (isset($_SESSION['obj_user'])) {
 
 
 
-    <!--Start Body Wrap-->
-    <div id="body-wrap">
-        <div id="main-menu">
-            <nav class="navbar navbar-expand-lg">
-                <div class="container">
-                    <a class="navbar-brand" href="#">
-                        <img src="/assets/images/logo/logo.png" alt="..">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+<!--Start Body Wrap-->
+<div id="body-wrap">
+    <div id="main-menu">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="/assets/images/logo/logo.png" alt="..">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link   active " href="index.php">Home</a>
-                            </li>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link   active " href="index.php">Home</a>
+                        </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link " href="#">About </a>
-                            </li>
-
-
-                            <li class="nav-item">
-                                <a class="nav-link " href="#">Blog</a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="#">About </a>
+                        </li>
 
 
-                            <li class="nav-item">
-                                <a class="nav-link " href="#">Faq</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="contact.php">Contact</a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="#">Blog</a>
+                        </li>
 
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle
-                                                         " href="#" id="navbarDropdown2" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Booking </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                    <a class="dropdown-item" href="#">Ticket Cancel</a>
-                                    <a class="dropdown-item" href="#">Print Download</a>
-                                </div>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle
-                            " href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">Language </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                    <a class="dropdown-item"
-                                        href="https://booking.pak-lines.com/change-lang/en">English</a>
-                                </div>
-                            </li>
-                        </ul>
+                        <li class="nav-item">
+                            <a class="nav-link " href="#">Faq</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="contact.php">Contact</a>
+                        </li>
 
 
-                        <a class="mamunur_rashid_top_book_btn" href="search.php">Buy
-                            Ticket</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"href="#" id="navbarDropdown2" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Booking </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                                <a class="dropdown-item" href="#">Ticket Cancel</a>
+                                <a class="dropdown-item" href="#">Print Download</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                                <a class="dropdown-item" href="https://booking.pak-lines.com/change-lang/en">English</a>
+                            </div>
+                        </li>
+                    </ul>
 
 
-                        <?php
+                    <a class="mamunur_rashid_top_book_btn" href="search.php">Buy
+                        Ticket</a>
+
+
+                    <?php
                         if (isset($_SESSION['obj_user'])) {
                             echo ("<a class='mamunur_rashid_top_book_btn' href='process/process_logout.php'>Logout</a>");
                         } else {
@@ -137,7 +134,7 @@ if (isset($_SESSION['obj_user'])) {
                         }
 
                         ?>
-                        <?php
+                    <?php
                         if (isset($_SESSION['obj_user'])) {
                             echo ("<a class='mamunur_rashid_top_book_btn' href='my_account.php'>My Account</a>");
                         } else {
@@ -145,9 +142,8 @@ if (isset($_SESSION['obj_user'])) {
                         }
 
                         ?>
-                    </div>
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
     </div>
-</body>
+</div>
