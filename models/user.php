@@ -364,4 +364,12 @@ class User
             throw new Exception("Update Error = $obj_db->errno -$obj_db->error");
         }
     }
+    public static function count_use_reg()
+    {
+        $obj_db = self::obj_db();
+        $query = "SELECT * FROM user_queries";
+        $result = $obj_db->query($query);
+        $count = mysqli_num_rows($result);
+        return $count; 
+}
 }

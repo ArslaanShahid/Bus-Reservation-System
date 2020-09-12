@@ -123,5 +123,13 @@ Class Employee{
         }
         return $employees;
     }
+    public static function count_employees()
+    {
+        $obj_db = self::obj_db();
+        $query = "SELECT * FROM employees";
+        $result = $obj_db->query($query);
+        $count = mysqli_num_rows($result);
+        return $count; 
+}
 
 }

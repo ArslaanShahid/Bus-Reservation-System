@@ -105,6 +105,14 @@ class bus{
     }
     return $buses;
     }
+    public static function count_bus()
+    {
+        $obj_db = self::obj_db();
+        $query = "SELECT * FROM buses";
+        $result = $obj_db->query($query);
+        $count = mysqli_num_rows($result);
+        return $count; 
+}
 }
 
 ?>

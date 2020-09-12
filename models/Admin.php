@@ -160,5 +160,13 @@ public static function activateAccount($id){
         throw new Exception("Update Error = $obj_db->errno -$obj_db->error");
     }
 }
+public static function count_admin()
+    {
+        $obj_db = self::obj_db();
+        $query = "SELECT * FROM admins";
+        $result = $obj_db->query($query);
+        $count = mysqli_num_rows($result);
+        return $count; 
+}
 }
 ?>

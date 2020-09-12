@@ -5,34 +5,13 @@
                             <div class="app-footer-left">
                                 <ul class="nav">
                                     <li class="nav-item">
-                                        <a href="javascript:void(0);" class="nav-link">
-                                            Footer Link 1
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="javascript:void(0);" class="nav-link">
-                                            Footer1
+                                        <a href="#" class="nav-link">
+                                            <i class="fa fa-copyright"> Developed By Team Unity</i>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="app-footer-right">
-                                <ul class="nav">
-                                    <li class="nav-item">
-                                        <a href="javascript:void(0);" class="nav-link">
-                                            Footer2
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="javascript:void(0);" class="nav-link">
-                                            <div class="badge badge-success mr-1 ml-0">
-                                                <small>NEW</small>
-                                            </div>
-                                            Footer3
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                          
                         </div>
                     </div>
                 </div>

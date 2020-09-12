@@ -296,4 +296,12 @@ class Route
         // die;
         return $result->fetch_object();
     }
+    public static function count_routes()
+    {
+        $obj_db = self::obj_db();
+        $query = "SELECT * FROM routes";
+        $result = $obj_db->query($query);
+        $count = mysqli_num_rows($result);
+        return $count; 
+}
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 05, 2020 at 07:55 PM
+-- Generation Time: Sep 12, 2020 at 09:59 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -52,7 +52,9 @@ INSERT INTO `admins` (`admin_id`, `user_name`, `password`, `email`, `image`, `si
 (14, 'akhtar', '5fa339bbbb1eeaced3b52e54f44576aaf0d77d96', 'akhtar@gmail.com', NULL, '2020-05-05', 0),
 (16, 'furqanbutt', '16f1816066f231bbe39be9495ece0b3719e166d6', 'fuki@yahoo.com', NULL, '2020-05-05', 0),
 (18, 'ansar', '16f1816066f231bbe39be9495ece0b3719e166d6', 'ansar@yahoo.com', NULL, '2020-05-05', 0),
-(19, 'awais', '38f078a81a2b033d197497af5b77f95b50bfcfb8', 'awaismuzaffar@gmail.com', NULL, '2020-08-29', 0);
+(19, 'awais', '38f078a81a2b033d197497af5b77f95b50bfcfb8', 'awaismuzaffar@gmail.com', NULL, '2020-08-29', 0),
+(20, 'megaz', '01bc8e231f899e67b5fc0b18be01f0684fd9093d', 'megaz@gmail.com', NULL, '2020-09-06', 1),
+(22, 'ali', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', 'ali@gmail.com', NULL, '2020-09-07', 0);
 
 -- --------------------------------------------------------
 
@@ -74,7 +76,15 @@ CREATE TABLE `buses` (
 INSERT INTO `buses` (`id`, `bus_no`, `air_conditioner`, `seats`) VALUES
 (3, 'GAM7782', 1, 7),
 (4, 'GAM8891', 1, 90),
-(7, 'LAH7812', 1, 14);
+(7, 'LAH7812', 1, 14),
+(8, 'GAM 8890', 0, 30),
+(9, 'LEK8899', 1, 20),
+(10, 'GAN7787', 1, 10),
+(11, 'LHR4159', 1, 10),
+(12, 'gam2222', 0, 20),
+(13, 'LEK8890', 1, 10),
+(14, 'GAM9900', 1, 20),
+(15, 'GAM1344', 1, 14);
 
 -- --------------------------------------------------------
 
@@ -21085,14 +21095,48 @@ CREATE TABLE `routes` (
 --
 
 INSERT INTO `routes` (`id`, `departure`, `arrival`, `fare`, `duration`, `departure_time`, `distance`, `day`, `bus_id`) VALUES
-(1, 14157, 14075, 3000, '1:30', '10:30 am', 300, 1, 1),
-(2, 14157, 14075, 3000, '1:30', '10:30 am', 300, 2, 1),
+(1, 14157, 14075, 3000, '1:30', '10:30 am', 300, 1, 4),
+(2, 14157, 14075, 3000, '1:30', '10:30 am', 300, 2, 4),
 (3, 14157, 14075, 3000, '1:30', '10:30 am', 300, 3, 3),
-(4, 14157, 14075, 3000, '1:30', '10:30 am', 300, 4, 2),
+(4, 14157, 14075, 3000, '1:30', '10:30 am', 300, 4, 8),
 (5, 14072, 14073, 300, '1:30', '10:30 am', 300, 6, 3),
 (6, 14277, 14383, 1200, '1:30', '03:30 am', 300, 1, 7),
 (7, 14277, 14383, 1200, '1:30', '03:30 am', 300, 2, 7),
-(8, 14277, 14383, 1200, '1:30', '03:30 am', 300, 3, 7);
+(8, 14277, 14383, 1200, '1:30', '03:30 am', 300, 3, 7),
+(9, 14277, 14333, 400, '1:30', '10:30 am', 100, 1, 9),
+(10, 14277, 14333, 400, '1:30', '10:30 am', 100, 7, 9),
+(11, 14333, 14277, 300, '1:30', '08:30 am', 71, 1, 4),
+(12, 14333, 14277, 300, '1:30', '08:30 am', 71, 2, 4),
+(13, 14333, 14277, 300, '1:30', '08:30 am', 71, 3, 4),
+(14, 14333, 14277, 300, '1:30', '10:30 am', 80, 1, 3),
+(15, 14333, 14277, 300, '1:30', '10:30 am', 80, 2, 3),
+(16, 14333, 14277, 300, '1:30', '10:30 am', 80, 3, 3),
+(17, 14277, 14333, 200, '1:30', '08:30 am', 90, 2, 7),
+(18, 14239, 14333, 400, '04:00', '08:00 am', 400, 1, 10),
+(19, 14239, 14333, 400, '04:00', '08:00 am', 400, 2, 10),
+(20, 14333, 14383, 1000, '04:00', '09:00 am', 700, 1, 11),
+(21, 14333, 14383, 1000, '04:00', '09:00 am', 700, 2, 11),
+(22, 14333, 14383, 1000, '04:00', '09:00 am', 700, 3, 11),
+(23, 14383, 14333, 800, '04:00', '08:00 am', 400, 3, 12),
+(24, 14383, 14333, 800, '04:00', '08:00 am', 400, 4, 12),
+(25, 14383, 14333, 800, '04:00', '08:00 am', 400, 5, 12),
+(26, 14383, 14333, 900, '04:00', '08:00 am', 698, 2, 13),
+(27, 14333, 14277, 900, '04:00', '08:00 am', 900, 2, 14),
+(28, 14333, 14277, 900, '04:00', '08:00 am', 900, 3, 14),
+(29, 14333, 14277, 900, '04:00', '08:00 am', 900, 4, 14),
+(30, 14333, 14277, 900, '04:00', '08:00 am', 900, 5, 14),
+(31, 14383, 14333, 800, '1:30', '08:30 am', 700, 1, 15),
+(32, 14383, 14333, 800, '1:30', '08:30 am', 700, 2, 15),
+(33, 14277, 14342, 400, '1:30', '03:30 pm', 120, 1, 3),
+(34, 14277, 14342, 400, '1:30', '03:30 pm', 120, 2, 3),
+(35, 14277, 14342, 400, '1:30', '03:30 pm', 120, 3, 3),
+(36, 14333, 14277, 900, '1:30', '09:00 am', 110, 1, 3),
+(37, 14333, 14277, 900, '1:30', '09:00 am', 110, 2, 3),
+(38, 14333, 14277, 900, '1:30', '09:00 am', 110, 3, 3),
+(39, 14333, 14277, 900, '1:30', '09:00 am', 110, 4, 3),
+(40, 14333, 14277, 900, '1:30', '09:00 am', 110, 5, 3),
+(41, 14333, 14277, 900, '1:30', '09:00 am', 110, 6, 3),
+(42, 14333, 14277, 900, '1:30', '09:00 am', 110, 7, 3);
 
 -- --------------------------------------------------------
 
@@ -23796,18 +23840,20 @@ CREATE TABLE `users` (
   `user_name` varchar(50) NOT NULL,
   `email` varchar(30) NOT NULL,
   `password` varchar(120) NOT NULL,
-  `signup_date` date NOT NULL
+  `signup_date` date NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `user_name`, `email`, `password`, `signup_date`) VALUES
-(1, 'admin', 'admin@yahoo.com', '38f078a81a2b033d197497af5b77f95b50bfcfb8', '2020-04-16'),
-(2, 'arslan', 'arslanbutt@ymail.com', '16f1816066f231bbe39be9495ece0b3719e166d6', '2020-04-27'),
-(3, 'Haseeb', 'haseeb@gmail.com', '5fa339bbbb1eeaced3b52e54f44576aaf0d77d96', '2020-04-27'),
-(4, 'Hamza', 'hamza@gmail.com', '5fa339bbbb1eeaced3b52e54f44576aaf0d77d96', '2020-04-27');
+INSERT INTO `users` (`id`, `user_name`, `email`, `password`, `signup_date`, `status`) VALUES
+(1, 'admin', 'admin@yahoo.com', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', '2020-04-16', 1),
+(2, 'arslan', 'arslanbutt@ymail.com', '16f1816066f231bbe39be9495ece0b3719e166d6', '2020-04-27', 1),
+(3, 'Haseeb', 'haseeb@gmail.com', '5fa339bbbb1eeaced3b52e54f44576aaf0d77d96', '2020-04-27', 1),
+(4, 'Hamza', 'hamza@gmail.com', '5fa339bbbb1eeaced3b52e54f44576aaf0d77d96', '2020-04-27', 1),
+(5, 'Arslaaan', 'arslanmehmood100@gmail.com', '1fd90554a8cfeb33901280a2f97f8e851beef819', '2020-09-12', 1);
 
 -- --------------------------------------------------------
 
@@ -23835,7 +23881,34 @@ INSERT INTO `user_profiles` (`id`, `user_id`, `first_name`, `last_name`, `gender
 (1, 1, 'Arslan', 'Shahid', 'male', '+92-323-7553458', NULL, 14368, 1778),
 (2, 2, 'Arlsan', 'Furqan', 'female', '+92-323-7553458', NULL, 14333, 1778),
 (3, 3, 'Haseeb', 'Hassan', 'male', '+92-323-7553458', NULL, 14150, 1775),
-(4, 4, 'Hamza', 'Hamza', 'male', '+92-323-7553458', NULL, 14367, 1778);
+(4, 4, 'Hamza', 'Hamza', 'male', '+92-323-7553458', NULL, 14367, 1778),
+(5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_queries`
+--
+
+CREATE TABLE `user_queries` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `mobile` varchar(18) NOT NULL,
+  `msg` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_queries`
+--
+
+INSERT INTO `user_queries` (`id`, `name`, `email`, `mobile`, `msg`) VALUES
+(2, 'Arlsan', 'arslanbutt@ymail.com', '+92-323-7443412', 'I am Furqan Son and I want free Ticket.'),
+(3, 'Furqan', 'furqan@gmail.com', '+92-323-7443412', 'hi my ticket no is abc please solve my issue.'),
+(4, 'Furqan Amjad', 'furqan@gmail.com', '+92-323-7443412', 'this is my message this is my message'),
+(5, 'Furqan', 'furqan@gmail.com', '+92-323-7443412', 'This is my messageThis is my messageThis is my messageThis is my messageThis is my messageThis is my message'),
+(6, 'Arslan Shahid', 'ehtishammunir789@gmail.com', '+92-323-7443412', 'Hi my ticket no is this please solve my issue'),
+(7, 'Arslan Shahid', 'arslanmehmood100@gmail.com', '+92-323-7443412', 'Hi, im facing issue please solve my issue ASAP.');
 
 --
 -- Indexes for dumped tables
@@ -23904,6 +23977,12 @@ ALTER TABLE `user_profiles`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_queries`
+--
+ALTER TABLE `user_queries`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -23911,13 +23990,13 @@ ALTER TABLE `user_profiles`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `buses`
 --
 ALTER TABLE `buses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `cities`
@@ -23947,7 +24026,7 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `routes`
 --
 ALTER TABLE `routes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `states`
@@ -23959,13 +24038,19 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user_profiles`
 --
 ALTER TABLE `user_profiles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `user_queries`
+--
+ALTER TABLE `user_queries`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

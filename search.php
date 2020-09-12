@@ -1,19 +1,13 @@
 <?php
 require_once('models/user.php');
 require_once('views/header.php');
-require_once 'models/Route.php';
-
+require_once('models/Route.php');
 $routes = Route::search($_GET['from'], $_GET['to'], $_GET['date']);
-
 ?>
 
 <body class="body-class bc blog">
-
-
     <!--Start Body Wrap-->
     <div id="body-wrap">
-
-
         <section id="breadcrumb">
             <div class="overly"></div>
             <div class="container">
