@@ -360,4 +360,25 @@ class Route
         }
         return -1;
     }
+
+    public static function testRoute()
+    {
+        $obj_db = self::obj_db();
+        $query = " select * from routes";
+        $result = $obj_db->query($query);
+        if ($obj_db->errno) {
+            throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
+        }
+        // print_r($result);
+        // die;
+        while ($data = $result->fetch_object()) {
+            $routes[] = $data;
+        }
+        // echo('<pre>');
+        // print_r($routes);
+        // echo('</pre>');
+        // die;
+        return $routes;
+    }
+    
 }
