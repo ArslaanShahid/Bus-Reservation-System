@@ -87,8 +87,8 @@
 }
 /*ladies*/
 .seat.ladies .seat-body {
-    background-color: #98c157;
-    border-color: #31672b;
+    background-color: #dc3545;
+    border-color: red;
 }
 .seat.ladies .seat-body span{
     border-color:  #31672b;

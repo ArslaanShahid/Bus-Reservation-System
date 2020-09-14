@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 12, 2020 at 09:59 PM
+-- Generation Time: Sep 14, 2020 at 10:51 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -55,6 +55,60 @@ INSERT INTO `admins` (`admin_id`, `user_name`, `password`, `email`, `image`, `si
 (19, 'awais', '38f078a81a2b033d197497af5b77f95b50bfcfb8', 'awaismuzaffar@gmail.com', NULL, '2020-08-29', 0),
 (20, 'megaz', '01bc8e231f899e67b5fc0b18be01f0684fd9093d', 'megaz@gmail.com', NULL, '2020-09-06', 1),
 (22, 'ali', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', 'ali@gmail.com', NULL, '2020-09-07', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booked_seats`
+--
+
+CREATE TABLE `booked_seats` (
+  `id` int(11) NOT NULL,
+  `seat_no` int(11) NOT NULL,
+  `booking_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `booked_seats`
+--
+
+INSERT INTO `booked_seats` (`id`, `seat_no`, `booking_id`) VALUES
+(9, 3, 6),
+(10, 6, 6),
+(11, 2, 7),
+(12, 3, 7),
+(13, 1, 8),
+(14, 2, 8),
+(15, 3, 8),
+(16, 4, 8),
+(17, 5, 8),
+(18, 6, 8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bookings`
+--
+
+CREATE TABLE `bookings` (
+  `id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `route_id` int(11) NOT NULL,
+  `total_fare` int(11) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `contact_no` varchar(200) NOT NULL,
+  `cnic` varchar(200) NOT NULL,
+  `gender` char(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bookings`
+--
+
+INSERT INTO `bookings` (`id`, `date`, `route_id`, `total_fare`, `name`, `contact_no`, `cnic`, `gender`) VALUES
+(6, '2020-09-13', 42, 1800, 'sohaib', '032377111111', '3410136265407', 'male'),
+(7, '2020-09-14', 14, 600, 'Arslan Furqan', '03123234789', '2123123123123', 'male'),
+(8, '2020-09-14', 9, 2400, 'Arslan Shahid', '0323-7773212', '3410136265407', 'male');
 
 -- --------------------------------------------------------
 
@@ -23922,6 +23976,18 @@ ALTER TABLE `admins`
   ADD UNIQUE KEY `user_name` (`user_name`);
 
 --
+-- Indexes for table `booked_seats`
+--
+ALTER TABLE `booked_seats`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bookings`
+--
+ALTER TABLE `bookings`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `buses`
 --
 ALTER TABLE `buses`
@@ -23991,6 +24057,18 @@ ALTER TABLE `user_queries`
 --
 ALTER TABLE `admins`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `booked_seats`
+--
+ALTER TABLE `booked_seats`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `bookings`
+--
+ALTER TABLE `bookings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `buses`

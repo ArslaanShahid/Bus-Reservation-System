@@ -1,10 +1,23 @@
 <?php
+require_once "init.php";
+if(!isset($_GET['id']) || !isset($_GET['date'])) {
+    header("Location:".BASE_URL);
+}
 require_once('models/user.php');
 require_once('views/header.php');
 require_once 'models/Route.php';
 
-$info = Route::routeInfo($_GET['id']);
-
+$info = Route::routeInfo($_GET['id'],$_GET['date']);
+// echo('<pre>');
+// print_r($info);
+// echo('</pre>');
+// die;
+$route_data = $info['route_data'];
+$seats = $info['seats'];
+// echo("<pre>");
+// print_r($info);
+// echo("</pre>");
+// die;
 
 ?>
     <body class="body-class bc blog">
@@ -18,12 +31,12 @@ $info = Route::routeInfo($_GET['id']);
                     <article>
                         <h2>
                             <?php
-                            echo ($info->departure . ' to ' . $info->arrival);
+                            echo ($route_data->departure . ' to ' . $route_data->arrival);
                             ?>
                         </h2>
                         <a href="#">Home</a> <span>/</span>
                         <a class="active" href="#"><?php
-                                                    echo ($info->departure . ' to ' . $info->arrival);
+                                                    echo ($route_data->departure . ' to ' . $route_data->arrival);
                                                     ?></a>
                     </article>
                 </div>
@@ -44,16 +57,16 @@ $info = Route::routeInfo($_GET['id']);
 
                 <p><strong><span class="text-danger">Route Name:</span>
                         <?php
-                        echo ($info->departure . ' to ' . $info->arrival);
+                        echo ($route_data->departure . ' to ' . $route_data->arrival);
                         ?>
                     </strong></p>
                 <div class="margin-bottom-10"></div>
 
-                <p>Dep Time: <?php echo(strtoupper($info->departure_time)); ?> <span class="text-success">()</span></p>
+                <p>Dep Time: <?php echo(strtoupper($route_data->departure_time)); ?> <span class="text-danger"><strong>(<?php echo($_GET['date']); ?>)</strong></span></p>
                 <div class="margin-bottom-5"></div>
-                <strong>Total Seat:<?php echo($info->seats)?> </strong>
+                <strong>Total Seat:<?php echo($route_data->seats)?> </strong>
                 <div class="margin-bottom-5"></div>
-                <strong>Ticket Price : <?php echo($info->fare); ?> PKR</strong>
+                <strong>Ticket Price : <?php echo($route_data->fare); ?> PKR</strong>
             </div>
         </div>
 
@@ -100,20 +113,24 @@ $info = Route::routeInfo($_GET['id']);
                 <div class="all-seats">
                     <div class='row'>
                         <?php
-                        $i = 0;
-                            while($i != $info->seats)
-                            {
-                                $i++;
+                        foreach($seats as $seat) {
                                 echo("<div class='col-2'>");
-                                echo("<div class='seat occupied ChooseSeat ' data-item=''>");
-                                echo("<div class='seat-body'>");
-                                echo($i);
+                                if($seat['status'] == 1) {
+                                    echo("<div class='seat occupied' data-item=''>");
+                                    echo("<div class='seat-body' style='background-color:#dc3545;cursor:no-drop; color:white;'>");
+                                } else {
+                                    echo("<div class='seat occupied ChooseSeat' data-item=''>");
+                                    echo("<div class='seat-body' style=''>");
+                                }
+                                
+                                echo($seat['seat_no']);
                                 echo("<span class='seat-handle-left'></span>");
                                 echo("<span class='seat-handle-right'></span>");
                                 echo("<span class='seat-bottom'></span>");
                                 echo("</div></div></div>");
                                 echo("<div class='col-2'>&nbsp;</div>");
-                            }
+                        }
+
                         ?>
                     </div>
 
@@ -124,35 +141,32 @@ $info = Route::routeInfo($_GET['id']);
 
             <div class="col-md-6 col-sm-12">
 
-                <form action="#" class="price-details" id="bookingFrm" method="post" accept-charset="utf-8">
-                    <input type="hidden" name="_token" value="Wx5lUcV86bFS3SlAViOcb72g5Jd9XoFMjZVu2LcW">
+                <form action="#" class="price-details" id="bookingFrom" method="post" accept-charset="utf-8">
                     <div class="form-group">
-                        <label><strong>Choose Boarding Point <span class="text-danger">*</span></strong></label>
-                        <select name="boarding" id="stoppage" class="form-control form-control-lg boarding_point">
-                            <option value="">Boarding Point</option>
-                            <option value="Smart Bus">Smart Bus Terminal</option>
-                        </select>
-                    </div>
+                        <label for="name"><strong>Name</strong></label>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter Your Name">
+                        <div class="text-danger has_error name">
 
-
-                    <div class="form-group">
-                        <h4> Facilities</h4>
-                        <div id="facilities">
-                            <div class="funkyradio">
-                                <div class="funkyradio-default">
-                                    <input type="radio" checked />
-                                    <label>AC</label>
-                                </div>
-                            </div>
-                            <div class="funkyradio">
-                                <div class="funkyradio-default">
-                                    <input type="radio" checked />
-                                    <label>Freshments</label>
-                                </div>
-                            </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="name"><strong>Contact No</strong></label>
+                        <input type="text" class="form-control" name="contact_no" id="contact_no" placeholder="Enter Your Name">
+                        <div class="has_error text-danger contact_no">
 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name"><strong>CNIC</strong></label>
+                        <input type="text" class="form-control" name="cnic" id="cnic" placeholder="Enter Your Name">
+                        <div class="has_error text-danger cnic"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name"><strong>Gender</strong></label>
+                        <label for="male"><input type="radio" checked name="gender[]" value="male" id="male" class="gender"> Male</label>
+                        <label for="female"><input type="radio" name="gender[]" id="female" value="female" class="gender"> FeMale</label>
+                        <span class="text-danger gender_error has_error"></span>
+                    </div>
                     <div class="table-responsive ">
                         <table class="table table table-bordered table-striped">
                             <tbody>
@@ -168,18 +182,21 @@ $info = Route::routeInfo($_GET['id']);
                         </table>
 
                         <input type="hidden" name="trip_route_id" value="<?php echo($_GET['id']); ?>">
-                        <input type="hidden" name="fleet_registration_id" value="1">
-                        <input type="hidden" name="trip_id_no" value="17643">
-                        <input type="hidden" name="id_no" value="<?php ?>">
-                        <input type="hidden" name="fleet_type_id" value="1">
-                        <input type="hidden" name="total_seat" value="<?php echo($info->seats) ?>">
+                        <input type="hidden" name="total_seat" value="<?php echo($route_data->seats) ?>">
                         <input type="hidden" name="seat_number">
-                        <input type="hidden" name="price" value="<?php echo($info->fare) ?>">
+                        <input type="hidden" name="price" value="<?php echo($route_data->fare) ?>">
                         <input type="hidden" name="total_fare">
                         <input type="hidden" name="booking_date" value="<?php echo($_GET['date']); ?>">
 
                     </div>
-                    <button id="submit-btn" class="btn btn-block">Continue</button>
+                    <div class="row">
+                        <button id="submit-btn" class="btn btn-block col-md-10 offset-md-1">Continue
+                        </button>
+                        <div class="col-md-1">
+                            <span class="loader"></span>
+                        </div>
+
+                    </div>
                 </form>
 
             </div>

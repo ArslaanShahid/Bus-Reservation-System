@@ -267,34 +267,77 @@ class Route
         return $data;
     }
 
-    public static function routeInfo($id)
+    public static function routeInfo($id,$date)
     {
         $obj_db = self::obj_db();
 
-        $query = " SELECT r.id, r.fare, r.duration, r.departure_time, r.distance, d.day as day, b.bus_no as bus, b.seats, b.air_conditioner, cd.name as departure, cd.id as departure_id, ca.name as arrival, ca.id as arrival_id from routes r "
-            . "JOIN cities cd ON (cd.id = r.departure) "
-            . "JOIN cities ca ON  (ca.id = r.arrival) "
-            . "JOIN days d ON (r.day = d.id) "
-            . "JOIN buses b ON (r.bus_id = b.id) "
-            . "WHERE r.id ='$id'";
+        $query = "SELECT r.id, cd.name as departure, ca.name as arrival,"
+                        ." r.fare, r.duration, r.departure_time, r.distance, b.seats" 
+                        ." from routes r "
+                        ." JOIN cities cd ON (cd.id = r.departure) "
+                        ." JOIN cities ca ON (ca.id = r.arrival) "
+                        ." JOIN buses b ON b.id = r.bus_id "
+                        ." WHERE r.id = '$id'";
 
-        $result = $obj_db->query($query);
+        // $query = " SELECT r.id, r.fare, r.duration, r.departure_time, r.distance, d.day as day, b.bus_no as bus, b.seats, b.air_conditioner, cd.name as departure, cd.id as departure_id, ca.name as arrival, ca.id as arrival_id from routes r "
+        //     . "JOIN cities cd ON (cd.id = r.departure) "
+        //     . "JOIN cities ca ON  (ca.id = r.arrival) "
+        //     . "JOIN days d ON (r.day = d.id) "
+        //     . "JOIN buses b ON (r.bus_id = b.id) "
+        //     . "WHERE r.id ='$id'";
+
+        $result_route = $obj_db->query($query);
+
+        $route = $result_route->fetch_object();
+        
+        //making seats 
+        $seat_data = [];
+        $seats = $route->seats;
+
+        for($i = 1; $i <= $seats; $i++) {
+            $rows = [];
+            $rows['seat_no'] = $i;
+            $rows['status'] = 0;
+            $seat_data[] = $rows;
+        }
 
         if ($obj_db->errno) {
             throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
         }
-        // print_r($result->fetch_row());
-        // die;
-        
-        // while ($data = $result->fetch_object()) {
-        //     $routes[] = $data;
-        // }
+        //getting route bookings
+        $query_booking = "select * from bookings b "
+                        ." where route_id = $id AND date = '$date' ";
+        $result_booking = $obj_db->query($query_booking);
 
-        // echo ('<pre>');
-        // print_r($result->fetch_object());
-        // echo ('</pre>');
-        // die;
-        return $result->fetch_object();
+        if($obj_db->errno) {
+            die($obj_db->error);
+        }
+
+        while($data = $result_booking->fetch_object()) {
+            //getting booked seats from storage
+            $query_seats = "select * from booked_seats bs "
+                            ." where booking_id = $data->id ";
+            $result_seats = $obj_db->query($query_seats);
+
+            if($obj_db->errno) {
+                die($obj_db->error);
+            }
+
+            while($data = $result_seats->fetch_object()) {
+                $index = self::checkSeat($seat_data,$data->seat_no);
+                if($index > -1) {
+                    $seat_data[$index]['status'] = 1;
+                }
+            }
+            
+        }
+
+        $response = [
+            'route_data'=>$route,
+            'seats'=>$seat_data,
+        ];
+
+        return $response;
     }
     public static function count_routes()
     {
@@ -303,5 +346,18 @@ class Route
         $result = $obj_db->query($query);
         $count = mysqli_num_rows($result);
         return $count; 
-}
+    }
+
+    //check seat exist in array
+    public static function checkSeat($seats,$seat_no) {
+        foreach($seats as $field=>$data) {
+            // die('field'.$field);
+            // print_r($data);
+            // die;
+            if($data['seat_no'] == $seat_no) {
+                return $field; 
+            }
+        }
+        return -1;
+    }
 }

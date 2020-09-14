@@ -143,7 +143,6 @@ $obj_user->profile();
         </section>
     
 
-
 <?php
 
 require_once('views/footer.php')

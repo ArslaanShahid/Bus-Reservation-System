@@ -1,6 +1,7 @@
 <?php
 require_once 'models/user.php';
 session_start();
+
 if (isset($_SESSION['obj_user'])) {
     $obj_user = unserialize($_SESSION['obj_user']);
 } else {
@@ -116,7 +117,7 @@ if (isset($_SESSION['obj_user'])) {
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                <a class="dropdown-item" href="https://booking.pak-lines.com/change-lang/en">English</a>
+                                <a class="dropdown-item" href="#">English</a>
                             </div>
                         </li>
                     </ul>

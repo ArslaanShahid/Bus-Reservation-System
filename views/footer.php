@@ -54,6 +54,8 @@
 <script src="assets/front/js/jquery.seat-charts.min.js"></script>
 
 <script>
+    let ajax_loader = "<img src='assets/images/ajax-loader.gif' alt='logo' width='30'>";
+    
     $(document).ready(function(e) {
         $('#arrival').select2();
         $('#departure').select2();
@@ -79,6 +81,43 @@
     ?>
 </script>
 <script>
+    function validate(data) {
+        let i = 0;
+        $(".has_error").html(" ");
+        if(data.booking_date == '') {
+            toastr.error("Missing Booking Date");
+            i++;
+        }
+        if(data.route_id == '') {
+            toastr.error("Opps Something Went Wrong");
+            i++;
+        }
+        if(data.name == '') {
+            $(".name").html("Missing Name");
+            i++;
+        }
+        if(data.gender == '') {
+            $(".gender_error").html("Missing Gender");
+            i++;
+        }
+        if(data.contact_no == '') {
+            $(".contact_no").html("Missing Contact No");
+            i++;
+        }
+        if(data.cnic == '' || data.cnic.length < 13) {
+            $(".cnic").html("Missing CNIC Must Be 12 Numbers");
+            i++;
+        }
+        if(data.seat_number == '') {
+            i++;
+            toastr.error("Please Select Seat");
+        }
+        if(i > 0) {
+            toastr.error("Fill all the Required Fields");
+            return true;
+        }
+        return false;
+    }
     $(document).ready(function() {
 
         $('.boarding_point').select2();
@@ -153,48 +192,51 @@
 
         $(document).on('click', "#submit-btn", function(e) {
             e.preventDefault();
-            var boarding = $("input[name=boarding]").val();
             var trip_route_id = $("input[name=trip_route_id]").val();
-            var fleet_registration_id = $("input[name=fleet_registration_id]").val();
-            var trip_assign_id_no = $("input[name=trip_id_no]").val();
-            var id_no = $("input[name=id_no]").val();
-            var fleet_type_id = $("input[name=fleet_type_id]").val();
             var total_seat = $("input[name=total_seat]").val();
             var seat_number = $("input[name=seat_number]").val();
             var price = $("input[name=price]").val();
             var total_fare = $("input[name=total_fare]").val();
             var booking_date = $("input[name=booking_date]").val();
-
-            $.ajax({
-                type: "post",
-                url: "process/process_booking.php",
-                //contentType: false,
-                //processData: false,
-                data: {
+            var name = $("#name").val();
+            var contact_no = $("#contact_no").val();
+            var cnic = $("#cnic").val();
+            var gender = $(".gender").val();
+            let data = {
                     route_id: trip_route_id,
                     total_seat: total_seat,
                     seat_number: seat_number,
                     price: price,
                     total_fare: total_fare,
-                    booking_date: booking_date
+                    booking_date: booking_date,
+                    name:name,
+                    cnic:cnic,
+                    gender:gender,
+                    contact_no:contact_no,  
+                };
+            if(validate(data)) {
+                return;
+            }
+            $.ajax({
+                type: "post",
+                url: "process/process_booking.php",
+                data:data,
+                dataType:'JSON',
+                beforeSend:function(xhr) {
+                    $(".loader").html(ajax_loader);
                 },
-
-                success: function(data) {
-                    console.log(data)
-                    if (data.status == 1000) {
-                        toastr.error(data.arr + " Seat Booked Yet. <br> Please select another seat");
+                complete:function(jqXHR,textStatus) {
+                    if(jqXHR.status == 200) {
+                        let result = JSON.parse(jqXHR.responseText);
+                        if(result.hasOwnProperty('success')) {
+                            toastr.success("Seats Reserve Successfully");
+                            $(".loader").html('');
+                        }
+                    } else {
+                        toastr.error("Opps Something Went Wrong Contact Admin");
                     }
-                    if (data.status == 2000) {
-                        toastr.error("Only 5 Seats can be Booked. <br> Please select 5 seats");
-                    }
-                    if (data.pnr) {
-                        window.location.href = "#" + '/' + data.pnr;
-                    }
-                },
-
-                error: function(res) {
-                    //console.log(res);
                 }
+
             });
 
         });
