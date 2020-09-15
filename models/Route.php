@@ -361,10 +361,16 @@ class Route
         return -1;
     }
 
-    public static function testRoute()
+    public static function testRoute($id)
     {
         $obj_db = self::obj_db();
-        $query = " select * from routes";
+        $query = "SELECT r.id, cd.name as departure, ca.name as arrival,"
+        ." r.fare, r.duration, r.departure_time, r.distance, b.seats" 
+        ." from routes r "
+        ." JOIN cities cd ON (cd.id = r.departure) "
+        ." JOIN cities ca ON (ca.id = r.arrival) "
+        ." JOIN buses b ON b.id = r.bus_id "
+        ." WHERE r.id = '$id'"; 
         $result = $obj_db->query($query);
         if ($obj_db->errno) {
             throw new Exception("Select Error - $obj_db->errno - $obj_db->error");

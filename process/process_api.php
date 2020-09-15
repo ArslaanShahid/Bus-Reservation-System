@@ -2,7 +2,8 @@
     require_once "../models/Route.php";
     $response = [];
     try {
-        $routes = Route::testRoute();
+        $id=10;
+        $routes = Route::testRoute($id);
         $response['success'] = true;
         $response['routes'] = $routes;
     } catch(Exception $ex) {

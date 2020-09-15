@@ -36,7 +36,7 @@ if (isset($_SESSION['obj_user'])) {
     <!--Google Font-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,600i,700" rel="stylesheet">
     <!--Bootstrap Stylesheet-->
-    <link rel="stylesheet" type="text/css" href="/assets/front/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php  ?>/assets/front/css/bootstrap.min.css">
 
     <!--Owl Carousel Stylesheet-->
     <link rel="stylesheet" type="text/css" href="/assets/front/css/plugins/owl.carousel.min.html">

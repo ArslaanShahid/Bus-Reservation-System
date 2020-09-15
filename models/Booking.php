@@ -32,6 +32,22 @@ class Booking {
         }
         
     }
+    public static function showBooking(){
+        $obj_db = self::obj_db();
+        $query = " SELECT * " 
+        ."FROM bookings b "  
+        ."JOIN booked_seats s "
+        ."WHERE b.id = s.booking_id" ;
+        $result = $obj_db->query($query);
+        if ($obj_db->errno) {
+            throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
+        }
+        $query = [];
+        while ($data = $result->fetch_object()) {
+            $query[] = $data;
+        }
+        return $query;
+    }
 }
 
 
