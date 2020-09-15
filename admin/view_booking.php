@@ -18,10 +18,7 @@ require_once 'views/sidebar.php';
                     <tr>
                         <th>Sr.No.</th>
                         <th>Name</th>
-<<<<<<< HEAD
                         <th>Contact No</th>
-=======
->>>>>>> b5355bf886e7f52051acd49f81f5de06a7b3cb6f
                         <th>CNIC</th>
                         <th>Gender</th>
                         <th>Contact No</th>
@@ -39,12 +36,8 @@ require_once 'views/sidebar.php';
                     foreach ($bookings as $booking) {
                         echo ("<tr>");
                         echo ("<td>" . $i . "</td>");
-<<<<<<< HEAD
                         echo ("<td>" . $booking->name . "</td>");
                         echo ("<td>" . $booking->contact_no . "</td>");
-=======
-                        echo ("<td>" . ucfirst($booking->name) . "</td>");
->>>>>>> b5355bf886e7f52051acd49f81f5de06a7b3cb6f
                         echo ("<td>" . $booking->cnic . "</td>");
                         echo ("<td>" . $booking->gender . "</td>");
                         echo ("<td>" . $booking->contact_no . "</td>");

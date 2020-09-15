@@ -3,6 +3,10 @@ require_once "DbTrait.php";
 class Booking {
     use DbTrait;
     public static function store($data) {
+        // echo("<pre>");
+        // print_r($data);
+        // echo ("</pre>");
+        // die;
         extract($data);
         $obj_db = self::obj_db();
         $seats = preg_split('/,/',$seat_number);
