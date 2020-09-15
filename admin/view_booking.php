@@ -19,6 +19,7 @@ require_once 'views/sidebar.php';
                 <thead>
                     <tr>
                         <th>Sr.No.</th>
+                        <th>Name</th>
                         <th>Contact No</th>
                         <th>CNIC</th>
                         <th>Gender</th>
@@ -38,6 +39,7 @@ require_once 'views/sidebar.php';
                         echo ("<tr>");
                         echo ("<td>" . $i . "</td>");
                         echo ("<td>" . $booking->name . "</td>");
+                        echo ("<td>" . $booking->contact_no . "</td>");
                         echo ("<td>" . $booking->cnic . "</td>");
                         echo ("<td>" . $booking->gender . "</td>");
                         echo ("<td>" . $booking->seat_no . "</td>");

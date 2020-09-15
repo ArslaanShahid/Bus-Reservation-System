@@ -1,3 +1,4 @@
+
 <div class="app-main">
     <div class="app-sidebar sidebar-shadow">
         <div class="app-header__logo">
@@ -110,13 +111,6 @@
                         <a href="view_user_queries.php">
                             <i class="metismenu-icon fa fa-envelope"></i>
                             User Complaint
-                        </a>
-                    </li>
-                    <li class="app-sidebar__heading">Manage Booking</li>
-                    <li>
-                        <a href="view_booking.php">
-                            <i class="metismenu-icon fa fa-address-book-o"></i>
-                            View Booking
                         </a>
                     </li>
                 </ul>
