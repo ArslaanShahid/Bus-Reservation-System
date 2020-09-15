@@ -4,8 +4,7 @@
             <div class="logo-src"></div>
             <div class="header__pane ml-auto">
                 <div>
-                    <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
-                        data-class="closed-sidebar">
+                    <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
                         <span class="hamburger-box">
                             <span class="hamburger-inner"></span>
                         </span>
@@ -89,9 +88,6 @@
                         </a>
                     </li>
 
-
-
-
                     <li class="app-sidebar__heading">Manage Buses</li>
                     <li>
                         <a href="bus.php">
@@ -117,4 +113,4 @@
         </div>
     </div>
     <div class="app-main__outer">
-    <div class="app-main__inner">
+        <div class="app-main__inner">

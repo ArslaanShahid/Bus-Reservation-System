@@ -32,12 +32,10 @@ class Booking {
         }
         
     }
+
     public static function showBooking(){
         $obj_db = self::obj_db();
-        $query = " SELECT * " 
-        ."FROM bookings b "  
-        ."JOIN booked_seats s "
-        ."WHERE b.id = s.booking_id" ;
+        $query = " SELECT * FROM bookings";
         $result = $obj_db->query($query);
         if ($obj_db->errno) {
             throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
@@ -47,6 +45,57 @@ class Booking {
             $query[] = $data;
         }
         return $query;
+    }
+
+    public static function getSeats($id)
+    {
+        $obj_db = self::obj_db();
+        $query = " SELECT b.name, b.id, b.route_id, r.fare, bs.seat_no, bs.booking_id FROM bookings b"
+                ." JOIN routes r ON b.route_id = r.id"
+                ." JOIN booked_seats bs ON b.id = bs.booking_id"
+                ." WHERE b.id = '$id'";
+
+        $result = $obj_db->query($query);
+        if ($obj_db->errno) {
+            throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
+        }
+        $query = [];
+        
+        while ($data = $result->fetch_object()) {
+            $query[] = $data;
+        }
+        $response = [];
+
+        $response['data'] = $query;
+        $response['success'] = true;
+        // echo ("<pre>");
+        // print_r($query);
+        // echo ("</pre>");
+        // die;
+        return $response;
+    }
+
+    public static function getRoute($id)
+    {
+        $obj_db = self::obj_db();
+         $query = "SELECT r.id, cd.name as departure, ca.name as arrival,"
+                        ." r.fare, r.duration, r.departure_time, r.distance, b.seats, b.bus_no, d.day" 
+                        ." from routes r"
+                        ." JOIN cities cd ON (cd.id = r.departure)"
+                        ." JOIN cities ca ON (ca.id = r.arrival)"
+                        ." JOIN buses b ON b.id = r.bus_id"
+                        ." JOIN days d ON d.id = r.day"
+                        ." WHERE r.id = '$id'";
+
+        $result = $obj_db->query($query);
+        if ($obj_db->errno) {
+            throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
+        }
+        $response = [];
+        $response['data'] = $result->fetch_object();
+        $response['success'] = true;
+
+        return $response;
     }
 }
 
