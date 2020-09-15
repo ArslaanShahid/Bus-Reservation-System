@@ -9,7 +9,7 @@ if (isset($_SESSION['obj_admin'])) {
 }
 ?>
 <!doctype html>
-<html lang="en">    
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -35,7 +35,7 @@ if (isset($_SESSION['obj_admin'])) {
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
-                <div class="navbar-brand"><a href="index.php"><img src="assets/images/admin_logo.png"width="70px"></a> &nbsp;&nbsp;&nbsp;&nbsp;</div>
+                <div class="navbar-brand"><a href="index.php"><img src="assets/images/admin_logo.png" width="70px"></a> &nbsp;&nbsp;&nbsp;&nbsp;</div>
                 <div class="header__pane ml-auto">
                     <div>
                         <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -80,10 +80,10 @@ if (isset($_SESSION['obj_admin'])) {
                                             <button type="button" tabindex="0" class="dropdown-item">User
                                                 Account</button>
                                             <?php
-                                                if (isset($_SESSION['obj_admin'])) {
-                                            echo ("<a href='process/process_logout.php' button type='button' tabindex='0' class='dropdown-item'>Logout</a>");
-                                                }
-                                                ?>
+                                            if (isset($_SESSION['obj_admin'])) {
+                                                echo ("<a href='process/process_logout.php' button type='button' tabindex='0' class='dropdown-item'>Logout</a>");
+                                            }
+                                            ?>
                                             <!-- <h6 tabindex="-1" class="dropdown-header">Header</h6>
                                             <button type="button" tabindex="0" class="dropdown-item">Actions</button>
                                             <div tabindex="-1" class="dropdown-divider"></div>
@@ -94,13 +94,13 @@ if (isset($_SESSION['obj_admin'])) {
                                 <div class="widget-content-left  ml-3 header-user-info">
                                     <div class="widget-heading">
                                         <?php
-                                        if(isset($_SESSION['obj_admin'])){
-                                            echo($obj_admin->user_name);
+                                        if (isset($_SESSION['obj_admin'])) {
+                                            echo ($obj_admin->user_name);
                                         }
-                                        ?>  
+                                        ?>
                                     </div>
                                     <div class="widget-subheading">
-                                                Developer
+                                        Developer
                                     </div>
                                 </div>
                                 <div class="widget-content-right header-user-info ml-3">
