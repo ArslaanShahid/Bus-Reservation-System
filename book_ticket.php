@@ -218,62 +218,9 @@ $seats = $info['seats'];
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     <script>
         $(document).ready(function(e) {
-            // var total = document.getElementById('total').innerHTML;
-
-            // var name = document.getElementById('name');
-            // var cnic = document.getElementById('cnic');
-            // var contact = document.getElementById('contact_no');
-            // var gender = document.querySelector('.gender');
-
-            // name.addEventListener('keydown', cname);
-            // cnic.addEventListener('keydown', ccnic);
-            // gender.addEventListener('onchange', gender);
-            // contact.addEventListener('keydown', contact);
-
-            // $('body').on('click', '.ChooseSeat', function() {
-            //     var total_fare = $('input[name=total_fare]').val();
-            //     if (name.value.length >= 4 && cnic.value.length <= 13 && contact.value.length >= 5 && gender.value != '' && total_fare != 0) {
-            //         $('#paypal-button').css('pointer-events', '');
-            //     }
-            // });
-
-            // function ccnic() {
-            //     var total_fare = $('input[name=total_fare]').val();
-            //     if (name.value.length >= 4 && cnic.value.length <= 13 && contact.value.length >= 5 && gender.value != '' && total_fare != 0) {
-            //         $('#paypal-button').css('pointer-events', '');
-            //     } else {
-            //         $('#paypal-button').css('pointer-events', 'none');
-            //     }
-            // }
-
-            // function cname() {
-            //     var total_fare = $('input[name=total_fare]').val();
-            //     console.log(total_fare);
-            //     if (name.value.length >= 4 && cnic.value.length <= 13 && contact.value.length >= 5 && gender.value != '' && total_fare != 0) {
-            //         $('#paypal-button').css('pointer-events', '');
-            //     }
-
-            // }
-
-            // function gender() {
-            //     var total_fare = $('input[name=total_fare]').val();
-            //     if (name.value.length >= 4 && cnic.value.length <= 13 && contact.value.length >= 5 && gender.value != '' && total_fare != 0) {
-            //         $('#paypal-button').css('pointer-events', '');
-            //     }
-            //     console.log(total_fare);
-            // }
-
-            // function contactf() {
-            //     var total_fare = $('input[name=total_fare]').val();
-            //     if (name.value.length >= 4 && cnic.value.length <= 13 && contact.value.length >= 5 && gender.value != '' && total_fare != 0) {
-            //         $('#paypal-button').css('pointer-events', '');
-            //     }
-
-            // }
-
-
-
+            
             var paypalActions;
+            var final;
 
             paypal.Button.render({
                 // Configure environment
@@ -288,6 +235,7 @@ $seats = $info['seats'];
                     var seat_number = $("input[name=seat_number]").val();
                     var price = $("input[name=price]").val();
                     var total_fare = $("input[name=total_fare]").val();
+                    final = total_fare;
                     var booking_date = $("input[name=booking_date]").val();
                     var contact_no = $("#contact_no").val();
                     var name = document.getElementById('name').value;
@@ -332,7 +280,7 @@ $seats = $info['seats'];
                     return actions.payment.create({
                         transactions: [{
                             amount: {
-                                total: 10,
+                                total: final,
                                 currency: 'USD'
                             }
                         }]
@@ -346,9 +294,5 @@ $seats = $info['seats'];
                     });
                 }
             }, '#paypal-button');
-
-            function test(actions) {
-                console.log('ssss');
-            }
         });
     </script>
