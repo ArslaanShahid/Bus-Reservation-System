@@ -1,6 +1,7 @@
 <?php
 require_once '../models/Booking.php';
 require_once 'views/header.php';
+require_once 'views/layoutoption.php';
 require_once 'views/sidebar.php';
 ?>
 <div class="col-lg-12  mt-5">

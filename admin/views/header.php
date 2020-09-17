@@ -1,12 +1,7 @@
 <?php
 session_start();
-require_once('../models/Admin.php');
+require_once('init.php');
 
-if (isset($_SESSION['obj_admin'])) {
-    $obj_admin = unserialize($_SESSION['obj_admin']);
-} else {
-    $obj_admin = new Admin();
-}
 ?>
 <!doctype html>
 <html lang="en">
