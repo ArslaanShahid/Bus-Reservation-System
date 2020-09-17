@@ -84,10 +84,6 @@ if (isset($_SESSION['obj_admin'])) {
                                                 echo ("<a href='process/process_logout.php' button type='button' tabindex='0' class='dropdown-item'>Logout</a>");
                                             }
                                             ?>
-                                            <!-- <h6 tabindex="-1" class="dropdown-header">Header</h6>
-                                            <button type="button" tabindex="0" class="dropdown-item">Actions</button>
-                                            <div tabindex="-1" class="dropdown-divider"></div>
-                                            <button type="button" tabindex="0" class="dropdown-item">Dividers</button> -->
                                         </div>
                                     </div>
                                 </div>
