@@ -2,6 +2,7 @@
 require_once('../models/Admin.php');
 require_once('views/header.php');
 require_once('views/sidebar.php');
+require_once 'views/layoutoption.php';
 require_once('../models/Queries.php');
 require_once('../models/Employee.php');
 require_once('../models/Bus.php');

@@ -112,7 +112,7 @@
                     <li class="app-sidebar__heading">Manage Booking</li>
                     <li>
                         <a href="view_booking.php">
-                            <i class="metismenu-icon fa fa-envelope"></i>
+                            <i class="metismenu-icon fa fa-address-book-o"></i>
                             View Booking
                         </a>
                     </li>
