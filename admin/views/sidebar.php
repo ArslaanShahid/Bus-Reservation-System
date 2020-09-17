@@ -109,9 +109,17 @@
                             User Complaint
                         </a>
                     </li>
+                    <li class="app-sidebar__heading">Manage Booking</li>
+                    <li>
+                        <a href="view_booking.php">
+                            <i class="metismenu-icon fa fa-envelope"></i>
+                            View Booking
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="app-main__outer">
         <div class="app-main__inner">
+        

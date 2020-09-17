@@ -16,7 +16,7 @@ Class Employee{
     {
         $method = "set" . $name;
         if(!method_exists($this,$method)){
-            throw new Exception("Set Property $name Does'nt Exist");
+            throw new Exception("Set Property $name Doesn't Exist");
         }
         $this->$method($value);
     }
@@ -24,7 +24,7 @@ Class Employee{
     {
         $method = "get" . $name;
         if(!method_exists($this,$method)){
-            throw new Exception("Set Property $name Does'nt Exist");
+            throw new Exception("Set Property $name Doesn't Exist");
         }
         return $this->$method();
     }

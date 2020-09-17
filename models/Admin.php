@@ -18,7 +18,7 @@ private $address;
 public function __set($name, $value){
     $method = "set" . $name;
     if(!method_exists($this, $method)){
-        throw new Exception("Set Property $name does'nt Exist");
+        throw new Exception("Set Property $name doesn't Exist");
     }
     $this->$method($value);
 }
@@ -26,7 +26,7 @@ public function __get($name)
 {
     $method = "get" . $name;
     if(!method_exists($this, $method)){
-        throw new Exception("Set Property $name does'nt Exist" );
+        throw new Exception("Set Property $name doesn't Exist" );
     }
     return $this->$method();
 }
@@ -60,7 +60,7 @@ private function setEmail($email){
     if(!preg_match($reg, $email)){
         throw new Exception("Invalid / Missing Email");
     }
-    $this->email = $email;
+    $this->email = $email;   
 }
 private function getEmail(){
     return $this->email;
@@ -85,7 +85,7 @@ public function login(){
     $query_select=
         " select * from admins "
         . " WHERE user_name = '$this->user_name'";
-    $result = $obj_db->query($query_select);
+    $result = $obj_db->query($query_select); 
     if($obj_db->errno){
         throw new Exception ("Db Select Error." . $obj_db->errno . $obj_db->error);
     }
