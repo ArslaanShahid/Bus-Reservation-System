@@ -1,12 +1,7 @@
 <?php
-require_once 'models/user.php';
 session_start();
-
-if (isset($_SESSION['obj_user'])) {
-    $obj_user = unserialize($_SESSION['obj_user']);
-} else {
-    $obj_user = new User();
-}
+require_once 'init.php';
+require_once 'models/user.php';
 
 ?>
 <!DOCTYPE html>
@@ -36,7 +31,7 @@ if (isset($_SESSION['obj_user'])) {
     <!--Google Font-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,600i,700" rel="stylesheet">
     <!--Bootstrap Stylesheet-->
-    <link rel="stylesheet" type="text/css" href="<?php  ?>/assets/front/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/front/css/bootstrap.min.css">
 
     <!--Owl Carousel Stylesheet-->
     <link rel="stylesheet" type="text/css" href="/assets/front/css/plugins/owl.carousel.min.html">

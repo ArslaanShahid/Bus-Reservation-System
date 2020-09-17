@@ -1,4 +1,10 @@
 <?php
+require_once 'models/user.php';
+if (isset($_SESSION['obj_user'])) {
+    $obj_user = unserialize($_SESSION['obj_user']);
+} else {
+    $obj_user = new User();
+}
 define('BASE_FOLDER','/');
 define('BASE_URL','http://'.$_SERVER['HTTP_HOST'].BASE_FOLDER);
 $public_pages = [
@@ -12,8 +18,6 @@ $restricted_pages = [
     BASE_FOLDER."view_ticket.php",
     BASE_FOLDER."msg.php",
     BASE_FOLDER."update_account.php",
-    
-
 ];
 $current = $_SERVER['PHP_SELF'];
 

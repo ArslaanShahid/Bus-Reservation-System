@@ -23,7 +23,7 @@ $restricted_pages = [
     BASE_FOLDER."addadmin.php",
     BASE_FOLDER."employee.php",
     BASE_FOLDER."employee_records.php",
-    
+    BASE_FOLDER."view_booking.php",
 
 ];
 $current = $_SERVER['PHP_SELF'];

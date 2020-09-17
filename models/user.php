@@ -250,7 +250,7 @@ class User
         $obj_db = $this->obj_db();
         $query_select =
             " SELECT * From users "
-            . " WHERE user_name = '$this->user_name'";
+            . " WHERE user_name = '$this->user_name' ";
         $result = $obj_db->query($query_select);
         if ($obj_db->errno) {
             throw new Exception("Db Select Error" . $obj_db->errno . $obj_db->error);

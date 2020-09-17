@@ -15,9 +15,9 @@ require_once('init.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/toastr.min.css">
-    <link href="../assets/css/select2.min.css" rel="stylesheet">
+    <link href="<?php echo(BASE_URL); ?>assets/css/style.css" rel="stylesheet">
+    <link href="<?php echo(BASE_URL); ?>assets/css/toastr.min.css">
+    <link href="<?php echo(BASE_URL); ?>../assets/css/select2.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
     <link href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">

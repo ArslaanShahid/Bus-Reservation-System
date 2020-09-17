@@ -112,9 +112,9 @@ require_once('../models/Admin.php');
 
         <!-- /.social-auth-links -->
         <br>
-        <p class="mb-1">
+        <!-- <p class="mb-1">
           <a href="#">I forgot my password</a>
-        </p>
+        </p> -->
         <p class="mb-0">
           <!-- <a href="register.html" class="text-center">Register a new membership</a> -->
         </p>
