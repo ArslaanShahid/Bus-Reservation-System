@@ -279,13 +279,12 @@ class User
     public function profile()
     {
         $obj_db = self::obj_db();
-        $query = " SELECT * from users u "
-            . " JOIN user_profiles up on up.user_id = u.id "
-            . " where u.id = $this->user_id " ;
+        $query ="SELECT * FROM users u "
+            . " JOIN user_profiles up on up.user_id = u.id"
+            . " WHERE u.id =$this->user_id ";
         $result = $obj_db->query($query);
         if ($obj_db->errno){
-        throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
-        }
+            throw new Exception("Select Error" - $obj_db->errno - $obj_db->error);        }
         $user_data = $result->fetch_object();
         // echo("<pre>");
         //    print_r($user_data);
@@ -351,7 +350,7 @@ class User
         $result = $obj_db->query($query);
         return $result;
         if($obj_db->errno){
-            throw new Exception("Update Error = $obj_db->errno - $obj_db->error");
+            throw new Exception("Update Error" . $obj_db->errno . $obj_db->error);
         }
     }
     public static function activateAccount($id){

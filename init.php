@@ -13,11 +13,8 @@ $public_pages = [
     BASE_FOLDER."index.php",
 ];
 $restricted_pages = [
-    BASE_FOLDER."account.php",
-    BASE_FOLDER."my_account.php",
     BASE_FOLDER."view_ticket.php",
     BASE_FOLDER."msg.php",
-    BASE_FOLDER."update_account.php",
 ];
 $current = $_SERVER['PHP_SELF'];
 

@@ -1,6 +1,6 @@
 <?php
-session_start();
 require_once 'init.php';
+session_start();
 require_once 'models/user.php';
 
 ?>
@@ -126,9 +126,8 @@ require_once 'models/user.php';
                         if (isset($_SESSION['obj_user'])) {
                             echo ("<a class='mamunur_rashid_top_book_btn' href='process/process_logout.php'>Logout</a>");
                         } else {
-                            echo ("<a class='mamunur_rashid_top_book_btn' href='login.php'>Login</a>");
+                            echo ("<a class='mamunur_rashid_top_book_btn' href='login.php'> Login</a>");
                         }
-
                         ?>
                     <?php
                         if (isset($_SESSION['obj_user'])) {
