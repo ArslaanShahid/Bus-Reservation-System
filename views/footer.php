@@ -26,32 +26,32 @@
 <!--End Body Wrap-->
 
 <!--jQuery JS-->
-<script src="assets/front/js/jquery.2.1.2.min.js"></script>
+<script src="<?php echo (BASE_URL); ?>assets/front/js/jquery.2.1.2.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!--Bootstrap JS-->
-<script src="assets/front/js/bootstrap.min.js"></script>
+<script src="<?php echo (BASE_URL); ?>assets/front/js/bootstrap.min.js"></script>
 <!--Counter JS-->
-<script src="assets/front/js/plugins/waypoints.js"></script>
-<script src="assets/front/js/plugins/jquery.counterup.min.js"></script>
+<script src="<?php echo (BASE_URL); ?>assets/front/js/plugins/waypoints.js"></script>
+<script src="<?php echo (BASE_URL); ?>assets/front/js/plugins/jquery.counterup.min.js"></script>
 
-<script src="assets/admin/js/toastr.min.js"></script>
-<script src="assets/admin/js/sweetalert.js"></script>
+<script src="<?php echo (BASE_URL); ?>assets/admin/js/toastr.min.js"></script>
+<script src="<?php echo (BASE_URL); ?>assets/admin/js/sweetalert.js"></script>
 
 
-<script src="assets/front/js/jquery.autocomplete.js"></script>
-<script src="assets/front/js/flatpickr.js"></script>
+<script src="<?php echo (BASE_URL); ?>assets/front/js/jquery.autocomplete.js"></script>
+<script src="<?php echo (BASE_URL); ?>assets/front/js/flatpickr.js"></script>
 
 <!--Owl Carousel JS-->
-<script src="assets/front/js/plugins/owl.carousel.min.js"></script>
+<script src="<?php echo (BASE_URL); ?>assets/front/js/plugins/owl.carousel.min.js"></script>
 <!--Venobox JS-->
-<script src="assets/front/js/plugins/venobox.min.js"></script>
+<script src="<?php echo (BASE_URL); ?>assets/front/js/plugins/venobox.min.js"></script>
 <!--Slick Slider JS-->
-<script src="assets/front/js/plugins/slick.min.js"></script>
+<script src="<?php echo (BASE_URL); ?>assets/front/js/plugins/slick.min.js"></script>
 <!--Main-->
-<script src="assets/js/select2.min.js"></script>
+<script src="<?php echo (BASE_URL); ?>assets/js/select2.min.js"></script>
 <script src="admin/assets/scripts/toastr.min.js"></script>
-<script src="assets/front/js/custom.js"></script>
-<script src="assets/front/js/jquery.seat-charts.min.js"></script>
+<script src="<?php echo (BASE_URL); ?>assets/front/js/custom.js"></script>
+<script src="<?php echo (BASE_URL); ?>assets/front/js/jquery.seat-charts.min.js"></script>
 
 <script>
     let ajax_loader = "<img src='assets/images/ajax-loader.gif' alt='logo' width='30'>";
@@ -216,7 +216,7 @@
             };
             $.ajax({
                 type: "post",
-                url: "process/process_booking.php",
+                url: "<?php echo (BASE_URL); ?>process/process_booking.php",
                 data: data,
                 dataType: 'JSON',
                 beforeSend: function(xhr) {

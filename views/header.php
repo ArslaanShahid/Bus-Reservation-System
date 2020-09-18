@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once 'init.php';
-require_once 'models/user.php';
 
 ?>
 <!DOCTYPE html>
@@ -31,29 +30,29 @@ require_once 'models/user.php';
     <!--Google Font-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,600i,700" rel="stylesheet">
     <!--Bootstrap Stylesheet-->
-    <link rel="stylesheet" type="text/css" href="assets/front/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo (BASE_URL); ?>assets/front/css/bootstrap.min.css">
 
     <!--Owl Carousel Stylesheet-->
-    <link rel="stylesheet" type="text/css" href="/assets/front/css/plugins/owl.carousel.min.html">
+    <link rel="stylesheet" type="text/css" href="<?php echo (BASE_URL); ?>assets/front/css/plugins/owl.carousel.min.html">
     <!--Slick Slider Stylesheet-->
-    <link rel="stylesheet" type="text/css" href="/assets/front/css/plugins/slick-theme.css">
-    <link rel="stylesheet" type="text/css" href="/assets/front/css/plugins/slick.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo (BASE_URL); ?>assets/front/css/plugins/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo (BASE_URL); ?>assets/front/css/plugins/slick.css">
     <!--Font Awesome Stylesheet-->
-    <link rel="stylesheet" type="text/css" href="/assets/front/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo (BASE_URL); ?>assets/front/css/font-awesome.min.css">
     <!--Animate Stylesheet-->
-    <link rel="stylesheet" type="text/css" href="/assets/front/css/plugins/animate.css">
-    <link href="assets/admin/css/toastr.min.css" rel="stylesheet" />
-    <link href="assets/admin/css/sweetalert.css" rel="stylesheet">
-    <link href="assets/css/select2.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo (BASE_URL); ?>assets/front/css/plugins/animate.css">
+    <link href="<?php echo (BASE_URL); ?>assets/admin/css/toastr.min.css" rel="stylesheet" />
+    <link href="<?php echo (BASE_URL); ?>assets/admin/css/sweetalert.css" rel="stylesheet">
+    <link href="<?php echo (BASE_URL); ?>assets/css/select2.min.css" rel="stylesheet">
     <!--Main Stylesheet-->
-    <link rel="stylesheet" href="/assets/front/css/style60da.css?color=1a76cc">
+    <link rel="stylesheet" href="<?php echo (BASE_URL); ?>assets/front/css/style60da.css?color=1a76cc">
     <!--Responsive Stylesheet-->
-    <link rel="stylesheet" type="text/css" href="/assets/front/css/homePageResponsive.css">
-    <link rel="stylesheet" type="text/css" href="/assets/front/css/jquery.autocomplete.css">
-    <link rel="stylesheet" type="text/css" href="/assets/front/css/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo (BASE_URL); ?>assets/front/css/homePageResponsive.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo (BASE_URL); ?>assets/front/css/jquery.autocomplete.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo (BASE_URL); ?>assets/front/css/flatpickr.min.css">
     <link href="admin/assets/css/toastr.min.css">
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="assets/front/css/seat-custom.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo (BASE_URL); ?>assets/front/css/seat-custom.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 </head>
@@ -69,9 +68,7 @@ require_once 'models/user.php';
                 <a class="navbar-brand" href="#">
                     <img src="/assets/images/logo/logo.png" alt="..">
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -84,13 +81,7 @@ require_once 'models/user.php';
                         <li class="nav-item">
                             <a class="nav-link " href="#">About </a>
                         </li>
-
-
-                        <li class="nav-item">
-                            <a class="nav-link " href="#">Blog</a>
-                        </li>
-
-
+                        
                         <li class="nav-item">
                             <a class="nav-link " href="#">Faq</a>
                         </li>
@@ -100,44 +91,35 @@ require_once 'models/user.php';
 
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle"href="#" id="navbarDropdown2" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Booking </a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Booking </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                                 <a class="dropdown-item" href="#">Ticket Cancel</a>
                                 <a class="dropdown-item" href="#">Print Download</a>
                             </div>
                         </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                <a class="dropdown-item" href="#">English</a>
-                            </div>
-                        </li>
                     </ul>
 
 
-                    <a class="mamunur_rashid_top_book_btn" href="search.php">Buy
+                    <a class="btn btn-primary" href="search.php">Buy
                         Ticket</a>
 
 
                     <?php
-                        if (isset($_SESSION['obj_user'])) {
-                            echo ("<a class='mamunur_rashid_top_book_btn' href='process/process_logout.php'>Logout</a>");
-                        } else {
-                            echo ("<a class='mamunur_rashid_top_book_btn' href='login.php'>Login</a>");
-                        }
+                    if (isset($_SESSION['obj_user'])) {
+                        echo ("<a class='btn btn-primary ml-4 mr-4' href='process/process_logout.php'>Logout</a>");
+                    } else {
+                        echo ("<a class='mamunur_rashid_top_book_btn' href='login.php'>Login</a>");
+                    }
 
-                        ?>
+                    ?>
                     <?php
-                        if (isset($_SESSION['obj_user'])) {
-                            echo ("<a class='mamunur_rashid_top_book_btn' href='my_account.php'>My Account</a>");
-                        } else {
-                            echo ("<a class='mamunur_rashid_top_book_btn' href='register.php'>Sign up</a>");
-                        }
+                    if (isset($_SESSION['obj_user'])) {
+                        echo ("<a class='btn btn-primary' href='my_account.php'>My Account</a>");
+                    } else {
+                        echo ("<a class='btn btn-primary' href='register.php'>Sign up</a>");
+                    }
 
-                        ?>
+                    ?>
                 </div>
             </div>
         </nav>
