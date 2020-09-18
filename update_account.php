@@ -1,20 +1,33 @@
 <?php
 require_once 'views/header.php';
 require_once 'models/Location.php';
+if (isset($_SESSION['obj_user'])) {
+    $obj_user = unserialize($_SESSION['obj_user']);
+} else {
+    $obj_user = new User();
+}
 $obj_user->profile();
-
 ?>
-<br>
-<br>
-<br>
-<br>
-<h1 class="text-center">Update Account</h1>
-
-<br>
 
 
-<body class="body-class index-1">
-    <div id="body-wrap">
+<body class="body-class bc blog">
+
+<section id="breadcrumb">
+    <div class="overly"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 text-center">
+                <div class="breadcrumbinfo">
+                    <article>
+                        <h2>Update Account</h2>
+                        <a href="index.php">Home</a> <span>/</span>
+                        <a class="active" href="index.php">Update Account</a>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
         <div class="table-responsive">
             <div class="container">

@@ -14,8 +14,6 @@ $public_pages = [
 ];
 
 $restricted_pages = [
-    BASE_FOLDER."account.php",
-    BASE_FOLDER."my_account.php",
     BASE_FOLDER."view_ticket.php",
     BASE_FOLDER."update_account.php",
 ];
