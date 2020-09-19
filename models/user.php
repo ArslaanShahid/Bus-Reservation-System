@@ -230,7 +230,7 @@ class User
             . " (NULL, '$this->user_name', '$this->email', '$this->password','$now')";
         $obj_db->query($query);
         if ($obj_db->errno == 1062) {
-            throw new Exception("User Name" . $this->user_name . "Already Exist");
+            throw new Exception("User Name " . $this->user_name . "  Already Exist ");
         }
         if ($obj_db->errno) {
             throw new Exception("Query Insert Error" . $obj_db->errno . $obj_db->error);

@@ -17,7 +17,7 @@ require_once 'views/header.php';
                         <div class="breadcrumbinfo">
                             <article>
                                 <h2>Success Message</h2>
-                                <a href="index.php">Home</a> <span>/</span>
+                                <a href="<?php echo (BASE_URL); ?>index.php">Home</a> <span>/</span>
                             </article>
                         </div>
                     </div>

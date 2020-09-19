@@ -8,8 +8,6 @@ if (isset($_SESSION['obj_user'])) {
 }
 $obj_user->profile();
 ?>
-
-
 <body class="body-class bc blog">
 
 <section id="breadcrumb">
@@ -28,7 +26,8 @@ $obj_user->profile();
         </div>
     </div>
 </section>
-
+<br>
+<br>
         <div class="table-responsive">
             <div class="container">
 
@@ -46,7 +45,7 @@ $obj_user->profile();
                     <div class="signup-form">
                         <!--sign up form-->
 
-                        <form id="c-form" action="process/process_update_account.php" method="post">
+                        <form id="c-form" action="<?php echo (BASE_URL); ?>process/process_update_account.php" method="post">
                         <input type="hidden" id="city" value="<?php echo ($obj_user->city_id); ?>">
                             <div class="form-group col-md-8">
                                 <label for="first_name">First Name:</label>
@@ -175,6 +174,7 @@ $obj_user->profile();
         </div>
     </div>
     </div>
+    <br>
 </body>
 
 <?php
@@ -200,7 +200,7 @@ require_once 'views/footer.php';
                 dataType: 'JSON',
                 type: 'POST',
                 beforeSend: function(xhr) {
-                    $(".state_id").html("<img src ='assets/images/ajax-loader.gif' alt='loader' width='20px' height='20px'>");
+                    $(".state_id").html("<img src ='<?php echo (BASE_URL); ?>assets/images/ajax-loader.gif' alt='loader' width='20px' height='20px'>");
                 },
                 complete: function(jqXHR, textStatus) {
                     if (jqXHR.status == 200) {
@@ -237,7 +237,7 @@ require_once 'views/footer.php';
             dataType: 'JSON',
             type: 'POST',
             beforeSend: function(xhr) {
-                $(".state_id").html("<img src ='assets/images/ajax-loader.gif' alt='loader' width='20px' height='20px'>");
+                $(".state_id").html("<img src ='<?php echo (BASE_URL); ?>assets/images/ajax-loader.gif' alt='loader' width='20px' height='20px'>");
             },
             complete: function(jqXHR, textStatus) {
                 if (jqXHR.status == 200) {

@@ -2,7 +2,6 @@
 // session_start();
 require_once('models/user.php');
 require_once('views/header.php');
-
 ?>
     <body class="body-class bc blog">
 
@@ -14,8 +13,8 @@ require_once('views/header.php');
                 <div class="breadcrumbinfo">
                     <article>
                         <h2>Sign In</h2>
-                        <a href="index.html">Home</a> <span>/</span>
-                        <a class="active" href="login.html">Sign In</a>
+                        <a href="<?php echo (BASE_URL); ?>index.php">Home</a> <span>/</span>
+                        <a class="active" href="<?php echo (BASE_URL); ?>login.php">Sign In</a>
                     </article>
                 </div>
             </div>
@@ -54,7 +53,7 @@ require_once('views/header.php');
 
                 </h3>
                 <div class="col-lg-8 offset-2 contact-form">
-                    <form id="c-form" action="/process/process_login.php" method="post">
+                    <form id="c-form" action="<?php echo (BASE_URL); ?>process/process_login.php" method="post">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -64,7 +63,7 @@ require_once('views/header.php');
                                         <span>
                                             <?php
                                             if (isset($errors['user_name'])) {
-                                                echo ($errors['user_name']);
+                                                echo ($errors['user_name ']);
                                             }
 
                                             ?>
@@ -95,7 +94,7 @@ require_once('views/header.php');
 
                         <div class="form-row  margin-top-30">
                             <div class="col-md-6">
-                                <a href="password/reset.html" class="lostpass">Forgot Password</a>
+                                <a href="#" class="lostpass">Forgot Password</a>
                             </div>
                             <div class="col-6 text-center">
                                 <a href="register.php" class="loginwith">Create an Account</a>

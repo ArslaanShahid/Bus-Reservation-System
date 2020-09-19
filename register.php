@@ -47,7 +47,7 @@ require_once('views/header.php');
                     </h2>
                     <div class="row contact-form-area">
                         <div class="col-lg-8 offset-2 contact-form">
-                            <form id="c-form" action="process/process_signup.php" method="post">
+                            <form id="c-form" action="<?php echo (BASE_URL); ?>process/process_signup.php" method="post">
                                 <div class="row">
                                 
 
@@ -121,7 +121,7 @@ require_once('views/header.php');
                                 <div class="form-row margin-top-30">
                                     <div class="col-md-6">
                                         <span>Already Registered
-                                            <a href="login.php" class="lostpass">Sign In</a></span>
+                                            <a href="<?php echo (BASE_URL); ?>login.php" class="lostpass">Sign In</a></span>
                                     </div>
                                 </div>
                             </form>

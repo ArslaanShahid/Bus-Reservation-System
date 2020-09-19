@@ -33,7 +33,8 @@ session_start();
     <link rel="stylesheet" type="text/css" href="<?php echo (BASE_URL); ?>assets/front/css/bootstrap.min.css">
 
     <!--Owl Carousel Stylesheet-->
-    <link rel="stylesheet" type="text/css" href="<?php echo (BASE_URL); ?>assets/front/css/plugins/owl.carousel.min.html">
+    <link rel="stylesheet" type="text/css"
+        href="<?php echo (BASE_URL); ?>assets/front/css/plugins/owl.carousel.min.html">
     <!--Slick Slider Stylesheet-->
     <link rel="stylesheet" type="text/css" href="<?php echo (BASE_URL); ?>assets/front/css/plugins/slick-theme.css">
     <link rel="stylesheet" type="text/css" href="<?php echo (BASE_URL); ?>assets/front/css/plugins/slick.css">
@@ -65,40 +66,68 @@ session_start();
     <div id="main-menu">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="#">
-                    <img src="/assets/images/logo/logo.png" alt="..">
+                <a class="navbar-brand" href="<?php echo(BASE_URL);?>index.php">
+                    <img src="<?php echo(BASE_URL);?>assets/images/logo/logo.png" alt="..">
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-5">
                         <li class="nav-item">
-                            <a class="nav-link   active " href="index.php">Home</a>
+                            <a class="nav-link active " href="index.php">Home</a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link " href="#">About </a>
                         </li>
+
                         
                         <li class="nav-item">
-                            <a class="nav-link " href="#">Faq</a>
+                            <a class="nav-link " href="<?php echo(BASE_URL); ?>faqs.php">Faq</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="contact.php">Contact</a>
                         </li>
 
 
+
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Booking </a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Booking </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                                 <a class="dropdown-item" href="#">Ticket Cancel</a>
                                 <a class="dropdown-item" href="#">Print Download</a>
                             </div>
                         </li>
                     </ul>
-
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                 
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    
 
                     <a class="btn btn-primary" href="search.php">Buy
                         Ticket</a>
@@ -108,19 +137,14 @@ session_start();
                     if (isset($_SESSION['obj_user'])) {
                         echo ("<a class='btn btn-primary ml-4 mr-4' href='process/process_logout.php'>Logout</a>");
                     } else {
-                        echo ("<a class='mamunur_rashid_top_book_btn' href='login.php'>Login</a>");
+                        echo ("<a class='btn btn-primary ml-4 mr-4' href='login.php'>Login</a>");
                     }
 
                     ?>
-                        if (isset($_SESSION['obj_user'])) {
-                            echo ("<a class='mamunur_rashid_top_book_btn' href='process/process_logout.php'>Logout</a>");
-                        } else {
-                            echo ("<a class='mamunur_rashid_top_book_btn' href='login.php'> Login</a>");
-                        }
-                        ?>
+
                     <?php
                     if (isset($_SESSION['obj_user'])) {
-                        echo ("<a class='btn btn-primary' href='my_account.php'>My Account</a>");
+                        echo ("<a class='btn btn-primary' href='account.php'>My Account</a>");
                     } else {
                         echo ("<a class='btn btn-primary' href='register.php'>Sign up</a>");
                     }

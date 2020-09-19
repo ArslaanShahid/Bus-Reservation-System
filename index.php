@@ -179,7 +179,10 @@ $cities = Location::allCities();
                         </article>
                     </div>
                 </div>
+            
+            
             </div>
+            
         </div>
     </section>
     <!-- =============== popular Destinations End ================= -->

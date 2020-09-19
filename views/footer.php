@@ -54,7 +54,7 @@
 <script src="<?php echo (BASE_URL); ?>assets/front/js/jquery.seat-charts.min.js"></script>
 
 <script>
-    let ajax_loader = "<img src='assets/images/ajax-loader.gif' alt='logo' width='30'>";
+    let ajax_loader = "<?php echo (BASE_URL); ?><img src='assets/images/ajax-loader.gif' alt='logo' width='30'>";
 
     $(document).ready(function(e) {
         $('#arrival').select2();
@@ -231,7 +231,7 @@
                             $(".loader").html('');
                         }
                     } else {
-                        toastr.error("Opps Something Went Wrong Contact Admin");
+                        toastr.error("Something Went Wrong Contact Admin");
                     }
                 }
 

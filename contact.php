@@ -15,8 +15,8 @@ require_once ('views/header.php');
                         <div class="breadcrumbinfo">
                             <article>
                                 <h2>Contact Us</h2>
-                                <a href="index.php">Home</a> <span>/</span>
-                                <a class="active" href="contact-us.html">Contact Us</a>
+                                <a href="<?php echo (BASE_URL); ?>index.php">Home</a> <span>/</span>
+                                <a class="active" href="<?php echo (BASE_URL); ?>contact.php">Contact Us</a>
                             </article>
                         </div>
                     </div>
@@ -62,7 +62,7 @@ require_once ('views/header.php');
                         </div>
                     </div>
                 </div>
-                <form id="c-form" action="process/process_user_queries.php" method="post">
+                <form id="c-form" action="<?php echo (BASE_URL); ?>process/process_user_queries.php" method="post">
                     <div class="row">
                         <div class="col-md-12">
                             <input type="text" class="form-control" placeholder="Enter Your Name" name="name">
