@@ -1,10 +1,9 @@
 <?php
-require_once '../init.php';
-require_once '../../models/Route.php';
-require_once '../../models/Bus.php';
-require_once '../views/header.php';
-require_once '../views/layoutoption.php';
-require_once '../views/sidebar.php';
+require_once '../models/Route.php';
+require_once '../models/Bus.php';
+require_once 'views/header.php';
+require_once 'views/layoutoption.php';
+require_once 'views/sidebar.php';
 ?>
 
 <div class="app-page-title">
@@ -37,11 +36,11 @@ require_once '../views/sidebar.php';
                     ?>
                 </span>
                 <h5 class="card-title">Report Type </h5>
-                <form class="form-group <?php if (isset($errors['user_name'])) {echo ("has-error");}?>">
+                <div class="form-group <?php if (isset($errors['user_name'])) {echo ("has-error");}?>">
                     <div class="position-relative form-group">
                         <select name="select" id="report" class="form-control">
                             <option value="0">--Select Report--</option>
-                            <option value="1">1.Daily Route Report</option>
+                            <option value="1">1. Daily Route Report</option>
                             <option value="2">2. Daily Booking Report</option>
                             <option value="4">4. Weekly Booking Report</option>
                             <option value="7">7. Yearly Booking Report</option>
@@ -53,14 +52,14 @@ require_once '../views/sidebar.php';
                             <option value="11">11. Employee Report</option>
                         </select>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 
 </div>
 <div class="data">
-    <input type="button">
+    
 </div>
 <?php
 require_once 'views/footer.php';
@@ -95,10 +94,7 @@ require_once 'views/footer.php';
                 output += "<div class='col-md-10'>";
                 output += "<select class='form-control' style='margin-top:10px;' name='user_id'>";
                 output += "<option value=''>--Select User--</option>";
-                output += "<?php $users = User::count_use_reg();
-                            foreach ($user as $users) {
-                                echo ("<option value='" . $user->user_id . "'>" . $user->user_name . "</option>");
-                            } ?> ";
+                
                 output += "</select>";
                 output += "</div>";
                 output += "</div>"
@@ -167,10 +163,7 @@ require_once 'views/footer.php';
                 output += "<div class='col-md-10'>";
                 output += "<select class='form-control' style='margin-top:10px;' name='product_id'>";
                 output += "<option value=''>--Select Product--</option>";
-                output += "<?php $products = Product::showAllProductsAdmin();
-                            foreach ($products as $product) {
-                                echo ("<option value='" . $product->product_id . "'>" . $product->product_name . "</option>");
-                            } ?> ";
+                
                 output += "</select>";
                 output += "</div>";
                 output += "</div>";
@@ -197,10 +190,7 @@ require_once 'views/footer.php';
                 output += "<div class='col-md-10'>";
                 output += "<select class='form-control' style='margin-top:10px;' name='product_id'>";
                 output += "<option value=''>--Select Product--</option>";
-                output += "<?php $products = Product::showAllProductsAdmin();
-                            foreach ($products as $product) {
-                                echo ("<option value='" . $product->product_id . "'>" . $product->product_name . "</option>");
-                            } ?> ";
+                
                 output += "</select>";
                 output += "</div>";
                 output += "</div>";
@@ -227,10 +217,7 @@ require_once 'views/footer.php';
                 output += "<div class='col-md-10'>";
                 output += "<select class='form-control' style='margin-top:10px;' name='product_id'>";
                 output += "<option value=''>--Select Product--</option>";
-                output += "<?php $products = Product::showAllProductsAdmin();
-                            foreach ($products as $product) {
-                                echo ("<option value='" . $product->product_id . "'>" . $product->product_name . "</option>");
-                            } ?> ";
+
                 output += "</select>";
                 output += "</div>";
                 output += "</div>";

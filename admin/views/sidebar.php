@@ -118,7 +118,7 @@
                     </li>
                     <li class="app-sidebar__heading">Reports</li>
                     <li>
-                        <a href="report/index.php">
+                        <a href="report.php">
                             <i class="metismenu-icon fa fa-list-alt"></i>
                             View Reports
                         </a>
