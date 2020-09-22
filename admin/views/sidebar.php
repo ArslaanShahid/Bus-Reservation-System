@@ -116,6 +116,13 @@
                             View Booking
                         </a>
                     </li>
+                    <li class="app-sidebar__heading">Reports</li>
+                    <li>
+                        <a href="report/index.php">
+                            <i class="metismenu-icon fa fa-list-alt"></i>
+                            View Reports
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
