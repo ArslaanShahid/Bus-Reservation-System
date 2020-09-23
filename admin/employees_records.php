@@ -27,6 +27,7 @@ require_once 'views/sidebar.php';
                         <th>Job</th>
                         <th>Gender</th>
                         <th>Start Date</th>
+                        <th>Salary</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +44,8 @@ foreach($employees as $employee){
   echo("<td>". $employee->type . "</td>");  
   echo("<td>". $employee->gender . "</td>");
   echo("<td>". $employee->reg_date . "</td>"); 
+  echo("<td>". $employee->salary . "</td>"); 
+  
   echo("</tr>");
   $i++;
 }

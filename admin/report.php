@@ -40,16 +40,16 @@ require_once 'views/sidebar.php';
                     <div class="position-relative form-group">
                         <select name="select" id="report" class="form-control">
                             <option value="0">--Select Report--</option>
-                            <option value="1">1. Daily Route Report</option>
+                            <option value="1">1. Daily Bus Report</option>
                             <option value="2">2. Daily Booking Report</option>
+                            <option value="3">3. Employees Report</option>
                             <option value="4">4. Weekly Booking Report</option>
                             <option value="7">7. Yearly Booking Report</option>
                             <option value="3">3. Daily Sales Report</option>
                             <option value="5">5. Seats Report</option>
                             <option value="8">8. Cancel Booking</option>
                             <option value="9">9. Refund Report</option>
-                            <option value="10">10. Bus Report</option>
-                            <option value="11">11. Employee Report</option>
+                            <option value="10">10.Employees Report</option>
                         </select>
                     </div>
                 </div>
@@ -70,19 +70,19 @@ require_once 'views/footer.php';
             var val = $(this).val();
             if (val == 1) {
                 var output = "";
-                output += "<form action='/view_bus.php' method='post'>";
+                output += "<form action='reports/bus_report.php' method='post'>";
                 output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 2) {
                 var output = "";
-                output += "<form action='<?php echo (BASE_URL); ?>reports/product_stock_report.php' method='post'>";
+                output += "<form action='<?php echo (BASE_URL); ?>reports/daily_booking_report.php' method='post'>";
                 output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 3) {
                 var output = "";
-                output += "<form action='<?php echo (BASE_URL); ?>reports/order_daily_report.php' method='post'>";
+                output += "<form action='<?php echo (BASE_URL); ?>reports/employees_report.php' method='post'>";
                 output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
                 $(".data").html(output);

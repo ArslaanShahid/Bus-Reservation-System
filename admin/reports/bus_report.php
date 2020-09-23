@@ -1,6 +1,6 @@
 <?php
-require_once "../../models/Bus.php";
 require_once "views/header.php";
+require_once "../../models/Bus.php";
 ?>
 <table class="table table-striped">
     <thead>
@@ -29,8 +29,8 @@ require_once "views/header.php";
         $i++;
     }
     ?>
-
 </table>
+
 <?php
-require_once "views/footer.php";
+require_once 'views/footer.php';
 ?>

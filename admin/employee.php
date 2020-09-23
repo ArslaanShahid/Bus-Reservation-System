@@ -113,7 +113,18 @@ require_once 'views/sidebar.php';
                     ?>
 
                 </div>
+                <div class="form-row">
+                    <div class="col-md-7 mb-3">
+                        <label for="Salary">Salary</label>
+                        <input type="text" class="form-control" id="salary" name="salary" placeholder="Enter Salary">
 
+                    </div>
+                    <?php
+                    if (isset($errors['salary'])) {
+                        echo ($errors['salary']);
+                    }
+                    ?>
+                </div>
                 <button class="btn btn-primary" type="submit">Add Employee</button>
             </form>
     </div>

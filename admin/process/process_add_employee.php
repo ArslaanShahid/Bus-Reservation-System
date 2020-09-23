@@ -1,10 +1,10 @@
 <?php
 session_start();
-require_once '../models/Employee.php';
+require_once '../../models/Employee.php';
 $obj_emp = new Employee();
 $errors = [];
 
-// die($_POST['gender']);
+// die($_POST['salary']);
 
 
 try {
@@ -37,6 +37,11 @@ try {
     $obj_emp->gender = $gender;
 } catch (Exception $ex) {
     $errors['gender'] = $ex->getMessage();
+}
+try {
+    $obj_emp->salary = $_POST ['salary'];
+}catch(Exception $ex){
+    $errors['salary'] = $ex->getMessage();
 }
 
 if (count($errors) == 0) {

@@ -95,7 +95,21 @@ require_once('views/header.php');
                                     <div class="col-md-12">
                                         <div class="margin-bottom-20"></div>
                                     </div>
-
+                                    <div class="col-md-12">
+                                        <h5>CNIC</h5>
+                                        <input type="" name="cnic" class="form-control" placeholder="Enter CNIC No XXXX-XXXXXXX-X " />
+                                        <span class="text-danger">
+                                                <!-- @@@ -->
+                                                <?php
+                                                if (isset($errors['cnic'])) {
+                                                    echo ($errors['cnic']);
+                                                }
+                                                ?>
+                                            </span>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="margin-bottom-20"></div>
+                                    </div>
                                     <div class="col-md-12">
                                         <h5>Password</h5>
                                         <input type="password" name="password" class="form-control" placeholder="Enter Password" />
@@ -108,7 +122,7 @@ require_once('views/header.php');
                                                 ?>
                                             </span>
                                     </div>
-
+                                                    
 
                                     <div class="col-md-12">
                                         <div class="margin-bottom-30"></div>

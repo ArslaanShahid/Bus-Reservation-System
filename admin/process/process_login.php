@@ -29,13 +29,13 @@ if(count($errors)==0){
         header("Location:../index.php");
     }
     catch(Exception $ex){
-        $msg=$ex->getMessage();
-        $_SESSION['msg'] = $msg;
+        $msg= $ex->getMessage();
+        $_SESSION['msg']=$msg;
         header("Location:../login.php");
     }
 }
 else{
-    $_SESSION['msg'] = "Check Your Errors";
-    $_SESSION['errors'] = $errors;
+    $_SESSION ['error'] = "Check your Errors";
+    $_SESSION ['errors'] = $errors;
     header("Location:../login.php");
 }

@@ -39,7 +39,10 @@ class Booking {
 
     public static function showBooking(){
         $obj_db = self::obj_db();
-        $query = " SELECT * FROM bookings";
+        $query = " SELECT * FROM bookings 
+        JOIN booked_seats JOIN routes
+        WHERE routes.id = bookings.route_id 
+        && bookings.id = booked_seats.booking_id";
         $result = $obj_db->query($query);
         if ($obj_db->errno) {
             throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
@@ -101,6 +104,7 @@ class Booking {
 
         return $response;
     }
+   
 }
 
 

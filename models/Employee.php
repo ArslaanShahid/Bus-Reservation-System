@@ -11,6 +11,7 @@ Class Employee{
     private $date_of_birth;
     private $gender;
     private $mobile_no;
+    private $salary;
 
     public function __set($name, $value)
     {
@@ -99,13 +100,23 @@ Class Employee{
         return $this->type;
     }
 
+    private function setSalary($salary){
+        $salary = trim($salary);
+        if($salary == ""){
+            throw new Exception ("Salary is Missing");
+        }
+        $this->salary=$salary;
+    }
+    private function getSalary(){
+        return $this->salary;
+    }
     public function addEmp(){
     $obj_db = self::obj_db();
     $now = date("Y-m-d H:i:s");
     $query = "INSERT into employees "
-    ."(`id`,`name`,`gender`, `type` ,`address` , `mobile_no`, `reg_date`)"
+    ."(`id`,`name`,`gender`, `type` ,`address` , `mobile_no`, `reg_date` , `salary`)"
     . " values "
-    . "( NULL , '$this->name' , '$this->gender' , '$this->type' , '$this->address' , '$this->mobile_no' , '$now')";
+    . "( NULL , '$this->name' , '$this->gender' , '$this->type' , '$this->address' , '$this->mobile_no' , '$now' , '$this->salary')";
     $obj_db->query($query);
     if($obj_db->errno){
         throw new Exception("Query Insert Error ". $obj_db->errno. $obj_db->error);

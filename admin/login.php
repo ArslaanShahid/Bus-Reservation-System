@@ -2,7 +2,6 @@
 <?php
 session_start();
 require_once('../models/Admin.php');
-
 ?>
 
 <html>
@@ -11,17 +10,11 @@ require_once('../models/Admin.php');
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Log in</title>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="assets/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="assets/css/all.min.css">
-  <!-- Theme style -->
   <link rel="stylesheet" href="assets/css/adminlte.min.css">
 
 
@@ -38,28 +31,29 @@ require_once('../models/Admin.php');
     <h2 class="text-danger">
       <?php
 
-      if(isset($_SESSION['msg'])){
-        echo ($_SESSION['msg']);
-        unset($_SESSION['msg']);
-      }
-      if(isset($_SESSION['errors'])){
-        $errors = $_SESSION['errors'];
-        unset($_SESSION['errors']);
-      }
+if (isset($_SESSION['msg'])) {
+  echo ($_SESSION['msg']);
+  unset($_SESSION['msg']);
+}
+if (isset($_SESSION['errors'])) {
+  $errors = $_SESSION['errors'];
+  unset($_SESSION['errors']);
+}
 
 
-    ?>
+?>
+
+
     </h2>
     <div class="card">
-      <div class="card-body login-card-body">
+      <div class="card-body login-card-body ">
         <p class="login-box-msg">Sign in to your Admin Panel</p>
-
         <form action="process/process_login.php" method="post">
           <div class="input-group mb-3">
             <input type="text" name="user_name"  class="form-control" placeholder="Username">
             <div class="input-group-append">
               <div class="input-group-text">
-                <!-- <span class="fa fa-user-circle"></span> -->
+                <span class="fa fa-user"></span>
               </div>
             </div>
             
@@ -78,7 +72,7 @@ require_once('../models/Admin.php');
             <input type="password" name="password" value="" class="form-control" placeholder="Password">
             <div class="input-group-append">
               <div class="input-group-text">
-                <!-- <span class="fas fa-lock"></span> -->
+                <i class="metismenu-icon fa fa-lock"></i>
               </div>
             </div>
           </div>
@@ -100,9 +94,11 @@ require_once('../models/Admin.php');
                 <label for="remember">
                   Remember Me
                 </label>
+                
               </div>
             </div>
             <!-- /.col -->
+            
             <div class="col-12">
               <button type="submit" class="btn btn-primary btn-block">Sign In</button>
             </div>
@@ -115,21 +111,43 @@ require_once('../models/Admin.php');
         <!-- <p class="mb-1">
           <a href="#">I forgot my password</a>
         </p> -->
-        <p class="mb-0">
-          <!-- <a href="register.html" class="text-center">Register a new membership</a> -->
-        </p>
+        
       </div>
+      <p class="mb-2 text-center">
+          <i class="fa fa-copyright"><strong> Designed & Developed By Team Unity</strong> </i>
+        </p>
       <!-- /.login-card-body -->
     </div>
   </div>
   <!-- /.login-box -->
 
   
-  <!-- <script src="assets/script/jquery.min.js"></script>
+   <script src="assets/scripts/jquery.min.js"></script>
  
-  <script src="assets/script/bootstrap.bundle.min.js"></script>
+  <script src="assets/scripts/bootstrap.bundle.min.js"></script>
  
-  <script src="assets/script/adminlte.min.js"></script>  -->
+  <script src="assets/scripts/adminlte.min.js"></script>
+  <script src="assets/scripts/toastr.min.js"></script>
+  
+  <script>
+    toastr.options.closeButton = true;
+    toastr.options.preventDuplicate = true;
+    toastr.options.progressBar = true;
+    <?php
+    if (isset($_SESSION['success'])) {
+        echo ("toastr.success('" . $_SESSION['success'] . "')");
+        unset($_SESSION['success']);
+    }
+    if (isset($_SESSION['error'])) {
+        echo ("toastr.error('" . $_SESSION['error'] . "')");
+        unset($_SESSION['error']);
+    }
+    if (isset($_SESSION['info'])) {
+        echo ("toastr.info('" . $_SESSION['info'] . "')");
+        unset($_SESSION['info']);
+    }
+    ?>
+</script>
 
 </body>
 

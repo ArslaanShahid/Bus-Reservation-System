@@ -6,6 +6,7 @@ class User
     use DbTrait;
     private $user_name;
     private $email;
+    private $cnic;
     private $password;
     private $user_id;
     private $loggedin;
