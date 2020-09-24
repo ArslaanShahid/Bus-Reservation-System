@@ -88,7 +88,7 @@ require_once 'views/footer.php';
                 $(".data").html(output);
             } else if (val == 4) {
                 var output = "";
-                output += "<form action='<?php echo (BASE_URL); ?>reports/user_order_report.php' method='post'>";
+                output += "<form action='<?php echo (BASE_URL); ?>reports/weekly_booking_report.php' method='post'>";
                 output += "<div class='form-group' >";
                 output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
