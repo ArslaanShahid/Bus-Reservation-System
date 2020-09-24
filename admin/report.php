@@ -36,7 +36,9 @@ require_once 'views/sidebar.php';
                     ?>
                 </span>
                 <h5 class="card-title">Report Type </h5>
-                <div class="form-group <?php if (isset($errors['user_name'])) {echo ("has-error");}?>">
+                <div class="form-group <?php if (isset($errors['user_name'])) {
+                                            echo ("has-error");
+                                        } ?>">
                     <div class="position-relative form-group">
                         <select name="select" id="report" class="form-control">
                             <option value="0">--Select Report--</option>
@@ -59,7 +61,7 @@ require_once 'views/sidebar.php';
 
 </div>
 <div class="data">
-    
+
 </div>
 <?php
 require_once 'views/footer.php';
@@ -88,7 +90,7 @@ require_once 'views/footer.php';
                 $(".data").html(output);
             } else if (val == 4) {
                 var output = "";
-                output += "<form action='<?php echo (BASE_URL); ?>reports/user_order_report.php' method='post'>";
+                output += "<form action='<?php echo (BASE_URL); ?>reports/weekly_booking_report.php' method='post'>";
                 output += "<div class='form-group' >";
                 output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
@@ -155,7 +157,7 @@ require_once 'views/footer.php';
                 output += "<div class='col-md-10'>";
                 output += "<select class='form-control' style='margin-top:10px;' name='product_id'>";
                 output += "<option value=''>--Select Product--</option>";
-                
+
                 output += "</select>";
                 output += "</div>";
                 output += "</div>";
@@ -182,7 +184,7 @@ require_once 'views/footer.php';
                 output += "<div class='col-md-10'>";
                 output += "<select class='form-control' style='margin-top:10px;' name='product_id'>";
                 output += "<option value=''>--Select Product--</option>";
-                
+
                 output += "</select>";
                 output += "</div>";
                 output += "</div>";

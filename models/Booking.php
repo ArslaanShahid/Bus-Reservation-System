@@ -132,6 +132,7 @@ class Booking
         $sunday = strtotime(date("Y-m-d", $monday) . " +6 days");
         $start_date = date("Y-m-d", $monday);
         $end_date = date("Y-m-d", $sunday);
+        
         $query = " SELECT * FROM bookings  where date between " 
         ." '$start_date' AND '$end_date' "; 
         $result = $obj_db->query($query);
