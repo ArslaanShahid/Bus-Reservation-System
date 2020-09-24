@@ -90,14 +90,6 @@ require_once 'views/footer.php';
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/user_order_report.php' method='post'>";
                 output += "<div class='form-group' >";
-                output += "<label for='input-rounded' class='col-sm-2 control-label'>Select User</label>";
-                output += "<div class='col-md-10'>";
-                output += "<select class='form-control' style='margin-top:10px;' name='user_id'>";
-                output += "<option value=''>--Select User--</option>";
-                
-                output += "</select>";
-                output += "</div>";
-                output += "</div>"
                 output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
                 $(".data").html(output);

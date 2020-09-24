@@ -10,7 +10,6 @@ require_once "../../models/Booking.php";
             <td>Contact No</td>
             <td>CNIC</td>
             <td>Gender</td>
-            <td>Seats</td>
             <td>Total Fare</td>
             <td>Date</td>
 
@@ -18,15 +17,16 @@ require_once "../../models/Booking.php";
     </thead>
     <?php
     $i = 1;
-    $bookings = Booking::dailyBooking();
-    foreach ($bookings as $booking) {
+    $bookings = Booking::weeklyBooking();
+    if(count($bookings) == 0) {
+        echo("<tr><td colspan='7' class='text-center'>No Booking Found</td></tr>");
+    }else foreach ($bookings as $booking) {
         echo ("<tr>");
         echo ("<td>" . $i . "</td>");
         echo ("<td>" . $booking->name . "</td>");
         echo ("<td>" . $booking->contact_no . "</td>");
         echo ("<td>" . $booking->cnic . "</td>");
         echo ("<td>" . $booking->gender . "</td>");
-        echo ("<td>" . $booking->seat_no . "</td>");
         echo ("<td>" . $booking->total_fare . "</td>");
         echo ("<td>" . $booking->date . "</td>");
         $i++;
