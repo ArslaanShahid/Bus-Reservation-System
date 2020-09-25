@@ -7,7 +7,7 @@ $errors = [];
 
 // // die($_POST['password']);
 // die($_POST['last_name']);
-// die($_POST['first_name']);
+// die($_POST['cnic']);
 
 
 try {
@@ -24,6 +24,11 @@ try {
     $obj_user->password = $_POST['password'];
 } catch (Exception $ex) {
     $errors['password'] = $ex->getMessage();
+}
+try {
+    $obj_user->cnic = $_POST['cnic'];
+} catch (Exception $ex) {
+    $errors['cnic'] = $ex->getMessage();
 }
 if(count($errors)==0){
     try{

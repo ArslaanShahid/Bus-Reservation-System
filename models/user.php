@@ -125,6 +125,18 @@ class User
     {
         return $this->mobile_no;
     }
+    private function setCnic($cnic)
+    {
+        $reg = "/^\d{5}\-\d{6}\-\d{1}$/";
+        if (!preg_match($reg, $cnic)) {
+            throw new Exception("Invalid/ Missing CNIC");
+        }
+        $this->cnic = cnic;
+    }
+    private function getCnic()
+    {
+        return $this->cnic;
+    }
     private function setGender($gender)
     {
         $genders = ['male', 'female'];
@@ -226,9 +238,9 @@ class User
         $obj_db = self::obj_db();
         $now = date("Y-m-d H:i:s");
         $query = "INSERT into users"
-            . "(`id`, `user_name`, `email`,`password`, `signup_date`)"
+            . "(`id`, `user_name`, `email`,`cnic` ,`password`, `signup_date`)"
             . " values "
-            . " (NULL, '$this->user_name', '$this->email', '$this->password','$now')";
+            . " (NULL, '$this->user_name', '$this->email', '$this->cnic', '$this->password','$now')";
         $obj_db->query($query);
         if ($obj_db->errno == 1062) {
             throw new Exception("User Name " . $this->user_name . "  Already Exist ");
@@ -282,10 +294,10 @@ class User
         $obj_db = self::obj_db();
         $query ="SELECT * FROM users u "
             . " JOIN user_profiles up on up.user_id = u.id"
-            . " WHERE u.id =$this->user_id ";
+            . " WHERE u.id = $this->user_id ";
         $result = $obj_db->query($query);
         if ($obj_db->errno){
-            throw new Exception("Select Error" - $obj_db->errno - $obj_db->error);        }
+            throw new Exception("Select Error" - $obj_db->errno - $obj_db->error); }
         $user_data = $result->fetch_object();
         // echo("<pre>");
         //    print_r($user_data);
