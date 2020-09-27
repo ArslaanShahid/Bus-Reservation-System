@@ -20,7 +20,7 @@ class Route
     {
         $method = "set" . $name;
         if (!method_exists($this, $method)) {
-            throw new Exception("set property $name does'nt Exist");
+            throw new Exception("set property $name doesn't Exist");
         }
         $this->$method($value);
     }
@@ -28,7 +28,7 @@ class Route
     {
         $method = "get" . $name;
         if (!method_exists($this, $method)) {
-            throw new Exception("set property $name does'nt Exist");
+            throw new Exception("set property $name doesn't Exist");
         }
         return $this->$method();
     }

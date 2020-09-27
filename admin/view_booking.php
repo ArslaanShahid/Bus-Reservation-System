@@ -21,7 +21,7 @@ require_once 'views/sidebar.php';
                         <th>Name</th>
                         <th>Contact No</th>
                         <th>CNIC</th>
-                        <th>Gender</th>
+                    <th>Gender</th>
                         <th>Contact No</th>
                         <th>Total Fare</th>
                         <th>Date</th>

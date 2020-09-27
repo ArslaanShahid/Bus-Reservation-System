@@ -18,7 +18,7 @@ require_once('views/header.php');
                             <article>
                                 <h2>Sign Up</h2>
                                 <a href="index.html">Home</a> <span>/</span>
-                                <a class="active" href="register.html">Sign Up</a>
+                                <a class="active" href="<?php echo(BASE_URL) ?>register.php">Sign Up</a>
                             </article>
                         </div>
                     </div>

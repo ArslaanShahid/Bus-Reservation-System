@@ -139,6 +139,37 @@ class Booking
         if ($obj_db->errno) {
             throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
         }
+        $bookings = [];
+        while ($data = $result->fetch_object()) {
+            $rows = [];
+            $rows['name'] = $data->name;
+            $rows['contact_no'] = $data->contact_no;
+            $rows['cnic'] = $data->cnic;
+            $rows['gender'] = $data->gender;
+            $rows['total_fare'] = $data->total_fare;
+            $rows['date'] = $data->date;
+
+            $query_seat = "select * from booked_seats bs "
+                        ." where booking_id = $data->id";
+            $result = $obj_db->query($query_seat);
+            $seats = [];
+            while($data = $result->fetch_object()) {
+                $seat_rows = [];
+                $seat_rows['seat_no'] = $data->seat_no;
+                $seats[] = $seat_rows;
+            }
+            $rows['seats'] = $seats;
+            $bookings[] = $rows; 
+        }
+        return $bookings;
+    }
+    public static function bookingHistory($cnic){
+        $obj_db = self::obj_db();
+        $query = " SELECT * FROM bookings WHERE cnic = '$cnic' " ;
+        $result = $obj_db->query($query);
+        if ($obj_db->errno) {
+            throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
+        }
         $query = [];
         while ($data = $result->fetch_object()) {
             $query[] = $data;

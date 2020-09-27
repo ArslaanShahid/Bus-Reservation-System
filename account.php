@@ -6,7 +6,6 @@ if (isset($_SESSION['obj_user'])) {
 } else {
     $obj_user = new User();
 }
-$obj_user->profile();
 ?>
 
 <body class="body-class bc blog">
@@ -49,7 +48,7 @@ $obj_user->profile();
         <ul class="list-group list-group-flush">
             <li class="list-group-item fa fa-user "><a href="my_account.php"> User Profile</a> </li>
             <li class="list-group-item fa fa-pencil-square-o "><a href="update_account.php"> Update Account</a> </li>
-            <li class="list-group-item fa fa-history"><a href="booking_history.php"> Booking History</a> </li>
+            <li class="list-group-item fa fa-history"><a href="<?php echo (BASE_URL).'booking_history.php?cnic='.$obj_user->cnic?>"> Booking History</a> </li>
             <li class="list-group-item fa fa-envelope"><a href="#"> Complaint</a> </li>
         </ul>
 
