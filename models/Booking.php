@@ -36,15 +36,14 @@ class Booking
                 }
             }
         }
+
+        return $booking_id;
     }
 
     public static function showBooking()
     {
         $obj_db = self::obj_db();
-        $query = " SELECT * FROM bookings 
-        JOIN booked_seats JOIN routes
-        WHERE routes.id = bookings.route_id 
-        && bookings.id = booked_seats.booking_id";
+        $query = " SELECT * FROM bookings ";
         $result = $obj_db->query($query);
         if ($obj_db->errno) {
             throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
@@ -175,5 +174,41 @@ class Booking
             $query[] = $data;
         }
         return $query;
+    }
+
+    public static function getTicketInfo($booking_id)
+    {
+        $obj_db = self::obj_db();
+        $query = "SELECT b.name as customer, b.date, r.departure_time, cd.name as departure, ca.name as arrival FROM bookings b "
+                ."JOIN routes r ON r.id = b.route_id "
+                ."JOIN cities cd ON (cd.id = r.departure) "
+                ."JOIN cities ca ON (ca.id = r.arrival) "
+                ."WHERE b.id = '$booking_id'";
+        
+        $booking = $obj_db->query($query);
+        if ($obj_db->errno) {
+            throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
+        }
+
+        $booking_info = $booking->fetch_object();
+
+        $query = "SELECT seat_no from booked_seats "
+                ."WHERE booking_id = '$booking_id'";
+    
+        $seat = $obj_db->query($query);
+        if ($obj_db->errno) {
+            throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
+        }
+
+        $seats = [];
+        while ($data = $seat->fetch_object()) {
+            $seats[] = $data;
+        }
+
+        $ticket = [];
+        $ticket['booking'] = $booking_info;
+        $ticket['seats'] = $seats;
+        
+        return $ticket;
     }
 }

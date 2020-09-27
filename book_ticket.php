@@ -274,7 +274,6 @@ $seats = $info['seats'];
                 // Enable Pay Now checkout flow (optional)
                 commit: true,
 
-
                 // Set up a payment
                 payment: function(data, actions) {
                     return actions.payment.create({

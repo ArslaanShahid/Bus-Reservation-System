@@ -10,8 +10,6 @@ class User
     private $password;
     private $user_id;
     private $loggedin;
-
-
     private $gender;
     private $mobile_no;
     private $first_name;
@@ -55,7 +53,7 @@ class User
     }
     private function setUser_name($user_name)
     {
-        $reg = "/^[a-z]+$/i";
+        $reg = "/[a-z]+\d*/i";
         if (!preg_match($reg, $user_name)) {
             throw new Exception("Invalid / Missing User Name");
         }
@@ -180,7 +178,7 @@ class User
         }
         if ($result->num_rows == 0) {
             $name = "N/A";
-        }else{
+        } else {
             $name = $result->fetch_object()->name;
         }
         return $name;
@@ -202,7 +200,7 @@ class User
         }
         if ($result->num_rows == 0) {
             $name = "N/A";
-        }else{
+        } else {
             $name = $result->fetch_object()->name;
         }
         return $name;
@@ -241,17 +239,17 @@ class User
             . " values "
             . " (NULL, '$this->user_name', '$this->email', '$this->cnic', '$this->password','$now')";
         $obj_db->query($query);
-        
+
         if ($obj_db->errno == 1062) {
             throw new Exception("User Name " . $this->user_name . "  Already Exist ");
         }
         if ($obj_db->errno) {
             throw new Exception(" Query Insert Error " . $obj_db->errno . $obj_db->error);
         }
-// echo('<pre>');
-// print_r($query);
-// echo('</pre>');
-// die;
+        // echo('<pre>');
+        // print_r($query);
+        // echo('</pre>');
+        // die;
         $user_id = $obj_db->insert_id;
         $query_profile = "INSERT into user_profiles"
             . "(`id`,`user_id`)"
@@ -265,9 +263,8 @@ class User
     public function login()
     {
         $obj_db = $this->obj_db();
-        $query_select =
-            " SELECT * From users "
-            . " WHERE user_name = '$this->user_name' ";
+        $query_select = "SELECT * From users "
+            . "WHERE user_name = '$this->user_name'";
         $result = $obj_db->query($query_select);
         if ($obj_db->errno) {
             throw new Exception("Db Select Error" . $obj_db->errno . $obj_db->error);
@@ -299,10 +296,11 @@ class User
         $obj_db = self::obj_db();
         $query = " SELECT * FROM users u "
             . " JOIN user_profiles up on up.user_id = u.id "
-            . " WHERE u.id = '$this->user_id' " ;
+            . " WHERE u.id = '$this->user_id' ";
         $result = $obj_db->query($query);
         if ($obj_db->errno) {
-            throw new Exception(" Select Error " . $obj_db->errno . $obj_db->error); }
+            throw new Exception(" Select Error " . $obj_db->errno . $obj_db->error);
+        }
         $user_data = $result->fetch_object();
         $this->first_name = $user_data->first_name;
         $this->last_name = $user_data->last_name;
@@ -311,7 +309,6 @@ class User
         $this->date_of_birth = $user_data->date_of_birth;
         $this->state_id = $user_data->state_id;
         $this->city_id = $user_data->city_id;
-
     }
     public function update()
     {
@@ -346,35 +343,38 @@ class User
         unset($old_password);
         unset($new_password);
     }
-    public static function registered_user(){
-        $obj_db=self::obj_db();
-        $query= " select * from users ";
+    public static function registered_user()
+    {
+        $obj_db = self::obj_db();
+        $query = " select * from users ";
         $result = $obj_db->query($query);
-        if($obj_db->errno){
+        if ($obj_db->errno) {
             throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
         }
-        while ($data = $result->fetch_object()){
+        while ($data = $result->fetch_object()) {
             $users[] = $data;
         }
         return $users;
     }
-    public static function deactivateAccount($id){
+    public static function deactivateAccount($id)
+    {
         $obj_db = self::obj_db();
         $query = "update users set status = 0"
-                ." where id = $id";
+            . " where id = $id";
         $result = $obj_db->query($query);
         return $result;
-        if($obj_db->errno){
+        if ($obj_db->errno) {
             throw new Exception("Update Error" . $obj_db->errno . $obj_db->error);
         }
     }
-    public static function activateAccount($id){
-        $obj_db= self::obj_db();
-        $query= "update users set status = 1"
-                ." where id = $id" ;
-        $result =$obj_db->query($query);
+    public static function activateAccount($id)
+    {
+        $obj_db = self::obj_db();
+        $query = "update users set status = 1"
+            . " where id = $id";
+        $result = $obj_db->query($query);
         return $result;
-        if($obj_db->errno){
+        if ($obj_db->errno) {
             throw new Exception("Update Error = $obj_db->errno -$obj_db->error");
         }
     }
@@ -384,6 +384,6 @@ class User
         $query = "SELECT * FROM user_queries";
         $result = $obj_db->query($query);
         $count = mysqli_num_rows($result);
-        return $count; 
-}
+        return $count;
+    }
 }

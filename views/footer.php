@@ -226,7 +226,7 @@
                     if (jqXHR.status == 200) {
                         let result = JSON.parse(jqXHR.responseText);
                         if (result.hasOwnProperty('success')) {
-                            window.location.href = "view_ticket.php";
+                            window.location.href = "<?php echo (BASE_URL); ?>view_ticket.php?booking_id="+result.booking_id;
                             toastr.success("Seats Reserve Successfully");
                             $(".loader").html('');
                         }

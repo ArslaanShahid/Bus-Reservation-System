@@ -14,8 +14,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = $_POST;
     $response = [];
     try {
-        Booking::store($data);
+        $result = Booking::store($data);
         $response['success'] = true;
+        $response['booking_id'] = $result;
         $response['msg'] = "Seat Book Successfully";
     } catch(Exception $ex) {
         $response['error']  = true;
