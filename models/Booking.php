@@ -164,7 +164,11 @@ class Booking
     }
     public static function bookingHistory($cnic){
         $obj_db = self::obj_db();
-        $query = " SELECT * FROM bookings WHERE cnic = '$cnic' " ;
+        $query = " SELECT b.name , b.gender , b.cnic ,b.contact_no, b.total_fare,  b.date, r.departure_time, cd.name as departure, ca.name as arrival FROM bookings b  "
+        ."JOIN routes r ON r.id = b.route_id "
+        ."JOIN cities cd ON (cd.id = r.departure) "
+        ."JOIN cities ca ON (ca.id = r.arrival) "
+        ."WHERE cnic = '$cnic' ";
         $result = $obj_db->query($query);
         if ($obj_db->errno) {
             throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
