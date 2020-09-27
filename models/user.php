@@ -127,11 +127,10 @@ class User
     }
     private function setCnic($cnic)
     {
-        $reg = "/^\d{5}\-\d{6}\-\d{1}$/";
-        if (!preg_match($reg, $cnic)) {
+        if (!is_numeric($cnic)) {
             throw new Exception("Invalid/ Missing CNIC");
         }
-        $this->cnic = cnic;
+        $this->cnic = $cnic;
     }
     private function getCnic()
     {
@@ -242,12 +241,17 @@ class User
             . " values "
             . " (NULL, '$this->user_name', '$this->email', '$this->cnic', '$this->password','$now')";
         $obj_db->query($query);
+        
         if ($obj_db->errno == 1062) {
             throw new Exception("User Name " . $this->user_name . "  Already Exist ");
         }
         if ($obj_db->errno) {
-            throw new Exception("Query Insert Error" . $obj_db->errno . $obj_db->error);
+            throw new Exception(" Query Insert Error " . $obj_db->errno . $obj_db->error);
         }
+// echo('<pre>');
+// print_r($query);
+// echo('</pre>');
+// die;
         $user_id = $obj_db->insert_id;
         $query_profile = "INSERT into user_profiles"
             . "(`id`,`user_id`)"
@@ -279,6 +283,7 @@ class User
         $this->email = $user_data->email;
         $this->password = NULL;
         $this->user_name = $user_data->user_name;
+        $this->cnic = $user_data->cnic;
         $this->loggedin = true;
         $str_obj = serialize($this);
         $_SESSION['obj_user'] = $str_obj;
@@ -292,17 +297,13 @@ class User
     public function profile()
     {
         $obj_db = self::obj_db();
-        $query ="SELECT * FROM users u "
-            . " JOIN user_profiles up on up.user_id = u.id"
-            . " WHERE u.id = $this->user_id ";
+        $query = " SELECT * FROM users u "
+            . " JOIN user_profiles up on up.user_id = u.id "
+            . " WHERE u.id = '$this->user_id' " ;
         $result = $obj_db->query($query);
-        if ($obj_db->errno){
-            throw new Exception("Select Error" - $obj_db->errno - $obj_db->error); }
+        if ($obj_db->errno) {
+            throw new Exception(" Select Error " . $obj_db->errno . $obj_db->error); }
         $user_data = $result->fetch_object();
-        // echo("<pre>");
-        //    print_r($user_data);
-        //    echo("</pre>");
-        //    die;
         $this->first_name = $user_data->first_name;
         $this->last_name = $user_data->last_name;
         $this->gender = $user_data->gender;
@@ -310,6 +311,7 @@ class User
         $this->date_of_birth = $user_data->date_of_birth;
         $this->state_id = $user_data->state_id;
         $this->city_id = $user_data->city_id;
+
     }
     public function update()
     {

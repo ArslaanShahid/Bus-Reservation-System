@@ -1,12 +1,14 @@
 <?php
 // session_start();
+require_once('init.php');
 require_once('views/header.php');
 if (isset($_SESSION['obj_user'])) {
     $obj_user = unserialize($_SESSION['obj_user']);
 } else {
     $obj_user = new User();
 }
-$obj_user->profile();
+
+
 ?>
 <body class="body-class bc blog">
 
@@ -18,7 +20,7 @@ $obj_user->profile();
                 <div class="breadcrumbinfo">
                     <article>
                         <h2>My Account</h2>
-                        <a href="index.html">Home</a> <span>/</span>
+                        <a href="index.php">Home</a> <span>/</span>
                         <a class="active" href="<?php echo (BASE_URL); ?>login.php">My Account</a>
                     </article>
                 </div>
@@ -95,6 +97,18 @@ $obj_user->profile();
                                             echo ("N/A");
                                         } else {
                                             echo ($obj_user->email);
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>CNIC</td>
+                                    <td>
+                                        <?php
+                                        if ($obj_user->cnic == "") {
+                                            echo ("N/A");
+                                        } else {
+                                            echo ($obj_user->cnic);
                                         }
                                         ?>
                                     </td>
