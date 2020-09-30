@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 30, 2020 at 07:41 PM
+-- Generation Time: Sep 30, 2020 at 09:54 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -44,7 +44,6 @@ CREATE TABLE `admins` (
 
 INSERT INTO `admins` (`admin_id`, `user_name`, `password`, `email`, `image`, `signup_date`, `status`) VALUES
 (1, 'admin', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', 'admin@yahoo.com', NULL, '2020-04-24', 1),
-(6, 'furqan', '2f0de3fb06a29fcff678309627274304ece28463', 'furqanarslan@yahoo.com', NULL, '2020-05-03', 0),
 (7, 'Arslan', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', 'arslanbutt@yahoo.com', NULL, '2020-05-04', 0),
 (9, 'Hamza', 'eaaa795a9c8fdf6dbfb743d98de8093249111d20', 'hamza@hamza.com', NULL, '2020-05-04', 0),
 (10, 'adeel', '79c145a517e76d872fcefe9075b5086274a1ddc1', 'adeel@yahoo.com', NULL, '2020-05-04', 0),
@@ -65,38 +64,39 @@ INSERT INTO `admins` (`admin_id`, `user_name`, `password`, `email`, `image`, `si
 CREATE TABLE `booked_seats` (
   `id` int(11) NOT NULL,
   `seat_no` int(11) NOT NULL,
-  `booking_id` int(11) NOT NULL
+  `booking_id` int(11) NOT NULL,
+  `cancel_status` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `booked_seats`
 --
 
-INSERT INTO `booked_seats` (`id`, `seat_no`, `booking_id`) VALUES
-(9, 3, 6),
-(10, 6, 6),
-(11, 2, 7),
-(12, 3, 7),
-(13, 1, 8),
-(19, 1, 9),
-(20, 2, 9),
-(21, 3, 9),
-(22, 1, 10),
-(23, 2, 10),
-(24, 1, 11),
-(25, 2, 11),
-(26, 1, 13),
-(27, 2, 13),
-(28, 1, 14),
-(29, 2, 14),
-(30, 1, 15),
-(31, 7, 15),
-(32, 2, 16),
-(33, 5, 16),
-(34, 1, 17),
-(35, 2, 17),
-(36, 1, 18),
-(37, 2, 18);
+INSERT INTO `booked_seats` (`id`, `seat_no`, `booking_id`, `cancel_status`) VALUES
+(9, 3, 6, 0),
+(10, 6, 6, 0),
+(11, 2, 7, 0),
+(12, 3, 7, 0),
+(13, 1, 8, 0),
+(19, 1, 9, 0),
+(20, 2, 9, 0),
+(21, 3, 9, 0),
+(22, 1, 10, 0),
+(23, 2, 10, 0),
+(24, 1, 11, 0),
+(25, 2, 11, 0),
+(26, 1, 13, 0),
+(27, 2, 13, 0),
+(28, 1, 14, 0),
+(29, 2, 14, 0),
+(30, 1, 15, 0),
+(31, 7, 15, 0),
+(32, 2, 16, 0),
+(33, 5, 16, 0),
+(34, 1, 17, 0),
+(35, 2, 17, 0),
+(36, 1, 18, 1),
+(37, 2, 18, 1);
 
 -- --------------------------------------------------------
 
@@ -133,7 +133,7 @@ INSERT INTO `bookings` (`id`, `date`, `route_id`, `total_fare`, `name`, `contact
 (15, '2020-09-28', 36, 1800, 'Ansar Iqbal', '03237881211', '3410136265407', 'male', 0),
 (16, '2020-09-28', 36, 1800, 'Muhammad Adeel', '03237881211', '3410136265401', 'male', 0),
 (17, '2020-09-30', 16, 600, 'Arslan Shahid', '03237881211', '3410136265407', 'male', 0),
-(18, '2020-10-01', 39, 1800, 'Furqan Arslan', '03237881211', '3410136265407', 'male', 0);
+(18, '2020-10-01', 39, 1800, 'Furqan Arslan', '03237881211', '3410136265407', 'male', 1);
 
 -- --------------------------------------------------------
 
@@ -184,7 +184,7 @@ CREATE TABLE `cancel_ticket` (
 --
 
 INSERT INTO `cancel_ticket` (`id`, `booking_id`, `email`, `reason`, `pending_status`) VALUES
-(4, 18, 'ehtishammunir789@gmail.com', 'I want to cancel my ticket because I change my mind.', 1);
+(5, 18, 'furqan@gmail.com', 'this is my reason because I want because this is bad', 0);
 
 -- --------------------------------------------------------
 
@@ -24152,7 +24152,7 @@ ALTER TABLE `buses`
 -- AUTO_INCREMENT for table `cancel_ticket`
 --
 ALTER TABLE `cancel_ticket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `cities`
