@@ -3,11 +3,8 @@ require_once '../models/TicketCancel.php';
 session_start();
 $obj_query = new TicketCancel();
 $errors = [];
-    // echo('<pre>');
-    // print_r($_POST);
-    // echo('</pre>');
-    // die;
-
+$booking_id = $_POST['booking_id'];
+    
 try{
     $obj_query->email = $_POST['email'];
 }catch (Exception $ex){
@@ -33,13 +30,13 @@ if(count($errors)==0){
     catch(Exception $ex){
         $msg= $ex->getMessage();
         $_SESSION['msg']=$msg;
-        header("Location:../cancel_ticket_form.php");
+        header("Location:../cancel_ticket_form.php?id=".$booking_id);
     }
 }
 else{
     $_SESSION ['error'] = "Check your Errors";
     $_SESSION ['errors'] = $errors;
-    header("Location:../cancel_ticket_form.php");
+    header("Location:../cancel_ticket_form.php?id=".$booking_id);
 }
 
 ?>

@@ -116,6 +116,12 @@
                             View Booking
                         </a>
                     </li>
+                    <li>
+                        <a href="cancel_booking.php">
+                            <i class="metismenu-icon fa fa-address-book-o"></i>
+                            View Canceled Bookings
+                        </a>
+                    </li>
                     <li class="app-sidebar__heading">Reports</li>
                     <li>
                         <a href="report.php">

@@ -316,7 +316,7 @@ class Route
         while($data = $result_booking->fetch_object()) {
             //getting booked seats from storage
             $query_seats = "select * from booked_seats bs "
-                            ." where booking_id = $data->id ";
+                            ." where booking_id = $data->id AND cancel_status = 0";
             $result_seats = $obj_db->query($query_seats);
 
             if($obj_db->errno) {

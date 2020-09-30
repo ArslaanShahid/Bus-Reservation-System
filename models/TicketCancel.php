@@ -68,7 +68,7 @@ Class TicketCancel{
         ."JOIN routes r ON r.id = b.route_id "
         ."JOIN cities cd ON (cd.id = r.departure) "
         ."JOIN cities ca ON (ca.id = r.arrival) "
-        ."WHERE cnic = '$cnic' AND date >= '$current' ";
+        ."WHERE cnic = '$cnic' AND date >= '$current'";
         $result = $obj_db->query($query);
         if ($obj_db->errno) {
             throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
@@ -93,5 +93,96 @@ Class TicketCancel{
         if ($obj_db->errno) {
             throw new Exception(" Query Insert Error " . $obj_db->errno . $obj_db->error);
         }
+    }
+
+    public static function getAllCancelTicket()
+    {
+        $obj_db = self::obj_db();
+        $query = "SELECT * from cancel_ticket";
+        $result = $obj_db->query($query);
+        if ($obj_db->errno) {
+            throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
+        }
+        $query = [];
+        while ($data = $result->fetch_object()) {
+            $query[] = $data;
+        }
+        return $query;
+    }
+
+    public static function getCancelBooking($id)
+    {
+        $obj_db = self::obj_db();
+        $query = "SELECT b.name as customer, b.cnic, b.contact_no, b.gender,b.total_fare, cd.name as departure, ca.name as arrival FROM bookings b "
+        . "JOIN routes r ON r.id = b.route_id "
+        . "JOIN cities cd ON (cd.id = r.departure) "
+        . "JOIN cities ca ON (ca.id = r.arrival) "
+        . "WHERE b.id = '$id'";
+
+        $booking = $obj_db->query($query);
+        if ($obj_db->errno) {
+            throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
+        }
+        $booking_info = $booking->fetch_object();
+        $response = [];
+
+        $response['booking_info'] = $booking_info;
+        $response['success'] = true;
+
+        return $response;
+    }
+
+    public static function cancelTicket($booking_id , $id)
+    {
+        $current = date('Y-m-d');
+
+        $obj_db = self::obj_db();
+        $query = "SELECT date, cancel_status from bookings"
+                ." WHERE id = '$booking_id'";
+
+        $result = $obj_db->query($query);
+        if ($obj_db->errno) {
+            throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
+        }
+
+        $data = $result->fetch_object();
+
+        if($data->cancel_status == 1)
+        {
+            throw new Exception("Booking Already Cancelled");
+        }
+        
+        if($current <= $data->date)
+        {
+            $query = "UPDATE bookings"
+            . " SET cancel_status = 1"
+            . " WHERE id = '$booking_id'";
+            $result = $obj_db->query($query);
+            if ($obj_db->errno) {
+                throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
+            }
+
+            $query = "UPDATE booked_seats"
+            . " SET cancel_status = 1"
+                . " WHERE booking_id = '$booking_id'";
+            $result = $obj_db->query($query);
+            if ($obj_db->errno) {
+                throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
+            }
+
+            $query = "UPDATE cancel_ticket"
+            . " SET pending_status = 0"
+                . " WHERE id = '$id'";
+            $result = $obj_db->query($query);
+            if ($obj_db->errno) {
+                throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
+            }
+
+        }else{
+            throw new Exception("Cannot Cancel Ticket. Date is Passed.");
+        }
+
+        return 1;
+        
     }
 }
