@@ -5,10 +5,10 @@ require_once('models/Route.php');
 require_once('models/Booking.php');
 require_once('models/TicketCancel.php');
 $bookings = TicketCancel:: CurrentTicketInfo($_GET['cnic']);
-// echo("<pre>");
-// print_r($bookings);
-// die;
-// echo ("</pre>");
+    // echo("<pre>");
+    // print_r($bookings);
+    // die;
+    // echo ("</pre>");
 
 ?>
 
@@ -47,14 +47,16 @@ $bookings = TicketCancel:: CurrentTicketInfo($_GET['cnic']);
                             <thead>
                                 <th>Date</th>
                                 <th>Name</th>
-                                <th>Contact No</th>
+                                <th>Contact</th>
                                 <th>Gender</th>
                                 <th>Cnic</th>
                                 <th>Departure</th>
                                 <th>Arrival</th>
                                 <th>Time</th>
                                 <th>Fare</th>
+                                <th>Status</th>
                                 <th>Action</th>
+                                
                                 
                             </thead>
                             <tbody>
@@ -74,8 +76,16 @@ $bookings = TicketCancel:: CurrentTicketInfo($_GET['cnic']);
                                 echo('<td>'.$booking->arrival.'</td>');
                                 echo('<td>'.$booking->departure_time.'</td>');
                                 echo('<td>'.$booking->total_fare.'</td>');
-                                echo('<td><a href="'.(BASE_URL).'cancel_ticket_form.php?id='.$booking->id.'" target="_blank" class="btn btn-danger">Cancel Ticket</a></td>');
-                                    echo('</tr>');
+                                if ($booking->cancel_status ==0){
+                                    echo('<td class="text-danger">Pending</td>');
+                                }
+                                else{
+                                    echo('<td class="text-success>Refund</td>');
+                                }
+                                echo('<td><a href="'.(BASE_URL).'cancel_ticket_form.php?id='.$booking->id.'" target="_blank" class="btn btn-warning">Cancel Ticket</a></td>');
+                                
+    
+                                echo('</tr>');
                                 }
                             ?>                                
                             </tbody>
