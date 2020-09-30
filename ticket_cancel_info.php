@@ -54,9 +54,8 @@ $bookings = TicketCancel:: CurrentTicketInfo($_GET['cnic']);
                                 <th>Arrival</th>
                                 <th>Time</th>
                                 <th>Fare</th>
-                                <th>Status</th>
                                 <th>Action</th>
-                                
+                                <th>Refund</th>
                                 
                             </thead>
                             <tbody>
@@ -76,14 +75,21 @@ $bookings = TicketCancel:: CurrentTicketInfo($_GET['cnic']);
                                 echo('<td>'.$booking->arrival.'</td>');
                                 echo('<td>'.$booking->departure_time.'</td>');
                                 echo('<td>'.$booking->total_fare.'</td>');
-                                if ($booking->cancel_status ==0){
-                                    echo('<td class="text-danger">Pending</td>');
+
+                                if ($booking->request_status == 1){
+                                    echo('<td class="text-success font-weight-bold">Request Sent</td>');
+
                                 }
                                 else{
-                                    echo('<td class="text-success>Refund</td>');
+                                    echo('<td><a href="'.(BASE_URL).'cancel_ticket_form.php?id='.$booking->id.'" target="_blank" class="btn btn-warning">Cancel Ticket</a></td>');
+
                                 }
-                                echo('<td><a href="'.(BASE_URL).'cancel_ticket_form.php?id='.$booking->id.'" target="_blank" class="btn btn-warning">Cancel Ticket</a></td>');
-                                
+                                if($booking->cancel_status == 0 ){
+                                    echo('<td class="text-danger font-weight-bold">Refund Pending</td>');
+                                }
+                                else{
+                                    echo('<td class="text-success font-weight-bold">Refunded</td>');
+                                }
     
                                 echo('</tr>');
                                 }

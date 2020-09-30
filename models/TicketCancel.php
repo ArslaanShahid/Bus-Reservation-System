@@ -64,7 +64,7 @@ Class TicketCancel{
     public static function CurrentTicketInfo($cnic){
         $current = date('Y-m-d');
         $obj_db = self::obj_db();
-        $query = " SELECT b.id ,b.date , b.name , b.gender , b.cnic ,b.contact_no, b.total_fare,  b.date, b.cancel_status, r.departure_time, cd.name as departure, ca.name as arrival FROM bookings b  "
+        $query = " SELECT b.id ,b.date , b.name , b.gender , b.cnic ,b.contact_no, b.total_fare,  b.date, b.cancel_status, b.request_status, r.departure_time, cd.name as departure, ca.name as arrival FROM bookings b  "
         ."JOIN routes r ON r.id = b.route_id "
         ."JOIN cities cd ON (cd.id = r.departure) "
         ."JOIN cities ca ON (ca.id = r.arrival) "
@@ -89,6 +89,12 @@ Class TicketCancel{
 
             // print_r($query);
             // die();
+        $obj_db->query($query);
+        $query = "UPDATE bookings"
+        . " SET request_status = 1"
+        . " WHERE id = '$this->booking_id'";
+        // print_r($query);
+        //     die();
         $obj_db->query($query);
         if ($obj_db->errno) {
             throw new Exception(" Query Insert Error " . $obj_db->errno . $obj_db->error);
