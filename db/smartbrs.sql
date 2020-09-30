@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 14, 2020 at 10:51 AM
+-- Generation Time: Sep 30, 2020 at 07:41 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -78,11 +78,25 @@ INSERT INTO `booked_seats` (`id`, `seat_no`, `booking_id`) VALUES
 (11, 2, 7),
 (12, 3, 7),
 (13, 1, 8),
-(14, 2, 8),
-(15, 3, 8),
-(16, 4, 8),
-(17, 5, 8),
-(18, 6, 8);
+(19, 1, 9),
+(20, 2, 9),
+(21, 3, 9),
+(22, 1, 10),
+(23, 2, 10),
+(24, 1, 11),
+(25, 2, 11),
+(26, 1, 13),
+(27, 2, 13),
+(28, 1, 14),
+(29, 2, 14),
+(30, 1, 15),
+(31, 7, 15),
+(32, 2, 16),
+(33, 5, 16),
+(34, 1, 17),
+(35, 2, 17),
+(36, 1, 18),
+(37, 2, 18);
 
 -- --------------------------------------------------------
 
@@ -98,17 +112,28 @@ CREATE TABLE `bookings` (
   `name` varchar(200) NOT NULL,
   `contact_no` varchar(200) NOT NULL,
   `cnic` varchar(200) NOT NULL,
-  `gender` char(6) NOT NULL
+  `gender` char(6) NOT NULL,
+  `cancel_status` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bookings`
 --
 
-INSERT INTO `bookings` (`id`, `date`, `route_id`, `total_fare`, `name`, `contact_no`, `cnic`, `gender`) VALUES
-(6, '2020-09-13', 42, 1800, 'sohaib', '032377111111', '3410136265407', 'male'),
-(7, '2020-09-14', 14, 600, 'Arslan Furqan', '03123234789', '2123123123123', 'male'),
-(8, '2020-09-14', 9, 2400, 'Arslan Shahid', '0323-7773212', '3410136265407', 'male');
+INSERT INTO `bookings` (`id`, `date`, `route_id`, `total_fare`, `name`, `contact_no`, `cnic`, `gender`, `cancel_status`) VALUES
+(6, '2020-09-13', 42, 1800, 'sohaib', '032377111111', '3410136265407', 'male', 0),
+(7, '2020-09-14', 14, 600, 'Arslan Furqan', '03123234789', '2123123123123', 'male', 0),
+(8, '2020-09-14', 9, 2400, 'Arslan Shahid', '0323-7773212', '3410136265407', 'male', 0),
+(9, '2020-09-15', 27, 2700, 'Arslan Shahid', '03231117172', '3410136265407', 'male', 0),
+(10, '2020-09-17', 29, 1800, 'Arslan Shahid', '03237881211', '3410136265407', 'male', 0),
+(11, '2020-09-22', 27, 1800, 'Arslan Shahid', '03237881211', '3410136265407', 'male', 0),
+(12, '2020-09-25', 41, 300, 'Arslan', '03237778121', '3410123234123', 'male', 0),
+(13, '2020-09-25', 40, 1800, 'Arslan Shahid', '03237881211', '3410136265407', 'male', 0),
+(14, '2020-09-26', 41, 1800, 'Farhan Rajput', '03237881211', '3410136265407', 'male', 0),
+(15, '2020-09-28', 36, 1800, 'Ansar Iqbal', '03237881211', '3410136265407', 'male', 0),
+(16, '2020-09-28', 36, 1800, 'Muhammad Adeel', '03237881211', '3410136265401', 'male', 0),
+(17, '2020-09-30', 16, 600, 'Arslan Shahid', '03237881211', '3410136265407', 'male', 0),
+(18, '2020-10-01', 39, 1800, 'Furqan Arslan', '03237881211', '3410136265407', 'male', 0);
 
 -- --------------------------------------------------------
 
@@ -129,7 +154,6 @@ CREATE TABLE `buses` (
 
 INSERT INTO `buses` (`id`, `bus_no`, `air_conditioner`, `seats`) VALUES
 (3, 'GAM7782', 1, 7),
-(4, 'GAM8891', 1, 90),
 (7, 'LAH7812', 1, 14),
 (8, 'GAM 8890', 0, 30),
 (9, 'LEK8899', 1, 20),
@@ -138,7 +162,29 @@ INSERT INTO `buses` (`id`, `bus_no`, `air_conditioner`, `seats`) VALUES
 (12, 'gam2222', 0, 20),
 (13, 'LEK8890', 1, 10),
 (14, 'GAM9900', 1, 20),
-(15, 'GAM1344', 1, 14);
+(15, 'GAM1344', 1, 14),
+(16, 'LAH7811', 1, 20);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cancel_ticket`
+--
+
+CREATE TABLE `cancel_ticket` (
+  `id` int(11) NOT NULL,
+  `booking_id` int(70) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `reason` text NOT NULL,
+  `pending_status` tinyint(4) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cancel_ticket`
+--
+
+INSERT INTO `cancel_ticket` (`id`, `booking_id`, `email`, `reason`, `pending_status`) VALUES
+(4, 18, 'ehtishammunir789@gmail.com', 'I want to cancel my ticket because I change my mind.', 1);
 
 -- --------------------------------------------------------
 
@@ -21113,18 +21159,20 @@ CREATE TABLE `employees` (
   `type` varchar(10) NOT NULL,
   `date_of_birth` date DEFAULT NULL,
   `gender` char(6) NOT NULL,
-  `reg_date` date NOT NULL
+  `reg_date` date NOT NULL,
+  `salary` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `employees`
 --
 
-INSERT INTO `employees` (`id`, `name`, `mobile_no`, `address`, `type`, `date_of_birth`, `gender`, `reg_date`) VALUES
-(1, 'Ryuk', '+92-323-7553458', 'gujranwala', 'staff', NULL, 'male', '2020-05-12'),
-(2, 'Arslan shahid', '+92-323-7553458', 'Kashmir Road', 'driver', NULL, 'male', '2020-05-12'),
-(3, 'Farhan rajput', '+92-323-7553458', 'Total Pump (BackSide)', 'driver', NULL, 'male', '2020-07-16'),
-(4, 'Arslan shahid', '+92-323-7553458', 'Kashmir Road', 'driver', NULL, 'male', '2020-09-05');
+INSERT INTO `employees` (`id`, `name`, `mobile_no`, `address`, `type`, `date_of_birth`, `gender`, `reg_date`, `salary`) VALUES
+(1, 'Ryuk', '+92-323-7553458', 'gujranwala', 'staff', NULL, 'male', '2020-05-12', 20000),
+(2, 'Arslan shahid', '+92-323-7553458', 'Kashmir Road', 'driver', NULL, 'male', '2020-05-12', 10000),
+(3, 'Farhan rajput', '+92-323-7553458', 'Total Pump (BackSide)', 'driver', NULL, 'male', '2020-07-16', 19000),
+(4, 'Arslan shahid', '+92-323-7553458', 'Kashmir Road', 'driver', NULL, 'male', '2020-09-05', 90000),
+(5, 'Muhammad adeel', '+92-323-7553458', 'Sialkot Road', 'driver', NULL, 'male', '2020-09-22', 20000);
 
 -- --------------------------------------------------------
 
@@ -21190,7 +21238,16 @@ INSERT INTO `routes` (`id`, `departure`, `arrival`, `fare`, `duration`, `departu
 (39, 14333, 14277, 900, '1:30', '09:00 am', 110, 4, 3),
 (40, 14333, 14277, 900, '1:30', '09:00 am', 110, 5, 3),
 (41, 14333, 14277, 900, '1:30', '09:00 am', 110, 6, 3),
-(42, 14333, 14277, 900, '1:30', '09:00 am', 110, 7, 3);
+(42, 14333, 14277, 900, '1:30', '09:00 am', 110, 7, 3),
+(43, 14239, 14333, 900, '04:00', '08:00 am', 700, 1, 16),
+(44, 14239, 14333, 900, '04:00', '08:00 am', 700, 2, 16),
+(45, 14333, 14239, 900, '02:00', '08:00 am', 900, 1, 16),
+(46, 14333, 14239, 900, '02:00', '08:00 am', 900, 2, 16),
+(47, 14333, 14239, 900, '02:00', '08:00 am', 900, 3, 16),
+(48, 14333, 14239, 900, '02:00', '08:00 am', 900, 4, 16),
+(49, 14333, 14239, 900, '02:00', '08:00 am', 900, 5, 16),
+(50, 14333, 14239, 900, '02:00', '08:00 am', 900, 6, 16),
+(51, 14333, 14239, 900, '02:00', '08:00 am', 900, 7, 16);
 
 -- --------------------------------------------------------
 
@@ -23893,6 +23950,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `user_name` varchar(50) NOT NULL,
   `email` varchar(30) NOT NULL,
+  `cnic` varchar(200) NOT NULL,
   `password` varchar(120) NOT NULL,
   `signup_date` date NOT NULL,
   `status` int(11) NOT NULL DEFAULT '1'
@@ -23902,12 +23960,15 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `user_name`, `email`, `password`, `signup_date`, `status`) VALUES
-(1, 'admin', 'admin@yahoo.com', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', '2020-04-16', 1),
-(2, 'arslan', 'arslanbutt@ymail.com', '16f1816066f231bbe39be9495ece0b3719e166d6', '2020-04-27', 1),
-(3, 'Haseeb', 'haseeb@gmail.com', '5fa339bbbb1eeaced3b52e54f44576aaf0d77d96', '2020-04-27', 1),
-(4, 'Hamza', 'hamza@gmail.com', '5fa339bbbb1eeaced3b52e54f44576aaf0d77d96', '2020-04-27', 1),
-(5, 'Arslaaan', 'arslanmehmood100@gmail.com', '1fd90554a8cfeb33901280a2f97f8e851beef819', '2020-09-12', 1);
+INSERT INTO `users` (`id`, `user_name`, `email`, `cnic`, `password`, `signup_date`, `status`) VALUES
+(1, 'admin', 'admin@yahoo.com', '3410136265407', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', '2020-04-16', 1),
+(3, 'Haseeb', 'haseeb@gmail.com', '', '5fa339bbbb1eeaced3b52e54f44576aaf0d77d96', '2020-04-27', 1),
+(4, 'Hamza', 'hamza@gmail.com', '', '5fa339bbbb1eeaced3b52e54f44576aaf0d77d96', '2020-04-27', 1),
+(5, 'Arslaaan', 'arslanmehmood100@gmail.com', '', '1fd90554a8cfeb33901280a2f97f8e851beef819', '2020-09-12', 1),
+(6, 'ansar', 'ansar@yahoo.com', '', 'ac6d078ab77b44eccf2a285137b2bf07d2fe811b', '2020-09-16', 1),
+(8, 'arslan', 'arslanmehmood100@gmail.com', '', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', '2020-09-19', 1),
+(9, 'arslanshahid', 'arslanbutt@ymail.com', '3410136265401', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', '2020-09-26', 1),
+(11, 'arslanshahidbutt', 'arslanmehmood100@gmail.com', '3410136265407', 'db6021942f720e5a2a9956a228653fab34d8fd79', '2020-09-26', 1);
 
 -- --------------------------------------------------------
 
@@ -23936,7 +23997,10 @@ INSERT INTO `user_profiles` (`id`, `user_id`, `first_name`, `last_name`, `gender
 (2, 2, 'Arlsan', 'Furqan', 'female', '+92-323-7553458', NULL, 14333, 1778),
 (3, 3, 'Haseeb', 'Hassan', 'male', '+92-323-7553458', NULL, 14150, 1775),
 (4, 4, 'Hamza', 'Hamza', 'male', '+92-323-7553458', NULL, 14367, 1778),
-(5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(5, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -23962,7 +24026,8 @@ INSERT INTO `user_queries` (`id`, `name`, `email`, `mobile`, `msg`) VALUES
 (4, 'Furqan Amjad', 'furqan@gmail.com', '+92-323-7443412', 'this is my message this is my message'),
 (5, 'Furqan', 'furqan@gmail.com', '+92-323-7443412', 'This is my messageThis is my messageThis is my messageThis is my messageThis is my messageThis is my message'),
 (6, 'Arslan Shahid', 'ehtishammunir789@gmail.com', '+92-323-7443412', 'Hi my ticket no is this please solve my issue'),
-(7, 'Arslan Shahid', 'arslanmehmood100@gmail.com', '+92-323-7443412', 'Hi, im facing issue please solve my issue ASAP.');
+(7, 'Arslan Shahid', 'arslanmehmood100@gmail.com', '+92-323-7443412', 'Hi, im facing issue please solve my issue ASAP.'),
+(8, 'Arslan Shahid', 'ehtishammunir789@gmail.com', '+92-323-7443412', 'Hi my tticket is this im facing issue solve my problem');
 
 --
 -- Indexes for dumped tables
@@ -23993,6 +24058,12 @@ ALTER TABLE `bookings`
 ALTER TABLE `buses`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `bus_no` (`bus_no`);
+
+--
+-- Indexes for table `cancel_ticket`
+--
+ALTER TABLE `cancel_ticket`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `cities`
@@ -24034,7 +24105,8 @@ ALTER TABLE `states`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_name` (`user_name`);
 
 --
 -- Indexes for table `user_profiles`
@@ -24062,19 +24134,25 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `booked_seats`
 --
 ALTER TABLE `booked_seats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `buses`
 --
 ALTER TABLE `buses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `cancel_ticket`
+--
+ALTER TABLE `cancel_ticket`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `cities`
@@ -24098,13 +24176,13 @@ ALTER TABLE `days`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `routes`
 --
 ALTER TABLE `routes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `states`
@@ -24116,19 +24194,19 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user_profiles`
 --
 ALTER TABLE `user_profiles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user_queries`
 --
 ALTER TABLE `user_queries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
