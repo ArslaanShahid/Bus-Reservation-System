@@ -99,7 +99,7 @@ session_start();
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Booking </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                <a class="dropdown-item" href="#">Ticket Cancel</a>
+                                <a class="dropdown-item" href="ticket_cancel.php">Ticket Cancel</a>
                                 <a class="dropdown-item" href="#">Print Download</a>
                             </div>
                         </li>
