@@ -1,21 +1,19 @@
 <?php
 require_once "init.php";
-// if (!isset($_GET['id']) || !isset($_GET['date'])) {
+// if (!isset($_GET['id']) ) {
 //     header("Location:" . BASE_URL);
 // }
 require_once('models/user.php');
 require_once('views/header.php');
 require_once 'models/Route.php';
+require_once 'models/TicketCancel.php';
+$booking = $_GET['id'];
 
-// $info = Route::routeInfo($_GET['id'], $_GET['date']);
-// // echo('<pre>');
-// // print_r($info);
-// // echo('</pre>');
-// // die;
-// $route_data = $info['route_data'];
-// $seats = $info['seats'];
+$ticket = new TicketCancel();
+
+
 // echo("<pre>");
-// print_r($info);
+// print_r($booking);
 // echo("</pre>");
 // die;
 
@@ -23,21 +21,21 @@ require_once 'models/Route.php';
 
 <body class="body-class bc blog">
 
-<section id="breadcrumb">
-            <div class="overly"></div>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 col-md-10 text-center">
-                        <div class="breadcrumbinfo">
-                            <article>
-                                <h2>Cancel Ticket</h2>
-                                <a class="active" href="<?php echo (BASE_URL); ?>"></a>
-                            </article>
-                        </div>
+    <section id="breadcrumb">
+        <div class="overly"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10 text-center">
+                    <div class="breadcrumbinfo">
+                        <article>
+                            <h2>Cancel Ticket</h2>
+                            <a class="active" href="<?php echo (BASE_URL); ?>"></a>
+                        </article>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
     <!-- =========== Main Ticket Booking Area Start ===================== -->
     <div id="ticket-booking">
@@ -49,52 +47,75 @@ require_once 'models/Route.php';
                     <h6>Smart BRs</h6>
                     <div class="margin-bottom-10"></div>
 
-                    
+
                 </div>
             </div>
 
             <div class="margin-bottom-60"></div>
 
             <div class="row">
+                <span class="text-danger">
+                <?php
+
+                if (isset($_SESSION['msg'])) {
+                    echo ($_SESSION['msg']);
+                    unset($_SESSION['msg']);
+                }
+                if (isset($_SESSION['errors'])) {
+                    $errors = $_SESSION['errors'];
+                    unset($_SESSION['errors']);
+                }
 
 
-
+                ?>
+</span>
                 <div class="col-md-6 col-sm-12 offset-3">
 
-                    <form action="process/process_cancel_form" class="price-details" id="cancelForm" method="post" accept-charset="utf-8">
+                    <form action="process/process_cancel_form.php" class="price-details" method="POST">
+                    <input type="hidden" name="booking_id" value="<?php echo($booking); ?>">
+
                         <div class="form-group">
                             <label for="name"><strong>Account Email (For Refund)</strong></label>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter Your PayPal Email">
-                            <div class="text-danger has_error name">
+                            <input type="text" class="form-control" name="email" placeholder="Enter Your PayPal Email">
+                            <div class="text-danger has_error">
+                                <?php
+                                if (isset($errors['email'])) {
+                                    echo ($errors['email']);
+                                }
 
+                                ?>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="name"><strong>Reason For Cancel</strong></label>
-                            <input type="text" class="form-control" name="contact_no" id="contact_no" placeholder="Enter Your Message">
-                            <div class="has_error text-danger contact_no">
+                            <input type="text" class="form-control" name="reason" placeholder="Enter Your Message">
+                            <div class="has_error text-danger">
+                                <?php
+                                if (isset($errors['reason'])) {
+                                    echo ($errors['reason']);
+                                }
 
+                                ?>
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="button" value="Submit Request" class="btn btn-primary" name="submit" id="submit">
-                            <div class="has_error text-danger contact_no">
-
-                            </div>
-                        </div>
-
-                            
-                        
+                            <button type="submit" class="btn btn-primary">Submit Request</button>
 
                         </div>
-                    </form>
-
                 </div>
 
-            </div>
 
+
+
+            </div>
+            </form>
 
         </div>
+
+    </div>
+
+
+    </div>
     </div>
 
     <!-- =========== Main Ticket Booking Area End ===================== -->
@@ -103,4 +124,3 @@ require_once 'models/Route.php';
     <?php
     require_once('views/footer.php');
     ?>
-   

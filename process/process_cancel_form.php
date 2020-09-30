@@ -1,26 +1,27 @@
 <?php
+require_once '../models/TicketCancel.php';
 session_start();
-require_once '../models/CancelTicket.php';
-$errors = [];
 $obj_query = new TicketCancel();
-// echo('<pre>');
-// print_r($_POST);
-// echo('</pre>');
-// die;
-
-
+$errors = [];
+    // echo('<pre>');
+    // print_r($_POST);
+    // echo('</pre>');
+    // die;
 
 try{
-    $obj_query->name = $_POST['account_email'];
+    $obj_query->email = $_POST['email'];
 }catch (Exception $ex){
-    $errors['account_email'] = $ex->getMessage();
+    $errors['email'] = $ex->getMessage();
 }
-
-
 try{
-    $obj_query->msg= $_POST['reason'];
+    $obj_query->booking_id = $_POST['booking_id'];
+}catch (Exception $ex){
+    $errors['booking_id'] = $ex->getMessage();
+}
+try{
+    $obj_query->reason= $_POST['reason'];
 }catch(Exception $ex){
-    $errors['account_email']= $ex->getMessage();
+    $errors['reason']= $ex->getMessage();
 }
 if(count($errors)==0){
     try{
@@ -32,7 +33,7 @@ if(count($errors)==0){
     catch(Exception $ex){
         $msg= $ex->getMessage();
         $_SESSION['msg']=$msg;
-        header("Location:../ticket_cancel_info.php");
+        header("Location:../cancel_ticket_form.php");
     }
 }
 else{

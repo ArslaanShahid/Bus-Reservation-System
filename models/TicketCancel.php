@@ -3,7 +3,7 @@ require_once 'DbTrait.php';
 Class TicketCancel{
     use DbTrait;
     private $booking_id;
-    private $account_email;
+    private $email;
     private $reason;
     public function __set($name, $value)
     {
@@ -21,20 +21,20 @@ Class TicketCancel{
         }
         return $this->$method();
     }
-    private function setEmail($account_email)
+    private function setEmail($email)
     {
         $reg = "/^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zAZ]\.)+[a-zA-Z]{2,4})$/";
-        if (!preg_match($reg, $account_email)) {
+        if (!preg_match($reg, $email)) {
             throw new Exception("Invalid / Missing Email");
         }
-        $this->$account_email = $account_email;
+        $this->email = $email;
     }
     private function getEmail()
     {
-        return $this->account_email;
+        return $this->email;
     }
 
-    private function setMsg($reason)
+    private function setReason($reason)
     {
         $reg = "/\b(((?!=|\,|\.).)+(.)){10,140}\b/";
 
@@ -44,9 +44,20 @@ Class TicketCancel{
 
         $this->reason = $reason;
     }
-    private function getMsg()
+    private function getReason()
     {
         return $this->reason;
+    }
+    private function setBooking_id($booking_id)
+    {
+        if (empty($booking_id)) {
+            throw new Exception("Missing Booking ID");
+        }
+        $this->booking_id = $booking_id;
+    }
+    private function getBooking_id()
+    {
+        return $this->booking_id;
     }
     
 
@@ -72,14 +83,15 @@ Class TicketCancel{
     {
         $obj_db = self::obj_db();
         $query = "INSERT into cancel_ticket"
-            . "(`id`, `booking_id`, `account_email`,`reason`)"
+            . "(`id`, `booking_id`, `email`, `reason`) "
             . " values "
-            . " (NULL, '$this->booking_id', '$this->account_email', '$this->reason')";
+            . " (NULL, '$this->booking_id', '$this->email', '$this->reason') " ;
+
+            // print_r($query);
+            // die();
         $obj_db->query($query);
         if ($obj_db->errno) {
             throw new Exception(" Query Insert Error " . $obj_db->errno . $obj_db->error);
         }
     }
 }
-
-?>
