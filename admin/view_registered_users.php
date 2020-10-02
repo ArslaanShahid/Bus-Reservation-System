@@ -4,13 +4,22 @@ require_once 'views/header.php';
 require_once 'views/layoutoption.php';
 require_once 'views/sidebar.php';
 ?>
-
+<div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="pe-7s-car icon fa fa-user">
+                        </i>
+                    </div>
+                    <div>Manage Registered Account
+                        <div class="page-title-subheading">Deactivate User's Account
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 <div class="col-lg-12  mt-5">
-    <h2 class="text-center">Registered User's Records</h2>
-
-    <br>
-    <br>
 
     <div class="main-card mb-3 card">
         <div class="card-body">

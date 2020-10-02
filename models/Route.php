@@ -306,7 +306,7 @@ class Route
         }
         //getting route bookings
         $query_booking = "select * from bookings b "
-                        ." where route_id = $id AND date = '$date' ";
+                        ." where route_id = $id AND date = '$date'";
         $result_booking = $obj_db->query($query_booking);
 
         if($obj_db->errno) {

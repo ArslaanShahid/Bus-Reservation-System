@@ -5,11 +5,21 @@ require_once 'views/layoutoption.php';
 require_once 'views/sidebar.php';
 ?>
 
-
+<div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="pe-7s-car icon fa fa-random">
+                        </i>
+                    </div>
+                    <div>View Routes
+                        <div class="page-title-subheading">Routes Information
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 <div class="col-lg-12  mt-5">
-    <h2 class="text-center">All Routes</h2>
-    <br>
-    <br>
     <div class="main-card mb-3 card">
         <div class="card-body">
             <h5 class="card-title"> </h5>

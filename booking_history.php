@@ -53,15 +53,19 @@ $bookings = Booking::bookingHistory($_GET['cnic']);
                                 <th>Arrival</th>
                                 <th>Time</th>
                                 <th>Fare</th>
+                                <th>Booking Status</th>
                                 
                             </thead>
                             <tbody>
                             <?php
+                            
                            if(count($bookings) == 0) {
                             echo("<tr><td colspan='9' class='text-danger text-center'><strong>No Booking Found</strong></td></tr>");
                         }    
                             else foreach ($bookings as $booking){
                                 echo('<tr>');
+                                 
+
                                 echo('<td>'.$booking->date.'</td>');
                                 echo('<td>'.$booking->name.'</td>');
                                 echo('<td>'.$booking->contact_no.'</td>');
@@ -71,6 +75,12 @@ $bookings = Booking::bookingHistory($_GET['cnic']);
                                 echo('<td>'.$booking->arrival.'</td>');
                                 echo('<td>'.$booking->departure_time.'</td>');
                                 echo('<td>'.$booking->total_fare.'</td>');
+                                if($booking->cancel_status == 1 ){
+                                    echo('<td class="text-danger font-weight-bold"> Cancelled  </td>');
+                                }
+                                else{
+                                    echo('<td class="text-success font-weight-bold"> Success </td>');
+                                }
                                 echo('</tr>');
                             }
                             ?>                                

@@ -14,16 +14,17 @@ class Booking
         $seats = preg_split('/,/', $seat_number);
         // print_r(sizeof($seats));
         // die;
-        $query_booking = "INSERT INTO bookings "
+        $dep_time  = date("H:i", strtotime($departure_time));
+        $date = ($booking_date." ".$dep_time);
+        $query_booking = "INSERT INTO bookings"
             . "(`id`,`date`,`route_id`,`total_fare`,`name`,`contact_no`,`cnic`,`gender`) "
             . " values "
-            . " (NULL,'{$booking_date}','{$route_id}',{$total_fare},'{$name}','{$contact_no}','{$cnic}','{$gender}')";
+            . " (NULL, '$date', '$route_id', '$total_fare','$name','$contact_no','$cnic','$gender') ";
         $obj_db->query($query_booking);
         if ($obj_db->errno) {
             die($obj_db->error);
         }
         $booking_id = $obj_db->insert_id;
-
         for ($i = 0; $i < sizeof($seats); $i++) {
             if (!empty($seats[$i])) {
                 $query_seat_booking = " INSERT INTO booked_seats "
@@ -164,7 +165,7 @@ class Booking
     }
     public static function bookingHistory($cnic){
         $obj_db = self::obj_db();
-        $query = " SELECT b.name , b.gender , b.cnic ,b.contact_no, b.total_fare,  b.date, r.departure_time, cd.name as departure, ca.name as arrival FROM bookings b  "
+        $query = " SELECT b.cancel_status, b.name , b.gender , b.cnic ,b.contact_no, b.total_fare,  b.date, r.departure_time, cd.name as departure, ca.name as arrival FROM bookings b  "
         ."JOIN routes r ON r.id = b.route_id "
         ."JOIN cities cd ON (cd.id = r.departure) "
         ."JOIN cities ca ON (ca.id = r.arrival) "

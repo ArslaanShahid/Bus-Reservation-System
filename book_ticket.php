@@ -5,7 +5,7 @@ if (!isset($_GET['id']) || !isset($_GET['date'])) {
 }
 require_once('models/user.php');
 require_once('views/header.php');
-require_once 'models/Route.php';
+require_once ('models/Route.php');
 
 $info = Route::routeInfo($_GET['id'], $_GET['date']);
 // echo('<pre>');
@@ -62,7 +62,7 @@ $seats = $info['seats'];
                             ?>
                         </strong></p>
                     <div class="margin-bottom-10"></div>
-
+                
                     <p>Dep Time: <?php echo (strtoupper($route_data->departure_time)); ?> <span class="text-danger"><strong>(<?php echo ($_GET['date']); ?>)</strong></span></p>
                     <div class="margin-bottom-5"></div>
                     <strong>Total Seat:<?php echo ($route_data->seats) ?> </strong>
@@ -188,6 +188,7 @@ $seats = $info['seats'];
                             <input type="hidden" name="price" value="<?php echo ($route_data->fare) ?>">
                             <input type="hidden" value="0" name="total_fare">
                             <input type="hidden" name="booking_date" value="<?php echo ($_GET['date']); ?>">
+                            <input type="hidden" name="departure_time" value="<?php echo ($route_data->departure_time) ?>">
 
                         </div>
                         <div class="row d-flex justify-content-center">
@@ -237,6 +238,7 @@ $seats = $info['seats'];
                     var total_fare = $("input[name=total_fare]").val();
                     final = total_fare;
                     var booking_date = $("input[name=booking_date]").val();
+                    var departure_time = $("input[name=departure_time]").val();
                     var contact_no = $("#contact_no").val();
                     var name = document.getElementById('name').value;
                     var cnic = document.getElementById('cnic').value;
@@ -252,7 +254,9 @@ $seats = $info['seats'];
                         cnic: cnic,
                         gender: gender,
                         contact_no: contact_no,
+                        departure_time: departure_time,
                     };
+                    console.log(data);
                     var val = validate(data, paypalActions);
                     if (val == false) {
                         paypalActions.enable();

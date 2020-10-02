@@ -3,15 +3,24 @@ require_once 'views/header.php';
 require_once 'views/sidebar.php';
 require_once '../models/admin.php';
 ?>
+<div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="pe-7s-car icon fa fa-user">
+                        </i>
+                    </div>
+                    <div>Admin Account
+                        <div class="page-title-subheading">Manage Admin Account
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 <div class="col-lg-12  mt-5">
-    <h2 class="text-center">Admin Account</h2>
-
-    <br>
-    <br>
 
     <div class="main-card mb-3 card">
         <div class="card-body">
-            <h6 class="fa fa-file"> Import in following format</h6>
             <h5 class="card-title"></h5>
             
             <table class="table table-striped table-bordered" id="dtBasicExample">

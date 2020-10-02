@@ -5,6 +5,7 @@ require_once('models/Route.php');
 require_once('models/Booking.php');
 require_once('models/TicketCancel.php');
 $bookings = TicketCancel:: CurrentTicketInfo($_GET['cnic']);
+
     // echo("<pre>");
     // print_r($bookings);
     // die;
@@ -23,7 +24,7 @@ $bookings = TicketCancel:: CurrentTicketInfo($_GET['cnic']);
                         <div class="breadcrumbinfo">
                             <article>
                                 <h2>Ticket Cancel</h2>
-                                <a href="index.php">Home</a> <span>/</span>
+                                <a href="<?php echo(BASE_URL); ?>index.php">Home</a> <span>/</span>
                                 <a class="active" href="#">Ticket Cancel</a>
                             </article>
                         </div>
@@ -61,12 +62,12 @@ $bookings = TicketCancel:: CurrentTicketInfo($_GET['cnic']);
                             <tbody>
                             <?php
                            if(count($bookings) == 0) {
-                            echo("<tr><td colspan='9' class='text-danger text-center'><strong>No Booking Found</strong></td></tr>");
+                            echo("<tr><td colspan='11' class='text-danger text-center'><strong>No Booking Found</strong><br>Booked Ticket Can Be Cancel Before Departure Time</td></tr>");
                         }    
                             else foreach ($bookings as $booking){
                                 echo('<tr>');
-                                
-                                echo('<td>'.$booking->date.'</td>');
+                                $date_only =date('Y-m-d',strtotime($booking->date));
+                                echo('<td>'.$date_only.'</td>');
                                 echo('<td>'.$booking->name.'</td>');
                                 echo('<td>'.$booking->contact_no.'</td>');
                                 echo('<td>'.$booking->gender.'</td>');

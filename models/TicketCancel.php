@@ -62,7 +62,7 @@ Class TicketCancel{
     
 
     public static function CurrentTicketInfo($cnic){
-        $current = date('Y-m-d');
+        $current = date('Y-m-d H:i:s');
         $obj_db = self::obj_db();
         $query = " SELECT b.id ,b.date , b.name , b.gender , b.cnic ,b.contact_no, b.total_fare,  b.date, b.cancel_status, b.request_status, r.departure_time, cd.name as departure, ca.name as arrival FROM bookings b  "
         ."JOIN routes r ON r.id = b.route_id "

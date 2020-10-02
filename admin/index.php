@@ -143,6 +143,50 @@ require_once('../models/Route.php');
     </div>
 </div>
 
+<div class="divider mt-0" style="margin-bottom: 30px;"></div>
+                            <div class="main-card mb-3 card">
+                                <div class="no-gutters row">
+                                    <div class="col-md-4">
+                                        <div class="widget-content">
+                                            <div class="widget-content-wrapper">
+                                                <div class="widget-content-right ml-0 mr-3">
+                                                    <div class="widget-numbers text-success">1896</div>
+                                                </div>
+                                                <div class="widget-content-left">
+                                                    <div class="widget-heading">Total Orders</div>
+                                                    <div class="widget-subheading">Last year expenses</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="widget-content">
+                                            <div class="widget-content-wrapper">
+                                                <div class="widget-content-right ml-0 mr-3">
+                                                    <div class="widget-numbers text-warning">$ 14M</div>
+                                                </div>
+                                                <div class="widget-content-left">
+                                                    <div class="widget-heading">Products Sold</div>
+                                                    <div class="widget-subheading">Total revenue streams</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="widget-content">
+                                            <div class="widget-content-wrapper">
+                                                <div class="widget-content-right ml-0 mr-3">
+                                                    <div class="widget-numbers text-danger">45.9%</div>
+                                                </div>
+                                                <div class="widget-content-left">
+                                                    <div class="widget-heading">Followers</div>
+                                                    <div class="widget-subheading">People Interested</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
 
 <!-- <div class="col-md-6 col-xl-4">

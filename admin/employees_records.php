@@ -5,16 +5,25 @@ require_once 'views/layoutoption.php';
 require_once 'views/sidebar.php';
 ?>
 
-
+<div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="pe-7s-car icon fa fa-user-circle">
+                        </i>
+                    </div>
+                    <div>Employees
+                        <div class="page-title-subheading">Employee Records
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 <div class="col-lg-12  mt-5">
-    <h2 class="text-center">Employees Records</h2>
-
-    <br>
-    <br>
+  
 
     <div class="main-card mb-3 card">
         <div class="card-body">
-            <i class="fas fa-file-import"></i>
             <h5 class="card-title"> </h5>
     
             <table class="table table-striped table-bordered" id="account" style="width:100%">

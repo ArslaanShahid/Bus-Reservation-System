@@ -4,12 +4,22 @@ require_once 'views/header.php';
 require_once 'views/layoutoption.php';
 require_once 'views/sidebar.php';
 ?>
-
+<div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="pe-7s-car icon fa fa-exchange">
+                        </i>
+                    </div>
+                    <div>Manage Cancel Booking
+                        <div class="page-title-subheading">Cancel Booking Request
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 <div class="col-lg-12  mt-5">
-    <h2 class="text-center">Cancel Booking Request</h2>
-    <br>
-    <br>
     <div class="main-card mb-3 card">
         <div class="card-body">
             <h5 class="card-title"> </h5>
@@ -18,7 +28,7 @@ require_once 'views/sidebar.php';
                 <thead>
                     <tr>
                         <th>Sr.No.</th>
-                        <th>Paypal Email</th>
+                        <th>PayPal Email</th>
                         <th>Reason</th>
                         <th>Booking & User Info</th>
                         <th>Ticket Status</th>

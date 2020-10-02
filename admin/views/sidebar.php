@@ -78,13 +78,13 @@
                     <li class="app-sidebar__heading">Manage Routes</li>
                     <li>
                         <a href="add_route.php">
-                            <i class="metismenu-icon fa fa-plus"></i>
+                            <i class="metismenu-icon fa fa-map-marker"></i>
                             Add Routes
                         </a>
                     </li>
                     <li>
                         <a href="view_routes.php">
-                            <i class="metismenu-icon fa fa-eye"></i>
+                            <i class="metismenu-icon fa fa-random"></i>
                             View Routes
                         </a>
                     </li>
@@ -118,8 +118,8 @@
                     </li>
                     <li>
                         <a href="cancel_booking.php">
-                            <i class="metismenu-icon fa fa-address-book-o"></i>
-                            View Canceled Bookings
+                            <i class="metismenu-icon fa fa-exchange"></i>
+                            Canceled Bookings
                         </a>
                     </li>
                     <li class="app-sidebar__heading">Reports</li>

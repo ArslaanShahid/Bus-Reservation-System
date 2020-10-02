@@ -34,6 +34,7 @@
 <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.flash.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.bootstrap4.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>
 
 
 <script>
@@ -74,6 +75,7 @@
 
 <script>
     $(document).ready(function() {
+        
         $('#bus').select2();
         $('#arrival').select2();
         $('#departure').select2();
@@ -90,12 +92,14 @@
         });
 
         $('.dataTables_length').addClass('bs-select');
+            
+    });     
 
-    });
     $.extend($.fn.dataTable.defaults, {
+        
         searching: false,
-        ordering: false,
-        paging: false
+        ordering: true,
+        paging: false,
     });
 </script>
 </body>

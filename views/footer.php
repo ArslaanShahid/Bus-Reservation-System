@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6  col-sm-12 text-center">
-                    <p>&copy;Developed by Team Unity</p>
+                    <p>Smart BRs &copy; Developed by Team Unity</p>
                 </div>
                 <div class="col-md-6 col-sm-12 text-center">
                     <ul class="footer-soical">
@@ -198,6 +198,7 @@
             var price = $("input[name=price]").val();
             var total_fare = $("input[name=total_fare]").val();
             var booking_date = $("input[name=booking_date]").val();
+            var departure_time = $("input[name=departure_time]").val();
             var contact_no = $("#contact_no").val();
             var name = document.getElementById('name').value;
             var cnic = document.getElementById('cnic').value;
@@ -213,6 +214,7 @@
                 cnic: cnic,
                 gender: gender,
                 contact_no: contact_no,
+                departure_time: departure_time,
             };
             $.ajax({
                 type: "post",

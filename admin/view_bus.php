@@ -4,13 +4,22 @@ require_once 'views/header.php';
 require_once 'views/layoutoption.php';
 require_once 'views/sidebar.php';
 ?>
-
+<div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div class="page-title-icon">
+                        <i class="pe-7s-car icon fa fa-bus">
+                        </i>
+                    </div>
+                    <div>Manage Bus
+                        <div class="page-title-subheading">View Buses
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 <div class="col-lg-12  mt-5">
-    <h2 class="text-center">Bus Records</h2>
-
-    <br>
-    <br>
 
     <div class="main-card mb-3 card">
         <div class="card-body">
