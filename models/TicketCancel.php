@@ -96,9 +96,11 @@ Class TicketCancel{
         $obj_db->query($query);
         $info = "SELECT b.date, b.id , r.departure_time , r.id from bookings b, JOIN routes r ON b.id = r.id WHERE b.id='$this->booking_id'";
         $result = $obj_db->query($info);
-        $temp = $result->fetch_all();
+        $temp = mysqli_fetch_array($result);
         print_r($temp);
         die;
+        return $temp;
+        
 
         $query = "UPDATE bookings"
         . " SET request_status = 1"
