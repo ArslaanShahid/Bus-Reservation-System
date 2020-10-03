@@ -12,17 +12,16 @@ require_once "../../models/Booking.php";
             <td>Gender</td>
             <td>Total Fare</td>
             <td>Date    </td>
-            <td>Time</td>
             <td>Seats</td>
         </tr>
     </thead>
     <?php
     $i = 1;
     $bookings = Booking::weeklyBooking();
-    echo("<pre>");
-    print_r($bookings);
-    echo('</pre>');
-    die;
+    // echo("<pre>");
+    // print_r($bookings);
+    // echo('</pre>');
+    // die;
     if(count($bookings) == 0) {
         echo("<tr><td colspan='7' class='text-center'>No Booking Found</td></tr>");
     }else foreach ($bookings as $booking) {

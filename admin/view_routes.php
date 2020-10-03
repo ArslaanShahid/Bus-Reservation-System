@@ -36,6 +36,7 @@ require_once 'views/sidebar.php';
                         <th>Distance</th>
                         <th>Day</th>
                         <th>Bus No</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,7 +55,9 @@ require_once 'views/sidebar.php';
                         echo ("<td>" . $route->distance . "</td>");
                         echo ("<td>" . ucfirst($route->day) . "</td>");
                         echo ("<td>" . $route->bus . "</td>");
+                        echo ("<td><a href='process/process_delete_route.php?id=".$route->id."' class='text-danger offset-5 fa fa-trash'></a></td>");
                         echo ("</tr>");
+                        
                         $i++;
                     }
                     // 

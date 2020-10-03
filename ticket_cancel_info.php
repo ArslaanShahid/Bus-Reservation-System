@@ -1,10 +1,13 @@
 <?php
+date_default_timezone_set("Asia/Karachi");
 require_once('models/user.php');
 require_once('views/header.php');
 require_once('models/Route.php');
 require_once('models/Booking.php');
 require_once('models/TicketCancel.php');
 $bookings = TicketCancel:: CurrentTicketInfo($_GET['cnic']);
+$current =date("h:i:a");
+echo($current);
 
     // echo("<pre>");
     // print_r($bookings);
@@ -63,11 +66,10 @@ $bookings = TicketCancel:: CurrentTicketInfo($_GET['cnic']);
                             <?php
                            if(count($bookings) == 0) {
                             echo("<tr><td colspan='11' class='text-danger text-center'><strong>No Booking Found</strong><br>Booked Ticket Can Be Cancel Before Departure Time</td></tr>");
-                        }    
+                        }  
                             else foreach ($bookings as $booking){
                                 echo('<tr>');
-                                $date_only =date('Y-m-d',strtotime($booking->date));
-                                echo('<td>'.$date_only.'</td>');
+                                echo('<td>'.$booking->date.'</td>');
                                 echo('<td>'.$booking->name.'</td>');
                                 echo('<td>'.$booking->contact_no.'</td>');
                                 echo('<td>'.$booking->gender.'</td>');

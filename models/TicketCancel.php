@@ -63,14 +63,17 @@ Class TicketCancel{
     
 
     public static function CurrentTicketInfo($cnic){
-        $current = date('Y-m-d H:i:s');
+        $current = date('Y-m-d');
+        $time =date('h:i:a');
         $obj_db = self::obj_db();
         $query = " SELECT b.id ,b.date , b.name , b.gender , b.cnic ,b.contact_no, b.total_fare,  b.date, b.cancel_status, b.request_status, r.departure_time, cd.name as departure, ca.name as arrival FROM bookings b  "
         ."JOIN routes r ON r.id = b.route_id "
         ."JOIN cities cd ON (cd.id = r.departure) "
         ."JOIN cities ca ON (ca.id = r.arrival) "
-        ."WHERE cnic = '$cnic' AND date >= '$current'";
+        ."WHERE cnic = '$cnic' AND date >= '$current' AND r.departure_time >= '$time'";
+        
         $result = $obj_db->query($query);
+        
         if ($obj_db->errno) {
             throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
         }
@@ -91,6 +94,12 @@ Class TicketCancel{
             // print_r($query);
             // die();
         $obj_db->query($query);
+        $info = "SELECT b.date, b.id , r.departure_time , r.id from bookings b, JOIN routes r ON b.id = r.id WHERE b.id='$this->booking_id'";
+        $result = $obj_db->query($info);
+        $temp = $result->fetch_all();
+        print_r($temp);
+        die;
+
         $query = "UPDATE bookings"
         . " SET request_status = 1"
         . " WHERE id = '$this->booking_id'";

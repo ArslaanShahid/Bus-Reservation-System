@@ -210,7 +210,7 @@ class Route
     public static function viewRoute()
     {
         $obj_db = self::obj_db();
-        $query = " select r.fare, r.duration, r.departure_time, r.distance, d.day as day, b.bus_no as bus, cd.name as departure, ca.name as arrival from routes r "
+        $query = " select r.id, r.fare, r.duration, r.departure_time, r.distance, d.day as day, b.bus_no as bus, cd.name as departure, ca.name as arrival from routes r "
             . "JOIN cities cd ON (cd.id = r.departure) "
             . "JOIN cities ca ON  (ca.id = r.arrival) "
             . "JOIN days d ON (r.day = d.id) "
@@ -229,6 +229,18 @@ class Route
         // echo('</pre>');
         // die;
         return $routes;
+    }
+    public static function deleteRoute($id){
+        $obj_db = self::obj_db();
+
+        $query = " DELETE FROM routes "
+                ."WHERE id='$id'";
+
+        $obj_db->query($query);
+
+        if ($obj_db->errno) {
+            throw new Exception("db delete Error" . $obj_db->errno . $obj_db->error);
+        }
     }
 
     public static function search($from, $to, $date)

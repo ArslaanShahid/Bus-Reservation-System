@@ -130,19 +130,21 @@ class Booking
             $rows['gender'] = $data->gender;
             $rows['total_fare'] = $data->total_fare;
             $rows['date'] = $data->date;
-            $query_seat = "select * from booked_seats bs "
-                        ." where booking_id = $data->id";
-            $result = $obj_db->query($query_seat);
-            $seats = [];
-            while($data = $result->fetch_object()) {
+            $query_seat = "SELECT * from booked_seats "
+            ."where booking_id = '$data->id'";
+                $res = $obj_db->query($query_seat);
+
+                $seats = [];
+                while($d = $res->fetch_object()) {
                 $seat_rows = [];
-                $seat_rows['seat_no'] = $data->seat_no;
+                $seat_rows['seat_no'] = $d->seat_no;
                 $seats[] = $seat_rows;
-            }
-            $rows['seats'] = $seats;
-            $bookings[] = $rows; 
-        }
-        return $bookings;
+                }
+
+                $rows['seats'] = $seats;
+                $bookings[] = $rows;
+                }
+                return $bookings;
     }
 
     public static function weeklyBooking()
@@ -171,17 +173,11 @@ class Booking
             $rows['gender'] = $data->gender;
             $rows['total_fare'] = $data->total_fare;
             $rows['date'] = $data->date;
-<<<<<<< HEAD
-            $query_seat = "select * from booked_seats bs "
-                        ." where booking_id = $data->id";
-            $result = $obj_db->query($query_seat);
-=======
 
             $query_seat = "SELECT * from booked_seats "
                          ."where booking_id = '$data->id'";
             $res = $obj_db->query($query_seat);
 
->>>>>>> 52ed92d8d820ef1bff3be9473f0b7a764c9b0a00
             $seats = [];
             while($d = $res->fetch_object()) {
                 $seat_rows = [];
