@@ -22,7 +22,7 @@ try{
 }
 if(count($errors)==0){
     try{
-        $obj_query->SubmitCancelRequest();
+        $obj_query->submitCancelRequest();
         header("Location:../index.php");
         $_SESSION['success']="Your Ticket Cancellation Request has been Sent to our team. We Will Contact You Shortly";
         

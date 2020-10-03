@@ -83,28 +83,42 @@ Class TicketCancel{
         }
         return $query;
     }
-    public function SubmitCancelRequest()
+    public function submitCancelRequest()
     {
+        $current = date('Y-m-d');
+        $current_time = strtotime(date('h:i a'));
+        
         $obj_db = self::obj_db();
+
+        $info = "SELECT b.date, b.id, r.departure_time, r.id from bookings b "
+                ."JOIN routes r ON b.id = r.id " 
+                ."WHERE b.id='$this->booking_id'";
+
+        $result = $obj_db->query($info);
+        $temp = $result->fetch_object();
+
+        // $temp_date = ($current.' '.$temp->departure_time);
+        // $departure_time = strtotime($temp_date);
+        // print_r($departure_time);
+        // die;
+
+        if($current == $temp->date && $current_time <= $temp->departure_time)
+        {
+            throw new Exception('Cannot cancel! Time is passed');
+        }
+
+
         $query = "INSERT into cancel_ticket"
             . "(`id`, `booking_id`, `email`, `reason`) "
             . " values "
             . " (NULL, '$this->booking_id', '$this->email', '$this->reason') " ;
 
-            // print_r($query);
-            // die();
         $obj_db->query($query);
-        $info = "SELECT b.date, b.id , r.departure_time , r.id from bookings b, JOIN routes r ON b.id = r.id WHERE b.id='$this->booking_id'";
-        $result = $obj_db->query($info);
-        $temp = $result->fetch_all();
-        print_r($temp);
-        die;
 
         $query = "UPDATE bookings"
         . " SET request_status = 1"
         . " WHERE id = '$this->booking_id'";
-        // print_r($query);
-        //     die();
+
         $obj_db->query($query);
         if ($obj_db->errno) {
             throw new Exception(" Query Insert Error " . $obj_db->errno . $obj_db->error);
