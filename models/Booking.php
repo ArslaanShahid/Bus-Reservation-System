@@ -14,12 +14,10 @@ class Booking
         $seats = preg_split('/,/', $seat_number);
         // print_r(sizeof($seats));
         // die;
-        $dep_time  = date("H:i", strtotime($departure_time));
-        $date = ($booking_date." ".$dep_time);
-        $query_booking = "INSERT INTO bookings"
+        $query_booking = "INSERT INTO bookings "
             . "(`id`,`date`,`route_id`,`total_fare`,`name`,`contact_no`,`cnic`,`gender`) "
             . " values "
-            . " (NULL, '$date', '$route_id', '$total_fare','$name','$contact_no','$cnic','$gender') ";
+            . " (NULL,'{$booking_date}','{$route_id}',{$total_fare},'{$name}','{$contact_no}','{$cnic}','{$gender}')";
         $obj_db->query($query_booking);
         if ($obj_db->errno) {
             die($obj_db->error);
@@ -108,6 +106,7 @@ class Booking
     }
     public static function dailyBooking(){
         $current = date('Y-m-d');
+        // die($current);
         $obj_db = self::obj_db();
         $query = " SELECT * FROM bookings " 
         . " JOIN booked_seats ON bookings.id = booked_seats.booking_id "
@@ -117,11 +116,33 @@ class Booking
         if ($obj_db->errno) {
             throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
         }
-        $query = [];
-        while ($data = $result->fetch_object()) {
-            $query[] = $data;
+        $query = " SELECT * FROM bookings where date = '$current'"; 
+        $result = $obj_db->query($query);
+        if ($obj_db->errno) {
+            throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
         }
-        return $query;
+        $bookings = [];
+        while ($data = $result->fetch_object()) {
+            $rows = [];
+            $rows['name'] = $data->name;
+            $rows['contact_no'] = $data->contact_no;
+            $rows['cnic'] = $data->cnic;
+            $rows['gender'] = $data->gender;
+            $rows['total_fare'] = $data->total_fare;
+            $rows['date'] = $data->date;
+            $query_seat = "select * from booked_seats bs "
+                        ." where booking_id = $data->id";
+            $result = $obj_db->query($query_seat);
+            $seats = [];
+            while($data = $result->fetch_object()) {
+                $seat_rows = [];
+                $seat_rows['seat_no'] = $data->seat_no;
+                $seats[] = $seat_rows;
+            }
+            $rows['seats'] = $seats;
+            $bookings[] = $rows; 
+        }
+        return $bookings;
     }
 
     public static function weeklyBooking()
@@ -129,11 +150,11 @@ class Booking
         $obj_db = self::obj_db();
         $monday = strtotime("last monday");
         $monday = date('w', $monday) == date('w') ? $monday + 7 * 86400 : $monday;
-        $sunday = strtotime(date("Y-m-d", $monday) . " +6 days");
-        $start_date = date("Y-m-d", $monday);
-        $end_date = date("Y-m-d", $sunday);
+        $sunday = strtotime(date("Y-m-d H:i:s", $monday) . " +6 days");
+        $start_date = date("Y-m-d H:i:s", $monday);
+        $end_date = date("Y-m-d H:i:s", $sunday);
         
-        $query = " SELECT * FROM bookings  where date between " 
+        $query = " SELECT * FROM bookings where date between " 
         ." '$start_date' AND '$end_date' "; 
         $result = $obj_db->query($query);
         if ($obj_db->errno) {
@@ -148,7 +169,6 @@ class Booking
             $rows['gender'] = $data->gender;
             $rows['total_fare'] = $data->total_fare;
             $rows['date'] = $data->date;
-
             $query_seat = "select * from booked_seats bs "
                         ." where booking_id = $data->id";
             $result = $obj_db->query($query_seat);
@@ -216,4 +236,71 @@ class Booking
         
         return $ticket;
     }
+    public static function count_bookings()
+    {
+        $obj_db = self::obj_db();
+        $query = "SELECT * FROM bookings b Where b.cancel_status =0";
+        $result = $obj_db->query($query);
+        $count = mysqli_num_rows($result);
+        return $count; 
+}
+public static function count_cancelBookings()
+    {
+        $obj_db = self::obj_db();
+        $query = "SELECT * FROM bookings b Where b.cancel_status =1";
+        $result = $obj_db->query($query);
+        $count = mysqli_num_rows($result);
+        return $count; 
+}
+public static function count_Booked()
+{
+    $obj_db = self::obj_db();
+    $query = "SELECT * FROM bookings";
+    $result = $obj_db->query($query);
+    $count = mysqli_num_rows($result);
+    return $count; 
+}
+public static function Daily_Earning()
+{
+    $current = date('Y-m-d');
+    $obj_db = self::obj_db();
+    $query = "SELECT SUM(total_fare)as daily FROM bookings where date = '$current'";
+    $result= $obj_db->query($query);
+    $row = mysqli_fetch_array($result);
+    $sum = $row['daily'];
+    return $sum;
+        // die($query);
+    // $row = mysqli_fetch_array($query);
+    // die($row);
+    // $sum = $row['daily_earning'];
+    // return $sum;
+    // print_r($sum);
+}
+public static function Weekly_Earning()
+{
+    $obj_db = self::obj_db();
+        $monday = strtotime("last monday");
+        $monday = date('w', $monday) == date('w') ? $monday + 7 * 86400 : $monday;
+        $sunday = strtotime(date("Y-m-d", $monday) . " +6 days");
+        $start_date = date("Y-m-d", $monday);
+        $end_date = date("Y-m-d", $sunday);
+    $obj_db = self::obj_db();
+    $query = "SELECT SUM(total_fare) as earning FROM bookings where date BETWEEN $start_date AND $end_date";
+    $result= $obj_db->query($query);
+    $query = [];
+        while ($data = $result->fetch_object()) {
+            $query[] = $data;
+        }
+        return $query;
+    // print_r($sum);
+}
+public static function AllTime_Earning()
+{
+    $obj_db = self::obj_db();
+    $query = "SELECT SUM(total_fare) as earning FROM bookings";
+    $query= $obj_db->query($query);
+    $row = mysqli_fetch_array($query);
+    $sum = $row['earning'];
+    return $sum;
+}
 }

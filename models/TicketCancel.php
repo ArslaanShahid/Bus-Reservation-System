@@ -5,6 +5,7 @@ Class TicketCancel{
     private $booking_id;
     private $email;
     private $reason;
+    private $cnic;
     public function __set($name, $value)
     {
         $method = "set" . $name;

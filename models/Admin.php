@@ -90,7 +90,7 @@ public function login(){
         throw new Exception ("Db Select Error." . $obj_db->errno . $obj_db->error);
     }
     if($result->num_rows==0){
-        throw new Exception("Admin Not Found");
+        throw new Exception("These Credentials Not Match In Our Records");
     }
     
     $user_data = $result->fetch_object();
@@ -98,7 +98,7 @@ public function login(){
         throw new Exception("Invalid User Name or Password");
     }
     if($user_data->status==0){
-        throw new Exception("Your Account is Currently Inactive Contact Admin");
+        throw new Exception("<i>Your Account is Currently Deactivate Contact Our Admin</i>");
     }
     $this->admin_id = $user_data->id;
     $this->email = $user_data->email;

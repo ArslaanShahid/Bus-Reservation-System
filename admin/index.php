@@ -8,9 +8,19 @@ require_once('../models/Employee.php');
 require_once('../models/Bus.php');
 require_once('../models/user.php');
 require_once('../models/Route.php');
+require_once('../models/Booking.php');
+
+// $result= Booking::daily_Earning();
+// echo("<pre>");
+//     print_r($result);
+//     die;
+//     echo ("</pre>");
 
 
-?>
+?> 
+                                                            
+
+
 
 <div class="app-page-title">
     <div class="page-title-wrapper">
@@ -20,7 +30,7 @@ require_once('../models/Route.php');
                 </i>
             </div>
             <div>Admin Dashboard
-                <div class="page-title-subheading">Bus Reservation System
+                <div class="page-title-subheading">Smart Bus Reservation System
                 </div>
             </div>
         </div>
@@ -39,7 +49,7 @@ require_once('../models/Route.php');
                 <div class="widget-content-left">
                     <div class="widget-heading">Total Complaint</div>
                     <div class="widget-subheading"></div>
-                    <i class="fa fa-commenting"></i>
+                    <i class="fa fa-commenting fa-2x"></i>
 
                 </div>
                 <div class="widget-content-right">
@@ -58,7 +68,7 @@ require_once('../models/Route.php');
                 <div class="widget-content-left">
                     <div class="widget-heading">Employees</div>
                     <div class="widget-subheading"></div>
-                    <i class="fa fa-user-circle-o"></i>
+                    <i class="fa fa-user-circle-o fa-2x"></i>
                 </div>
                 <div class="widget-content-right">
                     <div class="widget-numbers text-white"><span>
@@ -76,7 +86,7 @@ require_once('../models/Route.php');
             <div class="widget-content-wrapper text-white">
                 <div class="widget-content-left">
                     <div class="widget-heading">Admins</div>
-                    <i class="fa fa-user"></i>
+                    <i class="fa fa-user fa-2x"></i>
 
                     <div class="widget-subheading"></div>
                 </div>
@@ -93,7 +103,7 @@ require_once('../models/Route.php');
             <div class="widget-content-wrapper text-white">
                 <div class="widget-content-left">
                     <div class="widget-heading">Total Buses</div>
-                    <i class="fa fa-bus"></i>
+                    <i class="fa fa-bus fa-2x"></i>
                 </div>
                 <div class="widget-content-right">
                     <div class="widget-numbers text-dark"><span>
@@ -112,7 +122,7 @@ require_once('../models/Route.php');
             <div class="widget-content-wrapper text-white">
                 <div class="widget-content-left">
                     <div class="widget-heading">Registered User</div>
-                    <i class="fa fa-users"></i>
+                    <i class="fa fa-users fa-2x"></i>
 
                 </div>
                 <div class="widget-content-right">
@@ -129,7 +139,7 @@ require_once('../models/Route.php');
             <div class="widget-content-wrapper">
                 <div class="widget-content-left">
                     <div class="widget-heading">Total Routes</div>
-                    <i class="fa fa-map-marker"></i>
+                    <i class="fa fa-map-marker fa-2x"></i>
                 </div>
                 <div class="widget-content-right">
                     <div class="widget-numbers text-success"><span>
@@ -150,11 +160,13 @@ require_once('../models/Route.php');
                                         <div class="widget-content">
                                             <div class="widget-content-wrapper">
                                                 <div class="widget-content-right ml-0 mr-3">
-                                                    <div class="widget-numbers text-success">1896</div>
+                                                    <div class="widget-numbers text-info">
+                                                    <?php echo Booking::count_booked(); ?> 
+                                                    </div>
                                                 </div>
                                                 <div class="widget-content-left">
-                                                    <div class="widget-heading">Total Orders</div>
-                                                    <div class="widget-subheading">Last year expenses</div>
+                                                    <div class="widget-heading">Total Ticket</div>
+                                                    <i class="fa fa-ticket fa-2x"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -163,11 +175,13 @@ require_once('../models/Route.php');
                                         <div class="widget-content">
                                             <div class="widget-content-wrapper">
                                                 <div class="widget-content-right ml-0 mr-3">
-                                                    <div class="widget-numbers text-warning">$ 14M</div>
+                                                    <div class="widget-numbers text-success">
+                                                    <?php echo Booking::count_Bookings(); ?>
+                                                    </div>
                                                 </div>
                                                 <div class="widget-content-left">
-                                                    <div class="widget-heading">Products Sold</div>
-                                                    <div class="widget-subheading">Total revenue streams</div>
+                                                    <div class="widget-heading">Booked Ticket</div>
+                                                    <i class="fa fa-check-square-o fa-2x"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -176,12 +190,90 @@ require_once('../models/Route.php');
                                         <div class="widget-content">
                                             <div class="widget-content-wrapper">
                                                 <div class="widget-content-right ml-0 mr-3">
-                                                    <div class="widget-numbers text-danger">45.9%</div>
+                                                    <div class="widget-numbers text-danger">
+                                                    <?php echo Booking::count_CancelBookings(); ?>
+                                                    </div>
                                                 </div>
                                                 <div class="widget-content-left">
-                                                    <div class="widget-heading">Followers</div>
-                                                    <div class="widget-subheading">People Interested</div>
+                                                    <div class="widget-heading">Disputed Ticket</div>
+                                                    <i class="fa fa-repeat fa-2x"></i>
+
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-card mb-3 card">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="widget-content">
+                                            <div class="widget-content-outer">
+                                                <div class="widget-content-wrapper">
+                                                    <div class="widget-content-left">
+                                                        <br>
+                                                        <div class="widget-heading">Daily Earning</div>
+                                                        <i class="fa fa-credit-card fa-2x"></i>
+
+                                                    </div>
+                                                    <div class="widget-content-right">
+                                                        <div class="widget-numbers text-success">
+                                                            <?php echo("<span class=''>$</span>"). Booking::Daily_Earning() ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="widget-content">
+                                            <div class="widget-content-outer">
+                                                <div class="widget-content-wrapper">
+                                                    <div class="widget-content-left">
+                                                        <div class="widget-heading">Weekly Earning</div>
+                                                    </div>
+                                                    <div class="widget-content-right">
+                                                        <div class="widget-numbers text-warning">
+                                                        <?php 
+                                                          Booking::weekly_Earning();
+                                                            
+                                                            ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="widget-progress-wrapper">
+                                                    <div class="progress-bar-sm progress-bar-animated-alt progress">
+                                                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 77%;"></div>
+                                                    </div>
+                                                    <div class="progress-sub-label">
+                                                        <div class="sub-label-left">Sales</div>
+                                                        <div class="sub-label-right">100%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="widget-content">
+                                            <div class="widget-content-outer">
+                                                <div class="widget-content-wrapper">
+                                                    <div class="widget-content-left">
+                                                        <br>
+                                                        <div class="widget-heading">Total Earning</div>
+                                                        <div class="widget-subheading"></div>
+                                                        <i class="fa fa-money fa-2x"></i>
+
+                                                    </div>
+                                                    <div class="widget-content-right">
+                                                        <div class="widget-numbers text-info">
+                                                        <?php 
+                                                            echo ("<span class=''>$</span>"). Booking::AllTime_Earning();
+                                                            ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>

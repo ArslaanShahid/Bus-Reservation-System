@@ -125,7 +125,7 @@ class User
     }
     private function setCnic($cnic)
     {
-        if (!is_numeric($cnic)) {
+        if (!is_numeric($cnic)|| strlen($cnic)>13) {
             throw new Exception("Invalid/ Missing CNIC");
         }
         $this->cnic = $cnic;

@@ -41,12 +41,12 @@ require_once("models/TicketCancel.php");
                 </h2>
                 <div class="row contact-form-area">
                     <div class="col-lg-8 offset-2 contact-form">
-                        <form id="c-form" action="process/process_ticket_cancel.php?" method="GET">
+                        <form id="cnic-form" action="process/process_ticket_cancel.php?" method="GET">
                             <div class="row">
 
                                 <div class="col-md-12">
-                                    <h5>CNIC</h5>
-                                    <input type="" name="cnic" class="form-control" placeholder="Enter CNIC XXXX-XXXXXXX-X " />
+                                    <h5>Enter Cnic</h5>
+                                    <input name="cnic" class="form-control" placeholder="13 Digit Cnic No.." id="cnic" />
                                     <span class="text-danger">
                                         <?php
                                         if (isset($errors['cnic'])) {
@@ -55,12 +55,9 @@ require_once("models/TicketCancel.php");
                                         ?>
                                     </span>
                                 </div>
-
-
-
                                 <div class="col-md-12">
                                     <div class="margin-bottom-30"></div>
-                                    <button type="submit" class="btn btn-contact btn-continue btn-block">
+                                    <button type="submit" class="btn btn-primary btn-continue btn-block">
                                         Check
                                     </button>
                                 </div>
