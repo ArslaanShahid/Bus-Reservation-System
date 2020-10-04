@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../init.php';
+require_once '../../models/Admin.php';
 $obj_admin = unserialize($_SESSION['obj_admin']);
 if(!isset($_SESSION['obj_admin'])){
     $_SESSION['msg']= "You Are Already Logout";
