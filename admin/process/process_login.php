@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../init.php';
+require_once '../../models/Admin.php';
 $errors = [];
 $obj_admin = new Admin();
 // die($_POST['password']);

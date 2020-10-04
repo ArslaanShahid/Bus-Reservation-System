@@ -1,10 +1,4 @@
 <?php
-require_once '../models/Admin.php';
-if (isset($_SESSION['obj_admin'])) {
-    $obj_admin = unserialize($_SESSION['obj_admin']);
-} else {
-    $obj_admin = new Admin();
-}
 define('BASE_FOLDER','/admin/');
 define('BASE_URL','http://'.$_SERVER['HTTP_HOST'].BASE_FOLDER);
 
@@ -19,7 +13,7 @@ $restricted_pages = [
     BASE_FOLDER."view_user_queries.php",
     BASE_FOLDER."bus.php",
     BASE_FOLDER."update_account.php",
-    BASE_FOLDER."view_registered_user.php",
+    BASE_FOLDER."view_registered_users.php",
     BASE_FOLDER."addadmin.php",
     BASE_FOLDER."employee.php",
     BASE_FOLDER."employee_records.php",

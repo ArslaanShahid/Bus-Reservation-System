@@ -1,6 +1,12 @@
 <?php
 session_start();
-require_once '../init.php';
+require_once '../models/Admin.php';
+if (isset($_SESSION['obj_admin'])) {
+  $obj_admin = unserialize($_SESSION['obj_admin']);
+} else {
+  $obj_admin = new Admin();
+}
+require_once 'init.php';
 ?>
 <html>
 <head>
@@ -42,12 +48,11 @@ require_once '../init.php';
       }
       ?>
 
-
     </div>
     <div class="login-box-body" style="height:350px;">
       <div class="card-body login-card-body">
         <p class="login-box-msg font-weight-bold">Sign in to your Admin Panel</p>
-        <form action="process/process_login.php" method="post">
+        <form action="<?php echo(BASE_URL); ?>process/process_login.php" method="post">
         
           <div class="input-group mb-3">
             <input type="text" name="user_name" class="form-control" placeholder="Username">

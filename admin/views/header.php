@@ -1,6 +1,47 @@
 <?php
 session_start();
-require_once('init.php');
+require_once '../models/Admin.php';
+
+define('BASE_FOLDER','/admin/');
+define('BASE_URL','http://'.$_SERVER['HTTP_HOST'].BASE_FOLDER);
+
+if (isset($_SESSION['obj_admin'])) {
+    $obj_admin = unserialize($_SESSION['obj_admin']);
+
+} else {
+    $obj_admin = new Admin();
+}
+
+$public_pages = [
+    BASE_FOLDER."login.php",
+];
+$restricted_pages = [
+    BASE_FOLDER."account.php",
+    BASE_FOLDER."add_route",
+    BASE_FOLDER."view_bus.php",
+    BASE_FOLDER."view_routes.php",
+    BASE_FOLDER."view_user_queries.php",
+    BASE_FOLDER."bus.php",
+    BASE_FOLDER."update_account.php",
+    BASE_FOLDER."view_registered_users.php",
+    BASE_FOLDER."addadmin.php",
+    BASE_FOLDER."employee.php",
+    BASE_FOLDER."employee_records.php",
+    BASE_FOLDER."view_booking.php",
+
+];
+$current = $_SERVER['PHP_SELF'];
+
+if(in_array($current,$restricted_pages) && !$obj_admin->loggedin) {
+    $_SESSION['error'] = "Please Login To View This Page";
+    header("Location:".BASE_URL."login.php");
+    die;
+}
+if(in_array($current,$public_pages) && $obj_admin->loggedin) {
+    $_SESSION['error'] = "Please Logout to View This Page";
+    header("Location:".BASE_URL."index.php");
+    die;
+}
 
 ?>
 <!doctype html>
@@ -77,7 +118,7 @@ require_once('init.php');
                                                 Account</button>
                                             <?php
                                             if (isset($_SESSION['obj_admin'])) {
-                                                echo ("<a href='process/process_logout.php' button type='button' tabindex='0' class='dropdown-item'>Logout</a>");
+                                                echo ("<a href='".BASE_URL."process/process_logout.php' button type='button' tabindex='0' class='dropdown-item'>Logout</a>");
                                             }
                                             ?>
                                         </div>
