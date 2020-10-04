@@ -6,7 +6,7 @@ require_once '../init.php';
 $error = '';
 
 try{
-    TicketCancel::cancelTicket($_GET['booking_id'] , $_GET['id']);
+    TicketCancel::cancelTicket($_GET['booking_id'], $_GET['id']);
 }catch(Exception $ex){
     $error = $ex->getMessage();
 }

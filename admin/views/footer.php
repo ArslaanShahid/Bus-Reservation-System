@@ -6,7 +6,8 @@
                 <ul class="nav">
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="fa fa-copyright"> Developed By Team Unity</i>
+                            Smart BRs &nbsp; 
+                                <i class="fa fa-copyright"> Developed By Team Unity</i>
                         </a>
                     </li>
                 </ul>

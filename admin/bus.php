@@ -30,7 +30,7 @@ require_once 'views/sidebar.php';
                     <h5 class="text-danger">
 
                     </h5>
-                    <form method="POST" action="process/process_add_bus.php">
+                    <form method="POST" action="<?php echo(BASE_URL); ?>process/process_add_bus.php">
                         <div class="form-row">
 
                             <div class="col-md-7 mb-3">

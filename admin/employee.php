@@ -35,7 +35,7 @@ require_once 'views/sidebar.php';
                 ?>
 
             </h5>
-            <form method="POST" action="process/process_add_employee.php">
+            <form method="POST" action="<?php echo(BASE_URL); ?>process/process_add_employee.php">
                 <div class="form-row">
 
                     <div class="col-md-7 mb-3">
@@ -49,26 +49,32 @@ require_once 'views/sidebar.php';
 
 
                         </div>
-
-
-                    </div>
+                        <span class="text-danger">
                     <?php
                     if (isset($errors['name'])) {
                         echo ($errors['name']);
                     }
                     ?>
+                    </span>
+
+                    </div>
+                   
                 </div>
                 <div class="form-row">
                     <div class="col-md-7 mb-3">
                         <label for="Gender">Gender</label><br>
                         <input type="radio" name="gender[]" value="male">Male &nbsp;&nbsp;&nbsp;&nbsp;
                         <input type="radio" name="gender[]" value="female">Female
+                        <br>
+                        <span class="text-danger">
+    
+                        <?php
+                        if (isset($errors['gender'])) {
+                            echo ($errors['gender']);
+                        }
+                        ?>
+                        </span>
                     </div>
-                    <?php
-                    if (isset($errors['gender'])) {
-                        echo ($errors['gender']);
-                    }
-                    ?>
                 </div>
 
                 <div class="form-row">
@@ -76,24 +82,30 @@ require_once 'views/sidebar.php';
                         <label for="Mobile">Mobile</label>
                         <input type="text" class="form-control" id="mobile_no" name="mobile_no" placeholder="Enter Mobile No">
 
+                        <span class="text-danger">
+    
+                        <?php
+                        if (isset($errors['mobile_no'])) {
+                            echo ($errors['mobile_no']);
+                        }
+                        ?>
+                        </span>
                     </div>
-                    <?php
-                    if (isset($errors['mobile_no'])) {
-                        echo ($errors['mobile_no']);
-                    }
-                    ?>
                 </div>
                 <div class="form-row">
                     <div class="col-md-7 mb-3">
                         <label for="Address">Address</label>
                         <input type="text" class="form-control" id="address" name="address" placeholder="Enter Address">
 
+                        <span class="text-danger">
+    
+                        <?php
+                        if (isset($errors['address'])) {
+                            echo ($errors['address']);
+                        }
+                        ?>
+                        </span>
                     </div>
-                    <?php
-                    if (isset($errors['address'])) {
-                        echo ($errors['address']);
-                    }
-                    ?>
                 </div>
                 <div class="form-row">
                     <div class="col-md-7 mb-3">
@@ -105,12 +117,15 @@ require_once 'views/sidebar.php';
                             <option value="other">Other</option>
 
                         </select>
+                        <span class="text-danger">
+    
+                        <?php
+                        if (isset($errors['type'])) {
+                            echo ($errors['type']);
+                        }
+                        ?>
+                        </span>
                     </div>
-                    <?php
-                    if (isset($errors['type'])) {
-                        echo ($errors['type']);
-                    }
-                    ?>
 
                 </div>
                 <div class="form-row">
@@ -118,12 +133,15 @@ require_once 'views/sidebar.php';
                         <label for="Salary">Salary</label>
                         <input type="text" class="form-control" id="salary" name="salary" placeholder="Enter Salary">
 
+                        <span class="text-danger">
+    
+                        <?php
+                        if (isset($errors['salary'])) {
+                            echo ($errors['salary']);
+                        }
+                        ?>
+                        </span>
                     </div>
-                    <?php
-                    if (isset($errors['salary'])) {
-                        echo ($errors['salary']);
-                    }
-                    ?>
                 </div>
                 <button class="btn btn-primary" type="submit">Add Employee</button>
             </form>

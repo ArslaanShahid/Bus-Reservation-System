@@ -103,7 +103,7 @@ Class TicketCancel{
 
         if($current == $temp->date && $current_time >= $temp->departure_time)
         {
-            throw new Exception('Ticket Cannot Cancel Time is passed<br> <i>Ticket Can be Cancel Before Departure Time</i>');
+            throw new Exception('Ticket Cannot Cancel Time is passed <br> <i>Ticket Can be Cancel Before Departure Time</i>');
         }
 
 
@@ -175,11 +175,13 @@ Class TicketCancel{
         }
 
         $data = $result->fetch_object();
-
+        // print_r($data);
+        // die;
         if($data->cancel_status == 1)
         {
             throw new Exception("Booking Already Cancelled");
         }
+        
         
         if($current <= $data->date)
         {
@@ -187,6 +189,7 @@ Class TicketCancel{
             . " SET cancel_status = 1"
             . " WHERE id = '$booking_id'";
             $result = $obj_db->query($query);
+            
             if ($obj_db->errno) {
                 throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
             }
@@ -206,6 +209,7 @@ Class TicketCancel{
             if ($obj_db->errno) {
                 throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
             }
+            
 
         }else{
             throw new Exception("Cannot Cancel Ticket. Date is Passed.");

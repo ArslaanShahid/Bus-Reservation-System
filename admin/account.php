@@ -43,9 +43,9 @@ require_once '../models/admin.php';
                         echo ("<td>" . $admin->user_name . "</td>");
                         echo ("<td>" . $admin->email . "</td>");
                         if ($admin->status == 1) {
-                            echo ("<td><a href='process/process_deactivate_admin.php?id=".$admin->admin_id."' class='btn btn-warning btn-sm'>Deactivate</a></td>");
+                            echo ("<td><a href='".BASE_URL."process/process_deactivate_admin.php?id=".$admin->admin_id."' class='btn btn-warning btn-sm'>Deactivate</a></td>");
                         } else {
-                            echo ("<td><a href='process/process_activate_admin.php?id=".$admin->admin_id."' class='btn btn-success btn-sm'>Activate</a></td>");
+                            echo ("<td><a href='".BASE_URL."process/process_activate_admin.php?id=".$admin->admin_id."' class='btn btn-success btn-sm'>Activate</a></td>");
                         }
                         echo ("</tr>");
                         $i++;

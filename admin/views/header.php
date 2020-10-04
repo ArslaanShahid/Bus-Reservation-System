@@ -65,7 +65,7 @@ if(in_array($current,$public_pages) && $obj_admin->loggedin) {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.22/b-1.6.4/b-print-1.6.4/fh-3.1.7/datatables.min.css"/>
-
+      <link rel="icon" href="<?php echo(BASE_URL); ?>assets/images/favicon.png" sizes="16x16" type="image/png">
 </head>
 
 <body>
@@ -110,7 +110,7 @@ if(in_array($current,$public_pages) && $obj_admin->loggedin) {
                                 <div class="widget-content-left">
                                     <div class="btn-group">
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                                            <img width="42" class="rounded-circle" src="assets/images/avatars/1.jpg" alt="">
+                                            <img width="42" class="rounded-circle" src="assets/images/avatars/11.png" alt="">
                                             <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
@@ -128,7 +128,7 @@ if(in_array($current,$public_pages) && $obj_admin->loggedin) {
                                     <div class="widget-heading">
                                         <?php
                                         if (isset($_SESSION['obj_admin'])) {
-                                            echo ($obj_admin->user_name);
+                                            echo ucfirst($obj_admin->user_name);
                                         }
                                         ?>
                                     </div>
@@ -136,11 +136,7 @@ if(in_array($current,$public_pages) && $obj_admin->loggedin) {
                                         Developer
                                     </div>
                                 </div>
-                                <div class="widget-content-right header-user-info ml-3">
-                                    <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
-                                        <i class="fa text-white fa-calendar pr-1 pl-1"></i>
-                                    </button>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>

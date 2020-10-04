@@ -70,7 +70,7 @@ require_once 'views/footer.php';
             var val = $(this).val();
             if (val == 1) {
                 var output = "";
-                output += "<form action='/view_bus.php' method='post'>";
+                output += "<form action='<?php echo (BASE_URL); ?>/view_bus.php' method='post'>";
                 output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
                 $(".data").html(output);

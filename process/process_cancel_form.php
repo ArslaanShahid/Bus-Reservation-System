@@ -24,7 +24,7 @@ try{
 if(count($errors)==0){
     try{
         $obj_query->submitCancelRequest();
-        header("Location:" .BASE_URL."ticket_cancel_info.php");
+        header("Location:" .BASE_URL."index.php");
         $_SESSION['success']="Your Ticket Cancellation Request has been Sent to our team. We Will Contact You Shortly";
         
     }

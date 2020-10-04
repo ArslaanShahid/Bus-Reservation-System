@@ -36,14 +36,14 @@
                 <ul class="vertical-nav-menu">
                     <li class="app-sidebar__heading">Manage Account</li>
                     <li>
-                        <a href="addadmin.php">
+                        <a href="<?php echo(BASE_URL); ?>addadmin.php">
                             <i class="metismenu-icon fa fa-user "></i>
                             Add Account
                         </a>
                     </li>
 
                     <li>
-                        <a href="account.php">
+                        <a href="<?php echo(BASE_URL); ?>account.php">
                             <i class="metismenu-icon fa fa-list-ul   "></i>
                             View Account
                         </a>
@@ -53,7 +53,7 @@
                     </li>
                     <li class="app-sidebar__heading">Manage Users Account</li>
                     <li>
-                        <a href="view_registered_users.php">
+                        <a href="<?php echo(BASE_URL); ?>view_registered_users.php">
                             <i class="metismenu-icon fa fa-users "></i>
                             Registered Account
                         </a>
@@ -64,26 +64,26 @@
                     </li>
                     <li class="app-sidebar__heading">Manage Employees</li>
                     <li>
-                        <a href="employee.php">
+                        <a href="<?php echo(BASE_URL); ?>employee.php">
                             <i class="metismenu-icon fa fa-user-plus"></i>
                             Add Employee
                         </a>
                     </li>
                     <li>
-                        <a href="employees_records.php">
+                        <a href="<?php echo(BASE_URL); ?>employees_records.php">
                             <i class="metismenu-icon fa fa-user-circle"></i>
                             View Employee
                         </a>
                     </li>
                     <li class="app-sidebar__heading">Manage Routes</li>
                     <li>
-                        <a href="add_route.php">
+                        <a href="<?php echo(BASE_URL); ?>add_route.php">
                             <i class="metismenu-icon fa fa-map-marker"></i>
                             Add Routes
                         </a>
                     </li>
                     <li>
-                        <a href="view_routes.php">
+                        <a href="<?php echo(BASE_URL); ?>view_routes.php">
                             <i class="metismenu-icon fa fa-random"></i>
                             View Routes
                         </a>
@@ -91,40 +91,40 @@
 
                     <li class="app-sidebar__heading">Manage Buses</li>
                     <li>
-                        <a href="bus.php">
+                        <a href="<?php echo(BASE_URL); ?>bus.php">
                             <i class="metismenu-icon fa fa-bus"></i>
                             Add Bus
                         </a>
                     </li>
                     <li>
-                        <a href="view_bus.php">
+                        <a href="<?php echo(BASE_URL); ?>view_bus.php">
                             <i class="metismenu-icon fa fa-search"></i>
                             View Bus
                         </a>
                     </li>
                     <li class="app-sidebar__heading">Manage Complaints</li>
                     <li>
-                        <a href="view_user_queries.php">
+                        <a href="<?php echo(BASE_URL); ?>view_user_queries.php">
                             <i class="metismenu-icon fa fa-envelope"></i>
                             User Complaint
                         </a>
                     </li>
                     <li class="app-sidebar__heading">Manage Booking</li>
                     <li>
-                        <a href="view_booking.php">
+                        <a href="<?php echo(BASE_URL); ?>view_booking.php">
                             <i class="metismenu-icon fa fa-address-book-o"></i>
                             View Booking
                         </a>
                     </li>
                     <li>
-                        <a href="cancel_booking.php">
+                        <a href="<?php echo(BASE_URL); ?>cancel_booking.php">
                             <i class="metismenu-icon fa fa-exchange"></i>
                             Canceled Bookings
                         </a>
                     </li>
                     <li class="app-sidebar__heading">Reports</li>
                     <li>
-                        <a href="report.php">
+                        <a href="<?php echo(BASE_URL); ?>report.php">
                             <i class="metismenu-icon fa fa-list-alt"></i>
                             View Reports
                         </a>

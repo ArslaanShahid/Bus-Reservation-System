@@ -47,7 +47,7 @@ require_once 'views/sidebar.php';
                      echo ("<td>" . $query->email . "</td>");
                      echo ("<td>" . $query->mobile . "</td>");
                      echo ("<td>" . $query->msg . "</td>");
-                     echo ('<td class="text-center"><a href="process/process_delete_query.php?id='.$query->id.'" style="color:red;" class="fa fa-trash"></a></td>');
+                     echo ("<td class='text-center'><a href='".BASE_URL."process/process_delete_query.php?id='.$query->id.'' style='color:red;' class='fa fa-trash'></a></td>");
                      
                      $i++;
                  }

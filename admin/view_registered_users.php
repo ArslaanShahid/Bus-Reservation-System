@@ -49,9 +49,9 @@ foreach($registered_users as $registered_user){
   echo("<td>". $registered_user->email . "</td>");
   echo("<td>". $registered_user->signup_date . "</td>");
   if ($registered_user->status == 1) {
-    echo ("<td><a href='process/process_deactivate_user.php?id=".$registered_user->id."' class='btn btn-warning btn-sm'>Deactivate</a></td>");
+    echo ("<td><a href='".BASE_URL."process/process_deactivate_user.php?id=".$registered_user->id."' class='btn btn-warning btn-sm'>Deactivate</a></td>");
 } else {
-    echo ("<td><a href='process/process_activate_user.php?id=".$registered_user->id."' class='btn btn-success btn-sm'>Activate</a></td>");
+    echo ("<td><a href='".BASE_URL."process/process_activate_user.php?id=".$registered_user->id."' class='btn btn-success btn-sm'>Activate</a></td>");
 }  echo("</tr>");
   $i++;
 }

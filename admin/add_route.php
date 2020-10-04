@@ -37,7 +37,7 @@ if (isset($_SESSION['errors'])) {
             <h5 class="text-danger">
 
             </h5>
-            <form method="POST" action="process/process_add_route.php">
+            <form method="POST" action="<?php echo(BASE_URL); ?>process/process_add_route.php">
                 <div class="form-row">
                     <div class="col-md-11 mb-3">
                         <label for="validationCustomUsername">Route Bus:</label>

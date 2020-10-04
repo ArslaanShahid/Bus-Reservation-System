@@ -15,8 +15,8 @@ require_once 'init.php';
   <title>Login Smart BRs</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="assets/css/adminlte.min.css">
-  <link rel="icon" href="assets/images/favicon.png" sizes="16x16" type="image/png">
+  <link rel="stylesheet" href="<?php echo(BASE_URL); ?>assets/css/adminlte.min.css">
+  <link rel="icon" href="<?php echo(BASE_URL); ?>assets/images/favicon.png" sizes="16x16" type="image/png">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <style>
@@ -31,7 +31,7 @@ require_once 'init.php';
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <img src="assets/images/admin_logo.png" width="200px">
+      <img src="<?php echo(BASE_URL); ?>assets/images/admin_logo.png" width="200px">
       <p style="font-size:20px;"></p>
 
       <!-- <a href=""><b>Smart</b> BRS</a> -->
@@ -112,7 +112,7 @@ require_once 'init.php';
         </form>
       <hr>
       <p class="mb-2 text-center">
-        Copyright
+        Smart BRs
         <i class="fa fa-copyright"> By Team Unity</i>
       </p>
       <!-- /.login-card-body -->
@@ -124,10 +124,10 @@ require_once 'init.php';
 
 
 </body>
-<script src="assets/scripts/jquery.min.js"></script>
-<script src="assets/scripts/bootstrap.bundle.min.js"></script>
-<script src="assets/scripts/adminlte.min.js"></script>
-<script src="assets/scripts/toastr.min.js"></script>
+<script src="<?php echo(BASE_URL); ?>assets/scripts/jquery.min.js"></script>
+<script src="<?php echo(BASE_URL); ?>assets/scripts/bootstrap.bundle.min.js"></script>
+<script src="<?php echo(BASE_URL); ?>assets/scripts/adminlte.min.js"></script>
+<script src="<?php echo(BASE_URL); ?>assets/scripts/toastr.min.js"></script>
 <script>
   toastr.options.closeButton = true;
   toastr.options.preventDuplicate = true;
