@@ -46,17 +46,10 @@ $ticket = new TicketCancel();
                     <div class="margin-bottom-10"></div>
                     <h6>Smart BRs</h6>
                     <div class="margin-bottom-10"></div>
-
-
                 </div>
-            </div>
-
-            <div class="margin-bottom-60"></div>
-
-            <div class="row">
-                <span class="text-danger">
+                
                 <?php
-
+            echo('<span class="col-12 text-center text-danger font-weight-bold">');
                 if (isset($_SESSION['msg'])) {
                     echo ($_SESSION['msg']);
                     unset($_SESSION['msg']);
@@ -65,10 +58,16 @@ $ticket = new TicketCancel();
                     $errors = $_SESSION['errors'];
                     unset($_SESSION['errors']);
                 }
-
-
+               echo(' </span>');
+               echo ('</div>');
+                
                 ?>
-</span>
+
+
+            <div class="margin-bottom-40"></div>
+
+            <div class="row">
+                
                 <div class="col-md-6 col-sm-12 offset-3">
 
                     <form action="process/process_cancel_form.php" class="price-details" method="POST">

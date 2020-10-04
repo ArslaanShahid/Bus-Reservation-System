@@ -7,7 +7,6 @@ require_once('models/Booking.php');
 require_once('models/TicketCancel.php');
 $bookings = TicketCancel:: CurrentTicketInfo($_GET['cnic']);
 $current =date("h:i:a");
-echo($current);
 
     // echo("<pre>");
     // print_r($bookings);

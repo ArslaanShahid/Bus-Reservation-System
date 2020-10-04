@@ -64,13 +64,12 @@ Class TicketCancel{
 
     public static function CurrentTicketInfo($cnic){
         $current = date('Y-m-d');
-        $time =date('h:i:a');
         $obj_db = self::obj_db();
         $query = " SELECT b.id ,b.date , b.name , b.gender , b.cnic ,b.contact_no, b.total_fare,  b.date, b.cancel_status, b.request_status, r.departure_time, cd.name as departure, ca.name as arrival FROM bookings b  "
         ."JOIN routes r ON r.id = b.route_id "
         ."JOIN cities cd ON (cd.id = r.departure) "
         ."JOIN cities ca ON (ca.id = r.arrival) "
-        ."WHERE cnic = '$cnic' AND date >= '$current' AND r.departure_time >= '$time'";
+        ."WHERE cnic = '$cnic' AND date >= '$current'";
         
         $result = $obj_db->query($query);
         
@@ -83,30 +82,42 @@ Class TicketCancel{
         }
         return $query;
     }
-    public function SubmitCancelRequest()
+    public function submitCancelRequest()
     {
+        $current = date('Y-m-d');
+        $current_time = strtotime(date('h:i a'));
+        
         $obj_db = self::obj_db();
+
+        $info = "SELECT b.date, b.id, r.departure_time, r.id from bookings b "
+                ."JOIN routes r ON b.id = r.id " 
+                ."WHERE b.id='$this->booking_id'";
+
+        $result = $obj_db->query($info);
+        $temp = $result->fetch_object();
+
+        // $temp_date = ($current.' '.$temp->departure_time);
+        // $departure_time = strtotime($temp_date);
+        // print_r($departure_time);
+        // die;
+
+        if($current == $temp->date && $current_time >= $temp->departure_time)
+        {
+            throw new Exception('Ticket Cannot Cancel Time is passed<br> <i>Ticket Can be Cancel Before Departure Time</i>');
+        }
+
+
         $query = "INSERT into cancel_ticket"
             . "(`id`, `booking_id`, `email`, `reason`) "
             . " values "
             . " (NULL, '$this->booking_id', '$this->email', '$this->reason') " ;
 
-            // print_r($query);
-            // die();
         $obj_db->query($query);
-        $info = "SELECT b.date, b.id , r.departure_time , r.id from bookings b, JOIN routes r ON b.id = r.id WHERE b.id='$this->booking_id'";
-        $result = $obj_db->query($info);
-        $temp = mysqli_fetch_array($result);
-        print_r($temp);
-        die;
-        return $temp;
-        
 
         $query = "UPDATE bookings"
         . " SET request_status = 1"
         . " WHERE id = '$this->booking_id'";
-        // print_r($query);
-        //     die();
+
         $obj_db->query($query);
         if ($obj_db->errno) {
             throw new Exception(" Query Insert Error " . $obj_db->errno . $obj_db->error);

@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../../models/Employee.php';
+require_once '../init.php';
 $obj_emp = new Employee();
 $errors = [];
 
@@ -48,14 +49,14 @@ if (count($errors) == 0) {
     try {
         $obj_emp->addEmp();
         $_SESSION['success'] = "Employee Account Has Been Added";
-        header("Location:../employee.php");
+        header("Location:". BASE_URL."employee.php");
     } catch (Exception $ex){
         $msg = $ex->getMessage();
         $_SESSION['error'] = $msg;
-        header("Location:../employee.php");
+        header("Location:". BASE_URL."employee.php");
     }
 } else {
     $_SESSION['error'] = "Check Your Errors";
     $_SESSION['errors'] = $errors;
-    header("Location:../employee.php");
+    header("Location:". BASE_URL."employee.php");
 }

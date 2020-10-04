@@ -3,7 +3,7 @@ session_start();
 
 require_once '../models/user.php';
 if(!isset($_SESSION['obj_user'])){
-    header("Location../login.php");
+    header("Location:". BASE_URL."login.php");
 }
 $obj_user = unserialize($_SESSION['obj_user']);
 if($_SERVER['REQUEST_METHOD'] == "POST")  {
@@ -28,13 +28,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST")  {
         try{
             $obj_user->update_password($_POST['old_password'], $_POST['new_password']);
             $_SESSION['msg'] = "Password Update Successfully";
-            header("Location:../msg.php");
+            header("Location:". BASE_URL."msg.php");
         }catch (Exception $ex){
             $_SESSION['msg'] = $ex->getMessage();
-            header("Location:../change_password.php");
+            header("Location:". BASE_URL."change_password.php");
         }
     }else {
         $_SESSION ['errors'] = $errors;
-        header("Location:../change_password.php");
+        header("Location:". BASE_URL."change_password.php");
     }
 }

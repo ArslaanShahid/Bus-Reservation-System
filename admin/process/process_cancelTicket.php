@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../../models/TicketCancel.php';
+require_once '../init.php';
 
 $error = '';
 
@@ -13,9 +14,9 @@ try{
 if(!$error)
 {
     $_SESSION['success'] = "Ticket Cancelled";
-    header("Location:../cancel_booking.php");
+    header("Location:". BASE_URL."cancel_booking.php");
 
 }else{
-    $_SESSION['error'] = $error;
-    header("Location:../cancel_booking.php");
+    $_SESSION['errors'] = $errors;
+    header("Location:". BASE_URL."cancel_booking.php");
 }

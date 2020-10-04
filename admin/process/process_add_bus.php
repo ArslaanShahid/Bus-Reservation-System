@@ -8,6 +8,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 // die;
 session_start();
 require_once '../../models/Bus.php';
+require_once '../init.php';
 $obj_bus = new Bus();
 $errors = [];
 
@@ -33,18 +34,18 @@ if(count($errors) == 0 ){
     try{
         $obj_bus->addBus();
         $_SESSION['success'] = "Bus Added Successfully";
-        header("Location:../bus.php");
+        header("Location:". BASE_URL."bus.php");
             }        
         catch (Exception $ex){
         $msg = $ex->getMessage();
         $_SESSION['error'] = $msg;
-        header("Location:../bus.php");
+        header("Location:". BASE_URL."bus.php");
 }
 }
 else {
     $_SESSION['error']= "Check Your Errors";
     $_SESSION['errors']= $errors;
 
-    header("Location:../bus.php");
+    header("Location:". BASE_URL."bus.php");
 }
 }

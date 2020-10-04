@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('../init.php');
 require_once'../models/user.php';
 $errors = [];
 
@@ -57,17 +58,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         try {
             $obj_user->update();
             $_SESSION['msg'] = "Account Updated Successfully";
-            header("Location:../msg.php");
+            header("Location:". BASE_URL."msg.php");
         }catch(Exception $ex){
             $msg = $ex->getMessage();
             $_SESSION['msg'] = $msg;
-            header ("Location:../update_account.php");
+            header ("Location:". BASE_URL."update_account.php");
         } 
     
     }else{
         $_SESSION['msg'] = "Check Your Errors";
         $_SESSION['errors']= $errors;
-        header("Location:../update_account.php");
+        header("Location:". BASE_URL."update_account.php");
         
     }
     

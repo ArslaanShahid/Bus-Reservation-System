@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../../models/Admin.php';
+require_once '../init.php';
 $obj_admin = new Admin();
 $errors = [];
 try {
@@ -22,16 +23,16 @@ if (count($errors) == 0) {
     try {
         $obj_admin->addAdmin();
         $_SESSION['success'] = "Account Has Been Created Successfully";
-        header("Location:../addadmin.php");
+        header("Location:". BASE_URL."addadmin.php");
     } catch (Exception $ex) {
         $msg = $ex->getMessage();
         $_SESSION['error'] = $msg;
-        header("Location:../addadmin.php");
+        header("Location:". BASE_URL."addadmin.php");
     }
 } else {
     $msg = "Check Your Errors";
     $_SESSION['error'] = $msg;
     $_SESSION['errors'] = $errors;
     $_SESSION['obj_admin'] = serialize($obj_admin);
-    header("Location:../addadmin.php");
+    header("Location:". BASE_URL."addadmin.php");
 }

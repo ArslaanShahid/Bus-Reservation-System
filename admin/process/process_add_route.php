@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // die;
     session_start();
     require_once '../../models/Route.php';
+    require_once '../init.php';
     $obj_route = new Route();
     $errors = [];
 
@@ -66,16 +67,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         try {
             $obj_route->addRoute();
             $_SESSION['success'] = "Routes Added Successfully";
-            header("Location:../add_route.php");
+            header("Location:". BASE_URL."add_route.php");
         } catch (Exception $ex) {
             $msg = $ex->getMessage();
             $_SESSION['error'] = $msg;
-            header("Location:../add_route.php");
+            header("Location:". BASE_URL."add_route.php");
         }
     } else {
         $_SESSION['error'] = "Check Your Errors";
         $_SESSION['errors'] = $errors;
 
-        header("Location:../add_route.php");
+        header("Location:". BASE_URL."add_route.php");
     }
 }

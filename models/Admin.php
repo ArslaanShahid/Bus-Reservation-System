@@ -3,7 +3,7 @@ date_default_timezone_get("Asia/Karachi");
 require_once 'DbTrait.php';
 
 class Admin{
-    use DbTrait;
+use DbTrait;
 private $user_name;
 private $email;
 private $password;

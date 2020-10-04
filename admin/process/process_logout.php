@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../models/Admin.php';
+require_once '../init.php';
 $obj_admin = unserialize($_SESSION['obj_admin']);
 if(!isset($_SESSION['obj_admin'])){
     $_SESSION['msg']= "You Are Already Logout";
@@ -9,10 +9,10 @@ if(!isset($_SESSION['obj_admin'])){
 try{
     $obj_admin->logout();
     $_SESSION['msg']= "You Are Logout";
-    header("Location:../login.php");
+    header("Location:". BASE_URL."login.php");
 }catch(Exception $ex){
     $_SESSION['msg'] = $ex->getMessage();
-    header("Location:../index.php");
+    header("Location:". BASE_URL."index.php");
 }
 
 ?>

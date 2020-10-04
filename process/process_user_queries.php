@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('../init.php');
 require_once '../models/Queries.php';
 $errors = [];
 $obj_query = new Queries();
@@ -33,20 +34,20 @@ try{
 if(count($errors)==0){
     try{
         $obj_query->user_query();
-        header("Location:../index.php");
+        header("Location:". BASE_URL."index.php");
         $_SESSION['success']="Your Message has been Sent to our team. We Will Contact You Shortly";
         
     }
     catch(Exception $ex){
         $msg= $ex->getMessage();
         $_SESSION['msg']=$msg;
-        header("Location:../contact.php");
+        header("Location:". BASE_URL."contact.php");
     }
 }
 else{
     $_SESSION ['error'] = "Check your Errors";
     $_SESSION ['errors'] = $errors;
-    header("Location:../contact.php");
+    header("Location:". BASE_URL."contact.php");
 }
 
 ?>

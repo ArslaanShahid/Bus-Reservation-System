@@ -1,4 +1,5 @@
 <?php
+require_once '../init.php';
 require_once '../models/TicketCancel.php';
 session_start();
 $obj_query = new TicketCancel();
@@ -22,21 +23,22 @@ try{
 }
 if(count($errors)==0){
     try{
-        $obj_query->SubmitCancelRequest();
-        header("Location:../index.php");
+        $obj_query->submitCancelRequest();
+        header("Location:" .BASE_URL."ticket_cancel_info.php");
         $_SESSION['success']="Your Ticket Cancellation Request has been Sent to our team. We Will Contact You Shortly";
         
     }
     catch(Exception $ex){
         $msg= $ex->getMessage();
         $_SESSION['msg']=$msg;
-        header("Location:../cancel_ticket_form.php?id=".$booking_id);
+        header("Location:". BASE_URL."cancel_ticket_form.php?id=".$booking_id);
     }
 }
 else{
     $_SESSION ['error'] = "Check your Errors";
     $_SESSION ['errors'] = $errors;
-    header("Location:../cancel_ticket_form.php?id=".$booking_id);
+    header("Location:". BASE_URL."cancel_ticket_form.php?".$booking_id);
+
 }
 
 ?>

@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once '../init.php';
 require_once '../models/user.php';
 $errors = [];
 $obj_user = new User();
@@ -20,17 +21,17 @@ try{
 if(count($errors)==0){
     try{
         $obj_user->login();
-        header("Location:../index.php");
+        header("Location:". BASE_URL."index.php");
     }
     catch(Exception $ex){
     $msg= $ex->getMessage();
     $_SESSION['msg']=$msg;
-    header("Location:../login.php"); 
+    header("Location:". BASE_URL."login.php"); 
     }
     
 }
 else {
     $_SESSION ['msg']= "Check Your Errors";
     $_SESSION ['errors'] = $errors;
-    header("Location:../login.php");
+    header("Location:". BASE_URL."login.php");
 }

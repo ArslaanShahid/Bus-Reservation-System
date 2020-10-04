@@ -1,5 +1,5 @@
 <?php
-require_once('../models/Admin.php');
+require_once '../models/Admin.php';
 if (isset($_SESSION['obj_admin'])) {
     $obj_admin = unserialize($_SESSION['obj_admin']);
 } else {

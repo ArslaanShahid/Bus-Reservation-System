@@ -1,4 +1,5 @@
 <?php
+require_once('../init.php');
 date_default_timezone_get("Asia/Karachi");
 if($_SERVER['REQUEST_METHOD'] == "GET")
 {
@@ -14,9 +15,9 @@ if($_SERVER['REQUEST_METHOD'] == "GET")
     if($current > $user_date)
     {
         $_SESSION['error'] = 'Date not Valid';
-        header('Location:../index.php');
+        header("Location:". BASE_URL."index.php");
     }else{
-        header('Location:../search.php?from='.$from.'&to='.$to.'&date='.$date);
+        header("Location:". BASE_URL."search.php?from=".$from.'&to='.$to.'&date='.$date);
     }
 
 }
