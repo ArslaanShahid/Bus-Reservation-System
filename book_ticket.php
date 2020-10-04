@@ -36,9 +36,7 @@ $seats = $info['seats'];
                                 ?>
                             </h2>
                             <a href="#">Home</a> <span>/</span>
-                            <a class="active" href="#"><?php
-                                                        echo ($route_data->departure . ' to ' . $route_data->arrival);
-                                                        ?></a>
+                             <a class="active" href="#"><?php echo ($route_data->departure . ' to ' . $route_data->arrival);?></a>
                         </article>
                     </div>
                 </div>

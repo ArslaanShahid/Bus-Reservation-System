@@ -1,7 +1,12 @@
 <?php
+require_once "init.php";
+if (!isset($_GET['from']) || !isset($_GET['to'])|| !isset($_GET['date'])) {
+    header("Location:" . BASE_URL);
+}
 require_once('models/user.php');
 require_once('views/header.php');
 require_once('models/Route.php');
+
 $routes = Route::search($_GET['from'], $_GET['to'], $_GET['date']);
 ?>
 
