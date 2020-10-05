@@ -16,6 +16,7 @@ $public_pages = [
     BASE_FOLDER."login.php",
 ];
 $restricted_pages = [
+    BASE_FOLDER."index.php",
     BASE_FOLDER."account.php",
     BASE_FOLDER."add_route",
     BASE_FOLDER."view_bus.php",

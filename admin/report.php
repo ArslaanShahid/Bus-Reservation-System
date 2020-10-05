@@ -46,7 +46,7 @@ require_once 'views/sidebar.php';
                             <option value="2">2. Daily Booking Report</option>
                             <option value="3">3. Employees Report</option>
                             <option value="4">4. Weekly Booking Report</option>
-                            <option value="7">7. Yearly Booking Report</option>
+                            <option value="5">5. Monthly Booking Report</option>
                             <option value="3">3. Daily Sales Report</option>
                             <option value="5">5. Seats Report</option>
                             <option value="8">8. Cancel Booking</option>
@@ -97,19 +97,8 @@ require_once 'views/footer.php';
                 $(".data").html(output);
             } else if (val == 5) {
                 var output = "";
-                output += "<form action='<?php echo (BASE_URL); ?>reports/order_date_report.php' method='post'>";
+                output += "<form action='<?php echo (BASE_URL); ?>reports/monthly_booking_report.php' method='post'>";
                 output += "<div class='form-group' >";
-                output += "<label for='input-rounded' class='col-sm-2 control-label'>From Date</label>";
-                output += "<div class='col-md-10'>";
-                output += "<input type='date' class='form-control date monthly_from_date' name='from_date' readonly style='margin-top:10px;'>"
-                output += "</div>";
-                output += "</div>"
-                output += "<div class='form-group' >";
-                output += "<label for='input-rounded' class='col-sm-2 control-label'>To Date</label>";
-                output += "<div class='col-md-10'>";
-                output += "<input type='date' class='form-control date monthly_to_date' name='to_date' readonly style='margin-top:10px;'>"
-                output += "</div>";
-                output += "</div>"
                 output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
                 $(".data").html(output);

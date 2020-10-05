@@ -310,4 +310,45 @@ public static function AllTime_Earning()
     $sum = $row['earning'];
     return $sum;
 }
+
+public static function monthlyBooking()
+{
+        $obj_db = self::obj_db();
+        $first_date = date('Y-m-01');
+        $last_date = date('Y-m-t');
+
+        $query = " SELECT * FROM bookings where date between "
+        . " '$first_date' AND '$last_date' ";
+        $result = $obj_db->query($query);
+        if ($obj_db->errno) {
+            throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
+        }
+        // print_r($result);
+        // die;
+        $bookings = [];
+        while ($data = $result->fetch_object()) {
+            $rows = [];
+            $rows['name'] = $data->name;
+            $rows['contact_no'] = $data->contact_no;
+            $rows['cnic'] = $data->cnic;
+            $rows['gender'] = $data->gender;
+            $rows['total_fare'] = $data->total_fare;
+            $rows['date'] = $data->date;
+
+            $query_seat = "SELECT * from booked_seats "
+            . "where booking_id = '$data->id'";
+            $res = $obj_db->query($query_seat);
+
+            $seats = [];
+            while ($d = $res->fetch_object()) {
+                $seat_rows = [];
+                $seat_rows['seat_no'] = $d->seat_no;
+                $seats[] = $seat_rows;
+            }
+
+            $rows['seats'] = $seats;
+            $bookings[] = $rows;
+        }
+        return $bookings;
+}
 }
