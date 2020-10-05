@@ -58,12 +58,12 @@ require_once('views/header.php');
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <h5>Username</h5>
-                                    <input type="text" name="user_name" value="" class="form-control" placeholder="Enter Username">
+                                    <input type="text" name="user_name" class="form-control" placeholder="Enter Username">
                                     <h6 class="text-danger">
                                         <span>
                                             <?php
                                             if (isset($errors['user_name'])) {
-                                                echo ($errors['user_name ']);
+                                                echo ($errors['user_name']);
                                             }
 
                                             ?>
@@ -71,7 +71,6 @@ require_once('views/header.php');
                                     </h6>
                                 </div>
                             </div>
-
                             <div class="col-md-12">
                                 <h5>Password</h5>
                                 <input type="password" name="password" class="form-control" placeholder="Enter Password">
@@ -94,10 +93,9 @@ require_once('views/header.php');
 
                         <div class="form-row  margin-top-30">
                             <div class="col-md-6">
-                                <a href="#" class="lostpass">Forgot Password</a>
+                                <a href="<?php echo(BASE_URL); ?>register.php" class="lostpass">Want To Register?</a>
                             </div>
                             <div class="col-6 text-center">
-                                <a href="register.php" class="loginwith">Create an Account</a>
                             </div>
                         </div>
 

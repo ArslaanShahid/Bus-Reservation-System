@@ -57,8 +57,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     if(count($errors) == 0){
         try {
             $obj_user->update();
-            $_SESSION['msg'] = "Account Updated Successfully";
-            header("Location:". BASE_URL."msg.php");
+            $_SESSION['success'] = "Account Updated Successfully";
+            header("Location:". BASE_URL."update_account.php");
         }catch(Exception $ex){
             $msg = $ex->getMessage();
             $_SESSION['msg'] = $msg;
@@ -66,7 +66,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         } 
     
     }else{
-        $_SESSION['msg'] = "Check Your Errors";
+        $_SESSION['error'] = "Check Your Errors";
         $_SESSION['errors']= $errors;
         header("Location:". BASE_URL."update_account.php");
         

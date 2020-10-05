@@ -55,7 +55,7 @@ class User
     {
         $reg = "/[a-z]+\d*/i";
         if (!preg_match($reg, $user_name)) {
-            throw new Exception("Invalid / Missing User Name");
+        throw new Exception("Username Must be Lowercase letter and Digit is optional");
         }
         $this->user_name = $user_name;
     }
@@ -125,8 +125,8 @@ class User
     }
     private function setCnic($cnic)
     {
-        if (!is_numeric($cnic)|| strlen($cnic)>13) {
-            throw new Exception("Invalid/ Missing CNIC");
+        if (!is_numeric($cnic)|| strlen($cnic)>13 || strlen($cnic)<13 ) {
+            throw new Exception("Please Enter Valid 13 Digit Cnic Without Dashes (-)");
         }
         $this->cnic = $cnic;
     }
@@ -281,7 +281,7 @@ class User
         $this->password = NULL;
         $this->user_name = $user_data->user_name;
         $this->cnic = $user_data->cnic;
-        $this->loggedin = true;
+        $this->loggedin = false;
         $str_obj = serialize($this);
         $_SESSION['obj_user'] = $str_obj;
     }

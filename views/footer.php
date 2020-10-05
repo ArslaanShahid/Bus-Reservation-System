@@ -49,7 +49,7 @@
 <script src="<?php echo (BASE_URL); ?>assets/front/js/plugins/slick.min.js"></script>
 <!--Main-->
 <script src="<?php echo (BASE_URL); ?>assets/js/select2.min.js"></script>
-<script src="admin/assets/scripts/toastr.min.js"></script>
+<script src="<?php echo(BASE_URL); ?>admin/assets/scripts/toastr.min.js"></script>
 <script src="<?php echo (BASE_URL); ?>assets/front/js/custom.js"></script>
 <script src="<?php echo (BASE_URL); ?>assets/front/js/jquery.seat-charts.min.js"></script>
 
@@ -105,7 +105,7 @@
             i++;
         }
         if (data.cnic == '' || data.cnic.length < 13) {
-            $(".cnic").html("Missing CNIC Must Be 12 Numbers");
+            $(".cnic").html("Missing CNIC Must Be 13 Numbers");
             i++;
         }
         if (data.seat_number == '') {

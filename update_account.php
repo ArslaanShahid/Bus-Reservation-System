@@ -195,7 +195,7 @@ require_once 'views/footer.php';
                 action: 'get_cities',
             };
             $.ajax({
-                url: "process/process_location.php",
+                url: "<?php echo(BASE_URL);?>process/process_location.php",
                 data: data,
                 dataType: 'JSON',
                 type: 'POST',
@@ -232,7 +232,7 @@ require_once 'views/footer.php';
             action: 'get_cities',
         };
         $.ajax({
-            url: "process/process_location.php",
+            url: "<?php echo(BASE_URL); ?>process/process_location.php",
             data: data,
             dataType: 'JSON',
             type: 'POST',

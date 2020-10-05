@@ -3,6 +3,7 @@ require_once('views/header.php');
 require_once('models/Location.php');
 require_once('models/Queries.php');
 $cities = Location::allCities();
+
 ?>
 
 <body class="body-class index-1">
@@ -92,7 +93,7 @@ $cities = Location::allCities();
                     <br>
                     <br>
                     <h2 class="section-heading">Why Choose Us</h2>
-                    <p class="section-paragraph">PAK LINES is a company with an incredible track record of Quality &amp; Excellence in services across the country.</p>
+                    <p class="section-paragraph">Smart BRs is a company with an incredible track record of Quality &amp; Excellence in services across the country.</p>
                 </div>
             </div>
             <div class="row">
@@ -102,7 +103,7 @@ $cities = Location::allCities();
                             <i class="fa fa-glass" aria-hidden="true"></i>
                         </div>
                         <h4>Refreshments</h4>
-                        <p>Pak Line serves you healthy refreshments</p>
+                        <p>Smart BRs serves you healthy refreshments</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -111,7 +112,7 @@ $cities = Location::allCities();
                             <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                         </div>
                         <h4>Non Stop</h4>
-                        <p>Pak Lines are based on direct routing ( NONE STOP Service)</p>
+                        <p>Smart BRS are based on direct routing ( NONE STOP Service)</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -120,7 +121,7 @@ $cities = Location::allCities();
                             <i class="fa fa-users" aria-hidden="true"></i>
                         </div>
                         <h4>Trained Staff</h4>
-                        <p>Pak Lines have professionally trained and experienced staff to serve you better</p>
+                        <p>Smart BRs have professionally trained and experienced staff to serve you better</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">

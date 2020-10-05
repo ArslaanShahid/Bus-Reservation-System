@@ -60,7 +60,7 @@ $bookings = Booking::bookingHistory($_GET['cnic']);
                             <?php
                             
                            if(count($bookings) == 0) {
-                            echo("<tr><td colspan='9' class='text-danger text-center'><strong>No Booking Found</strong></td></tr>");
+                            echo("<tr><td colspan='10' class='text-danger text-center'><strong>No Booking Found</strong></td></tr>");
                         }    
                             else foreach ($bookings as $booking){
                                 echo('<tr>');

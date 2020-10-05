@@ -31,7 +31,7 @@ if(count($errors)==0){
     
 }
 else {
-    $_SESSION ['msg']= "Check Your Errors";
+    $_SESSION ['error']= "Check Your Errors";
     $_SESSION ['errors'] = $errors;
     header("Location:". BASE_URL."login.php");
 }

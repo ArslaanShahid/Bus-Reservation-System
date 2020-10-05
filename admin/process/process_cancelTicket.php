@@ -2,11 +2,16 @@
 session_start();
 require_once '../../models/TicketCancel.php';
 require_once '../init.php';
-
+// $ticket =TicketCancel::cancelTicket($_GET['booking_id'], $_GET['id']);
+// echo('<pre>');
+// print_r($ticket);
+// echo('</pre>');
+// die; 
 $error = '';
 
 try{
-    TicketCancel::cancelTicket($_GET['booking_id'], $_GET['id']);
+        TicketCancel::cancelTicket($_GET['booking_id'], $_GET['id']);
+  
 }catch(Exception $ex){
     $error = $ex->getMessage();
 }

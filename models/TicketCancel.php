@@ -175,8 +175,7 @@ Class TicketCancel{
         }
 
         $data = $result->fetch_object();
-        // print_r($data);
-        // die;
+        
         if($data->cancel_status == 1)
         {
             throw new Exception("Booking Already Cancelled");
@@ -196,7 +195,7 @@ Class TicketCancel{
 
             $query = "UPDATE booked_seats"
             . " SET cancel_status = 1"
-                . " WHERE booking_id = '$booking_id'";
+            . " WHERE booking_id = '$booking_id'";
             $result = $obj_db->query($query);
             if ($obj_db->errno) {
                 throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
@@ -204,10 +203,10 @@ Class TicketCancel{
 
             $query = "UPDATE cancel_ticket"
             . " SET pending_status = 0"
-                . " WHERE id = '$id'";
+            . " WHERE id = '$id'";
             $result = $obj_db->query($query);
             if ($obj_db->errno) {
-                throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
+            throw new Exception(" db Select Error " . $obj_db->errno . $obj_db->error);
             }
             
 

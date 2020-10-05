@@ -47,7 +47,7 @@ require_once 'views/sidebar.php';
                         echo ("<td class='text-center'><a href='#' class='view_booking' data-id='" . $ticket->booking_id . "'><span class='fa fa-eye'></span></a></td>");
                         if($ticket->pending_status == 1)
                         {
-                            echo ("<td><a href=".BASE_URL."process/process_cancelTicket.php?booking_id=".$ticket->booking_id."&id=".$ticket->id."' class='btn btn-sm btn-danger'>Cancel Ticket</a></td>");
+                            echo ("<td><a href=".BASE_URL."process/process_cancelTicket.php?booking_id=".$ticket->booking_id."&id=".$ticket->id." class='btn btn-sm btn-danger'>Cancel Ticket</a></td>");
                         }else{
                             echo ("<td><span class='badge badge-warning'>Ticket Cancelled</span></td>");
                         }

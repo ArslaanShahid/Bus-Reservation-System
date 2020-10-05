@@ -17,7 +17,7 @@ require_once('views/header.php');
                         <div class="breadcrumbinfo">
                             <article>
                                 <h2>Sign Up</h2>
-                                <a href="index.html">Home</a> <span>/</span>
+                                <a href="<?php echo(BASE_URL) ?>">Home</a> <span>/</span>
                                 <a class="active" href="<?php echo(BASE_URL) ?>register.php">Sign Up</a>
                             </article>
                         </div>
@@ -97,7 +97,7 @@ require_once('views/header.php');
                                     </div>
                                     <div class="col-md-12">
                                         <h5>CNIC</h5>
-                                        <input type="" name="cnic" class="form-control" placeholder="Enter CNIC No XXXX-XXXXXXX-X " />
+                                        <input type="" name="cnic" class="form-control" placeholder="Enter 13 Digit CNIC No" />
                                         <span class="text-danger">
                                                 <!-- @@@ -->
                                                 <?php
