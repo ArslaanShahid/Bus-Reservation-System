@@ -6,8 +6,8 @@ if (isset($_SESSION['obj_user'])) {
     $obj_user = unserialize($_SESSION['obj_user']);
 } else {
     $obj_user = new User();
-$obj_user->profile();
 }
+$obj_user->profile();
 
 
 ?>
