@@ -281,7 +281,7 @@ class User
         $this->password = NULL;
         $this->user_name = $user_data->user_name;
         $this->cnic = $user_data->cnic;
-        $this->loggedin = false;
+        $this->loggedin = true;
         $str_obj = serialize($this);
         $_SESSION['obj_user'] = $str_obj;
     }

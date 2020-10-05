@@ -6,7 +6,8 @@ if (isset($_SESSION['obj_user'])) {
 } else {
     $obj_user = new User();
 }
-$obj_user->profile();
+$result = $obj_user->profile();
+
 ?>
 <body class="body-class bc blog">
 
