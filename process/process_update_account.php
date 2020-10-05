@@ -4,8 +4,10 @@ require_once('../init.php');
 require_once'../models/user.php';
 $errors = [];
 
-// die($_POST['city_id']);
-
+// echo("<pre>");
+// print_r($_POST);
+// echo("</pre>");
+// die;
 
 
 if(isset($_SESSION['obj_user'])){
@@ -23,11 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     }catch (Exception $ex){
         $errors ['last_name'] = $ex->getMessage();
     }
-    // try {
-    //     $obj_user->email = $_POST ['email'];
-    // }catch(Exception $ex){
-    //     $errors ['email'] = $ex->getMessage();
-    // }
+    
     try{
         $obj_user->mobile_no = $_POST ['mobile_no'];
     }catch(Exception $ex) {

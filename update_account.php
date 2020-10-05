@@ -101,7 +101,7 @@ $obj_user->profile();
 
                             <div class="from-group col-md-8">
                                 <label for="password">Date Of Birth:</label>
-                                <input type="date" name="date_of_birth" id="date" class="password form-control" value="">
+                                <input type="date" name="date_of_birth" class="password form-control">
                                 <span class="date_of_birth text-danger">
                                     <?php
                                     if (isset($errors['date_of_birth'])) {
