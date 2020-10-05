@@ -30,6 +30,7 @@ require_once 'views/sidebar.php';
                         <th>Sr.No.</th>
                         <th>PayPal Email</th>
                         <th>Reason</th>
+                        <th>Requested Time</th>
                         <th>Booking & User Info</th>
                         <th>Ticket Status</th>
                     </tr>
@@ -40,10 +41,14 @@ require_once 'views/sidebar.php';
                     $i = 1;
                     $tickets = TicketCancel::getAllCancelTicket();
                     foreach ($tickets as $ticket) {
+                        $time=$ticket->request_time;
+                        $converted = date('h:i a',strtotime(($time)));
+
                         echo ("<tr>");
                         echo ("<td>" . $i . "</td>");
                         echo ("<td>" . $ticket->email . "</td>");
                         echo ("<td>" . $ticket->reason . "</td>");
+                        echo ("<td>" .$converted  . "</td>");
                         echo ("<td class='text-center'><a href='#' class='view_booking' data-id='" . $ticket->booking_id . "'><span class='fa fa-eye'></span></a></td>");
                         if($ticket->pending_status == 1)
                         {
@@ -80,6 +85,7 @@ require_once 'views/footer.php';
                 <table class="table table-bordered">
                     <thead>
                         <tr>
+                            <th>Date</th>
                             <th>Name</th>
                             <th>Contact No.</th>
                             <th>Gender</th>
@@ -121,7 +127,7 @@ require_once 'views/footer.php';
                         if (result.hasOwnProperty('success')) {
                             var data = result.booking_info;
                             var output;
-                            output = `<tr><td>${data.customer}</td><td>${data.contact_no}</td><td>${data.gender}</td><td>${data.cnic}</td><td>${data.total_fare}</td><td>${data.departure}</td><td>${data.arrival}</td></tr>`;
+                            output = `<tr><td>${data.date}</td><td>${data.customer}</td><td>${data.contact_no}</td><td>${data.gender}</td><td>${data.cnic}</td><td>${data.total_fare}</td><td>${data.departure}</td><td>${data.arrival}</td></tr>`;
 
                             $("#tbody > tr").remove();
                             $("#tbody").append(output);

@@ -105,12 +105,11 @@ Class TicketCancel{
         {
             throw new Exception('Ticket Cannot Cancel Time is passed <br> <i>Ticket Can be Cancel Before Departure Time</i>');
         }
-
-
+        $now = date("H:i:s");
         $query = "INSERT into cancel_ticket"
-            . "(`id`, `booking_id`, `email`, `reason`) "
+            . "(`id`, `booking_id`, `email`, `reason` , `request_time`) "
             . " values "
-            . " (NULL, '$this->booking_id', '$this->email', '$this->reason') " ;
+            . " (NULL, '$this->booking_id', '$this->email', '$this->reason', '$now') " ;
 
         $obj_db->query($query);
 
@@ -142,7 +141,7 @@ Class TicketCancel{
     public static function getCancelBooking($id)
     {
         $obj_db = self::obj_db();
-        $query = "SELECT b.name as customer, b.cnic, b.contact_no, b.gender,b.total_fare, cd.name as departure, ca.name as arrival FROM bookings b "
+        $query = "SELECT b.date, b.name as customer, b.cnic, b.contact_no, b.gender,b.total_fare, cd.name as departure, ca.name as arrival FROM bookings b "
         . "JOIN routes r ON r.id = b.route_id "
         . "JOIN cities cd ON (cd.id = r.departure) "
         . "JOIN cities ca ON (ca.id = r.arrival) "

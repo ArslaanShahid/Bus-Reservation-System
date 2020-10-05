@@ -104,7 +104,7 @@ public function login(){
     $this->email = $user_data->email;
     $this->password = NULL;
     $this->user_name = $user_data->user_name;
-    $this->loggedin =false;
+    $this->loggedin = false;
     $str_obj = serialize($this);
     $_SESSION ['obj_admin'] = $str_obj;
 }

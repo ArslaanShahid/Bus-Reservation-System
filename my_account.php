@@ -12,7 +12,6 @@ $obj_user->profile();
 
 ?>
 <body class="body-class bc blog">
-
 <section id="breadcrumb">
     <div class="overly"></div>
     <div class="container">
