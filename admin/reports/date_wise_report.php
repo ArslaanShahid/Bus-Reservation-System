@@ -3,12 +3,10 @@ require_once "views/header.php";
 require_once "../../models/Booking.php";
 $from_date = $_POST['from_date'];
 $to_date = $_POST['to_date'];
-$from_date_time = strtotime($from_date);
-$to_date_time = strtotime($to_date);
-if($from_date_time > $to_date_time) {
+
+if($from_date > $to_date) {
     $_SESSION['error'] = "Invalid Date";
     header("Location:".BASE_URL."admin/report.php");
-    die;
 }
 ?>
 

@@ -1,5 +1,6 @@
 <?php
 require_once '../../init.php';
+session_start();
 ?>
 <!doctype html>
 <html lang="en">

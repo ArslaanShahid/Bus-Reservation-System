@@ -202,6 +202,7 @@ require_once 'views/footer.php';
             }
 
         });
+
         //monthly dates
         var date = new Date();
         var month = date.getMonth();
