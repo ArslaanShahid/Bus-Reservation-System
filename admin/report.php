@@ -26,12 +26,14 @@ require_once 'views/sidebar.php';
             <div class="card-body">
                 <span>
                     <?php
-                    if (isset($_SESSION['error'])) {
-                        echo ("<div class='alert alert-danger alert-dismissible'>");
-                        echo ("<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>");
-                        echo ("<strong>Error !</strong> " . $_SESSION['error']);
-                        echo ("</div>");
-                        unset($_SESSION['error']);
+
+                    if (isset($_SESSION['msg'])) {
+                        echo ($_SESSION['msg']);
+                        unset($_SESSION['msg']);
+                    }
+                    if (isset($_SESSION['errors'])) {
+                        $errors = $_SESSION['errors'];
+                        unset($_SESSION['errors']);
                     }
                     ?>
                 </span>
@@ -42,16 +44,15 @@ require_once 'views/sidebar.php';
                     <div class="position-relative form-group">
                         <select name="select" id="report" class="form-control">
                             <option value="0">--Select Report--</option>
-                            <option value="1">1. Daily Bus Report</option>
+                            <option value="1">1. Bus Report</option>
                             <option value="2">2. Daily Booking Report</option>
                             <option value="3">3. Employees Report</option>
                             <option value="4">4. Weekly Booking Report</option>
                             <option value="5">5. Monthly Booking Report</option>
-                            <option value="3">3. Daily Sales Report</option>
-                            <option value="5">5. Seats Report</option>
-                            <option value="8">8. Cancel Booking</option>
-                            <option value="9">9. Refund Report</option>
-                            <option value="10">10.Employees Report</option>
+                            <option value="6">6. Date Wise Booking Report</option>
+                            <option value="7">7. Cancel Booking</option>
+                            <option value="8">8. Date Wise Cancel Booking Report</option>
+                            <option value="9">9. Seats Report</option>
                         </select>
                     </div>
                 </div>
@@ -104,25 +105,8 @@ require_once 'views/footer.php';
                 $(".data").html(output);
             } else if (val == 6) {
                 var output = "";
-                output += "<form action='<?php echo (BASE_URL); ?>reports/order_date_report.php' method='post'>";
-                output += "<div class='form-group' >";
-                output += "<label for='input-rounded' class='col-sm-2 control-label'>From Date</label>";
-                output += "<div class='col-md-10'>";
-                output += "<input type='date' class='form-control date weekly_from_date' name='from_date' readonly style='margin-top:10px;'>"
+                output += "<form action='<?php echo (BASE_URL); ?>reports/date_wise_report.php' method='post'>";
                 output += "</div>";
-                output += "</div>"
-                output += "<div class='form-group' >";
-                output += "<label for='input-rounded' class='col-sm-2 control-label'>To Date</label>";
-                output += "<div class='col-md-10'>";
-                output += "<input type='date' class='form-control date weekly_to_date' name='to_date' readonly style='margin-top:10px;'>"
-                output += "</div>";
-                output += "</div>"
-                output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
-                output += "</form>";
-                $(".data").html(output);
-            } else if (val == 7) {
-                var output = "";
-                output += "<form action='<?php echo (BASE_URL); ?>reports/order_date_report.php' method='post'>";
                 output += "<div class='form-group' >";
                 output += "<label for='input-rounded' class='col-sm-2 control-label'>From Date</label>";
                 output += "<div class='col-md-10'>";
@@ -134,32 +118,30 @@ require_once 'views/footer.php';
                 output += "<div class='col-md-10'>";
                 output += "<input type='date' class='form-control date weekly_to_date' name='to_date' style='margin-top:10px;'>"
                 output += "</div>";
-                output += "</div>"
+                output += "</div>";
+                output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "</form>";
+                $(".data").html(output);
+            } else if (val == 7) {
+                var output = "";
+                output += "<form action='<?php echo (BASE_URL); ?>reports/cancel_booking_report.php' method='post'>";
                 output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 8) {
                 var output = "";
-                output += "<form action='<?php echo (BASE_URL); ?>reports/product_date_report.php' method='post'>";
-                output += "<div class='form-group' >";
-                output += "<label for='input-rounded' class='col-sm-2 control-label'>Select Product</label>";
-                output += "<div class='col-md-10'>";
-                output += "<select class='form-control' style='margin-top:10px;' name='product_id'>";
-                output += "<option value=''>--Select Product--</option>";
-
-                output += "</select>";
-                output += "</div>";
+                output += "<form action='<?php echo (BASE_URL); ?>reports/date_wise_cancel_booking.php' method='post'>";
                 output += "</div>";
                 output += "<div class='form-group' >";
                 output += "<label for='input-rounded' class='col-sm-2 control-label'>From Date</label>";
                 output += "<div class='col-md-10'>";
-                output += "<input type='date' class='form-control date weekly_from_date' name='from_date' readonly style='margin-top:10px;'>"
+                output += "<input type='date' class='form-control date weekly_from_date' name='from_date' style='margin-top:10px;'>"
                 output += "</div>";
                 output += "</div>"
                 output += "<div class='form-group' >";
                 output += "<label for='input-rounded' class='col-sm-2 control-label'>To Date</label>";
                 output += "<div class='col-md-10'>";
-                output += "<input type='date' class='form-control date weekly_to_date' name='to_date' readonly style='margin-top:10px;'>"
+                output += "<input type='date' class='form-control date weekly_to_date' name='to_date' style='margin-top:10px;'>"
                 output += "</div>";
                 output += "</div>";
                 output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
@@ -194,15 +176,7 @@ require_once 'views/footer.php';
                 $(".data").html(output);
             } else if (val == 10) {
                 var output = "";
-                output += "<form action='<?php echo (BASE_URL); ?>reports/product_date_report.php' method='post'>";
-                output += "<div class='form-group' >";
-                output += "<label for='input-rounded' class='col-sm-2 control-label'>Select Product</label>";
-                output += "<div class='col-md-10'>";
-                output += "<select class='form-control' style='margin-top:10px;' name='product_id'>";
-                output += "<option value=''>--Select Product--</option>";
-
-                output += "</select>";
-                output += "</div>";
+                output += "<form action='<?php echo (BASE_URL); ?>reports/date_wise_report.php' method='post'>";
                 output += "</div>";
                 output += "<div class='form-group' >";
                 output += "<label for='input-rounded' class='col-sm-2 control-label'>From Date</label>";

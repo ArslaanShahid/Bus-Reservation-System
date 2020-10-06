@@ -10,7 +10,7 @@ require_once('../models/user.php');
 require_once('../models/Route.php');
 require_once('../models/Booking.php');
 
-// $result= Booking::daily_Earning();
+// $result= Booking::weekly_Earning();
 // echo("<pre>");
 //     print_r($result);
 //     die;
@@ -213,7 +213,7 @@ require_once('../models/Booking.php');
                                                     <div class="widget-content-left">
                                                         <br>
                                                         <div class="widget-heading">Daily Earning</div>
-                                                        <i class="fa fa-credit-card fa-2x"></i>
+                                                        <i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>
 
                                                     </div>
                                                     <div class="widget-content-right">
@@ -231,26 +231,21 @@ require_once('../models/Booking.php');
                                             <div class="widget-content-outer">
                                                 <div class="widget-content-wrapper">
                                                     <div class="widget-content-left">
+                                                        <br>
                                                         <div class="widget-heading">Weekly Earning</div>
+                                                        <i class="fa fa-refresh fa-spin fa-2x fa-fw"></i>
                                                     </div>
                                                     <div class="widget-content-right">
                                                         <div class="widget-numbers text-warning">
+
                                                         <?php 
-                                                          Booking::weekly_Earning();
+                                                          echo ("<span class=''>$</span>"). Booking::weekly_Earning();
                                                             
                                                             ?>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="widget-progress-wrapper">
-                                                    <div class="progress-bar-sm progress-bar-animated-alt progress">
-                                                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 77%;"></div>
-                                                    </div>
-                                                    <div class="progress-sub-label">
-                                                        <div class="sub-label-left">Sales</div>
-                                                        <div class="sub-label-right">100%</div>
-                                                    </div>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>

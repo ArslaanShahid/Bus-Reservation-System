@@ -30,7 +30,6 @@ require_once 'views/sidebar.php';
                                 <label for="validationCustomUsername">Username</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">@</span>
                                     </div>
 
                                     <input type="text" class="form-control" name="user_name" id="user_name"
