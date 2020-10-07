@@ -2,6 +2,8 @@
 require_once "views/header.php";
 require_once "../../models/Employee.php";
 ?>
+<h4 class="text-center">Employees Report</h4>
+<br>
 <table class="table table-striped">
     <thead>
         <tr>

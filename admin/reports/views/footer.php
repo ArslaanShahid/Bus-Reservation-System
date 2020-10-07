@@ -4,6 +4,7 @@
 <footer>
     <div class="col-lg-12 footer">
         <span class="pull-right"><h3>Signature:____________</h3></span>
+        
     </div>
 </footer>
 </div>

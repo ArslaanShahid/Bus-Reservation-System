@@ -250,6 +250,9 @@ class Route
         // print_r($res);
         // die;
         $day = strtolower(date('l', $res));
+        // if ($from == $to) {
+        //     throw new Exception("Departure and Arrival Cities Cant be Same");
+        // }
 
         $query = " SELECT r.id, r.fare, r.duration, r.departure_time, r.distance, d.day as day, b.bus_no as bus, b.seats, b.air_conditioner, cd.name as departure, cd.id as departure_id, ca.name as arrival, ca.id as arrival_id from routes r "
             . "JOIN cities cd ON (cd.id = r.departure) "
@@ -398,5 +401,52 @@ class Route
         // die;
         return $routes;
     }
-    
+    public static function DailyRoute()
+    {
+        $currentDay = date('w');
+        $obj_db = self::obj_db();
+        $query = " SELECT r.id, r.fare, d.id, r.duration, r.departure_time as time, r.distance, d.day as day, b.bus_no as bus, cd.name as departure, ca.name as arrival from routes r "
+            . "JOIN cities cd ON (cd.id = r.departure) "
+            . "JOIN cities ca ON  (ca.id = r.arrival) "
+            . "JOIN days d ON (r.day = d.id) "
+            . "JOIN buses b ON (r.bus_id = b.id)"
+            . "WHERE d.id = '$currentDay'" ; 
+        $result = $obj_db->query($query);
+        if ($obj_db->errno) {
+            throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
+        }
+        // print_r($result);
+        // die;
+        while ($data = $result->fetch_object()) {
+            $routes[] = $data;
+        }
+        // echo('<pre>');
+        // print_r($routes);
+        // echo('</pre>');
+        // die;
+        return $routes;
+    }
+    public static function WeeklyRoute()
+    {
+        $obj_db = self::obj_db();
+        $query = " SELECT r.id, r.fare, d.id, r.duration, r.departure_time as time, r.distance, d.day as day, b.bus_no as bus, cd.name as departure, ca.name as arrival from routes r "
+            . "JOIN cities cd ON (cd.id = r.departure) "
+            . "JOIN cities ca ON  (ca.id = r.arrival) "
+            . "JOIN days d ON (r.day = d.id) "
+            . "JOIN buses b ON (r.bus_id = b.id)";
+        $result = $obj_db->query($query);
+        if ($obj_db->errno) {
+            throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
+        }
+        // print_r($result);
+        // die;
+        while ($data = $result->fetch_object()) {
+            $routes[] = $data;
+        }
+        // echo('<pre>');
+        // print_r($routes);
+        // echo('</pre>');
+        // die;
+        return $routes;
+    }
 }

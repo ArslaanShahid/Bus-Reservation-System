@@ -22,7 +22,7 @@ $bookings = Booking::bookingHistory($_GET['cnic']);
                         <div class="breadcrumbinfo">
                             <article>
                                 <h2>Booking History</h2>
-                                <a href="index.php">Home</a> <span>/</span>
+                                <a href="<?php echo(BASE_URL); ?>index.php">Home</a> <span>/</span>
                                 <a class="active" href="#">Booking History</a>
                             </article>
                         </div>

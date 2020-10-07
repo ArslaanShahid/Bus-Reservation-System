@@ -195,7 +195,7 @@ $cities = Location::allCities();
             <div class="row justify-content-center">
                 <div class="col-lg-7 col-md-10 text-center">
                     <h2 class="section-heading">Latest News</h2>
-                    <p class="section-paragraph">Largest fleet of buses and trailers, having highly professional &amp; trained staff and state of the art technology, PAK LINES is the largest company in Transport &amp; Cargo Industry.</p>
+                    <p class="section-paragraph">Largest fleet of buses and trailers, having highly professional &amp; trained staff and state of the art technology, Smart BRS is the largest company in Transport &amp; Cargo Industry.</p>
                 </div>
             </div>
             <div class="row">

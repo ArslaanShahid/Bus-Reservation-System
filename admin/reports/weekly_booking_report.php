@@ -3,6 +3,8 @@ require_once "views/header.php";
 require_once "../../models/Booking.php";
 ?>
 <table class="table table-striped">
+<h4 class="text-center">Weekly Booking Report</h4>
+<br>
     <thead>
         <tr>
             <td>Sr.No</td>

@@ -6,7 +6,7 @@ require_once 'models/Booking.php';
 $result = Booking::getTicketInfo($_GET['booking_id']);
 $date =date('Y-m-d',strtotime($result['booking']->date));
 // echo("<pre>");
-// print_r($date);
+// print_r($result);
 // die;
 // echo ("</pre>");
 
@@ -31,7 +31,9 @@ $date =date('Y-m-d',strtotime($result['booking']->date));
       </div>
       <div class="card-body text-success">
         <h3 class="card-title text-danger">Ticket Route: <?php echo ($result['booking']->departure . " To " . $result['booking']->arrival); ?></h3>
+        <h4><strong>Ticket No:</strong> <?php echo ($result['booking']->Ticket_No); ?></h4>
         <h4><strong>Name:</strong> <?php echo ($result['booking']->customer); ?></h4>
+        <h4><strong>Bus No:</strong><?php echo ($result['booking']->bus_no);?>
         <h4><strong>Seat No:</strong>
         <?php
             foreach($result['seats'] as $seat)

@@ -1,4 +1,5 @@
 <?php
+// error_reporting(E_ALL ^ E_NOTICE);
 require_once "init.php";
 if (!isset($_GET['from']) || !isset($_GET['to'])|| !isset($_GET['date'])) {
     header("Location:" . BASE_URL);
@@ -55,7 +56,10 @@ $routes = Route::search($_GET['from'], $_GET['to'], $_GET['date']);
                             </thead>
                             <tbody>
                                 <?php
-                                foreach($routes['routes'] as $route)
+                                 if(isset($routes['routes']) == 0) {
+                                    echo("<tr><td colspan='11' class='text-danger text-center'><strong>No Route Found</strong></td></tr>");
+                                }  
+                                else foreach($routes['routes'] as $route)
                                 {
                                     echo('<tr>');
                                     echo('<td><b>'.$route->bus.'</b><br><span>'.$route->departure.' <b>To</b> '.$route->arrival.'</span><br><span class="text-success"><b>'.$routes['date'].'</b></span></td>');

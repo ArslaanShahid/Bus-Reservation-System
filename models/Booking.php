@@ -212,10 +212,11 @@ class Booking
     public static function getTicketInfo($booking_id)
     {
         $obj_db = self::obj_db();
-        $query = "SELECT b.name as customer, b.date, r.departure_time, cd.name as departure, ca.name as arrival FROM bookings b "
+        $query = "SELECT b.name as customer,b.id as Ticket_No ,bs.bus_no ,r.bus_id, b.date, r.departure_time, cd.name as departure, ca.name as arrival FROM bookings b "
                 ."JOIN routes r ON r.id = b.route_id "
                 ."JOIN cities cd ON (cd.id = r.departure) "
                 ."JOIN cities ca ON (ca.id = r.arrival) "
+                ."JOIN buses bs ON (bs.id = r.bus_id) "
                 ."WHERE b.id = '$booking_id'";
         
         $booking = $obj_db->query($query);

@@ -25,7 +25,7 @@ session_start();
     <meta name="description" content="">
     <title>BRS</title>
     <!-- favicon -->
-    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo(BASE_URL) ?>assets/images/logo/favicon.png" type="image/x-icon">
 
     <!--Google Font-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,600i,700" rel="stylesheet">
@@ -78,11 +78,11 @@ session_start();
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-5">
                         <li class="nav-item">
-                            <a class="nav-link active " href="index.php">Home</a>
+                            <a class="nav-link active " href="<?php echo(BASE_URL) ?>index.php">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link " href="#">About </a>
+                            <a class="nav-link " href="<?php echo(BASE_URL); ?>about.php">About </a>
                         </li>
 
                         
@@ -90,7 +90,7 @@ session_start();
                             <a class="nav-link " href="<?php echo(BASE_URL); ?>faqs.php">Faq</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="contact.php">Contact</a>
+                            <a class="nav-link " href="<?php echo(BASE_URL) ?>contact.php">Contact</a>
                         </li>
 
 
@@ -99,8 +99,8 @@ session_start();
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Booking </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                <a class="dropdown-item" href="ticket_cancel.php">Ticket Cancel</a>
-                                <a class="dropdown-item" href="#">Print Download</a>
+                                <a class="dropdown-item" href="<?php echo(BASE_URL) ?>ticket_cancel.php">Ticket Cancel</a>
+                                <a class="dropdown-item" href="<?php echo(BASE_URL) ?>print_download.php">Print Download</a>
                             </div>
                         </li>
                     </ul>
@@ -129,7 +129,7 @@ session_start();
                     &nbsp;
                     
 
-                    <a class="btn btn-primary" href="search.php">Buy
+                    <a class="btn btn-primary" href="<?php echo(BASE_URL); ?>search.php">Buy
                         Ticket</a>
 
 

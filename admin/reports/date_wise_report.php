@@ -9,7 +9,8 @@ if($from_date > $to_date) {
     header("Location:".BASE_URL."admin/report.php");
 }
 ?>
-
+<h4 class="text-center">Date Wise Booking Report</h4>
+<br>
 <table class="table table-striped">
     <thead>
         <tr>

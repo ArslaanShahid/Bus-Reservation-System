@@ -3,6 +3,8 @@ require_once "views/header.php";
 require_once "../../models/Booking.php";
 $bookings = Booking::monthlyBooking();
 ?>
+<h4 class="text-center">Monthly Booking Report</h4>
+<br>
 <table class="table table-striped">
     <thead>
         <tr>

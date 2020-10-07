@@ -48,7 +48,7 @@ session_start();
     <section class="">
         <div class="col-md-12 heading">
             <br>
-            <center><span class=>Smart BRs</span></center>
+            <center><span class=>Smart BRs Reports</span></center>
         </div>
         <br>
         <div class="row dates">

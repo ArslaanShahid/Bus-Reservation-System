@@ -73,7 +73,7 @@ if(in_array($current,$public_pages) && $obj_admin->loggedin) {
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
-                <div class="navbar-brand"><a href="index.php"><img src="assets/images/admin_logo.png" width="70px"></a> &nbsp;&nbsp;&nbsp;&nbsp;</div>
+                <div class="navbar-brand"><a href="index.php"><img src="<?php echo(BASE_URL);?>assets/images/admin_logo.png" width="70px"></a> &nbsp;&nbsp;&nbsp;&nbsp;</div>
                 <div class="header__pane ml-auto">
                     <div>
                         <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">

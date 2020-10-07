@@ -2,6 +2,8 @@
 require_once "views/header.php";
 require_once "../../models/Bus.php";
 ?>
+<h4 class="text-center">Bus Report</h4>
+<br>
 <table class="table table-striped">
     <thead>
         <tr>

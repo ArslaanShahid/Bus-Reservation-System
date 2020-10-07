@@ -11,6 +11,8 @@ if($from_date_time > $to_date_time) {
     die;
 }
 ?>
+<h4 class="text-center">Date Wise Cancel Booking Report</h4>
+<br>
 <table class="table table-striped">
     <thead>
         <tr>
