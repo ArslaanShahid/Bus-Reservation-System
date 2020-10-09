@@ -4,10 +4,15 @@ require_once 'views/sidebar.php';
 require_once '../models/Location.php';
 require_once '../models/Route.php';
 require_once '../models/Bus.php';
-
+require_once '../models/Employee.php';
 $cities = Location::allCities();
 $days = Route::allDays();
 $buses = Bus::allBuses();
+$driver = Employee::Driver();
+// echo ("<pre>");
+// print_r($driver);
+// die;
+// echo ("</pre>");
 
 ?>
 <div class="app-page-title">

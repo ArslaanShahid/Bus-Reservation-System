@@ -390,16 +390,17 @@ class Route
         if ($obj_db->errno) {
             throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
         }
+        $data = $result->fetch_object();
         // print_r($result);
         // die;
-        while ($data = $result->fetch_object()) {
-            $routes[] = $data;
-        }
+        // while ($data = $result->fetch_object()) {
+        //     $routes[] = $data;
+        // }
         // echo('<pre>');
         // print_r($routes);
         // echo('</pre>');
         // die;
-        return $routes;
+        return $data;
     }
     public static function DailyRoute()
     {
@@ -447,6 +448,31 @@ class Route
         // print_r($routes);
         // echo('</pre>');
         // die;
+        return $routes;
+    }
+
+    public static function dayRouteAPI($date)
+    {
+        $obj_db = self::obj_db();
+        $res = strtotime($date);
+        $day = strtolower(date('l', $res));
+        // print_r($day);
+        // die;
+        $query = " SELECT r.id, r.fare, r.duration, r.departure_time, r.distance, d.day as day, b.bus_no as bus, b.seats, b.air_conditioner, cd.name as departure, cd.id as departure_id, ca.name as arrival, ca.id as arrival_id from routes r "
+            . "JOIN cities cd ON (cd.id = r.departure) "
+            . "JOIN cities ca ON  (ca.id = r.arrival) "
+            . "JOIN days d ON (r.day = d.id) "
+            . "JOIN buses b ON (r.bus_id = b.id) "
+            . "WHERE d.day = '$day'";
+
+        $result = $obj_db->query($query);
+        if ($obj_db->errno) {
+            throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
+        }
+        $routes = [];
+        while ($data = $result->fetch_object()) {
+            $routes[] = $data;
+        }
         return $routes;
     }
 }
