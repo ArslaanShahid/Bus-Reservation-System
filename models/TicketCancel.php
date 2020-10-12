@@ -84,24 +84,24 @@ Class TicketCancel{
     }
     public function submitCancelRequest()
     {
-        $current = date('Y-m-d');
-        $current_time = strtotime(date('h:i a'));
-        
         $obj_db = self::obj_db();
-
-        $info = "SELECT b.date, b.id, r.departure_time, r.id from bookings b "
-                ."JOIN routes r ON b.id = r.id " 
-                ."WHERE b.id='$this->booking_id'";
-
+        
+        $info = "SELECT b.date, b.id,  b.route_id, r.departure_time, r.id from bookings b "
+        ."JOIN routes r ON b.route_id = r.id " 
+        ."WHERE b.id='$this->booking_id'";
+        
+        
         $result = $obj_db->query($info);
+        $current = date('Y-m-d');
+        $current_time =(date('h:i a'));
+        $temp_time = date('h:i a',strtotime('+30 Minutes',strtotime($current_time)));
         $temp = $result->fetch_object();
+        $temp_date = ($temp_time .' '.$temp->departure_time); 
+        // print_r($temp_date);
+        // die;       
+        $departure_time = strtotime($temp_date);
 
-        // $temp_date = ($current.' '.$temp->departure_time);
-        // $departure_time = strtotime($temp_date);
-        // print_r($departure_time);
-        // die;
-
-        if($current == $temp->date && $current_time >= $temp->departure_time)
+        if($current == $temp->date && $temp_date >= $temp->departure_time)
         {
             throw new Exception('Ticket Cannot Cancel Time is passed <br> <i>Ticket Can be Cancel Before Departure Time</i>');
         }

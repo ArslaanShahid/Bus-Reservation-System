@@ -83,6 +83,9 @@
 <script>
     function validate(data, actions) {
         let i = 0;
+        reg = "/^\d{13}$/";
+        let tem = parseInt(data.cnic);
+
         $(".has_error").html(" ");
         if (data.booking_date == '') {
             toastr.error("Missing Booking Date");
@@ -104,9 +107,15 @@
             $(".contact_no").html("Missing Contact No");
             i++;
         }
-        if (data.cnic == '' || data.cnic.length < 13) {
-            $(".cnic").html("Missing CNIC Must Be 13 Numbers");
+        if(!Number.isInteger(tem))
+        {
+            $(".cnic").html("Write CNIC without Special characters");
             i++;
+        }
+        if(tem.toString().length != 13)
+        {
+            $(".cnic").html("CNIC must be equal to 13 numbers");
+            i++;    
         }
         if (data.seat_number == '') {
             i++;

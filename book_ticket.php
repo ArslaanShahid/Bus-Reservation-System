@@ -150,14 +150,14 @@ $seats = $info['seats'];
                         </div>
                         <div class="form-group">
                             <label for="name"><strong>Contact No</strong></label>
-                            <input type="text" class="form-control" name="contact_no" id="contact_no" placeholder="Enter Your Name">
+                            <input type="number" class="form-control" name="contact_no" id="contact_no" placeholder="Enter Your Contact No">
                             <div class="has_error text-danger contact_no">
 
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="name"><strong>CNIC</strong></label>
-                            <input type="text" class="form-control" name="cnic" id="cnic" placeholder="Enter Your Name">
+                            <input type="number" min="0" class="form-control" name="cnic" id="cnic" placeholder="Enter Your Cnic">
                             <div class="has_error text-danger cnic"></div>
                         </div>
                         <div class="form-group">

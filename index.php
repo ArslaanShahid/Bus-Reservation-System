@@ -32,7 +32,7 @@ $cities = Location::allCities();
 
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show normal active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                <form action="process/process_search.php?" method="GET">
+                                <form action="<?php echo(BASE_URL); ?>process/process_search.php?" method="GET">
                                     <div class="form-row">
                                         <div class="col-lg-3">
                                             <select class="form-control" name="departure" id="departure" required>
@@ -242,7 +242,7 @@ $cities = Location::allCities();
                                 </div>
                             </div>
                         </div>
-                        <form id="c-form" action="process/process_user_queries.php" method="post">
+                        <form id="c-form" action="<?php echo(BASE_URL); ?>process/process_user_queries.php" method="post">
                             <div class="row">
                                 <div class="col-md-12">
                                     <input type="text" class="form-control" placeholder="Enter Your Name" name="name">
@@ -263,7 +263,7 @@ $cities = Location::allCities();
                                             ?></span>
                                 </div>
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control" placeholder="Phone Number" name="mobile">
+                                    <input type="text" class="form-control" placeholder="Phone Number e.g 03211234121 " name="mobile">
                                     <span class="text-danger"><?php
                                             if (isset($errors['mobile'])) {
                                                 echo ($errors['mobile']);
@@ -272,7 +272,7 @@ $cities = Location::allCities();
                                             ?></span>
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control" rows="3"  placeholder="Enquiry" name="msg"></textarea>
+                                    <textarea class="form-control" rows="3"  placeholder="Enter Your Message Minimum 20 Character.." name="msg"></textarea>
                                     <span class="text-danger"><?php
                                             if (isset($errors['msg'])) {
                                                 echo ($errors['msg']);

@@ -4,6 +4,10 @@ require_once '../models/Bus.php';
 require_once 'views/header.php';
 require_once 'views/layoutoption.php';
 require_once 'views/sidebar.php';
+
+// $result = bus::allBuses();
+// print_r($result);
+// die;
 ?>
 
 <div class="app-page-title">
@@ -55,8 +59,8 @@ require_once 'views/sidebar.php';
                             <option value="9">9. Daily Route Report</option>
                             <option value="10">10.Weekly Route Report</option>
                             <option value="11">11.Monthly Route Report</option>
-                            <option value="12">12.Daily Sale Report</option>
-                            <option value="12">12.Weekly Sale Report</option>
+                            <option value="12">12.Bus Wise Booking Report</option>
+                            <option value="13">13.Weekly Sale Report</option>
                         </select>
                     </div>
                 </div>
@@ -77,34 +81,34 @@ require_once 'views/footer.php';
             var val = $(this).val();
             if (val == 1) {
                 var output = "";
-                output += "<form action='reports/bus_report.php' method='post'>";
-                output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<form action='<?php echo (BASE_URL); ?>reports/bus_report.php' method='post'>";
+                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 2) {
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/daily_booking_report.php' method='post'>";
-                output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 3) {
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/employees_report.php' method='post'>";
-                output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 4) {
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/weekly_booking_report.php' method='post'>";
                 output += "<div class='form-group' >";
-                output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 5) {
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/monthly_booking_report.php' method='post'>";
                 output += "<div class='form-group' >";
-                output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 6) {
@@ -123,13 +127,13 @@ require_once 'views/footer.php';
                 output += "<input type='date' class='form-control date weekly_to_date' name='to_date' style='margin-top:10px;'>"
                 output += "</div>";
                 output += "</div>";
-                output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 7) {
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/cancel_booking_report.php' method='post'>";
-                output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 8) {
@@ -148,34 +152,55 @@ require_once 'views/footer.php';
                 output += "<input type='date' class='form-control date weekly_to_date' name='to_date' style='margin-top:10px;'>"
                 output += "</div>";
                 output += "</div>";
-                output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 9) {
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/daily_route_report.php' method='post'>";
-                output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 10) {
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/weekly_route_report.php' method='post'>";
-                output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 11) {
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/monthly_route_report.php' method='post'>";
-                output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
                 output += "</form>";
                 $(".data").html(output);
             }
             else if (val == 12) {
                 var output = "";
-                output += "<form action='<?php echo (BASE_URL); ?>reports/daily_sale_report.php' method='post'>";
-                output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
-                output += "</form>";
-                $(".data").html(output);
+            output += "<form action='<?php echo (BASE_URL); ?>reports/bus_wise_booking_report.php' method='post'>";
+            output += "<div class='form-group' >";
+            output += "<label for='input-rounded' class='col-sm-2 control-label'>Select Bus</label>";
+            output += "<div class='col-md-10'>";
+            output += "<select class='form-control' style='margin-top:10px;' name='bus_id'>";
+            output += "<option value=''>--Select Bus--</option>";
+            output += "<?php $buses = Bus::allBuses();foreach($buses as $bus) { echo("<option value='".$bus->id."'>".ucfirst($bus->bus_no)."</option>"); } ?> ";
+            output += "</select>";
+            output += "</div>";
+            output += "</div>";
+            output += "<div class='form-group' >";
+            output += "<label for='input-rounded' class='col-sm-2 control-label'>From Date</label>";
+            output += "<div class='col-md-10'>";
+            output += "<input type='date' class='form-control date weekly_from_date' name='from_date' style='margin-top:10px;'>"
+            output += "</div>";
+            output += "</div>"
+            output += "<div class='form-group' >";
+            output += "<label for='input-rounded' class='col-sm-2 control-label'>To Date</label>";
+            output += "<div class='col-md-10'>";
+            output += "<input type='date' class='form-control date weekly_to_date' name='to_date' style='margin-top:10px;'>"
+            output += "</div>";
+            output += "</div>";
+            output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+            output += "</form>";
+            $(".data").html(output);
             }
             else if (val == 13) {
                 var output = "";

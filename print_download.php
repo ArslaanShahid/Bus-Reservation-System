@@ -50,11 +50,11 @@ require_once("models/TicketCancel.php");
 
                                 <div class="col-md-12">
                                     <h5>Enter Ticket No</h5>
-                                    <input name="booking_id" class="form-control" placeholder="Enter Ticket No"  />
+                                    <input name="unique_id" class="form-control" placeholder="Enter Ticket No" type="number" min="0"   />
                                     <span class="text-danger">
                                         <?php
-                                        if (isset($errors['booking_id'])) {
-                                            echo ($errors['booking_id']);
+                                        if (isset($errors['unique_id'])) {
+                                            echo ($errors['unique_id']);
                                         }
                                         ?>
                                     </span>

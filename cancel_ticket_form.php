@@ -70,7 +70,7 @@ $ticket = new TicketCancel();
                 
                 <div class="col-md-6 col-sm-12 offset-3">
 
-                    <form action="process/process_cancel_form.php" class="price-details" method="POST">
+                    <form action="<?php echo(BASE_URL); ?>process/process_cancel_form.php" class="price-details" method="POST">
                     <input type="hidden" name="booking_id" value="<?php echo($booking); ?>">
 
                         <div class="form-group">

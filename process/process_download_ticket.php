@@ -8,23 +8,27 @@ if($_SERVER['REQUEST_METHOD'] == "GET")
 
     session_start();
     $current_date = date("Y-m-d");
-    $booking_id = $_GET['booking_id'];
-    $result = Booking::getTicketInfo($_GET['booking_id']);
-    $date =date('Y-m-d',strtotime($result['booking']->date));
+    $unique_id = $_GET['unique_id'];
+    $result = Booking::PrintTicket($_GET['unique_id']);
+    // echo("<pre>");
+    // print_r($result);
+    // echo("</pre>");
+    // die;
+    $date =date('Y-m-d',strtotime($result['unique_id']->date));
     // print_r($date);
     // die;
-    $booking_date = $result=Booking::getTicketInfo($_GET['date']);
-    if($date < $current_date){
-        $_SESSION ['error'] = 'Ticket Not Found Please Try Again With Valid Ticket No';
+    $booking_date = $result=Booking::PrintTicket($_GET['date']);
+    if($booking_date < $current_date){
+        $_SESSION ['error'] = 'Your Ticket is Expire Or Enter 5 Digit Valid Ticket No';
         header("Location:". BASE_URL."print_download.php");
     }
-    else if(!is_numeric($booking_id) || ""){
-        $_SESSION ['error'] = 'Please Enter Valid Ticket No ';
+     if($unique_id == "" || $unique_id <4 || $unique_id <6){
+        $_SESSION ['error'] = 'Please Enter Enter 5 Digit Valid Ticket No ';
         header("Location:". BASE_URL."print_download.php");
     }
     
     else{
-        header("Location:". BASE_URL."view_ticket.php?booking_id=".$booking_id);
+        header("Location:". BASE_URL."ticket_download.php?unique_id=".$unique_id);
     }
 
 }

@@ -35,11 +35,8 @@ $obj_user->profile();
                 <div class="row justify-content-center">
                     <div class="col-lg-7 col-md-10 text-center">
                         <h2 class="text-center">
-                            My Account
+                            User Profile Information
                         </h2>
-                        <br>
-                        <br>
-                        <br>
                         <br>
                     </div>
                 </div>
@@ -50,7 +47,7 @@ $obj_user->profile();
                             <table class="table table-bordered table-striped">
                                 <tr class="">
                                     <td colspan="2">
-                                        <center>My Account Data</center>
+                                        <center class="font-weight-bold">My Account Data</center>
                                     </td>
                                 </tr>
                                 <tr>
@@ -166,10 +163,10 @@ $obj_user->profile();
 
                                 <tr>
                                     <td>
-                                        <center><a href="<?php echo (BASE_URL); ?>change_password.php">Reset Password</a></center>
+                                        <center><a href="<?php echo (BASE_URL); ?>change_password.php" class="btn btn-danger fa fa-repeat"> Reset Password</a></center>
                                     </td>
                                     <td>
-                                        <center><a href="<?php echo (BASE_URL); ?>update_account.php">Update Account</a></center>
+                                        <center><a href="<?php echo (BASE_URL); ?>update_account.php" class="btn btn-success fa fa-user "> Update Account</a></center>
                                     </td>
                                 </tr>
                             </table>
