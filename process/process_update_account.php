@@ -10,10 +10,11 @@ $errors = [];
 // die;
 
 
-if(isset($_SESSION['obj_user'])){
-    header("Location:../index.php");
-}
+// if(isset($_SESSION['obj_user'])){
+//     header("Location:../index.php");
+// }
 $obj_user = unserialize($_SESSION['obj_user']);
+
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     try{
         $obj_user->first_name = $_POST ['first_name'];
@@ -32,6 +33,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $errors['mobile_no']  = $ex->getMessage();
     }
     try{
+        
         $obj_user->date_of_birth = $_POST['date_of_birth'];
     }catch (Exception $ex){
         $errors ['date_of_birth'] =$ex->getMessage();
