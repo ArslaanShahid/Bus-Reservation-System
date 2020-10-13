@@ -233,7 +233,7 @@ class Route
         if ($obj_db->errno) {
             throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
         }
-        
+
         while ($data = $result->fetch_object()) {
             $routes[] = $data;
         }
@@ -485,5 +485,26 @@ class Route
             $routes[] = $data;
         }
         return $routes;
+    }
+
+    public static function checkRouteBus($id)
+    {
+        $obj_db = self::obj_db();
+        //Checking If bus has added for any route or not.
+        $query = "SELECT * from routes "
+        . "WHERE bus_id = '$id'";
+        $result = $obj_db->query($query);
+
+        if ($obj_db->errno) {
+            throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
+        }
+        
+        if (!$result->num_rows == 0) {
+            $response = false;
+        }else{
+            $response = true;
+        }
+
+        return $response;
     }
 }

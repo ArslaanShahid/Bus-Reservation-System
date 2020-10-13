@@ -42,7 +42,7 @@ if (isset($_SESSION['errors'])) {
             <h5 class="text-danger">
 
             </h5>
-            <form method="POST" action="<?php echo(BASE_URL); ?>process/process_add_route.php">
+            <form method="POST" action="<?php echo (BASE_URL); ?>process/process_add_route.php">
                 <div class="form-row">
                     <div class="col-md-11 mb-3">
                         <label for="validationCustomUsername">Route Bus:</label>
@@ -56,6 +56,8 @@ if (isset($_SESSION['errors'])) {
                                 ?>
                             </select>
                         </div>
+                        <span class="text-success" id="check_bus_true"></span>
+                        <span class="text-danger" id="check_bus_false"></span>
                         <span class="text-danger">
                             <?php
                             if (isset($errors['bus_id'])) {
@@ -205,10 +207,40 @@ if (isset($_SESSION['errors'])) {
                     </div>
                 </div>
 
-                <button class="btn btn-primary" type="submit">Add Bus</button>
+                <button class="btn btn-primary" type="submit" id="add_route">Add Bus</button>
             </form>
     </div>
 </div>
 <?php
 require_once 'views/footer.php';
 ?>
+<script>
+    $(document).ready(function(e) {
+        $("#bus").change(function(e) {
+            var id = $("#bus").find(':selected').val();
+            $("#check_bus_true").html('');
+            $("#check_bus_false").html('');
+            $("#add_route").attr('disabled', false);
+            var url = "<?php echo (BASE_URL); ?>process/process_check_bus.php?id=:id";
+            url = url.replace(':id', id);
+            $.ajax({
+                url: url,
+                type: "GET",
+                dataType: "JSON",
+                complete: function(jqXHR, textStatus) {
+                    if (jqXHR.status == 200) {
+                        var result = JSON.parse(jqXHR.responseText);
+                        if (result === true) {
+                            $("#check_bus_true").html("Available!");
+                        } else {
+                            $("#check_bus_false").html("Not Available!");
+                            $("#add_route").attr('disabled', true);
+                        }
+                    } else {
+                        alert("Contact Admin");
+                    }
+                }
+            })
+        })
+    });
+</script>
