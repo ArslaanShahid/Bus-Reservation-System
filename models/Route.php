@@ -233,8 +233,7 @@ class Route
         if ($obj_db->errno) {
             throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
         }
-        // print_r($result);
-        // die;
+        
         while ($data = $result->fetch_object()) {
             $routes[] = $data;
         }
