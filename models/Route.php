@@ -160,10 +160,24 @@ class Route
     {
         $obj_db = self::obj_db();
 
+        //Checking if arrival and departure cities are same.
         if ($this->departure == $this->arrival) {
             throw new Exception("Departure and Arrival Cities Cant be Same");
         }
 
+        //Checking If bus has added for any route or not.
+        $query = "SELECT * from routes "
+        . "WHERE bus_id = '$this->bus_id'";
+        $result = $obj_db->query($query);
+
+        if ($obj_db->errno) {
+            throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
+        }
+        if (!$result->num_rows == 0) {
+            throw new Exception("Route Already Added for this bus.");
+        }
+        
+        //Same Route timing Checking
         $query = "SELECT * from routes "
                 ."WHERE bus_id = '$this->bus_id' AND departure='$this->departure' AND arrival = '$this->arrival' AND departure_time='$this->departure_time'";
         $result = $obj_db->query($query);
@@ -416,8 +430,6 @@ class Route
         if ($obj_db->errno) {
             throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
         }
-        // print_r($result);
-        // die;
         while ($data = $result->fetch_object()) {
             $routes[] = $data;
         }
