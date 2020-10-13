@@ -10,17 +10,13 @@ if($_SERVER['REQUEST_METHOD'] == "GET")
     $current_date = date("Y-m-d");
     $unique_id = $_GET['unique_id'];
     $result = Booking::PrintTicket($_GET['unique_id']);
-    // echo("<pre>");
-    // print_r($result);
-    // echo("</pre>");
-    // die;
     $date =date('Y-m-d',strtotime($result['unique_id']->date));
-    // print_r($date);
-    // die;
-    $booking_date = $result=Booking::PrintTicket($_GET['date']);
-    if($booking_date < $current_date){
+    $ticket_date = ($result['booking']->date);
+    
+    if($ticket_date < $current_date){
         $_SESSION ['error'] = 'Your Ticket is Expire Or Enter 5 Digit Valid Ticket No';
         header("Location:". BASE_URL."print_download.php");
+        die;
     }
      if($unique_id == "" || $unique_id <4 || $unique_id <6){
         $_SESSION ['error'] = 'Please Enter Enter 5 Digit Valid Ticket No ';

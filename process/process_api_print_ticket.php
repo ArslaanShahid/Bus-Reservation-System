@@ -1,10 +1,10 @@
 <?php
-    require_once "../models/Route.php";
+    require_once "../models/Booking.php";
 $response = [];
 try {
-    $routes = Route::dayRouteAPI($_GET['date']);
+    $ticket = Booking::PrintTicket($_GET['unique_id']);
     $response['success'] = true;
-    $response['routes'] = $routes;
+    $response['routes'] = $ticket;
 } catch(Exception $ex) {
     $response['error']  = true;
     $response['msg'] = $ex->getMessage();
