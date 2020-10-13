@@ -316,7 +316,7 @@ class User
         $query = "update user_profiles set "
             . " first_name = '$this->first_name', last_name = '$this->last_name', "
             . " mobile_no =  '$this->mobile_no' , gender = '$this->gender', state_id = '$this->state_id', "
-            . " city_id = '$this->city_id' , date_of_birth = '$this->date_of_birth' "
+            . " city_id = '$this->city_id' , date_of_birth = '$this->date_of_birth'"
             . " where user_id = $this->user_id ";
         $obj_db->query($query);
         if ($obj_db->errno) {
