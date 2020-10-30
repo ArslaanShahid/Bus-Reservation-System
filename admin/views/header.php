@@ -115,8 +115,6 @@ if(in_array($current,$public_pages) && $obj_admin->loggedin) {
                                             <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                            <button type="button" tabindex="0" class="dropdown-item">User
-                                                Account</button>
                                             <?php
                                             if (isset($_SESSION['obj_admin'])) {
                                                 echo ("<a href='".BASE_URL."process/process_logout.php' button type='button' tabindex='0' class='dropdown-item'>Logout</a>");

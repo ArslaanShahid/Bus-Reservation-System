@@ -82,33 +82,33 @@ require_once 'views/footer.php';
             if (val == 1) {
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/bus_report.php' method='post'>";
-                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<center><input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'></center>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 2) {
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/daily_booking_report.php' method='post'>";
-                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<center><input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'></center>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 3) {
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/employees_report.php' method='post'>";
-                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<center><input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'></center>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 4) {
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/weekly_booking_report.php' method='post'>";
                 output += "<div class='form-group' >";
-                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<center><input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'></center>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 5) {
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/monthly_booking_report.php' method='post'>";
                 output += "<div class='form-group' >";
-                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<center><input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'></center>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 6) {
@@ -127,13 +127,13 @@ require_once 'views/footer.php';
                 output += "<input type='date' class='form-control date weekly_to_date' name='to_date' style='margin-top:10px;'>"
                 output += "</div>";
                 output += "</div>";
-                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<center><input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'></center>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 7) {
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/cancel_booking_report.php' method='post'>";
-                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<center><input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'></center>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 8) {
@@ -152,25 +152,25 @@ require_once 'views/footer.php';
                 output += "<input type='date' class='form-control date weekly_to_date' name='to_date' style='margin-top:10px;'>"
                 output += "</div>";
                 output += "</div>";
-                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<center><input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'></center>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 9) {
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/daily_route_report.php' method='post'>";
-                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<center><input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'></center>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 10) {
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/weekly_route_report.php' method='post'>";
-                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<center><input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'></center>";
                 output += "</form>";
                 $(".data").html(output);
             } else if (val == 11) {
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/monthly_route_report.php' method='post'>";
-                output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<center><input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'></center>";
                 output += "</form>";
                 $(".data").html(output);
             }
@@ -198,14 +198,14 @@ require_once 'views/footer.php';
             output += "<input type='date' class='form-control date weekly_to_date' name='to_date' style='margin-top:10px;'>"
             output += "</div>";
             output += "</div>";
-            output += "<input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+            output += "<center><input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'></center>";
             output += "</form>";
             $(".data").html(output);
             }
             else if (val == 13) {
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/weekly_sale_report.php' method='post'>";
-                output += "<input type='submit' value='Check Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'>";
+                output += "<center><input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'></center>";
                 output += "</form>";
                 $(".data").html(output);
             }
