@@ -1,0 +1,199 @@
+[
+    {
+        "name": "clxcommunications/sdk-xms",
+        "version": "1.1.1",
+        "version_normalized": "1.1.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/clxcommunications/sdk-xms-php.git",
+            "reference": "4546420eed4425434b96e505d74815d27c7d2d99"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/clxcommunications/sdk-xms-php/zipball/4546420eed4425434b96e505d74815d27c7d2d99",
+            "reference": "4546420eed4425434b96e505d74815d27c7d2d99",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.6 || ^7.0",
+            "psr/log": "^1.0"
+        },
+        "require-dev": {
+            "gamez/psr-testlogger": "^1.0",
+            "internations/http-mock": "^0.7",
+            "phpdocumentor/phpdocumentor": "^2.0",
+            "phpunit/phpunit": "^5.5"
+        },
+        "time": "2017-07-12T12:40:46+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Clx\\Xms\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "description": "Library for CLX Communications HTTP REST Messaging API",
+        "homepage": "https://github.com/clxcommunications/sdk-xms-php/"
+    },
+    {
+        "name": "messagebird/php-rest-api",
+        "version": "v1.19.2",
+        "version_normalized": "1.19.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/messagebird/php-rest-api.git",
+            "reference": "d4d73c624aea7ded471b49ef30b822dca61ce104"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/messagebird/php-rest-api/zipball/d4d73c624aea7ded471b49ef30b822dca61ce104",
+            "reference": "d4d73c624aea7ded471b49ef30b822dca61ce104",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "php": ">=7.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^7.5"
+        },
+        "time": "2020-07-20T09:55:39+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "MessageBird\\": "src/MessageBird/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-2-Clause"
+        ],
+        "authors": [
+            {
+                "name": "MessageBird",
+                "email": "info@messagebird.com"
+            }
+        ],
+        "description": "MessageBird REST API client for PHP",
+        "homepage": "https://github.com/messagebird/php-rest-api"
+    },
+    {
+        "name": "phpmailer/phpmailer",
+        "version": "v6.1.8",
+        "version_normalized": "6.1.8.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PHPMailer/PHPMailer.git",
+            "reference": "917ab212fa00dc6eacbb26e8bc387ebe40993bc1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/917ab212fa00dc6eacbb26e8bc387ebe40993bc1",
+            "reference": "917ab212fa00dc6eacbb26e8bc387ebe40993bc1",
+            "shasum": ""
+        },
+        "require": {
+            "ext-ctype": "*",
+            "ext-filter": "*",
+            "ext-hash": "*",
+            "php": ">=5.5.0"
+        },
+        "require-dev": {
+            "doctrine/annotations": "^1.2",
+            "friendsofphp/php-cs-fixer": "^2.2",
+            "phpunit/phpunit": "^4.8 || ^5.7"
+        },
+        "suggest": {
+            "ext-mbstring": "Needed to send email in multibyte encoding charset",
+            "hayageek/oauth2-yahoo": "Needed for Yahoo XOAUTH2 authentication",
+            "league/oauth2-google": "Needed for Google XOAUTH2 authentication",
+            "psr/log": "For optional PSR-3 debug logging",
+            "stevenmaguire/oauth2-microsoft": "Needed for Microsoft XOAUTH2 authentication",
+            "symfony/polyfill-mbstring": "To support UTF-8 if the Mbstring PHP extension is not enabled (^1.2)"
+        },
+        "time": "2020-10-09T14:55:58+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "PHPMailer\\PHPMailer\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-2.1-only"
+        ],
+        "authors": [
+            {
+                "name": "Marcus Bointon",
+                "email": "phpmailer@synchromedia.co.uk"
+            },
+            {
+                "name": "Jim Jagielski",
+                "email": "jimjag@gmail.com"
+            },
+            {
+                "name": "Andy Prevost",
+                "email": "codeworxtech@users.sourceforge.net"
+            },
+            {
+                "name": "Brent R. Matzelle"
+            }
+        ],
+        "description": "PHPMailer is a full-featured email creation and transfer class for PHP"
+    },
+    {
+        "name": "psr/log",
+        "version": "1.1.3",
+        "version_normalized": "1.1.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-fig/log.git",
+            "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/php-fig/log/zipball/0f73288fd15629204f9d42b7055f72dacbe811fc",
+            "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2020-03-23T09:12:05+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Psr\\Log\\": "Psr/Log/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
+            }
+        ],
+        "description": "Common interface for logging libraries",
+        "homepage": "https://github.com/php-fig/log",
+        "keywords": [
+            "log",
+            "psr",
+            "psr-3"
+        ]
+    }
+]

@@ -236,8 +236,9 @@
                 complete: function(jqXHR, textStatus) {
                     if (jqXHR.status == 200) {
                         let result = JSON.parse(jqXHR.responseText);
+                        console.log(result);
                         if (result.hasOwnProperty('success')) {
-                            window.location.href = "<?php echo (BASE_URL); ?>view_ticket.php?booking_id="+result.booking_id;
+                            window.location.href = "<?php echo (BASE_URL); ?>view_ticket.php?booking_id="+result.result.booking_id;
                             toastr.success("Seats Reserve Successfully");
                             $(".loader").html('');
                         }

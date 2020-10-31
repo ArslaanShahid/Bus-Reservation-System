@@ -54,13 +54,15 @@ require_once 'views/sidebar.php';
                             <option value="4">4. Weekly Booking Report</option>
                             <option value="5">5. Monthly Booking Report</option>
                             <option value="6">6. Date Wise Booking Report</option>
-                            <option value="7">7. Cancel Booking</option>
-                            <option value="8">8. Date Wise Cancel Booking Report</option>
+                            <option value="7">7. Cancel Booking Refund</option>
+                            <option value="8">8. Date Wise Cancel Booking Refund Report</option>
                             <option value="9">9. Daily Route Report</option>
                             <option value="10">10.Weekly Route Report</option>
                             <option value="11">11.Monthly Route Report</option>
                             <option value="12">12.Bus Wise Booking Report</option>
                             <option value="13">13.Weekly Sale Report</option>
+                            <option value="14">14.Pending Cancel Booking Report</option>
+                            <option value="15">15.Date Wise Pending Cancel Booking Report</option>
                         </select>
                     </div>
                 </div>
@@ -205,6 +207,32 @@ require_once 'views/footer.php';
             else if (val == 13) {
                 var output = "";
                 output += "<form action='<?php echo (BASE_URL); ?>reports/weekly_sale_report.php' method='post'>";
+                output += "<center><input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'></center>";
+                output += "</form>";
+                $(".data").html(output);
+            }
+            else if (val == 14) {
+                var output = "";
+                output += "<form action='<?php echo (BASE_URL); ?>reports/cancel_pending_report.php' method='post'>";
+                output += "<center><input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'></center>";
+                output += "</form>";
+                $(".data").html(output);
+            }else if (val == 15) {
+                var output = "";
+                output += "<form action='<?php echo (BASE_URL); ?>reports/date_wise_pending_cancel_booking.php' method='post'>";
+                output += "</div>";
+                output += "<div class='form-group' >";
+                output += "<label for='input-rounded' class='col-sm-2 control-label'>From Date</label>";
+                output += "<div class='col-md-10'>";
+                output += "<input type='date' class='form-control date weekly_from_date' name='from_date' style='margin-top:10px;'>"
+                output += "</div>";
+                output += "</div>"
+                output += "<div class='form-group' >";
+                output += "<label for='input-rounded' class='col-sm-2 control-label'>To Date</label>";
+                output += "<div class='col-md-10'>";
+                output += "<input type='date' class='form-control date weekly_to_date' name='to_date' style='margin-top:10px;'>"
+                output += "</div>";
+                output += "</div>";
                 output += "<center><input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'></center>";
                 output += "</form>";
                 $(".data").html(output);
