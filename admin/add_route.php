@@ -231,9 +231,9 @@ require_once 'views/footer.php';
                     if (jqXHR.status == 200) {
                         var result = JSON.parse(jqXHR.responseText);
                         if (result === true) {
-                            $("#check_bus_true").html("Available!");
+                            $("#check_bus_true").html("Bus Available For Route !");
                         } else {
-                            $("#check_bus_false").html("Not Available!");
+                            $("#check_bus_false").html("Bus is Already Registered On Route !");
                             $("#add_route").attr('disabled', true);
                         }
                     } else {

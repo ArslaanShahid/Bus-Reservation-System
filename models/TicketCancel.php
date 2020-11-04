@@ -169,12 +169,14 @@ Class TicketCancel{
                 ." WHERE id = '$booking_id'";
 
         $result = $obj_db->query($query);
+       
         if ($obj_db->errno) {
             throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
         }
 
         $data = $result->fetch_object();
-        
+        // print_r($data);
+        // die; 
         if($data->cancel_status == 1)
         {
             throw new Exception("Booking Already Cancelled");

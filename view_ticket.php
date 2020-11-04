@@ -59,6 +59,7 @@ $date =date('Y-m-d',strtotime($result['booking']->date));
     </div>
   </div>
 </div>
+   
 <br>
 <br>
 <br>

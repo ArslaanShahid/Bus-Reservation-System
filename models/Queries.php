@@ -143,6 +143,19 @@ class Queries
         $result = $obj_db->query($query);
         $count = mysqli_num_rows($result);
         return $count; 
-}
+    }
+    public static function api_user_query($name, $email, $mobile, $msg)
+    {
+        $obj_db = self::obj_db();
+        $query = " INSERT into user_queries "
+            . "(`id` , `name` , `email` ,`msg` , `mobile`) "
+            . "values "
+            . "(NULL , '$name' , '$email' , '$msg' , '$mobile') ";
+        $obj_db->query($query);
+
+        if ($obj_db->errno) {
+            throw new Exception("Query Insert Error" . $obj_db->errno . $obj_db->error);
+        }
+    }
     }
 

@@ -1,7 +1,7 @@
 <?php
 require_once('init.php');
-require_once('models/user.php');
 require_once('views/header.php');
+require_once('models/user.php');
 require_once 'models/Booking.php';
 $result = Booking::PrintTicket($_GET['unique_id']);
 $date =date('Y-m-d',strtotime($result['booking']->date));
@@ -59,6 +59,7 @@ $date =date('Y-m-d',strtotime($result['booking']->date));
     </div>
   </div>
 </div>
+   
 <br>
 <br>
 <br>

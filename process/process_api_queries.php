@@ -1,10 +1,10 @@
 <?php
-    require_once "../models/Booking.php";
+require_once '../models/Queries.php';
 $response = [];
+
 try {
-    $ticket = Booking::PrintTicket($_GET['unique_id']);
+    Queries::api_user_query($_GET['name'], $_GET['email'], $_GET['mobile'], $_GET['msg']);
     $response['success'] = true;
-    $response['tickets'] = $ticket;
 } catch(Exception $ex) {
     $response['error']  = true;
     $response['msg'] = $ex->getMessage();

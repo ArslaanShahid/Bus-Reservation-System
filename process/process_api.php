@@ -1,6 +1,7 @@
 <?php
     require_once "../models/Route.php";
 $response = [];
+// die($_GET['date']);
 try {
     $routes = Route::dayRouteAPI($_GET['date']);
     $response['success'] = true;

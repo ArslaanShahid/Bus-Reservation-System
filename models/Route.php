@@ -466,6 +466,8 @@ class Route
     {
         $obj_db = self::obj_db();
         $res = strtotime($date);
+        // print_r($res);
+        // die;
         $day = strtolower(date('l', $res));
         // print_r($day);
         // die;

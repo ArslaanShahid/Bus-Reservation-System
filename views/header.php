@@ -45,6 +45,7 @@ session_start();
     <link href="<?php echo (BASE_URL); ?>assets/admin/css/toastr.min.css" rel="stylesheet" />
     <link href="<?php echo (BASE_URL); ?>assets/admin/css/sweetalert.css" rel="stylesheet">
     <link href="<?php echo (BASE_URL); ?>assets/css/select2.min.css" rel="stylesheet">
+
     <!--Main Stylesheet-->
     <link rel="stylesheet" href="<?php echo (BASE_URL); ?>assets/front/css/style60da.css?color=1a76cc">
     <!--Responsive Stylesheet-->
