@@ -1,0 +1,7 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "^6.1",
+        "messagebird/php-rest-api": "^1.19",
+        "clxcommunications/sdk-xms": "^1.1"
+    }
+}
