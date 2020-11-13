@@ -19,7 +19,7 @@ if (isset($_SESSION['obj_user'])) {
                         <article>
                             <h2>My Account</h2>
                             <a href="index.html">Home</a> <span>/</span>
-                            <a class="active" href="login.html">My Account</a>
+                            <a class="active" href="login.php">My Account</a>
                         </article>
                     </div>
                 </div>
@@ -49,7 +49,6 @@ if (isset($_SESSION['obj_user'])) {
             <li class="list-group-item fa fa-user "><a href="my_account.php"> User Profile</a> </li>
             <li class="list-group-item fa fa-pencil-square-o "><a href="update_account.php"> Update Account</a> </li>
             <li class="list-group-item fa fa-history"><a href="<?php echo (BASE_URL).'booking_history.php?cnic='.$obj_user->cnic?>"> Booking History</a> </li>
-            <li class="list-group-item fa fa-envelope"><a href="#"> Complaint</a> </li>
         </ul>
 
     </div>

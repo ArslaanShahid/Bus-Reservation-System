@@ -1,5 +1,5 @@
 <?php
-// error_reporting(E_ALL ^ E_NOTICE);
+error_reporting(E_ALL ^ E_NOTICE);
 require_once "init.php";
 if (!isset($_GET['from']) || !isset($_GET['to'])|| !isset($_GET['date'])) {
     header("Location:" . BASE_URL);

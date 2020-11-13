@@ -41,7 +41,7 @@ class Queries
     {
         $reg = "/([a-zA-Z]+\s?$)/";
         if (!preg_match($reg, $name)) {
-            throw new Exception("Invalid / Missing Name");
+            throw new Exception("Name Should be in Capital or Small Letters");
         } 
         $this->name = $name;
     }
@@ -55,7 +55,7 @@ class Queries
     {
         $reg = "/^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zAZ]\.)+[a-zA-Z]{2,4})$/";
         if (!preg_match($reg, $email)) {
-            throw new Exception("Invalid / Missing Email");
+            throw new Exception("Email Format : abc@xyz.com");
         }
         $this->email = $email;
     }
@@ -69,7 +69,7 @@ class Queries
         $reg = "/\b(((?!=|\,|\.).)+(.)){10,140}\b/";
 
         if (!preg_match($reg, $msg)) {
-            throw new Exception("Incorrect / Missing Field");
+            throw new Exception("Please Enter Your Message.");
         }
 
         $this->msg = $msg;
@@ -80,7 +80,7 @@ class Queries
     }
     private function setMobile($mobile)
     {
-        $reg = "/^\+\d{2}\-\d{3}\-\d{7}$/";
+        $reg = "/^\d{11}$/";
         if (!preg_match($reg, $mobile)) {
             throw new Exception("Invalid/ Missing Number");
         }
@@ -94,7 +94,7 @@ class Queries
     public function user_query()
     {
         $obj_db = self::obj_db();
-        $query = " INSERT into user_queries "
+        $query = "INSERT into user_queries "
             . "(`id` , `name` , `email` ,`msg` , `mobile`) "
             . "values "
             . "(NULL , '$this->name' , '$this->email' , '$this->msg' , '$this->mobile') ";

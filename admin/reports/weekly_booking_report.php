@@ -13,7 +13,9 @@ require_once "../../models/Booking.php";
             <td>CNIC</td>
             <td>Gender</td>
             <td>Total Fare</td>
-            <td>Date    </td>
+            <td>Date</td>
+            <td>Departure </td>
+            <td>Arrival</td>
             <td>Seats</td>
         </tr>
     </thead>
@@ -36,6 +38,9 @@ require_once "../../models/Booking.php";
         echo ("<td>" . $booking['gender'] . "</td>");
         echo ("<td>" . $booking['total_fare'] . "</td>");
         echo ("<td>" . $booking['date'] . "</td>");
+        echo ("<td>" . $booking['departure'] . "</td>");
+        echo ("<td>" . $booking['arrival'] . "</td>");
+
         $i++;
         echo("<td>");
         foreach($booking['seats'] as $seat) {

@@ -46,7 +46,7 @@ else {
     $msg= "Check Your Errors";
     $_SESSION['error']= $msg;
     $_SESSION['errors']= $errors;
-    $_SESSION['obj_user']= serialize($obj_user);
+    // $_SESSION['obj_user']= serialize($obj_user);
     header("Location:". BASE_URL."register.php");
 }
 

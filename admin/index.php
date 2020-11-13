@@ -63,6 +63,7 @@ require_once('../models/Booking.php');
         </div>
     </div>
     <div class="col-md-6 col-xl-4">
+            <a class="text-white" href="view_user_queries.php">
         <div class="card mb-3 widget-content bg-arielle-smile">
             <div class="widget-content-wrapper text-white">
                 <div class="widget-content-left">
@@ -80,8 +81,9 @@ require_once('../models/Booking.php');
             </div>
         </div>
     </div>
-
+</a>
     <div class="col-lg-6 col-xl-4">
+    <a class="text-white" href="account.php">
         <div class="card mb-3 widget-content bg-premium-dark">
             <div class="widget-content-wrapper text-white">
                 <div class="widget-content-left">
@@ -97,8 +99,9 @@ require_once('../models/Booking.php');
             </div>
         </div>
     </div>
-
+</a>
     <div class="col-lg-6 col-xl-4">
+    <a class="text-white" href="view_bus.php">
         <div class="card mb-3 widget-content bg-happy-green">
             <div class="widget-content-wrapper text-white">
                 <div class="widget-content-left">
@@ -116,8 +119,9 @@ require_once('../models/Booking.php');
             </div>
         </div>
     </div>
-
+    </a>
     <div class="col-lg-6 col-xl-4">
+    <a class="text-white" href="view_bus.php">
         <div class="card mb-3 widget-content bg-night-fade">
             <div class="widget-content-wrapper text-white">
                 <div class="widget-content-left">
@@ -133,8 +137,9 @@ require_once('../models/Booking.php');
             </div>
         </div>
     </div>
-
+    </a>
     <div class="col-lg-6 col-xl-4">
+    <a class="text-dark" href="view_routes.php">
         <div class="card mb-3 widget-content">
             <div class="widget-content-wrapper">
                 <div class="widget-content-left">
@@ -152,6 +157,7 @@ require_once('../models/Booking.php');
         </div>
     </div>
 </div>
+</a>
 
 <div class="divider mt-0" style="margin-bottom: 30px;"></div>
                             <div class="main-card mb-3 card">

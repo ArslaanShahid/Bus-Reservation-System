@@ -65,7 +65,7 @@ require_once ('views/header.php');
                 <form id="c-form" action="<?php echo (BASE_URL); ?>process/process_user_queries.php" method="post">
                     <div class="row">
                         <div class="col-md-12">
-                            <input type="text" class="form-control" placeholder="Enter Your Name" name="name">
+                            <input type="text" class="form-control" placeholder="Enter Your Name E.g Muhammad Ahmad" name="name">
                             <span class="text-danger"><?php
                                     if (isset($errors['name'])) {
                                         echo ($errors['name']);
@@ -74,7 +74,7 @@ require_once ('views/header.php');
                                     ?></span>
                         </div>
                         <div class="col-md-12">
-                            <input type="email" class="form-control" placeholder="Enter Your Mail" name="email" >
+                            <input type="email" class="form-control" placeholder="Enter Your Mail E.g ahmad@yahoo.com" name="email" >
                             <span class="text-danger"><?php
                                     if (isset($errors['email'])) {
                                         echo ($errors['email']);
@@ -83,7 +83,7 @@ require_once ('views/header.php');
                                     ?></span>
                         </div>
                         <div class="col-md-12">
-                            <input type="text" class="form-control" placeholder="Phone Number" name="mobile">
+                            <input type="text" class="form-control" placeholder="Enter Phone No E.g 03231232312" name="mobile">
                             <span class="text-danger"><?php
                                     if (isset($errors['mobile'])) {
                                         echo ($errors['mobile']);
@@ -92,7 +92,7 @@ require_once ('views/header.php');
                                     ?></span>
                         </div>
                         <div class="col-12">
-                            <textarea class="form-control" rows="3"  placeholder="Enquiry" name="msg"></textarea>
+                            <textarea class="form-control" rows="3"  placeholder="Enter Your Message/Complaint, E.g Today I'm Facing Issue" name="msg"></textarea>
                             <span class="text-danger"><?php
                                     if (isset($errors['msg'])) {
                                         echo ($errors['msg']);

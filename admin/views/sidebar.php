@@ -33,7 +33,7 @@
         </div>
         <div class="scrollbar-sidebar dropdown">
             <div class="app-sidebar__inner">
-                <ul class="vertical-nav-menu">
+                <ul class="vertical-nav-menu ">
                     <li class="app-sidebar__heading">Manage Account</li>
                     <li>
                         <a href="<?php echo(BASE_URL); ?>addadmin.php">

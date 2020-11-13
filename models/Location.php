@@ -55,4 +55,20 @@ public static function allCities (){
     }
     return $cities;
 }
+public static function MyCity ($city_id){
+    $obj_db = self::obj_db();
+    $query = "select name from cities"
+            ." where country_id = 174 AND id='$city_id' ";
+    $result = $obj_db->query($query);
+    if($obj_db->errno){
+        throw new Exception("db Select Error".$obj_db->errno.$obj_db->error);
+    }
+    if($result->num_rows==0){
+        throw new Exception ("Cities Not Found");
+    }
+    while ($data = $result->fetch_object()){
+        $cities[] = $data;
+    }
+    return $cities;
+}
 }

@@ -40,6 +40,7 @@ if(empty($bus_id)) {
     </thead>
     <?php
     $i = 1;
+    $sum =0;
     $bookings = Booking::BusWiseBooking($from_date , $to_date, $bus_id);
     // echo("<pre>");
     // print_r($bookings);
@@ -48,7 +49,7 @@ if(empty($bus_id)) {
     if(count($bookings) == 0) {
     echo("<tr><td colspan='12' class='text-center'>No Booking Found Against This Bus </td></tr>");
     }else foreach ($bookings as $booking) {
-        
+        $sum += $booking['total_fare'];
         echo ("<tr>");
         echo ("<td>" . $i . "</td>");
         echo ("<td>" . $booking['date'] . "</td>");
@@ -69,6 +70,8 @@ if(empty($bus_id)) {
         }
         echo("</td>");
     }
+    echo("<tr><td colspan='14' class='h6 font-weight-bold'>Total Booking: $sum PKR </td></tr>");
+
     ?>
 </table>
 

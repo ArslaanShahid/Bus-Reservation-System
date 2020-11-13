@@ -26,6 +26,7 @@ if($from_date > $to_date) {
     </thead>
     <?php
     $i = 1;
+    $sum=0;
     $bookings = Booking::DateWiseBooking($from_date , $to_date);
     // echo("<pre>");
     // print_r($bookings);
@@ -34,7 +35,7 @@ if($from_date > $to_date) {
     if(count($bookings) == 0) {
     echo("<tr><td colspan='7' class='text-center'>No Booking Found</td></tr>");
     }else foreach ($bookings as $booking) {
-        
+        $sum += $booking['total_fare'];
         echo ("<tr>");
         echo ("<td>" . $i . "</td>");
         echo ("<td>" . $booking['name'] . "</td>");
@@ -50,6 +51,8 @@ if($from_date > $to_date) {
         }
         echo("</td>");
     }
+    echo("<tr><td colspan='14' class='h6 font-weight-bold'>Total Booking: $sum PKR </td></tr>");
+
     ?>
 </table>
 

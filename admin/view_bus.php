@@ -32,6 +32,7 @@ require_once 'views/sidebar.php';
                         <th>Bus No</th>
                         <th>Bus Type</th>
                         <th>Seats</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,6 +51,8 @@ require_once 'views/sidebar.php';
                         }
 
                         echo ("<td>" . $bus->seats . "</td>");
+                        echo ("<td><a href='".BASE_URL."process/process_delete_bus.php?id=".$bus->id."' class='text-danger offset-5 fa fa-trash'></a></td>");
+
                         echo ("</tr>");
                         $i++;
                     }

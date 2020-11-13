@@ -1,12 +1,16 @@
 <?php
 require_once '../models/Route.php';
 require_once '../models/Bus.php';
+require_once '../models/Location.php';
 require_once 'views/header.php';
 require_once 'views/layoutoption.php';
 require_once 'views/sidebar.php';
 
-// $result = bus::allBuses();
+
+// $result = Location::allCities();
+// echo("<pre>");
 // print_r($result);
+// echo("</pre>");
 // die;
 ?>
 
@@ -63,6 +67,8 @@ require_once 'views/sidebar.php';
                             <option value="13">13.Weekly Sale Report</option>
                             <option value="14">14.Pending Cancel Booking Report</option>
                             <option value="15">15.Date Wise Pending Cancel Booking Report</option>
+                            <option value="16">16.City Wise Booking Report</option>
+
                         </select>
                     </div>
                 </div>
@@ -237,9 +243,38 @@ require_once 'views/footer.php';
                 output += "</form>";
                 $(".data").html(output);
             }
+            else if (val == 16) {
+            var output = "";
+            output += "<form action='<?php echo (BASE_URL); ?>reports/city_wise_booking.php' method='post'>";
+            output += "<div class='form-group' >";
+            output += "<label for='input-rounded' class='col-sm-2 control-label'>Select City</label>";
+            output += "<div class='col-md-10'>";
+            output += "<select class='form-control' style='margin-top:10px;' id='cities' name='city_id'>";
+            output += "<option value=''>--Select City--</option>";
+            output += "<?php $cities = Location::allCities(); foreach($cities as $city) { echo("<option value='".$city->id."'>".($city->name)."</option>"); } ?> ";
+            output += "</select>";
+            output += "</div>";
+            output += "</div>";
+            output += "<div class='form-group' >";
+            output += "<label for='input-rounded' class='col-sm-2 control-label'>From Date</label>";
+            output += "<div class='col-md-10'>";
+            output += "<input type='date' class='form-control date weekly_from_date' name='from_date' style='margin-top:10px;'>"
+            output += "</div>";
+            output += "</div>"
+            output += "<div class='form-group' >";
+            output += "<label for='input-rounded' class='col-sm-2 control-label'>To Date</label>";
+            output += "<div class='col-md-10'>";
+            output += "<input type='date' class='form-control date weekly_to_date' name='to_date' style='margin-top:10px;'>"
+            output += "</div>";
+            output += "</div>";
+            output += "<center><input type='submit' value='Show Report' class='btn btn-danger col-md-offset-5' style='margin-top:10px;'></center>";
+            output += "</form>";
+            $(".data").html(output);
+            $('#cities').select2();
+            }
 
         });
-
+   
         //monthly dates
         var date = new Date();
         var month = date.getMonth();
@@ -280,4 +315,5 @@ require_once 'views/footer.php';
         });
 
     });
+   
 </script>

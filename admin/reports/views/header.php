@@ -1,5 +1,6 @@
 <?php
 require_once '../../init.php';
+
 session_start();
 ?>
 <!doctype html>
@@ -31,11 +32,15 @@ session_start();
         }
         
         @media print {
+            #printPageButton {
+    display: none;
+  }
             .footer {
                 position: fixed;
                 bottom: 0;
             }
-        }
+            @page { size: auto;  margin: 0mm; }
+        
     </style>
 </head>
 <body>
@@ -49,14 +54,20 @@ session_start();
         <div class="col-md-12 heading">
             <br>
             <center><span class=>Smart BRs Reports</span></center>
+            <button onclick="goBack()" class="btn btn-primary" id="printPageButton">  < Back to Report</button>
         </div>
         <br>
         <div class="row dates">
             <div class="col-md-6">
                 <span class="pull-left">Date:<u><?php echo(date("Y-m-d")); ?></u></span>
+                <br>
+                <span class="pull-left">Printed By:<u> <?php  echo('Admin') ?></u></span>
+
             </div>
             <div class="col-md-6" style="float:right;">
                 <span class="float-right col-md-offset-5">Day:<u><?php echo(date("l"));?></u></span>
+                <br>
+                <span class="float-right col-md-offset-5 ">Time:<u><?php  echo(date("h:i a"));?></u></span>
             </div>
         </div>
         <br class="clear-fix">

@@ -67,7 +67,7 @@ class User
     {
         $reg = "/^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zAZ]\.)+[a-zA-Z]{2,4})$/";
         if (!preg_match($reg, $email)) {
-            throw new Exception("Invalid / Missing Email");
+            throw new Exception("Invalid / Email Format e.g  xyz@yourcompany.com");
         }
         $this->email = $email;
     }
@@ -79,7 +79,7 @@ class User
     {
         $reg = "/^[a-z][a-z0-9]{5,15}$/i";
         if (!preg_match($reg, $password)) {
-            throw new Exception("Invalid/ Missing Password");
+            throw new Exception("Invalid/ Missing Password, Password Should be Small Letter With Digit");
         }
         $this->password = sha1($password);
     }
@@ -239,9 +239,8 @@ class User
             . " values "
             . " (NULL, '$this->user_name', '$this->email', '$this->cnic', '$this->password','$now')";
         $obj_db->query($query);
-
         if ($obj_db->errno == 1062) {
-            throw new Exception("User Name " . $this->user_name . "  Already Exist ");
+            throw new Exception("Cnic" .  $this->cnic . "  Already Exist ");
         }
         if ($obj_db->errno) {
             throw new Exception(" Query Insert Error " . $obj_db->errno . $obj_db->error);

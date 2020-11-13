@@ -39,7 +39,7 @@ if($from_date_time > $to_date_time) {
     // echo('</pre>');
     // die;
     if(count($bookings) == 0) {
-    echo("<tr><td colspan='7' class='text-center'>No Booking Found</td></tr>");
+    echo("<tr><td colspan='13' class='text-center text-danger font-weight-bold'>No Booking Found</td></tr>");
     }else foreach ($bookings as $booking) {
         
         echo ("<tr>");

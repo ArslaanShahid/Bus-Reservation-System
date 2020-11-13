@@ -23,7 +23,7 @@ session_start();
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>BRS</title>
+    <title>Smart BRs</title>
     <!-- favicon -->
     <link rel="shortcut icon" href="<?php echo(BASE_URL) ?>assets/images/logo/favicon.png" type="image/x-icon">
 
@@ -94,19 +94,19 @@ input[type=number] {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-5">
                         <li class="nav-item">
-                            <a class="nav-link active " href="<?php echo(BASE_URL)?>index.php">Home</a>
+                            <a class="nav-link " href="<?php echo(BASE_URL)?>index.php">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link " href="<?php echo(BASE_URL);?>about.php">About </a>
+                            <a class="nav-link" href="<?php echo(BASE_URL);?>about.php">About </a>
                         </li>
 
                         
                         <li class="nav-item">
-                            <a class="nav-link " href="<?php echo(BASE_URL);?>faqs.php">Faq</a>
+                            <a class="nav-link" href="<?php echo(BASE_URL);?>faqs.php">FAQs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="<?php echo(BASE_URL)?>contact.php">Contact</a>
+                            <a class="nav-link" href="<?php echo(BASE_URL)?>contact.php">Contact</a>
                         </li>
 
 

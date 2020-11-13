@@ -99,7 +99,7 @@
 
     $.extend($.fn.dataTable.defaults, {
         
-        searching: false,
+        searching: true,
         ordering: true,
         paging: false,
     });

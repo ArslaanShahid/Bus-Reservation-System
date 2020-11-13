@@ -19,4 +19,9 @@ document.addEventListener("DOMContentLoaded",(e)=>{
 
 });
 </script>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
 </html>

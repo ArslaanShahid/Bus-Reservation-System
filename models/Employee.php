@@ -154,5 +154,17 @@ public static function Driver(){
     }
     return $employees;
 }
+public static function DeleteEmp($id){
+    $obj_db = self::obj_db();
+
+    $query = " DELETE FROM Employees "
+            ."WHERE id='$id'";
+
+    $obj_db->query($query);
+
+    if ($obj_db->errno) {
+        throw new Exception("db delete Error" . $obj_db->errno . $obj_db->error);
+    }
+}
 
 }

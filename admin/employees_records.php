@@ -37,6 +37,7 @@ require_once 'views/sidebar.php';
                         <th>Gender</th>
                         <th>Start Date</th>
                         <th>Salary</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,6 +55,7 @@ foreach($employees as $employee){
   echo("<td>". $employee->gender . "</td>");
   echo("<td>". $employee->reg_date . "</td>"); 
   echo("<td>". $employee->salary . "</td>"); 
+  echo ("<td><a href='".BASE_URL."process/process_delete_employee.php?id=".$employee->id."' class='text-danger offset-5 fa fa-trash'></a></td>");
   
   echo("</tr>");
   $i++;

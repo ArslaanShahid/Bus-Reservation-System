@@ -113,6 +113,18 @@ class bus{
         $count = mysqli_num_rows($result);
         return $count; 
 }
-}
 
+public static function DeleteBus($id){
+    $obj_db = self::obj_db();
+
+    $query = " DELETE FROM buses "
+            ."WHERE id='$id'";
+
+    $obj_db->query($query);
+
+    if ($obj_db->errno) {
+        throw new Exception("db delete Error" . $obj_db->errno . $obj_db->error);
+    }
+}
+}
 ?>

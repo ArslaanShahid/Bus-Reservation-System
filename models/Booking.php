@@ -13,7 +13,7 @@ class Booking
         $obj_db = self::obj_db();
         $seats = preg_split('/,/', $seat_number);
 
-        $unique_ticket_id = substr(str_shuffle("0123456789"), 0, 5);
+        $unique_ticket_id = substr(str_shuffle("0123456789"), 5, 5);
         $query_booking = "INSERT INTO bookings "
             . "(`id`,`date`,`route_id`,`total_fare`,`name`,`contact_no`,`cnic`,`gender`,`unique_ticket_id`) "
             . " values "
@@ -112,15 +112,16 @@ class Booking
         $current = date('Y-m-d');
         // die($current);
         $obj_db = self::obj_db();
-        $query = " SELECT * FROM bookings "
-            . " JOIN booked_seats ON bookings.id = booked_seats.booking_id "
-            . " JOIN routes ON routes.id = bookings.route_id "
-            . " WHERE date = '$current' ";
+        $query = " SELECT date, ba.bus_no as bus, b.id, b.name , b.gender , b.cnic ,b.contact_no, b.total_fare,  b.date, r.departure_time, cd.name as departure, ca.name as arrival FROM bookings b  "
+        . "JOIN routes r ON r.id = b.route_id "
+        . "JOIN cities cd ON (cd.id = r.departure) "
+        . "JOIN cities ca ON (ca.id = r.arrival) "
+        . "JOIN buses ba ON (ba.id = r.bus_id) "
+        . "WHERE date ='$current'";
         $result = $obj_db->query($query);
         if ($obj_db->errno) {
             throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
         }
-        $query = " SELECT * FROM bookings where date = '$current'";
         $result = $obj_db->query($query);
         if ($obj_db->errno) {
             throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
@@ -134,6 +135,8 @@ class Booking
             $rows['gender'] = $data->gender;
             $rows['total_fare'] = $data->total_fare;
             $rows['date'] = $data->date;
+            $rows['arrival'] = $data->arrival;
+            $rows['departure'] = $data->departure;
             $query_seat = "SELECT * from booked_seats "
                 . "where booking_id = '$data->id'";
             $res = $obj_db->query($query_seat);
@@ -160,8 +163,12 @@ class Booking
         $start_date = date("Y-m-d H:i:s", $monday);
         $end_date = date("Y-m-d H:i:s", $sunday);
 
-        $query = " SELECT * FROM bookings where date between "
-            . " '$start_date' AND '$end_date' ";
+        $query = " SELECT date, ba.bus_no as bus, b.id, b.name , b.gender , b.cnic ,b.contact_no, b.total_fare,  b.date, r.departure_time, cd.name as departure, ca.name as arrival FROM bookings b  "
+        . "JOIN routes r ON r.id = b.route_id "
+        . "JOIN cities cd ON (cd.id = r.departure) "
+        . "JOIN cities ca ON (ca.id = r.arrival) "
+        . "JOIN buses ba ON (ba.id = r.bus_id) "
+        . " where date between '$start_date' AND '$end_date' ";
         $result = $obj_db->query($query);
         if ($obj_db->errno) {
             throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
@@ -177,6 +184,8 @@ class Booking
             $rows['gender'] = $data->gender;
             $rows['total_fare'] = $data->total_fare;
             $rows['date'] = $data->date;
+            $rows['arrival'] = $data->arrival;
+            $rows['departure'] = $data->departure;
 
             $query_seat = "SELECT * from booked_seats "
                 . "where booking_id = '$data->id'";
@@ -499,7 +508,6 @@ class Booking
         // die;
         $query = "SELECT seat_no from booked_seats  "
             . "WHERE booking_id = '$booking_info->booking_id'";
-
         $seat = $obj_db->query($query);
         if ($obj_db->errno) {
             throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
@@ -612,7 +620,7 @@ class Booking
     public static function DateWisePendingCancelBooking($from_date, $to_date)
     {
         $obj_db = self::obj_db();
-        $query = " SELECT date, b.cancel_status, b.request_status, ba.bus_no as bus, b.id, b.name , b.gender , 
+        $query = " SELECT date, b.cancel_status, b.request_status as status, ba.bus_no as bus, b.id, b.name , b.gender , 
                b.cnic ,b.contact_no, b.total_fare,  b.date, r.departure_time, cd.name as departure, ca.name as arrival FROM bookings b  "
             . "JOIN routes r ON r.id = b.route_id "
             . "JOIN cities cd ON (cd.id = r.departure) "
@@ -620,6 +628,52 @@ class Booking
             . "JOIN buses ba ON (ba.id = r.bus_id) "
             . "WHERE b.cancel_status = 0 AND b.request_status = 1 AND date BETWEEN '$from_date' AND '$to_date'";
         $result = $obj_db->query($query);
+        if ($obj_db->errno) {
+            throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
+        }
+        $bookings = []; 
+        while ($data = $result->fetch_object()) {
+            $rows = [];
+            $rows['name'] = $data->name;
+            $rows['contact_no'] = $data->contact_no;
+            $rows['cnic'] = $data->cnic;
+            $rows['gender'] = $data->gender;
+            $rows['total_fare'] = $data->total_fare;
+            $rows['date'] = $data->date;
+            $rows['departure'] = $data->departure;
+            $rows['arrival'] = $data->arrival;
+            $rows['bus'] = $data->bus;
+            $rows['departure_time'] = $data->departure_time;
+            $rows['status'] = $data->status;
+            $query_seat = "SELECT * from booked_seats "
+                . "where booking_id = '$data->id'";
+
+            $res = $obj_db->query($query_seat);
+            
+            $seats = [];
+            while ($d = $res->fetch_object()) {
+                $seat_rows = [];
+                $seat_rows['seat_no'] = $d->seat_no;
+                $seats[] = $seat_rows;
+            }
+
+            $rows['seats'] = $seats;
+            $bookings[] = $rows;
+        }
+        return $bookings;
+    }
+    public static function CityWiseBooking($from_date, $to_date, $city_id)
+    {
+        $obj_db = self::obj_db();
+        $query = " SELECT date, b.cancel_status, ba.id , ba.bus_no as bus, b.id, b.name , b.gender , b.cnic ,b.contact_no, b.total_fare,  b.date, r.departure_time, cd.name as departure, ca.name as arrival FROM bookings b  "
+            . "JOIN routes r ON r.id = b.route_id "
+            . "JOIN cities cd ON (cd.id = r.departure) "
+            . "JOIN cities ca ON (ca.id = r.arrival) "
+            . "JOIN buses ba ON (ba.id = r.bus_id) "
+            . "WHERE cd.id= '$city_id' AND date BETWEEN '$from_date' AND '$to_date'";
+        $result = $obj_db->query($query);
+        // print_r($result);
+        // die;
         if ($obj_db->errno) {
             throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
         }
@@ -651,5 +705,23 @@ class Booking
             $bookings[] = $rows;
         }
         return $bookings;
+    }
+    public static function Api_bookingHistory($cnic)
+    {
+        $obj_db = self::obj_db();
+        $query = " SELECT b.cancel_status, b.name , b.gender , b.cnic ,b.contact_no, b.total_fare,  b.date, r.departure_time, cd.name as departure, ca.name as arrival FROM bookings b  "
+            . "JOIN routes r ON r.id = b.route_id "
+            . "JOIN cities cd ON (cd.id = r.departure) "
+            . "JOIN cities ca ON (ca.id = r.arrival) "
+            . "WHERE cnic = '$cnic' ";
+        $result = $obj_db->query($query);
+        if ($obj_db->errno) {
+            throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
+        }
+        $query = [];
+        while ($data = $result->fetch_object()) {
+            $query[] = $data;
+        }
+        return $query;
     }
 }
