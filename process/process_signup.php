@@ -51,7 +51,7 @@ if (count($errors) == 0) {
         $mail->Password   = 'c80952ed2e05f3';
 
         $mail->setFrom('smartbrs@techcodex.net', 'SmartBRS');
-        $mail->addAddress($_POST['email'], 'Furqan');
+        $mail->addAddress($_POST['email'], $_POST['user_name']);
 
         // Content
         $mail->isHTML(true);
