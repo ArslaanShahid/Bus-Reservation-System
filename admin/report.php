@@ -22,7 +22,7 @@ require_once 'views/sidebar.php';
                 </i>
             </div>
             <div>Reports / Admin Reports
-                <div class="page-title-subheading">Weekly / Monthly Reports
+                <div class="page-title-subheading">Weekly / Monthly Reports / DateWise
                 </div>
             </div>
         </div>

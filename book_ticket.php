@@ -1,19 +1,27 @@
 <?php
-require_once "init.php";
-if (!isset($_GET['id']) || !isset($_GET['date'])) {
-    header("Location:" . BASE_URL);
-}
-require_once('models/user.php');
 require_once('views/header.php');
-require_once ('models/Route.php');
+// if (!isset($_GET['id']) || !isset($_GET['date'])) {
+    //     header("Location:" . BASE_URL);
+    // }
+require_once('models/Route.php');
 
 $info = Route::routeInfo($_GET['id'], $_GET['date']);
-// echo('<pre>');
-// print_r($info);
-// echo('</pre>');
-// die;
+
 $route_data = $info['route_data'];
 $seats = $info['seats'];
+
+
+// echo('<pre>');
+// print_r($checkTime);
+// echo('</pre>');
+// die;
+
+// // if($bookTime)
+// echo('<pre>');
+// print_r($route_data);
+// echo('</pre>');
+// die;
+
 // echo("<pre>");
 // print_r($info);
 // echo("</pre>");
