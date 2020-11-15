@@ -5,7 +5,7 @@ if (!isset($_GET['id']) || !isset($_GET['date'])) {
 }
 require_once('models/user.php');
 require_once('views/header.php');
-require_once ('models/Route.php');
+require_once('models/Route.php');
 
 $info = Route::routeInfo($_GET['id'], $_GET['date']);
 // echo('<pre>');
@@ -36,7 +36,7 @@ $seats = $info['seats'];
                                 ?>
                             </h2>
                             <a href="#">Home</a> <span>/</span>
-                             <a class="active" href="#"><?php echo ($route_data->departure . ' to ' . $route_data->arrival);?></a>
+                            <a class="active" href="#"><?php echo ($route_data->departure . ' to ' . $route_data->arrival); ?></a>
                         </article>
                     </div>
                 </div>
@@ -60,7 +60,7 @@ $seats = $info['seats'];
                             ?>
                         </strong></p>
                     <div class="margin-bottom-10"></div>
-                
+
                     <p>Dep Time: <?php echo (strtoupper($route_data->departure_time)); ?> <span class="text-danger"><strong>(<?php echo ($_GET['date']); ?>)</strong></span></p>
                     <div class="margin-bottom-5"></div>
                     <strong>Total Seat:<?php echo ($route_data->seats) ?> </strong>
@@ -143,7 +143,7 @@ $seats = $info['seats'];
                     <form action="" class="price-details" id="bookingForm" method="post" accept-charset="utf-8">
                         <div class="form-group">
                             <label for="name"><strong>Name</strong></label>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter Your Name">
+                            <input type="text" class="form-control" name="name" id="name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || event.charCode == 32" placeholder="Enter Your Name">
                             <div class="text-danger has_error name">
 
                             </div>
@@ -217,7 +217,7 @@ $seats = $info['seats'];
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     <script>
         $(document).ready(function(e) {
-            
+
             var paypalActions;
             var final;
 
