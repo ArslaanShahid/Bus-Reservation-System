@@ -32,7 +32,7 @@ require_once 'views/sidebar.php';
                         <th>Email</th>
                         <th>Mobile</th>
                         <th>Message</th>
-                        <th>Action</th>
+                        <!-- <th>Action</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -40,6 +40,7 @@ require_once 'views/sidebar.php';
                 
                  $i = 1;
                  $queries = Queries::show_complaint();
+                //  print_r($queries);
                  foreach ($queries as $query) {
                      echo ("<tr>");
                      echo ("<td>" . $i . "</td>");
@@ -47,7 +48,7 @@ require_once 'views/sidebar.php';
                      echo ("<td>" . $query->email . "</td>");
                      echo ("<td>" . $query->mobile . "</td>");
                      echo ("<td>" . $query->msg . "</td>");
-                     echo ("<td class='text-center'><a href='".BASE_URL."process/process_delete_query.php?id='.$query->id.'' style='color:red;' class='fa fa-trash'></a></td>");
+                    //  echo ("<td class='text-center'><a href='".BASE_URL."process/process_delete_query.php?id= '.$query->id.' 'style='color:red;' class='fa fa-trash'></a></td>");
                      
                      $i++;
                  }

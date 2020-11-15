@@ -44,7 +44,7 @@ require_once 'views/sidebar.php';
                             <div class="input-group-prepend">
                             </div>
 
-                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" aria-describedby="inputGroupPrepend">
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name E.g: musa" aria-describedby="inputGroupPrepend">
 
 
 
@@ -80,7 +80,7 @@ require_once 'views/sidebar.php';
                 <div class="form-row">
                     <div class="col-md-7 mb-3">
                         <label for="Mobile">Mobile</label>
-                        <input type="text" class="form-control" id="mobile_no" name="mobile_no" placeholder="Enter Mobile No">
+                        <input type="text" class="form-control" id="mobile_no" name="mobile_no" placeholder="Enter Mobile No. E.g 03009883212">
 
                         <span class="text-danger">
     
@@ -95,7 +95,7 @@ require_once 'views/sidebar.php';
                 <div class="form-row">
                     <div class="col-md-7 mb-3">
                         <label for="Address">Address</label>
-                        <input type="text" class="form-control" id="address" name="address" placeholder="Enter Address">
+                        <input type="text" class="form-control" id="address" name="address" placeholder="Enter Address E.g Settlite Town B Block">
 
                         <span class="text-danger">
     
@@ -131,7 +131,7 @@ require_once 'views/sidebar.php';
                 <div class="form-row">
                     <div class="col-md-7 mb-3">
                         <label for="Salary">Salary</label>
-                        <input type="text" class="form-control" id="salary" name="salary" placeholder="Enter Salary">
+                        <input type="text" class="form-control" id="salary" name="salary" placeholder="Enter Salary E.g 10000">
 
                         <span class="text-danger">
     

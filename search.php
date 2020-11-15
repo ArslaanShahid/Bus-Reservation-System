@@ -56,6 +56,9 @@ $routes = Route::search($_GET['from'], $_GET['to'], $_GET['date']);
                             </thead>
                             <tbody>
                                 <?php
+                                $currentDate = (Date('y-m-d'));
+                                // // print_r($currentDate);
+                                // die;
                                 $currentTime = strtotime (Date("H:i:s"));
                                  if(isset($routes['routes']) == 0) {
                                     echo("<tr><td colspan='11' class='text-danger text-center'><strong>No Route Found</strong></td></tr>");
@@ -78,7 +81,7 @@ $routes = Route::search($_GET['from'], $_GET['to'], $_GET['date']);
                                         echo('<td>Non AC</td>');
                                     }
                                     echo('<td>'.$route->fare.' <b>PKR</b></td>');
-                                    if($bTime < $currentTime)
+                                    if($routes['date'] < $currentDate && $bTime < $currentTime)
                                     {
                                         echo('<td class="text-danger"><b>Time Passed</b></td>');
                                     }else{

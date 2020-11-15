@@ -129,8 +129,7 @@ class Queries
     {
         $obj_db = self::obj_db();
 
-        $query = " SELECT * FROM user_queries ";
-
+        $query = " SELECT * FROM user_queries";
         $result = $obj_db->query($query);
 
         if ($obj_db->errno) {
@@ -148,10 +147,10 @@ class Queries
     {
         $obj_db = self::obj_db();
 
-        $query = " DELETE FROM user_queries "
-                ."WHERE id='$id'";
+        $query = " DELETE FROM user_queries"
+                ."WHERE id='$id' ";
 
-        $result = $obj_db->query($query);
+        $obj_db->query($query);
 
         if ($obj_db->errno) {
             throw new Exception("db delete Error" . $obj_db->errno . $obj_db->error);
