@@ -56,33 +56,37 @@ $routes = Route::search($_GET['from'], $_GET['to'], $_GET['date']);
                             </thead>
                             <tbody>
                                 <?php
-                                $currentDate = (Date('Y-m-d'));
-                                $currentTime = strtotime(Date("H:i a"));
-                                // print_r($currentTime);
-                                // die;
+                                $currentTime = strtotime(Date("Y-m-d H:i a"));
                                 if (isset($routes['routes']) == 0) {
                                     echo ("<tr><td colspan='11' class='text-danger text-center'><strong>No Route Found</strong></td></tr>");
-                                } else foreach ($routes['routes'] as $route) {
-                                    $bTime = strtotime($route->departure_time);
-                                    echo ('<tr>');
-                                    echo ('<td><b>' . $route->bus . '</b><br><span>' . $route->departure . ' <b>To</b> ' . $route->arrival . '</span><br><span class="text-success"><b>' . $routes['date'] . '</b></span></td>');
-                                    echo ('<td><span class="text-success"><b>' . $route->departure_time . '</b></span><br>' . $route->departure . '</td>');
-                                    echo ('<td>' . $route->duration . ' <span class="text-danger"><b>HRS</b></span></td>');
-                                    echo ('<td>' . $route->distance . ' <span class="text-danger"><b>KM</b></span></td>');
-                                    echo ('<td>' . $route->arrival . '</td>');
-                                    echo ('<td>' . $route->seats . '</td>');
-                                    if ($route->air_conditioner == 1) {
-                                        echo ('<td>AC</td>');
-                                    } else {
-                                        echo ('<td>Non AC</td>');
+                                } else {
+                                    foreach ($routes['routes'] as $route) {
+                                        $routeTime = strtotime($_GET['date'] . ' ' . $route->departure_time);
+                                        $currentTime = strtotime(Date("Y-m-d H:i a"));
+                                        // print_r(strtotime(Date("Y-m-d H:i a")));
+                                        // die;
+                                        // print_r(strtotime($_GET['date'] . ' ' . $route->departure_time));
+                                        // die;
+                                        echo ('<tr>');
+                                        echo ('<td><b>' . $route->bus . '</b><br><span>' . $route->departure . ' <b>To</b> ' . $route->arrival . '</span><br><span class="text-success"><b>' . $routes['date'] . '</b></span></td>');
+                                        echo ('<td><span class="text-success"><b>' . $route->departure_time . '</b></span><br>' . $route->departure . '</td>');
+                                        echo ('<td>' . $route->duration . ' <span class="text-danger"><b>HRS</b></span></td>');
+                                        echo ('<td>' . $route->distance . ' <span class="text-danger"><b>KM</b></span></td>');
+                                        echo ('<td>' . $route->arrival . '</td>');
+                                        echo ('<td>' . $route->seats . '</td>');
+                                        if ($route->air_conditioner == 1) {
+                                            echo ('<td>AC</td>');
+                                        } else {
+                                            echo ('<td>Non AC</td>');
+                                        }
+                                        echo ('<td>' . $route->fare . ' <b>PKR</b></td>');
+                                        if ($currentTime > $routeTime) {
+                                            echo ('<td class="text-danger"><b>Time Passed</b></td>');
+                                        } else {
+                                            echo ('<td><a href="' . (BASE_URL) . 'book_ticket.php?id=' . $route->id . '&date=' . $_GET['date'] . '" target="_blank" class="btn btn-primary">Book Ticket</a></td>');
+                                        }
+                                        echo ('</tr>');
                                     }
-                                    echo ('<td>' . $route->fare . ' <b>PKR</b></td>');
-                                    if ($currentTime > strtotime($route->departure_time)) {
-                                        echo ('<td class="text-danger"><b>Time Passed</b></td>');
-                                    } else {
-                                        echo ('<td><a href="' . (BASE_URL) . 'book_ticket.php?id=' . $route->id . '&date=' . $_GET['date'] . '" target="_blank" class="btn btn-primary">Book Ticket</a></td>');
-                                    }
-                                    echo ('</tr>');
                                 }
                                 ?>
                             </tbody>
