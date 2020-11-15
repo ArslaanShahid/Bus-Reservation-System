@@ -425,12 +425,12 @@ class Route
             . "JOIN cities ca ON  (ca.id = r.arrival) "
             . "JOIN days d ON (r.day = d.id) "
             . "JOIN buses b ON (r.bus_id = b.id)"
-            . "WHERE d.day = '$currentDay'" ; 
+            . "WHERE d.day = '$currentDay' " ;
         $result = $obj_db->query($query);
         // print_r($result);
         // die;
         // $result->fetch_object($query);
-        // print_r($result);
+        
         if ($obj_db->errno) {
             throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
         }
