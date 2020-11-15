@@ -113,9 +113,9 @@ class User
     }
     private function setMobile_no($mobile_no)
     {
-        $reg = "/^\+\d{2}\-\d{3}\-\d{7}$/";
+        $reg = "/^\d{11}$/";
         if (!preg_match($reg, $mobile_no)) {
-            throw new Exception("Invalid/ Missing Number");
+            throw new Exception("Enter Valid No in this Format 03239998123");
         }
         $this->mobile_no = $mobile_no;
     }
@@ -240,7 +240,7 @@ class User
             . " (NULL, '$this->user_name', '$this->email', '$this->cnic', '$this->password','$now')";
         $obj_db->query($query);
         if ($obj_db->errno == 1062) {
-            throw new Exception("Cnic" .  $this->cnic . "  Already Exist ");
+            throw new Exception("CNIC " .  $this->cnic . "  Already Exist ");
         }
         if ($obj_db->errno) {
             throw new Exception(" Query Insert Error " . $obj_db->errno . $obj_db->error);
@@ -271,9 +271,13 @@ class User
         if ($result->num_rows == 0) {
             throw new Exception("User Not Found");
         }
+        
         $user_data = $result->fetch_object();
         if ($user_data->password != $this->password) {
             throw new Exception("Invalid User Name or Password");
+        }
+        if($user_data->status == 0){
+            throw new Exception("Your Account is Deactivated Contact the admin");
         }
         $this->user_id = $user_data->id;
         $this->email = $user_data->email;
@@ -380,7 +384,7 @@ class User
     public static function count_use_reg()
     {
         $obj_db = self::obj_db();
-        $query = "SELECT * FROM user_queries";
+        $query = "SELECT * FROM users";
         $result = $obj_db->query($query);
         $count = mysqli_num_rows($result);
         return $count;

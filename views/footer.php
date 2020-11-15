@@ -95,7 +95,7 @@
             toastr.error("Opps Something Went Wrong");
             i++;
         }
-        if (data.name == '') {
+        if (data.name == '' ) {
             $(".name").html("Missing Name");
             i++;
         }

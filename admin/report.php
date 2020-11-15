@@ -22,7 +22,7 @@ require_once 'views/sidebar.php';
                 </i>
             </div>
             <div>Reports / Admin Reports
-                <div class="page-title-subheading">Weekly / Monthly Reports
+                <div class="page-title-subheading">Weekly / Monthly Reports / DateWise
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@ require_once 'views/sidebar.php';
                             <option value="5">5. Monthly Booking Report</option>
                             <option value="6">6. Date Wise Booking Report</option>
                             <option value="7">7. Cancel Booking Refund</option>
-                            <option value="8">8. Date Wise Cancel Booking Refund Report</option>
+                            <option value="8">8. Date Wise Cancel Booking Report</option>
                             <option value="9">9. Daily Route Report</option>
                             <option value="10">10.Weekly Route Report</option>
                             <option value="11">11.Monthly Route Report</option>

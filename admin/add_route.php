@@ -118,7 +118,7 @@ if (isset($_SESSION['errors'])) {
                         <div class="input-group">
                             <div class="input-group-prepend">
                             </div>
-                            <input type="number" class="form-control" name="fare" placeholder="Enter Route Fare">
+                        <input type="number" class="form-control" name="fare" placeholder="Enter Route Fare (Eg. 200)">
                         </div>
                         <span class="text-danger">
                             <?php

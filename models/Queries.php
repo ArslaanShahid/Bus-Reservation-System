@@ -94,11 +94,32 @@ class Queries
     public function user_query()
     {
         $obj_db = self::obj_db();
-        $query = "INSERT into user_queries "
+        $query = " INSERT into user_queries "
             . "(`id` , `name` , `email` ,`msg` , `mobile`) "
-            . "values "
+            . " values "
             . "(NULL , '$this->name' , '$this->email' , '$this->msg' , '$this->mobile') ";
-        $obj_db->query($query);
+
+            $obj_db->query($query);
+
+            $username = "923237553458";///Your Username
+            $password = "ripazha1@";///Your Password
+            $phone = "$this->mobile";///Recepient Mobile Number
+            $sender = "SmartBRs";
+            $message = "Greetings, Welcome To Smart BRs Complaint Service: $this->name Your Complaint Has Been Registered, Our Team Will Contact You Shortly.";
+            ////sending sms
+            $url = "https://sendpk.com/api/sms.php?username=".$username."&password=".$password."&mobile=".$phone."&sender=".urlencode($sender)."&message=".urlencode($message)."&format=json";
+            $ch = curl_init();
+            $timeout = 30; // set to zero for no timeout
+            curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)');
+            curl_setopt($ch, CURLOPT_URL,$url);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            //
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+            $result = curl_exec($ch); 
+            /*Print Responce*/
+            echo $result; 
+
 
         if ($obj_db->errno) {
             throw new Exception("Query Insert Error" . $obj_db->errno . $obj_db->error);
@@ -108,8 +129,7 @@ class Queries
     {
         $obj_db = self::obj_db();
 
-        $query = " SELECT * FROM user_queries ";
-
+        $query = " SELECT * FROM user_queries";
         $result = $obj_db->query($query);
 
         if ($obj_db->errno) {
@@ -127,10 +147,10 @@ class Queries
     {
         $obj_db = self::obj_db();
 
-        $query = " DELETE FROM user_queries "
-                ."WHERE id='$id'";
+        $query = " DELETE FROM user_queries"
+                ."WHERE id='$id' ";
 
-        $result = $obj_db->query($query);
+        $obj_db->query($query);
 
         if ($obj_db->errno) {
             throw new Exception("db delete Error" . $obj_db->errno . $obj_db->error);

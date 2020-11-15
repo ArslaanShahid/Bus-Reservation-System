@@ -113,6 +113,8 @@ Class TicketCancel{
 
         $obj_db->query($query);
 
+        
+
         $query = "UPDATE bookings"
         . " SET request_status = 1"
         . " WHERE id = '$this->booking_id'";

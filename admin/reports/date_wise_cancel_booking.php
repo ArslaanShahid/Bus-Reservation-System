@@ -28,11 +28,13 @@ if($from_date_time > $to_date_time) {
             <td>Arrival</td>
             <td>Departure Time</td>
             <td>Seats</td>
+            <td>Status</td>
 
         </tr>
     </thead>
     <?php
     $i = 1;
+    $sum =0;
     $bookings = Booking::DateWiseCancelBooking($from_date , $to_date);
     // echo("<pre>");
     // print_r($bookings);
@@ -41,7 +43,8 @@ if($from_date_time > $to_date_time) {
     if(count($bookings) == 0) {
     echo("<tr><td colspan='13' class='text-center text-danger font-weight-bold'>No Booking Found</td></tr>");
     }else foreach ($bookings as $booking) {
-        
+        $sum += $booking['total_fare'];
+
         echo ("<tr>");
         echo ("<td>" . $i . "</td>");
         echo ("<td>" . $booking['date'] . "</td>");
@@ -62,6 +65,8 @@ if($from_date_time > $to_date_time) {
         }
         echo("</td>");
     }
+    echo("<tr><td colspan='14' class='h6 font-weight-bold text-danger'>Cancelled Booking Total: $sum PKR </td></tr>");
+
     ?>
 </table>
 

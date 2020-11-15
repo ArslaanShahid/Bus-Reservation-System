@@ -418,17 +418,23 @@ class Route
     public static function DailyRoute()
     {
         $currentDay = date('w');
+        
         $obj_db = self::obj_db();
         $query = " SELECT r.id, r.fare, d.id, r.duration, r.departure_time as time, r.distance, d.day as day, b.bus_no as bus, cd.name as departure, ca.name as arrival from routes r "
             . "JOIN cities cd ON (cd.id = r.departure) "
             . "JOIN cities ca ON  (ca.id = r.arrival) "
             . "JOIN days d ON (r.day = d.id) "
             . "JOIN buses b ON (r.bus_id = b.id)"
-            . "WHERE d.id = '$currentDay'" ; 
+            . "WHERE d.day = '$currentDay'" ; 
         $result = $obj_db->query($query);
+        // print_r($result);
+        // die;
+        // $result->fetch_object($query);
+        // print_r($result);
         if ($obj_db->errno) {
             throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
         }
+        $routes = [];
         while ($data = $result->fetch_object()) {
             $routes[] = $data;
         }
@@ -452,6 +458,7 @@ class Route
         }
         // print_r($result);
         // die;
+        $routes = [];
         while ($data = $result->fetch_object()) {
             $routes[] = $data;
         }

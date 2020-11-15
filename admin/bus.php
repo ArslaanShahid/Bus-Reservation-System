@@ -38,7 +38,7 @@ require_once 'views/sidebar.php';
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                     </div>
-                                    <input type="text" class="form-control" name="bus_no" id="bus_no" placeholder="Enter Bus No">
+                                    <input type="text" class="form-control" name="bus_no" id="bus_no" placeholder="Bus No. Format E.g GAM 9990">
                                 </div>
                                 <span class="text-danger">
                                     <?php

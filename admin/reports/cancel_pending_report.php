@@ -19,7 +19,7 @@ require_once "../../models/Booking.php";
             <td>Arrival</td>
             <td>Departure Time</td>
             <td>Seats</td>
-
+            <td>Status</td>
         </tr>
     </thead>
     <?php
@@ -50,6 +50,9 @@ require_once "../../models/Booking.php";
         echo("<td>");
         foreach($booking['seats'] as $seat) {
             echo($seat['seat_no'].',&nbsp;');
+        }
+        if($booking['status'] == 1){
+            echo ("<td class='text-danger font-weight-bold'>" . 'Pending' . "</td>");
         }
         echo("</td>");
     }

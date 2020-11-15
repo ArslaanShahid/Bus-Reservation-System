@@ -47,19 +47,20 @@ if (count($errors) == 0) {
         $mail->Port = 2525;
         $mail->SMTPAuth = true;
         $mail->SMTPSecure = 'tls';
-        $mail->Username   = '03205e84f3a9a5';
-        $mail->Password   = 'c80952ed2e05f3';
+        $mail->Username   = 'bd8ff8188519e9';
+        $mail->Password   = '500aece8459691';
 
         $mail->setFrom('smartbrs@techcodex.net', 'SmartBRS');
         $mail->addAddress($_POST['email'], $_POST['user_name']);
 
         // Content
         $mail->isHTML(true);
-        $mail->Subject = 'Booked Ticket No.';
+        $mail->Subject = 'Register Successfully.';
         $mail->Body    = '<center><h1>Smart BRS </h1>'
             . '<h1>Hi,' . $_POST['user_name'] . '</h1>'
             . '<h2>You are now a member of Smart BRS</h2></center>'
-            . '<h2>Thank you for choosing our Service.</h2>';
+            .'<h3>Login into Your Account And Access Your Booking History Anytime.</h3></center>'
+            . '<h4>Thank you for choosing our Service.</h4>';
 
         $mail->send();
 

@@ -108,7 +108,9 @@ input[type=number] {
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo(BASE_URL)?>contact.php">Contact</a>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo(BASE_URL)?>station.php">Near Bus Station</a>
+                        </li>
 
 
                         <li class="nav-item dropdown">

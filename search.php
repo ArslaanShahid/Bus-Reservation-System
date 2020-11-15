@@ -56,11 +56,16 @@ $routes = Route::search($_GET['from'], $_GET['to'], $_GET['date']);
                             </thead>
                             <tbody>
                                 <?php
+                                $currentDate = (Date('y-m-d'));
+                                // // print_r($currentDate);
+                                // die;
+                                $currentTime = strtotime (Date("H:i:s"));
                                  if(isset($routes['routes']) == 0) {
                                     echo("<tr><td colspan='11' class='text-danger text-center'><strong>No Route Found</strong></td></tr>");
-                                }  
+                                }
                                 else foreach($routes['routes'] as $route)
                                 {
+                                    $bTime = strtotime($route->departure_time);
                                     echo('<tr>');
                                     echo('<td><b>'.$route->bus.'</b><br><span>'.$route->departure.' <b>To</b> '.$route->arrival.'</span><br><span class="text-success"><b>'.$routes['date'].'</b></span></td>');
                                     echo('<td><span class="text-success"><b>'.$route->departure_time.'</b></span><br>'.$route->departure.'</td>');
@@ -76,7 +81,12 @@ $routes = Route::search($_GET['from'], $_GET['to'], $_GET['date']);
                                         echo('<td>Non AC</td>');
                                     }
                                     echo('<td>'.$route->fare.' <b>PKR</b></td>');
-                                    echo('<td><a href="'.(BASE_URL).'book_ticket.php?id='.$route->id.'&date='.$_GET['date'].'" target="_blank" class="btn btn-primary">Book Ticket</a></td>');
+                                    if($routes['date'] < $currentDate && $bTime < $currentTime)
+                                    {
+                                        echo('<td class="text-danger"><b>Time Passed</b></td>');
+                                    }else{
+                                        echo('<td><a href="'.(BASE_URL).'book_ticket.php?id='.$route->id.'&date='.$_GET['date'].'" target="_blank" class="btn btn-primary">Book Ticket</a></td>');
+                                    }
                                     echo('</tr>');
                                 }
                                 ?>

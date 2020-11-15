@@ -34,7 +34,7 @@
         <div class="scrollbar-sidebar dropdown">
             <div class="app-sidebar__inner">
                 <ul class="vertical-nav-menu ">
-                    <li class="app-sidebar__heading">Manage Account</li>
+                    <li class="app-sidebar__heading">Manage Admin Account</li>
                     <li>
                         <a href="<?php echo(BASE_URL); ?>addadmin.php">
                             <i class="metismenu-icon fa fa-user "></i>
@@ -75,6 +75,20 @@
                             View Employee
                         </a>
                     </li>
+                    <li class="app-sidebar__heading">Manage Buses</li>
+                    <li>
+                        <a href="<?php echo(BASE_URL); ?>bus.php">
+                            
+                            <i class="metismenu-icon fa fa-bus"></i>
+                            Add Bus
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo(BASE_URL); ?>view_bus.php">
+                            <i class="metismenu-icon fa fa-search"></i>
+                            View Bus
+                        </a>
+                    </li>
                     <li class="app-sidebar__heading">Manage Routes</li>
                     <li>
                         <a href="<?php echo(BASE_URL); ?>add_route.php">
@@ -89,19 +103,6 @@
                         </a>
                     </li>
 
-                    <li class="app-sidebar__heading">Manage Buses</li>
-                    <li>
-                        <a href="<?php echo(BASE_URL); ?>bus.php">
-                            <i class="metismenu-icon fa fa-bus"></i>
-                            Add Bus
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo(BASE_URL); ?>view_bus.php">
-                            <i class="metismenu-icon fa fa-search"></i>
-                            View Bus
-                        </a>
-                    </li>
                     <li class="app-sidebar__heading">Manage Complaints</li>
                     <li>
                         <a href="<?php echo(BASE_URL); ?>view_user_queries.php">
@@ -135,4 +136,3 @@
     </div>
     <div class="app-main__outer">
         <div class="app-main__inner">
-        

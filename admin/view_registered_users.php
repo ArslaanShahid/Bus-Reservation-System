@@ -33,6 +33,7 @@ require_once 'views/sidebar.php';
                         <th>User Name</th>
                         <th>Email</th>
                         <th>Register Date</th>
+                        <th>CNIC</th>
                         <th>Status</th>
 
                     </tr>
@@ -48,6 +49,7 @@ foreach($registered_users as $registered_user){
   echo("<td>". $registered_user->user_name . "</td>");
   echo("<td>". $registered_user->email . "</td>");
   echo("<td>". $registered_user->signup_date . "</td>");
+  echo("<td>". $registered_user->cnic . "</td>");
   if ($registered_user->status == 1) {
     echo ("<td><a href='".BASE_URL."process/process_deactivate_user.php?id=".$registered_user->id."' class='btn btn-warning btn-sm'>Deactivate</a></td>");
 } else {
