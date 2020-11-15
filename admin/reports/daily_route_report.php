@@ -25,15 +25,15 @@ require_once "../../models/Route.php";
     // echo('</pre>');
     // die;
     foreach ($routes as $route) {
-        
+
         echo ("<tr>");
         echo ("<td>" . $i . "</td>");
         echo ("<td>" . $route->bus . "</td>");
         echo ("<td>" . ucfirst($route->day) . "</td>");
-        echo ("<td>" . ucfirst( $route->departure) . "</td>");
+        echo ("<td>" . ucfirst($route->departure) . "</td>");
         echo ("<td>" . ucfirst($route->arrival) . "</td>");
-        echo ("<td>" . $route->fare. "</td>");
-        echo ("<td>" . $route->time. "</td>");
+        echo ("<td>" . $route->fare . "</td>");
+        echo ("<td>" . $route->time . "</td>");
         $i++;
     }
     ?>

@@ -167,7 +167,7 @@ class Route
 
         //Checking If bus has added for any route or not.
         $query = "SELECT * from routes "
-        . "WHERE bus_id = '$this->bus_id'";
+            . "WHERE bus_id = '$this->bus_id'";
         $result = $obj_db->query($query);
 
         if ($obj_db->errno) {
@@ -176,17 +176,17 @@ class Route
         if (!$result->num_rows == 0) {
             throw new Exception("Route Already Added for this bus.");
         }
-        
+
         //Same Route timing Checking
         $query = "SELECT * from routes "
-                ."WHERE bus_id = '$this->bus_id' AND departure='$this->departure' AND arrival = '$this->arrival' AND departure_time='$this->departure_time'";
+            . "WHERE bus_id = '$this->bus_id' AND departure='$this->departure' AND arrival = '$this->arrival' AND departure_time='$this->departure_time'";
         $result = $obj_db->query($query);
 
         if ($obj_db->errno) {
             throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
         }
         if (!$result->num_rows == 0) {
-            throw new Exception("Same Route of Timing (" .$this->departure_time. ") already Exist Under this Bus.");
+            throw new Exception("Same Route of Timing (" . $this->departure_time . ") already Exist Under this Bus.");
         }
 
         $result = $this->days;
@@ -243,11 +243,12 @@ class Route
         // die;
         return $routes;
     }
-    public static function deleteRoute($id){
+    public static function deleteRoute($id)
+    {
         $obj_db = self::obj_db();
 
         $query = " DELETE FROM routes "
-                ."WHERE id='$id'";
+            . "WHERE id='$id'";
 
         $obj_db->query($query);
 
@@ -295,17 +296,17 @@ class Route
         return $data;
     }
 
-    public static function routeInfo($id,$date)
+    public static function routeInfo($id, $date)
     {
         $obj_db = self::obj_db();
 
         $query = "SELECT r.id, cd.name as departure, ca.name as arrival,"
-                        ." r.fare, r.duration, r.departure_time, r.distance, b.seats" 
-                        ." from routes r "
-                        ." JOIN cities cd ON (cd.id = r.departure) "
-                        ." JOIN cities ca ON (ca.id = r.arrival) "
-                        ." JOIN buses b ON b.id = r.bus_id "
-                        ." WHERE r.id = '$id'";
+            . " r.fare, r.duration, r.departure_time, r.distance, b.seats"
+            . " from routes r "
+            . " JOIN cities cd ON (cd.id = r.departure) "
+            . " JOIN cities ca ON (ca.id = r.arrival) "
+            . " JOIN buses b ON b.id = r.bus_id "
+            . " WHERE r.id = '$id'";
 
         // $query = " SELECT r.id, r.fare, r.duration, r.departure_time, r.distance, d.day as day, b.bus_no as bus, b.seats, b.air_conditioner, cd.name as departure, cd.id as departure_id, ca.name as arrival, ca.id as arrival_id from routes r "
         //     . "JOIN cities cd ON (cd.id = r.departure) "
@@ -317,12 +318,12 @@ class Route
         $result_route = $obj_db->query($query);
 
         $route = $result_route->fetch_object();
-        
+
         //making seats 
         $seat_data = [];
         $seats = $route->seats;
 
-        for($i = 1; $i <= $seats; $i++) {
+        for ($i = 1; $i <= $seats; $i++) {
             $rows = [];
             $rows['seat_no'] = $i;
             $rows['status'] = 0;
@@ -334,35 +335,34 @@ class Route
         }
         //getting route bookings
         $query_booking = "select * from bookings b "
-                        ." where route_id = $id AND date = '$date'";
+            . " where route_id = $id AND date = '$date'";
         $result_booking = $obj_db->query($query_booking);
 
-        if($obj_db->errno) {
+        if ($obj_db->errno) {
             die($obj_db->error);
         }
 
-        while($data = $result_booking->fetch_object()) {
+        while ($data = $result_booking->fetch_object()) {
             //getting booked seats from storage
             $query_seats = "select * from booked_seats bs "
-                            ." where booking_id = $data->id AND cancel_status = 0";
+                . " where booking_id = $data->id AND cancel_status = 0";
             $result_seats = $obj_db->query($query_seats);
 
-            if($obj_db->errno) {
+            if ($obj_db->errno) {
                 die($obj_db->error);
             }
 
-            while($data = $result_seats->fetch_object()) {
-                $index = self::checkSeat($seat_data,$data->seat_no);
-                if($index > -1) {
+            while ($data = $result_seats->fetch_object()) {
+                $index = self::checkSeat($seat_data, $data->seat_no);
+                if ($index > -1) {
                     $seat_data[$index]['status'] = 1;
                 }
             }
-            
         }
 
         $response = [
-            'route_data'=>$route,
-            'seats'=>$seat_data,
+            'route_data' => $route,
+            'seats' => $seat_data,
         ];
 
         return $response;
@@ -373,17 +373,18 @@ class Route
         $query = "SELECT * FROM routes";
         $result = $obj_db->query($query);
         $count = mysqli_num_rows($result);
-        return $count; 
+        return $count;
     }
 
     //check seat exist in array
-    public static function checkSeat($seats,$seat_no) {
-        foreach($seats as $field=>$data) {
+    public static function checkSeat($seats, $seat_no)
+    {
+        foreach ($seats as $field => $data) {
             // die('field'.$field);
             // print_r($data);
             // die;
-            if($data['seat_no'] == $seat_no) {
-                return $field; 
+            if ($data['seat_no'] == $seat_no) {
+                return $field;
             }
         }
         return -1;
@@ -393,12 +394,12 @@ class Route
     {
         $obj_db = self::obj_db();
         $query = "SELECT r.id, cd.name as departure, ca.name as arrival,"
-        ." r.fare, r.duration, r.departure_time, r.distance, b.seats" 
-        ." from routes r "
-        ." JOIN cities cd ON (cd.id = r.departure) "
-        ." JOIN cities ca ON (ca.id = r.arrival) "
-        ." JOIN buses b ON b.id = r.bus_id "
-        ." WHERE r.id = '$id'"; 
+            . " r.fare, r.duration, r.departure_time, r.distance, b.seats"
+            . " from routes r "
+            . " JOIN cities cd ON (cd.id = r.departure) "
+            . " JOIN cities ca ON (ca.id = r.arrival) "
+            . " JOIN buses b ON b.id = r.bus_id "
+            . " WHERE r.id = '$id'";
         $result = $obj_db->query($query);
         if ($obj_db->errno) {
             throw new Exception("Select Error - $obj_db->errno - $obj_db->error");
@@ -417,15 +418,14 @@ class Route
     }
     public static function DailyRoute()
     {
-        $currentDay = date('w');
-        
+        $currentDay = Date('w');
         $obj_db = self::obj_db();
         $query = " SELECT r.id, r.fare, d.id, r.duration, r.departure_time as time, r.distance, d.day as day, b.bus_no as bus, cd.name as departure, ca.name as arrival from routes r "
             . "JOIN cities cd ON (cd.id = r.departure) "
             . "JOIN cities ca ON  (ca.id = r.arrival) "
             . "JOIN days d ON (r.day = d.id) "
             . "JOIN buses b ON (r.bus_id = b.id)"
-            . "WHERE d.day = '$currentDay'" ; 
+            . "WHERE d.id = '$currentDay'";
         $result = $obj_db->query($query);
         // print_r($result);
         // die;
@@ -501,16 +501,16 @@ class Route
         $obj_db = self::obj_db();
         //Checking If bus has added for any route or not.
         $query = "SELECT * from routes "
-        . "WHERE bus_id = '$id'";
+            . "WHERE bus_id = '$id'";
         $result = $obj_db->query($query);
 
         if ($obj_db->errno) {
             throw new Exception("db Select Error" . $obj_db->errno . $obj_db->error);
         }
-        
+
         if (!$result->num_rows == 0) {
             $response = false;
-        }else{
+        } else {
             $response = true;
         }
 
