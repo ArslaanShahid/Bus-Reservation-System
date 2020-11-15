@@ -33,7 +33,7 @@ require_once 'views/sidebar.php';
                                     </div>
 
                                     <input type="text" class="form-control" name="user_name" id="user_name"
-                                        placeholder="Username" aria-describedby="inputGroupPrepend">
+                                        placeholder="Username e.g musa" aria-describedby="inputGroupPrepend">
 
 
 
@@ -52,7 +52,7 @@ require_once 'views/sidebar.php';
                         <div class="form-row">
                             <div class="col-md-7 mb-3">
                                 <label for="Email">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email e.g xyz@gmail.com">
                                 <div class="text-danger">
                                     <?php
                                     if (isset($errors['email'])) {
@@ -67,7 +67,7 @@ require_once 'views/sidebar.php';
                             <div class="col-md-7 mb-3">
                                 <label for="validationCustom03">Password</label>
                                 <input type="Password" class="form-control" id="password" name="password"
-                                    placeholder="Password" required>
+                                    placeholder="Password e.g small letter with digit" required>
                                 <div class="text-danger">
                                     <?php
                                     if (isset($errors['password'])) {

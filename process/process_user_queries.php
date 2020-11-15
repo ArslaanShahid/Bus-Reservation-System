@@ -35,7 +35,7 @@ if(count($errors)==0){
     try{
         $obj_query->user_query();
         header("Location:". BASE_URL."index.php");
-        $_SESSION['success']="Your Message has been Sent to our team. We Will Contact You Shortly";
+        $_SESSION['success']="Your Complaint has been Sent to our team. We Will Contact You Shortly";
         
     }
     catch(Exception $ex){

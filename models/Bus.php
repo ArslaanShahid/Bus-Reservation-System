@@ -35,9 +35,9 @@ class bus{
         return $this->bus_id;
     }
     private function setBus_no($bus_no){
-        $reg = "/[A-Z\d]+/";
+        $reg = "/[A-Z] [] \d]+/";
         if(!preg_match($reg, $bus_no)){
-            throw new Exception ("Invalid / Missing Bus No");
+            throw new Exception ("Enter Bus No in This Format : GAM 9990");
         }
         $this->bus_no = $bus_no;
     }
@@ -47,7 +47,7 @@ class bus{
     private function setAir_conditioner($air_conditioner){
         $air_conditioners= ['1','0'];
         if(!in_array($air_conditioner, $air_conditioners)){
-            throw new Exception("Invalid / Missing Field");
+            throw new Exception("Select Bus Type");
         }
         $this->air_conditioner = $air_conditioner;
     }

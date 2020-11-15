@@ -14,7 +14,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET")
     $ticket_date = ($result['booking']->date);
     
     if($ticket_date < $current_date){
-        $_SESSION ['error'] = 'Your Ticket is Expire';
+        $_SESSION ['error'] = 'Invalid Ticket Number, Please Enter Valid No.';
         header("Location:". BASE_URL."print_download.php");
         die;
     }

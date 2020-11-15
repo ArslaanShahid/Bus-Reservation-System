@@ -24,6 +24,7 @@ require_once "../../models/Booking.php";
     </thead>
     <?php
     $i = 1;
+    $sum = 0;
     $bookings = Booking::CancelBooking();
     // echo("<pre>");
     // print_r($bookings);
@@ -33,6 +34,7 @@ require_once "../../models/Booking.php";
     echo("<tr><td colspan='7' class='text-center'>No Booking Found</td></tr>");
     }else foreach ($bookings as $booking) {
         
+        $sum += $booking['total_fare'];
         echo ("<tr>");
         echo ("<td>" . $i . "</td>");
         echo ("<td>" . $booking['date'] . "</td>");
@@ -53,6 +55,8 @@ require_once "../../models/Booking.php";
         }
         echo("</td>");
     }
+    echo("<tr><td colspan='14' class='h6 font-weight-bold text-danger'>Cancelled Booking Total: $sum PKR </td></tr>");
+
     ?>
 </table>
 

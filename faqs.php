@@ -49,7 +49,7 @@ require_once('views/header.php');
 
                                     <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
                                         <div class="card-body">
-                                            Registration is not a mandatory requirement to book tickets. However, during registration process basic details are captured like name, age, mobile number, email ID, etc. which can expedite booking process.
+                                            Registration is not a mandatory requirement to book tickets. However, during registration process basic details are captured like username, cnic, email ID, etc. which can Later User for details.
                                         </div>
                                     </div>
                                 </div>

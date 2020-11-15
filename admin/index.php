@@ -224,7 +224,7 @@ require_once('../models/Booking.php');
                                                     </div>
                                                     <div class="widget-content-right">
                                                         <div class="widget-numbers text-success">
-                                                            <?php echo("<span class=''>$</span>"). Booking::Daily_Earning() ?>
+                                                            <?php echo("<span class=''>PKR </span>"). Booking::Daily_Earning() ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -245,7 +245,7 @@ require_once('../models/Booking.php');
                                                         <div class="widget-numbers text-warning">
 
                                                         <?php 
-                                                          echo ("<span class=''>$</span>"). Booking::weekly_Earning();
+                                                          echo ("<span class=''>PKR </span>"). Booking::weekly_Earning();
                                                             
                                                             ?>
                                                         </div>
@@ -269,7 +269,7 @@ require_once('../models/Booking.php');
                                                     <div class="widget-content-right">
                                                         <div class="widget-numbers text-info">
                                                         <?php 
-                                                            echo ("<span class=''>$</span>"). Booking::AllTime_Earning();
+                                                            echo ("<span class=''>PKR </span>"). Booking::AllTime_Earning();
                                                             ?>
                                                         </div>
                                                     </div>

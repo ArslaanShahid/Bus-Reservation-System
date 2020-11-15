@@ -33,6 +33,6 @@ if (count($errors) == 0) {
     $msg = "Check Your Errors";
     $_SESSION['error'] = $msg;
     $_SESSION['errors'] = $errors;
-    $_SESSION['obj_admin'] = serialize($obj_admin);
+    // $_SESSION['obj_admin'] = serialize($obj_admin);
     header("Location:". BASE_URL."addadmin.php");
 }

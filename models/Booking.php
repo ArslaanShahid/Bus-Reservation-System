@@ -38,8 +38,26 @@ class Booking
                 }
             }
         }
+            $username = "923237553458";///Your Username
+            $password = "ripazha1@";///Your Password
+            $mobile = "$contact_no";///Recepient Mobile Number
+            $sender = "SmartBRs";
+            $message = "Greetings, Welcome To Smart BRS .$name. Thanks For Choosing Our Services here is the Ticket ID .$unique_ticket_id. You can Download the Ticket From Our Website or Android App. Thank You.";
+            ////sending sms
+            $url = "https://sendpk.com/api/sms.php?username=".$username."&password=".$password."&mobile=".$mobile."&sender=".urlencode($sender)."&message=".urlencode($message)."&format=json";
+            $ch = curl_init();
+            $timeout = 30; // set to zero for no timeout
+            curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)');
+            curl_setopt($ch, CURLOPT_URL,$url);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            //
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+            $result = curl_exec($ch); 
+            /*Print Responce*/
+            return $response;
+            echo $result; 
 
-        return $response;
     }
 
     public static function showBooking()
@@ -578,7 +596,7 @@ class Booking
     public static function cancelBookingPending()
     {
         $obj_db = self::obj_db();
-        $query = " SELECT b.cancel_status, b.request_status , ba.bus_no as bus, b.id, b.name , b.gender , b.cnic ,b.contact_no, b.total_fare,  b.date, r.departure_time, cd.name as departure, ca.name as arrival FROM bookings b  "
+        $query = " SELECT b.cancel_status, b.request_status as status, ba.bus_no as bus, b.id, b.name , b.gender , b.cnic ,b.contact_no, b.total_fare,  b.date, r.departure_time, cd.name as departure, ca.name as arrival FROM bookings b  "
             . "JOIN routes r ON r.id = b.route_id "
             . "JOIN cities cd ON (cd.id = r.departure) "
             . "JOIN cities ca ON (ca.id = r.arrival) "
@@ -601,6 +619,7 @@ class Booking
             $rows['arrival'] = $data->arrival;
             $rows['bus'] = $data->bus;
             $rows['departure_time'] = $data->departure_time;
+            $rows['status'] = $data->status;
             $query_seat = "SELECT * from booked_seats "
                 . "where booking_id = '$data->id'";
             $res = $obj_db->query($query_seat);

@@ -42,7 +42,7 @@ Class Employee{
     private function setName($name){
         $name = trim($name);
         if($name == "" || is_numeric($name)){
-            throw new Exception ("Invalid / Missing Name");
+            throw new Exception ("Name in Following Format Be e.g ali ");
         }
         $this->name = ucfirst(strtolower($name));
     }
@@ -50,9 +50,9 @@ Class Employee{
         return $this->name;
     }
     private function setMobile_no($mobile_no){
-        $reg = "/^\+\d{2}\-\d{3}\-\d{7}$/";
+        $reg = "/^\d{11}$/";
         if(!preg_match($reg, $mobile_no)){
-            throw new Exception("Invalid / Missing Number");
+            throw new Exception("Enter No in Following Format e.g 03001231232");
         }
         $this->mobile_no = $mobile_no;
     }
@@ -62,7 +62,7 @@ Class Employee{
     private function setGender($gender){
         $genders = ['male', 'female'];
         if(!in_array($gender, $genders)){
-            throw new Exception("Invalid / Missing Gender");
+            throw new Exception("Select Gender");
         }
         $this->gender = $gender;
     }

@@ -10,7 +10,6 @@ $info = Route::routeInfo($_GET['id'], $_GET['date']);
 $route_data = $info['route_data'];
 $seats = $info['seats'];
 
-
 // echo('<pre>');
 // print_r($checkTime);
 // echo('</pre>');
