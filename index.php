@@ -16,6 +16,7 @@ $cities = Location::allCities();
                 <div class="col-xl-8 col-md-10 text-center banner_slider">
                     <div class="banner_info">
                         <article>
+                            <!-- <h4 class="text-dark">Let&#039;s Go Together</h4> -->   
                             <h4>Let&#039;s Go Together</h4>
                             <h2>Smart Bus Reservation System</h2>
                             </h2>
