@@ -1,4 +1,4 @@
-**This is my univeristy (FYP) Under_Developed By Arslan Shahid**
+**This is my univeristy (FYP) Developed By Arslan Shahid**
 How To Run:
 1st) Install Xammp
 2nd) Goto->localhost/phpmyadmin->then
